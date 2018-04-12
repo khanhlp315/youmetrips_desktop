@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXScrollPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="490.0" prefWidth="640.0" style="-fx-background-color: #e6ecf0;"
+            xmlns="http://javafx.com/javafx/9.0.1">
+    <children>
+        <AnchorPane prefHeight="490.0" prefWidth="230.0" style="-fx-background-color: #333645;">
+            <children>
+                <JFXButton layoutY="85.0" prefHeight="40.0" prefWidth="230.0" ripplerFill="#ffffff42"
+                           text="Firstname Lastname" textFill="#e8e6e6"/>
+            </children>
+        </AnchorPane>
+        <JFXScrollPane alignment="TOP_CENTER" layoutX="230.0" prefHeight="490.0" prefWidth="400.0">
+            <children>
+                <AnchorPane>
+                    <children>
+                        <ImageView fitHeight="150.0" fitWidth="410.0" preserveRatio="true">
+                            <image>
+                                <Image url="@res/profile/no_cover.png"/>
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="155.0" layoutY="116.0"
+                                   preserveRatio="true">
+                            <image>
+                                <Image url="@res/profile/img_placeholder.png"/>
+                            </image>
+                        </ImageView>
+                    </children>
+                </AnchorPane>
+            </children>
+            <opaqueInsets>
+                <Insets/>
+            </opaqueInsets>
+        </JFXScrollPane>
+    </children>
+</AnchorPane>
