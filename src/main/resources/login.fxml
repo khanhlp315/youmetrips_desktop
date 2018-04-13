@@ -22,7 +22,7 @@
                               <Font size="9.0" />
                            </font>
                         </Label>
-                        <JFXButton layoutX="142.0" text="Need help?" textFill="#ccd0d2">
+                        <JFXButton fx:id="button1" layoutX="142.0" text="Need help?" textFill="#ccd0d2">
                            <font>
                               <Font size="10.0" />
                            </font>

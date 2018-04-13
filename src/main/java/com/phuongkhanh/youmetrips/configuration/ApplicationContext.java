@@ -10,7 +10,6 @@ import dagger.Component;
 import dagger.Module;
 import dagger.Provides;
 
-import javax.inject.Provider;
 import javax.inject.Singleton;
 
 @Singleton

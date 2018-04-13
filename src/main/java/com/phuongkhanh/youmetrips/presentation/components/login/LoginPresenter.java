@@ -16,4 +16,19 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
         getView().navigateToSignup();
     }
 
+    public void loginWithFacebook(){
+        String token = "";
+        _service.loginWithFacebook(token);
+    }
+
+    public void loginWithEmailPassword()
+    {
+        _service.loginWithEmailPassword();
+    }
+
+    public void signup()
+    {
+        _service.signup();
+    }
+
 }
