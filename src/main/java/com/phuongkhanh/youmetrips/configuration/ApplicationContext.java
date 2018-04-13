@@ -5,6 +5,7 @@ import com.phuongkhanh.youmetrips.presentation.components.login.LoginScreen;
 import com.phuongkhanh.youmetrips.presentation.components.login.LoginScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.login.LoginService;
 import com.phuongkhanh.youmetrips.presentation.windows.LoginWindow;
+import com.phuongkhanh.youmetrips.services.api.RestApi;
 import com.phuongkhanh.youmetrips.services.components.LoginServiceImpl;
 import dagger.Component;
 import dagger.Module;
@@ -42,5 +43,10 @@ public interface ApplicationContext {
             return new LoginServiceImpl();
         }
 
+        @Provides
+        @Singleton
+        static RestApi restApi() {
+            return new RestApi();
+        }
     }
 }
