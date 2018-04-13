@@ -29,5 +29,8 @@
     <orderEntry type="library" name="Gradle: commons-digester:commons-digester:1.8.1" level="project" />
     <orderEntry type="library" name="Gradle: commons-logging:commons-logging:1.2" level="project" />
     <orderEntry type="library" name="Gradle: commons-collections:commons-collections:3.2.2" level="project" />
+    <orderEntry type="library" name="restfb-2.4.0" level="project" />
+    <orderEntry type="library" name="client-combined-3.11.0-sources" level="project" />
+    <orderEntry type="library" name="byte-buddy-1.7.91" level="project" />
   </component>
 </module>

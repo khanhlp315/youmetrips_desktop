@@ -1,6 +1,6 @@
 package com.phuongkhanh.youmetrips.presentation.components.login;
 
-import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import javafx.fxml.FXML;
@@ -13,20 +13,17 @@ public class LoginScreenImpl extends FXMLScreen implements LoginScreen, Initiali
     private final LoginPresenter _presenter;
 
     @FXML
-    private JFXButton _btnCreateAccount;
-
+    private JFXTextField _txtEmailOrPhoneLogin;
     @FXML
-    private JFXTextField _txtEmailOrPhone;
-
+    private JFXPasswordField _txtPasswordLogin;
     @FXML
-    private JFXTextField _txtPassword;
-
+    private JFXTextField _txtEmailOrPhoneSignUp;
     @FXML
-    private JFXTextField _txtConfirmPassword;
-
+    private JFXPasswordField _txtPasswordSignUp;
+    @FXML
+    private JFXPasswordField _txtConfirmPassword;
     @FXML
     private JFXTextField _txtFirstName;
-
     @FXML
     private JFXTextField _txtLastName;
 
@@ -50,7 +47,25 @@ public class LoginScreenImpl extends FXMLScreen implements LoginScreen, Initiali
     public void initialize(URL location, ResourceBundle resources) {
     }
 
-    public void loginWithEmailPassword() {
-        // _presenter.loginWithEmailPassword();
+    @FXML
+    public void login() {
+        _presenter.login(_txtEmailOrPhoneLogin.getText(), _txtPasswordLogin.getText());
     }
+
+    @FXML
+    public void loginWithFB() {
+         _presenter.loginWithFB();
+    }
+
+    @FXML
+    public void signUp() {
+        _presenter.signUp(_txtEmailOrPhoneSignUp.getText(),
+                _txtPasswordSignUp.getText(),
+                _txtConfirmPassword.getText(),
+                _txtFirstName.getText(),
+                _txtLastName.getText());
+    }
+
+
+
 }

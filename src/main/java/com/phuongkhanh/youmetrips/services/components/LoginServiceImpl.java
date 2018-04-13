@@ -5,11 +5,12 @@ import com.phuongkhanh.youmetrips.presentation.models.User;
 import com.phuongkhanh.youmetrips.services.api.RestApi;
 import com.phuongkhanh.youmetrips.services.api.exceptions.ApiCodedException;
 import com.phuongkhanh.youmetrips.services.api.models.Login;
+import com.phuongkhanh.youmetrips.services.api.models.SignUp;
 
 public class LoginServiceImpl implements LoginService {
     private final RestApi _api;
 
-    public LoginServiceImpl( final RestApi api ) {
+    public LoginServiceImpl(final RestApi api) {
         _api = api;
     }
 
@@ -22,8 +23,28 @@ public class LoginServiceImpl implements LoginService {
             user.setId(result.getUserId());
             user.setAccessToken(result.getAccessToken());
             return user;
+        } catch (ApiCodedException exception) {
+            throw exception;
         }
-        catch(ApiCodedException exception){
+    }
+
+    @Override
+    public void signUp(String emailOrPhone, String password, String firstName, String lastName) {
+        SignUp newUser = _api.signUp(emailOrPhone, password, firstName, lastName);
+        System.out.println(newUser.getConfirmToken());
+    }
+
+    @Override
+    public User loginWithFB(String accessToken) {
+        try {
+            Login result = _api.loginWithFB(accessToken);
+
+            User user = new User();
+            user.setId(result.getUserId());
+            user.setUserLastName(result.getUserLastName());
+            user.setUserFirstName(result.getUserFirstName());
+            return user;
+        } catch (ApiCodedException exception) {
             throw exception;
         }
     }

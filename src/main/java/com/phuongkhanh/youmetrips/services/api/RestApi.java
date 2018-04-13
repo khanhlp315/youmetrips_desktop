@@ -6,6 +6,7 @@ import com.phuongkhanh.youmetrips.services.api.exceptions.CouldNotConnectApiServ
 import com.phuongkhanh.youmetrips.services.api.exceptions.CouldNotParseApiResponseBodyException;
 import com.phuongkhanh.youmetrips.services.api.exceptions.UnknownApiResponseContentTypeException;
 import com.phuongkhanh.youmetrips.services.api.models.Login;
+import com.phuongkhanh.youmetrips.services.api.models.SignUp;
 import com.phuongkhanh.youmetrips.utils.CommonUtils;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -24,7 +25,7 @@ import static java.util.Objects.requireNonNull;
 public class RestApi {
     private final ThreadLocal<OkHttpClient> _client;
     private final ThreadLocal<Gson> _gson;
-    private String _baseUrl;
+    private String _baseUrl = "http://docker.youthdev.net:23010/";
 
     public RestApi(){
         _client = new ThreadLocal<OkHttpClient>() {
@@ -109,4 +110,28 @@ public class RestApi {
                 "password", password ) );
         return parseResponseJsonBody( response, Login.class );
     }
+
+    public SignUp signUp(String emailOrPhone,
+                         String password,
+                         String firstName,
+                         String lastName)
+    {
+        Response response = executePost( "signup", ImmutableMap.of(
+                "emailOrPhoneNumber", emailOrPhone,
+            "password", password,
+            "firstName", firstName,
+            "lastName", lastName ) );
+
+        System.out.println("sign up api");
+        System.out.println(requireNonNull(response.body()).toString());
+        return parseResponseJsonBody(response, SignUp.class);
+    }
+
+
+    public Login loginWithFB(String accessToken) {
+        Response response = executePost( "loginwithfacebook", ImmutableMap.of(
+                "facebookAccessToken", accessToken) );
+        return parseResponseJsonBody( response, Login.class );
+    }
 }
+

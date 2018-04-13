@@ -8,8 +8,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.event.ActionEvent ?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" >
     <children>
         <ImageView fitHeight="490.0" fitWidth="640.0">
             <image>
@@ -32,7 +33,7 @@
                                         <Font size="9.0" />
                                     </font>
                                 </Label>
-                                <JFXButton layoutX="142.0" text="Need help?" textFill="#ccd0d2">
+                                <JFXButton fx:id="_btnNeedHelp" layoutX="142.0" text="Need help?" textFill="#ccd0d2">
                                     <font>
                                         <Font size="10.0" />
                                     </font>
@@ -41,16 +42,16 @@
                         </AnchorPane>
                         <AnchorPane layoutX="11.0" layoutY="59.0">
                             <children>
-                                <JFXTextField focusColor="#ffba33" labelFloat="true" layoutY="7.0" prefHeight="31.0" prefWidth="190.0" promptText="Email or phone" unFocusColor="#ccd0d2" />
-                                <JFXPasswordField focusColor="#ffba33" labelFloat="true" layoutY="54.0" prefHeight="31.0" prefWidth="190.0" promptText="Password" unFocusColor="#ccd0d2" />
+                                <JFXTextField fx:id="_txtEmailOrPhoneLogin" focusColor="#ffba33" labelFloat="true" layoutY="7.0" prefHeight="31.0" prefWidth="190.0" promptText="Email or phone" unFocusColor="#ccd0d2" />
+                                <JFXPasswordField fx:id="_txtPasswordLogin" focusColor="#ffba33" labelFloat="true" layoutY="54.0" prefHeight="31.0" prefWidth="190.0" promptText="Password" unFocusColor="#ccd0d2" />
                             </children>
                         </AnchorPane>
-                        <JFXButton layoutX="109.0" layoutY="163.0" prefHeight="38.0" prefWidth="90.0" ripplerFill="#ffffff42" style="-fx-background-color: #1a535c; -fx-background-radius: 100;" text="SIGN IN" textFill="WHITE">
+                        <JFXButton fx:id="_btnSignIn" layoutX="109.0" layoutY="163.0" prefHeight="38.0" prefWidth="90.0" ripplerFill="#ffffff42" style="-fx-background-color: #1a535c; -fx-background-radius: 100;" text="SIGN IN" textFill="WHITE">
                             <font>
                                 <Font size="10.0" />
                             </font>
                         </JFXButton>
-                        <JFXButton layoutX="12.0" layoutY="163.0" prefHeight="38.0" prefWidth="90.0" ripplerFill="#ffffff42" style="-fx-background-radius: 100; -fx-border-radius: 100; -fx-border-color: #1a535c;" text="CREATE" textFill="#1a535c">
+                        <JFXButton fx:id="_btnCreate" layoutX="12.0" layoutY="163.0" prefHeight="38.0" prefWidth="90.0" ripplerFill="#ffffff42" style="-fx-background-radius: 100; -fx-border-radius: 100; -fx-border-color: #1a535c;" text="CREATE" textFill="#1a535c">
                             <font>
                                 <Font size="10.0" />
                             </font>
@@ -64,7 +65,7 @@
                 </Label>
                 <AnchorPane layoutX="59.0" layoutY="384.0" prefHeight="48.0" prefWidth="212.0">
                     <children>
-                        <JFXButton layoutY="10.0" prefHeight="38.0" prefWidth="212.0" ripplerFill="#ffffff42" style="-fx-background-color: white; -fx-background-radius: 100; -fx-effect: dropshadow(gaussian, #cf9d3c, 10, 0, 3, 3);" text="          SIGN IN WITH FACEBOOK" textFill="#4267b2">
+                        <JFXButton fx:id="_btnSignInWithFB" layoutY="10.0" prefHeight="38.0" prefWidth="212.0" ripplerFill="#ffffff42" style="-fx-background-color: white; -fx-background-radius: 100; -fx-effect: dropshadow(gaussian, #cf9d3c, 10, 0, 3, 3);" text="          SIGN IN WITH FACEBOOK" textFill="#4267b2">
                             <font>
                                 <Font size="10.0" />
                             </font>
@@ -84,14 +85,14 @@
                     <children>
                         <AnchorPane layoutX="11.0" layoutY="59.0">
                             <children>
-                                <JFXTextField id="_txtLastName" focusColor="#ffba33" labelFloat="true" layoutX="119.0" layoutY="144.0" prefHeight="31.0" prefWidth="71.0" promptText="Last Name" unFocusColor="#ccd0d2" />
-                                <JFXTextField id="_txtEmailOrPhone" focusColor="#ffba33" labelFloat="true" layoutY="11.0" prefHeight="31.0" prefWidth="190.0" promptText="Email or Phone" unFocusColor="#ccd0d2" />
-                                <JFXPasswordField id="_txtPassword" focusColor="#ffba33" labelFloat="true" layoutY="56.0" prefHeight="31.0" prefWidth="190.0" promptText="Password" unFocusColor="#ccd0d2" />
-                                <JFXPasswordField id="_txtConfirmPassword" focusColor="#ffba33" labelFloat="true" layoutY="102.0" prefHeight="31.0" prefWidth="190.0" promptText="Confirm Password" unFocusColor="#ccd0d2" />
-                                <JFXTextField id="_txtFirstName" focusColor="#ffba33" labelFloat="true" layoutY="144.0" prefHeight="31.0" prefWidth="99.0" promptText="First Name" unFocusColor="#ccd0d2" />
+                                <JFXTextField fx:id="_txtLastName" focusColor="#ffba33" labelFloat="true" layoutX="119.0" layoutY="144.0" prefHeight="31.0" prefWidth="71.0" promptText="Last Name" unFocusColor="#ccd0d2" />
+                                <JFXTextField fx:id="_txtEmailOrPhoneSignUp" focusColor="#ffba33" labelFloat="true" layoutY="11.0" prefHeight="31.0" prefWidth="190.0" promptText="Email or Phone" unFocusColor="#ccd0d2" />
+                                <JFXPasswordField fx:id="_txtPasswordSignUp" focusColor="#ffba33" labelFloat="true" layoutY="56.0" prefHeight="31.0" prefWidth="190.0" promptText="Password" unFocusColor="#ccd0d2" />
+                                <JFXPasswordField fx:id="_txtConfirmPassword" focusColor="#ffba33" labelFloat="true" layoutY="102.0" prefHeight="31.0" prefWidth="190.0" promptText="Confirm Password" unFocusColor="#ccd0d2" />
+                                <JFXTextField fx:id="_txtFirstName" focusColor="#ffba33" labelFloat="true" layoutY="144.0" prefHeight="31.0" prefWidth="99.0" promptText="First Name" unFocusColor="#ccd0d2" />
                             </children>
                         </AnchorPane>
-                        <JFXButton id="_btnCreateAccount" layoutX="11.0" layoutY="251.0" prefHeight="38.0" prefWidth="190.0" ripplerFill="#ffffff42" style="-fx-background-color: #1a535c; -fx-background-radius: 100;" text="CREATE ACCOUNT" textFill="WHITE">
+                        <JFXButton fx:id="_btnCreateAccount" onMouseClicked="#signUp" layoutX="11.0" layoutY="251.0" prefHeight="38.0" prefWidth="190.0" ripplerFill="#ffffff42" style="-fx-background-color: #1a535c; -fx-background-radius: 100;" text="CREATE ACCOUNT" textFill="WHITE">
                             <font>
                                 <Font size="10.0" />
                             </font>
