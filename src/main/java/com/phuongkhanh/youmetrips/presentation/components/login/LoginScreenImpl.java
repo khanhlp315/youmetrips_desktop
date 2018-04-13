@@ -1,6 +1,7 @@
 package com.phuongkhanh.youmetrips.presentation.components.login;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,11 +13,27 @@ public class LoginScreenImpl extends FXMLScreen implements LoginScreen, Initiali
     private final LoginPresenter _presenter;
 
     @FXML
-    private JFXButton button1;
+    private JFXButton _btnCreateAccount;
 
-    public LoginScreenImpl( final LoginPresenter presenter ) {
+    @FXML
+    private JFXTextField _txtEmailOrPhone;
+
+    @FXML
+    private JFXTextField _txtPassword;
+
+    @FXML
+    private JFXTextField _txtConfirmPassword;
+
+    @FXML
+    private JFXTextField _txtFirstName;
+
+    @FXML
+    private JFXTextField _txtLastName;
+
+
+    public LoginScreenImpl(final LoginPresenter presenter) {
         _presenter = presenter;
-        _presenter.setView( this );
+        _presenter.setView(this);
     }
 
     @Override
@@ -31,11 +48,9 @@ public class LoginScreenImpl extends FXMLScreen implements LoginScreen, Initiali
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
     }
 
-    public void loginWithEmailPassword()
-    {
-        _presenter.loginWithEmailPassword();
+    public void loginWithEmailPassword() {
+        // _presenter.loginWithEmailPassword();
     }
 }

@@ -40,7 +40,7 @@ public interface ApplicationContext {
     static class ServiceModule{
         @Provides
         static LoginService loginService(  ) {
-            return new LoginServiceImpl();
+            return new LoginServiceImpl(restApi());
         }
 
         @Provides

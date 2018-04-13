@@ -3,10 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/youmetrips.iml" filepath="$PROJECT_DIR$/.idea/modules/youmetrips.iml" />
-<<<<<<< HEAD
-      <module fileurl="file://$PROJECT_DIR$/youmetrips_desktop.iml" filepath="$PROJECT_DIR$/youmetrips_desktop.iml" />
-=======
->>>>>>> origin/develop
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/youmetrips_main.iml" filepath="$PROJECT_DIR$/.idea/modules/youmetrips_main.iml" group="youmetrips" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/youmetrips_test.iml" filepath="$PROJECT_DIR$/.idea/modules/youmetrips_test.iml" group="youmetrips" />
     </modules>
