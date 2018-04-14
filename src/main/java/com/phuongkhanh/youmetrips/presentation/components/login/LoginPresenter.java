@@ -12,6 +12,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import javax.inject.Inject;
 import javax.swing.*;
 
+import java.io.IOException;
+
 import static com.phuongkhanh.youmetrips.utils.CommonUtils.validateEmail;
 
 public class LoginPresenter extends PresenterBase<LoginScreen> {
@@ -169,6 +171,13 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
         String authUrl = "https://graph.facebook.com/oauth/authorize?type=user_agent&client_id="+appId+"&redirect_uri="+domain+"&scope=public_profile";
 
         System.setProperty("webdriver.chrome.driver","chromedriver.exe");
+
+//        try {
+//            Runtime.getRuntime().exec("C:/Users/Gia Khang/AppData/Local/CocCoc/Browser/Application/browser.exe");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
 
         WebDriver driver = new ChromeDriver();
         driver.get(authUrl);
