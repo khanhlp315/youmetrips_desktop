@@ -149,7 +149,6 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
     private void onSignUpFailed(final Throwable ex) {
         // xu ly sign up fail
         // exception email has already
-        JOptionPane.showMessageDialog(null, "Sign Up failed.");
     }
 
     private void onSignUpSuccess() {
