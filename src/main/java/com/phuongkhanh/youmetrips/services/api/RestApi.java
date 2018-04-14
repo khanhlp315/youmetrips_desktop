@@ -2,9 +2,9 @@ package com.phuongkhanh.youmetrips.services.api;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
-import com.phuongkhanh.youmetrips.services.api.exceptions.CouldNotConnectApiServerException;
-import com.phuongkhanh.youmetrips.services.api.exceptions.CouldNotParseApiResponseBodyException;
-import com.phuongkhanh.youmetrips.services.api.exceptions.UnknownApiResponseContentTypeException;
+import com.google.gson.reflect.TypeToken;
+import com.phuongkhanh.youmetrips.services.api.exceptions.*;
+import com.phuongkhanh.youmetrips.services.api.models.ApiError;
 import com.phuongkhanh.youmetrips.services.api.models.Login;
 import com.phuongkhanh.youmetrips.services.api.models.SignUp;
 import com.phuongkhanh.youmetrips.utils.CommonUtils;
@@ -25,7 +25,7 @@ import static java.util.Objects.requireNonNull;
 public class RestApi {
     private final ThreadLocal<OkHttpClient> _client;
     private final ThreadLocal<Gson> _gson;
-    private String _baseUrl = "http://docker.youthdev.net:23010/";
+    private String _baseUrl = "http://docker.youthdev.net:23010";
 
     public RestApi(){
         _client = new ThreadLocal<OkHttpClient>() {
@@ -45,13 +45,6 @@ public class RestApi {
                 return new Gson();
             }
         };
-    }
-
-    public void setBaseUrl( final String baseUrl ) {
-        if(CommonUtils.validateUrl(baseUrl))
-        {
-            _baseUrl = baseUrl;
-        }
     }
 
     public String getBaseUrl() {
@@ -108,6 +101,7 @@ public class RestApi {
         Response response = executePost( "login", ImmutableMap.of(
                 "emailOrPhoneNumber", email,
                 "password", password ) );
+        validateResponse(response);
         return parseResponseJsonBody( response, Login.class );
     }
 
@@ -121,9 +115,7 @@ public class RestApi {
             "password", password,
             "firstName", firstName,
             "lastName", lastName ) );
-
-        System.out.println("sign up api");
-        System.out.println(requireNonNull(response.body()).toString());
+        validateResponse(response);
         return parseResponseJsonBody(response, SignUp.class);
     }
 
@@ -131,7 +123,36 @@ public class RestApi {
     public Login loginWithFB(String accessToken) {
         Response response = executePost( "loginwithfacebook", ImmutableMap.of(
                 "facebookAccessToken", accessToken) );
+        validateResponse(response);
         return parseResponseJsonBody( response, Login.class );
+    }
+
+    private void validateResponse(final Response response){
+        if(response.isSuccessful()){
+            return;
+        }
+
+        if(! APPLICATION_JSON.equals(response.header(CONTENT_TYPE))){
+            throw new UnknownApiResponseContentTypeException();
+        }
+
+        ApiError error = new ApiError();
+
+        try {
+            String json = requireNonNull(response.body()).toString();
+            Map<String, Object> jsonMap = _gson.get().fromJson(json, new TypeToken<Map<String, Object>>(){}.getType());
+
+            error.setErrorCode((String) jsonMap.get("errorCode"));
+            error.setUserMessageDict( (Map<String, String>) jsonMap.get( "userMessageDict" ) );
+            error.setMoreInformationDict( (Map<String, String>) jsonMap.get( "moreInformationDict" ) );
+        } catch (Throwable e){
+            throw new CouldNotParseApiResponseBodyException();
+        }
+
+        if ( response.code() >= 400 && response.code() < 500 )
+            throw new ApiClientException( error );
+
+        throw new ApiServerException( error );
     }
 }
 
