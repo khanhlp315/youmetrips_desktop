@@ -1,6 +1,7 @@
 package com.phuongkhanh.youmetrips.services.components;
 
 import com.phuongkhanh.youmetrips.presentation.components.login.LoginService;
+import com.phuongkhanh.youmetrips.presentation.exceptions.InvalidEmailException;
 import com.phuongkhanh.youmetrips.presentation.models.User;
 import com.phuongkhanh.youmetrips.services.api.RestApi;
 import com.phuongkhanh.youmetrips.services.api.exceptions.ApiCodedException;
@@ -24,6 +25,9 @@ public class LoginServiceImpl implements LoginService {
             user.setAccessToken(result.getAccessToken());
             return user;
         } catch (ApiCodedException exception) {
+            if(exception.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.WrongEmailOrPasswordException")){
+                //throw new WrongEmailOrPasswordException();
+            }
             throw exception;
         }
     }

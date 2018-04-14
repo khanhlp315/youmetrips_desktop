@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXTextField;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -36,6 +37,27 @@ public class LoginScreenImpl extends FXMLScreen implements LoginScreen, Initiali
     @Override
     public void navigateToSignup() {
         _presenter.requestToSignup();
+    }
+
+    @Override
+    public void showError(String message) {
+        Alert alert = new Alert( Alert.AlertType.WARNING );
+        alert.setTitle( "Error" );
+        alert.setContentText( message );
+        alert.showAndWait();
+    }
+
+    @Override
+    public void showSuccess(String message) {
+        Alert alert = new Alert( Alert.AlertType.INFORMATION );
+        alert.setTitle( "Success" );
+        alert.setContentText( message );
+        alert.showAndWait();
+    }
+
+    @Override
+    public void showLoading() {
+
     }
 
     @Override

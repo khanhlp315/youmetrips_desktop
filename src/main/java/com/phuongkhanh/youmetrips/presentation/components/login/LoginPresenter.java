@@ -6,13 +6,11 @@ import com.phuongkhanh.youmetrips.presentation.exceptions.InvalidEmailException;
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
 import com.phuongkhanh.youmetrips.presentation.models.User;
 import javafx.concurrent.Task;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+//import org.openqa.selenium.WebDriver;
+//import org.openqa.selenium.chrome.ChromeDriver;
 
 import javax.inject.Inject;
 import javax.swing.*;
-
-import java.io.IOException;
 
 import static com.phuongkhanh.youmetrips.utils.CommonUtils.validateEmail;
 
@@ -82,25 +80,25 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
     public void loginWithFB() {
         // cho view loading
 
-        new Thread(
-                new Task<Object>() {
-                    @Override
-                    protected Object call() throws Exception {
-                        doLoginWithFB(getAccessToken());
-                        return null;
-                    }
-
-                    @Override
-                    protected void succeeded() {
-                        onLoginSuccess();
-                    }
-
-                    @Override
-                    protected void failed() {
-                        onLoginFailed(getException());
-                    }
-                }
-        ).start();
+//        new Thread(
+//                new Task<Object>() {
+//                    @Override
+//                    protected Object call() throws Exception {
+//                        doLoginWithFB(getAccessToken());
+//                        return null;
+//                    }
+//
+//                    @Override
+//                    protected void succeeded() {
+//                        onLoginSuccess();
+//                    }
+//
+//                    @Override
+//                    protected void failed() {
+//                        onLoginFailed(getException());
+//                    }
+//                }
+//        ).start();
     }
 
     public void doSignUp(String emailOrPhone,
@@ -120,7 +118,6 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
             throw new EmptyFieldException();
         }
 
-        System.out.println("do sign up");
         _service.signUp(emailOrPhone, password, firstName, lastName);
     }
 
@@ -140,58 +137,48 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
     }
 
     private void onLoginFailed(final Throwable ex) {
-        // xu ly login fail
-        //if(exception instanceof InvalidEmailException)...
-        // quit chrome driver by exitbutton
-        JOptionPane.showMessageDialog(null, "Login Failed.");
+        if(ex instanceof InvalidEmailException){
+            getView().showError(ex.getMessage());
+        }
     }
 
     private void onLoginSuccess() {
-        // xu ly login thanh cong
-        JOptionPane.showMessageDialog(null, "Login Success.");
+        getView().showSuccess("Log in success");
     }
 
     private void onSignUpFailed(final Throwable ex) {
         // xu ly sign up fail
         // exception email has already
-        JOptionPane.showMessageDialog(null, "Sign Up failed.");
     }
 
     private void onSignUpSuccess() {
+        getView().showSuccess("Sign up success");
         // xu ly sign up success
         // go to Confirm Code Screen
-        JOptionPane.showMessageDialog(null, "Sign Up success.");
     }
 
-    private String getAccessToken()
-    {
-        String domain = "https://www.google.com.vn/";
-        String appId = "2046554585621498";
-
-        String authUrl = "https://graph.facebook.com/oauth/authorize?type=user_agent&client_id="+appId+"&redirect_uri="+domain+"&scope=public_profile";
-
-        System.setProperty("webdriver.chrome.driver","chromedriver.exe");
-
-//        try {
-//            Runtime.getRuntime().exec("C:/Users/Gia Khang/AppData/Local/CocCoc/Browser/Application/browser.exe");
-//        } catch (IOException e) {
-//            e.printStackTrace();
+//    private String getAccessToken()
+//    {
+//        String domain = "https://www.google.com.vn/";
+//        String appId = "2046554585621498";
+//
+//        String authUrl = "https://graph.facebook.com/oauth/authorize?type=user_agent&client_id="+appId+"&redirect_uri="+domain+"&scope=public_profile";
+//
+//        System.setProperty("webdriver.chrome.driver","chromedriver.exe");
+//
+//        WebDriver driver = new ChromeDriver();
+//        driver.get(authUrl);
+//        String accessToken;
+//
+//        while (true)
+//        {
+//            if(!driver.getCurrentUrl().contains("facebook.com"))
+//            {
+//                String url = driver.getCurrentUrl();
+//                accessToken = url.replaceAll(".*#access_token=(.+)&.*","$1");
+//                driver.quit();
+//                return accessToken;
+//            }
 //        }
-
-
-        WebDriver driver = new ChromeDriver();
-        driver.get(authUrl);
-        String accessToken;
-
-        while (true)
-        {
-            if(!driver.getCurrentUrl().contains("facebook.com"))
-            {
-                String url = driver.getCurrentUrl();
-                accessToken = url.replaceAll(".*#access_token=(.+)&.*","$1");
-                driver.quit();
-                return accessToken;
-            }
-        }
-    }
+//    }
 }
