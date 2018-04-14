@@ -1,12 +1,14 @@
 package com.phuongkhanh.youmetrips.services.components;
 
 import com.phuongkhanh.youmetrips.presentation.components.login.LoginService;
-import com.phuongkhanh.youmetrips.presentation.exceptions.InvalidEmailException;
+import com.phuongkhanh.youmetrips.presentation.exceptions.*;
 import com.phuongkhanh.youmetrips.presentation.models.User;
 import com.phuongkhanh.youmetrips.services.api.RestApi;
-import com.phuongkhanh.youmetrips.services.api.exceptions.ApiCodedException;
+import com.phuongkhanh.youmetrips.services.api.exceptions.*;
 import com.phuongkhanh.youmetrips.services.api.models.Login;
 import com.phuongkhanh.youmetrips.services.api.models.SignUp;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 public class LoginServiceImpl implements LoginService {
     private final RestApi _api;
@@ -26,7 +28,10 @@ public class LoginServiceImpl implements LoginService {
             return user;
         } catch (ApiCodedException exception) {
             if(exception.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.WrongEmailOrPasswordException")){
-                //throw new WrongEmailOrPasswordException();
+                throw new WrongEmailOrPasswordException();
+            }
+            if(exception.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.UserNotConfirmedException")){
+                throw new UserNotConfirmedException();
             }
             throw exception;
         }
@@ -34,8 +39,29 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public void signUp(String emailOrPhone, String password, String firstName, String lastName) {
-        SignUp newUser = _api.signUp(emailOrPhone, password, firstName, lastName);
-        System.out.println(newUser.getConfirmToken());
+        try {
+            SignUp newUser = _api.signUp(emailOrPhone, password, firstName, lastName);
+            System.out.println(newUser.getConfirmToken());
+        }
+        catch (ApiCodedException exception)
+        {
+            if(exception.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.AlreadyUsedEmailOrPhoneNumberException")){
+                throw new AlreadyUsedEmailOrPhoneNumberException();
+            }
+            if(exception.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidEmailOrPhoneNumberException")){
+                throw new InvalidEmailOrPhoneNumberException();
+            }
+            if(exception.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidPasswordException")){
+                throw new InvalidPasswordException();
+            }
+            if(exception.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidUserFirstNameException")){
+                throw new InvalidUserFirstNameException();
+            }
+            if(exception.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidUserLastNameException")){
+                throw new InvalidUserLastNameException();
+            }
+            throw exception;
+        }
     }
 
     @Override
@@ -49,7 +75,36 @@ public class LoginServiceImpl implements LoginService {
             user.setUserFirstName(result.getUserFirstName());
             return user;
         } catch (ApiCodedException exception) {
+            if(exception.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidFacebookAccessTokenException")){
+                throw new InvalidFacebookAccessTokenException();
+            }
             throw exception;
+        }
+    }
+
+    @Override
+        public String getAccessToken()
+    {
+        String domain = "https://www.google.com.vn/";
+        String appId = "2046554585621498";
+
+        String authUrl = "https://graph.facebook.com/oauth/authorize?type=user_agent&client_id="+appId+"&redirect_uri="+domain+"&scope=public_profile";
+
+        System.setProperty("webdriver.chrome.driver","chromedriver.exe");
+
+        WebDriver driver = new ChromeDriver();
+        driver.get(authUrl);
+        String accessToken;
+
+        while (true)
+        {
+            if(!driver.getCurrentUrl().contains("facebook.com"))
+            {
+                String url = driver.getCurrentUrl();
+                accessToken = url.replaceAll(".*#access_token=(.+)&.*","$1");
+                driver.quit();
+                return accessToken;
+            }
         }
     }
 }

@@ -139,7 +139,7 @@ public class RestApi {
         ApiError error = new ApiError();
 
         try {
-            String json = requireNonNull(response.body()).toString();
+            String json = requireNonNull(response.body().string());
             Map<String, Object> jsonMap = _gson.get().fromJson(json, new TypeToken<Map<String, Object>>(){}.getType());
 
             error.setErrorCode((String) jsonMap.get("errorCode"));

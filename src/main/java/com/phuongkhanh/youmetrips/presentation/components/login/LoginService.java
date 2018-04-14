@@ -11,4 +11,6 @@ public interface LoginService {
                 final String lastName);
 
     User loginWithFB(final String token);
+
+    String getAccessToken();
 }

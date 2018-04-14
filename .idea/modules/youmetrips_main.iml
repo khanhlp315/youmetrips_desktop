@@ -65,5 +65,6 @@
     <orderEntry type="library" name="Gradle: org.seleniumhq.selenium:selenium-api:2.3.1" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.httpcomponents:httpclient:4.0.2" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.httpcomponents:httpcore:4.0.1" level="project" />
+    <orderEntry type="library" name="byte-buddy-1.7.92" level="project" />
   </component>
 </module>

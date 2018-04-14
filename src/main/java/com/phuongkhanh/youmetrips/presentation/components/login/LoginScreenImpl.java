@@ -71,7 +71,7 @@ public class LoginScreenImpl extends FXMLScreen implements LoginScreen, Initiali
 
     @FXML
     public void login() {
-        _presenter.login(_txtEmailOrPhoneLogin.getText(), _txtPasswordLogin.getText());
+        _presenter.login(_txtEmailOrPhoneSignUp.getText(), _txtPasswordSignUp.getText());
     }
 
     @FXML

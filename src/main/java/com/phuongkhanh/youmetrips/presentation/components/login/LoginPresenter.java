@@ -1,16 +1,11 @@
 package com.phuongkhanh.youmetrips.presentation.components.login;
 
-import com.phuongkhanh.youmetrips.presentation.exceptions.ConfirmPasswordNotMatchException;
-import com.phuongkhanh.youmetrips.presentation.exceptions.EmptyFieldException;
-import com.phuongkhanh.youmetrips.presentation.exceptions.InvalidEmailException;
+import com.phuongkhanh.youmetrips.presentation.exceptions.*;
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
 import com.phuongkhanh.youmetrips.presentation.models.User;
 import javafx.concurrent.Task;
-//import org.openqa.selenium.WebDriver;
-//import org.openqa.selenium.chrome.ChromeDriver;
 
 import javax.inject.Inject;
-import javax.swing.*;
 
 import static com.phuongkhanh.youmetrips.utils.CommonUtils.validateEmail;
 
@@ -80,25 +75,25 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
     public void loginWithFB() {
         // cho view loading
 
-//        new Thread(
-//                new Task<Object>() {
-//                    @Override
-//                    protected Object call() throws Exception {
-//                        doLoginWithFB(getAccessToken());
-//                        return null;
-//                    }
-//
-//                    @Override
-//                    protected void succeeded() {
-//                        onLoginSuccess();
-//                    }
-//
-//                    @Override
-//                    protected void failed() {
-//                        onLoginFailed(getException());
-//                    }
-//                }
-//        ).start();
+        new Thread(
+                new Task<Object>() {
+                    @Override
+                    protected Object call() throws Exception {
+                        doLoginWithFB(_service.getAccessToken());
+                        return null;
+                    }
+
+                    @Override
+                    protected void succeeded() {
+                        onLoginSuccess();
+                    }
+
+                    @Override
+                    protected void failed() {
+                        onLoginFailed(getException());
+                    }
+                }
+        ).start();
     }
 
     public void doSignUp(String emailOrPhone,
@@ -106,9 +101,9 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
                           String confirmPassword,
                           String firstName,
                           String lastName) {
-//        if (!validateEmail(emailOrPhone)) {
-//            throw new InvalidEmailException();
-//        }
+        if (!validateEmail(emailOrPhone)) {
+            throw new InvalidEmailException();
+        }
 
         if (!password.equals(confirmPassword)) {
             throw new ConfirmPasswordNotMatchException();
@@ -126,6 +121,7 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
         if (!validateEmail(email)) {
             throw new InvalidEmailException();
         }
+
         User user = _service.login(email, password);
     }
 
@@ -137,8 +133,23 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
     }
 
     private void onLoginFailed(final Throwable ex) {
+        System.out.println("Login failed");
         if(ex instanceof InvalidEmailException){
             getView().showError(ex.getMessage());
+        }
+
+        if(ex instanceof UserNotConfirmedException){
+            getView().showError("Please confirm your email");
+        }
+
+        if(ex instanceof WrongEmailOrPasswordException)
+        {
+            getView().showError("Email/Phone or Password is incorrect");
+        }
+
+        if(ex instanceof InvalidFacebookAccessTokenException)
+        {
+            getView().showError("Can not login with facebook");
         }
     }
 
@@ -147,8 +158,39 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
     }
 
     private void onSignUpFailed(final Throwable ex) {
-        // xu ly sign up fail
-        // exception email has already
+        if(ex instanceof InvalidEmailException)
+        {
+            getView().showError("This email is invalid");
+        }
+        if(ex instanceof AlreadyUsedEmailOrPhoneNumberException)
+        {
+            getView().showError("This email has already created");
+        }
+        if(ex instanceof ConfirmPasswordNotMatchException)
+        {
+            getView().showError("Confirm password is not match");
+        }
+        if(ex instanceof EmptyFieldException)
+        {
+            getView().showError("Please fill in all fields");
+        }
+        if(ex instanceof InvalidEmailOrPhoneNumberException)
+        {
+            getView().showError("Email or Phone number is incorrect");
+        }
+        if(ex instanceof InvalidPasswordException)
+        {
+            getView().showError("Password must have at least 6 and at most 20 characters!");
+        }
+        if(ex instanceof InvalidUserFirstNameException)
+        {
+            getView().showError("Please fill in first name");
+        }
+        if(ex instanceof InvalidUserLastNameException)
+        {
+            getView().showError("Please fill in last name");
+        }
+
     }
 
     private void onSignUpSuccess() {
@@ -157,28 +199,5 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
         // go to Confirm Code Screen
     }
 
-//    private String getAccessToken()
-//    {
-//        String domain = "https://www.google.com.vn/";
-//        String appId = "2046554585621498";
-//
-//        String authUrl = "https://graph.facebook.com/oauth/authorize?type=user_agent&client_id="+appId+"&redirect_uri="+domain+"&scope=public_profile";
-//
-//        System.setProperty("webdriver.chrome.driver","chromedriver.exe");
-//
-//        WebDriver driver = new ChromeDriver();
-//        driver.get(authUrl);
-//        String accessToken;
-//
-//        while (true)
-//        {
-//            if(!driver.getCurrentUrl().contains("facebook.com"))
-//            {
-//                String url = driver.getCurrentUrl();
-//                accessToken = url.replaceAll(".*#access_token=(.+)&.*","$1");
-//                driver.quit();
-//                return accessToken;
-//            }
-//        }
-//    }
+
 }
