@@ -8,6 +8,7 @@ import javafx.concurrent.Task;
 import javax.inject.Inject;
 
 import static com.phuongkhanh.youmetrips.utils.CommonUtils.validateEmail;
+import static com.phuongkhanh.youmetrips.utils.CommonUtils.validatePhoneNumber;
 
 public class LoginPresenter extends PresenterBase<LoginScreen> {
     private final LoginService _service;
@@ -118,10 +119,10 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
 
 
     private void doLogin(String email, String password) {
-        if (!validateEmail(email)) {
+        if (!(validatePhoneNumber(email) && validateEmail(email)))
+        {
             throw new InvalidEmailException();
         }
-
         User user = _service.login(email, password);
     }
 
@@ -133,21 +134,20 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
     }
 
     private void onLoginFailed(final Throwable ex) {
-        System.out.println("Login failed");
         if(ex instanceof InvalidEmailException){
             getView().showError(ex.getMessage());
         }
 
-        if(ex instanceof UserNotConfirmedException){
+        else if(ex instanceof UserNotConfirmedException){
             getView().showError("Please confirm your email");
         }
 
-        if(ex instanceof WrongEmailOrPasswordException)
+        else if(ex instanceof WrongEmailOrPasswordException)
         {
             getView().showError("Email/Phone or Password is incorrect");
         }
 
-        if(ex instanceof InvalidFacebookAccessTokenException)
+        else if(ex instanceof InvalidFacebookAccessTokenException)
         {
             getView().showError("Can not login with facebook");
         }
@@ -162,31 +162,31 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
         {
             getView().showError("This email is invalid");
         }
-        if(ex instanceof AlreadyUsedEmailOrPhoneNumberException)
+        else if(ex instanceof AlreadyUsedEmailOrPhoneNumberException)
         {
             getView().showError("This email has already created");
         }
-        if(ex instanceof ConfirmPasswordNotMatchException)
+        else if(ex instanceof ConfirmPasswordNotMatchException)
         {
             getView().showError("Confirm password is not match");
         }
-        if(ex instanceof EmptyFieldException)
+        else if(ex instanceof EmptyFieldException)
         {
             getView().showError("Please fill in all fields");
         }
-        if(ex instanceof InvalidEmailOrPhoneNumberException)
+        else if(ex instanceof InvalidEmailOrPhoneNumberException)
         {
             getView().showError("Email or Phone number is incorrect");
         }
-        if(ex instanceof InvalidPasswordException)
+        else if(ex instanceof InvalidPasswordException)
         {
             getView().showError("Password must have at least 6 and at most 20 characters!");
         }
-        if(ex instanceof InvalidUserFirstNameException)
+        else if(ex instanceof InvalidUserFirstNameException)
         {
             getView().showError("Please fill in first name");
         }
-        if(ex instanceof InvalidUserLastNameException)
+        else if(ex instanceof InvalidUserLastNameException)
         {
             getView().showError("Please fill in last name");
         }
