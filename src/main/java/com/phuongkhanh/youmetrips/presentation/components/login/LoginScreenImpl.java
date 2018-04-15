@@ -22,11 +22,19 @@ public class LoginScreenImpl extends FXMLScreen implements LoginScreen, Initiali
     @FXML
     private JFXPasswordField _txtPasswordSignUp;
     @FXML
-    private JFXPasswordField _txtConfirmPassword;
+    private JFXPasswordField _txtConfirmPasswordSignUp;
     @FXML
-    private JFXTextField _txtFirstName;
+    private JFXTextField _txtFirstNameSignUp;
     @FXML
-    private JFXTextField _txtLastName;
+    private JFXTextField _txtLastNameSignUp;
+    @FXML
+    private JFXPasswordField _txtConfirmPasswordNewPassword;
+    @FXML
+    private JFXPasswordField _txtNewPassword;
+    @FXML
+    private JFXTextField _txtEmailOrPhoneHelp;
+    @FXML
+    private JFXTextField _txtVerifiedCode;
 
 
     public LoginScreenImpl(final LoginPresenter presenter) {
@@ -83,9 +91,9 @@ public class LoginScreenImpl extends FXMLScreen implements LoginScreen, Initiali
     public void signUp() {
         _presenter.signUp(_txtEmailOrPhoneSignUp.getText(),
                 _txtPasswordSignUp.getText(),
-                _txtConfirmPassword.getText(),
-                _txtFirstName.getText(),
-                _txtLastName.getText());
+                _txtConfirmPasswordSignUp.getText(),
+                _txtFirstNameSignUp.getText(),
+                _txtLastNameSignUp.getText());
     }
 
 
