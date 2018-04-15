@@ -15,9 +15,9 @@
                     <children>
                         <AnchorPane>
                             <children>
-                                <JFXTextField focusColor="#ffba33" labelFloat="true" layoutY="11.0" prefHeight="31.0"
+                                <JFXTextField fx:id="_txtEmailOrPhoneHelp" focusColor="#ffba33" labelFloat="true" layoutY="11.0" prefHeight="31.0"
                                               prefWidth="190.0" promptText="Email or Phone" unFocusColor="#ccd0d2"/>
-                                <JFXButton layoutY="63.0" prefHeight="38.0" prefWidth="190.0" ripplerFill="#ffffff42"
+                                <JFXButton fx:id="_btnNextHelp" layoutY="63.0" prefHeight="38.0" prefWidth="190.0" ripplerFill="#ffffff42"
                                            style="-fx-background-color: #1a535c; -fx-background-radius: 100;"
                                            text="NEXT" textFill="WHITE">
                                     <font>
