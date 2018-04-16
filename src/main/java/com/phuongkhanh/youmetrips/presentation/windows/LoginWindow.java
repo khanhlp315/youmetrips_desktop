@@ -8,7 +8,7 @@ import javax.inject.Inject;
 
 public class LoginWindow extends JFXWindowBase {
     @Inject
-    public LoginWindow(final LoginScreen loginScreen){
+    public LoginWindow(final LoginScreen loginScreen) {
         super(loginScreen);
     }
 }

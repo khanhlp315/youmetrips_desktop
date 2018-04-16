@@ -9,7 +9,7 @@ public abstract class PresenterBase<T> implements Presenter<T> {
     }
 
     @Override
-    public final void setView( T view ) {
+    public final void setView(T view) {
         _view = view;
         onAttachedView();
     }

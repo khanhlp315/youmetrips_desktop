@@ -5,36 +5,36 @@ import javafx.stage.Stage;
 import java.util.Stack;
 
 public class JFXWindowBase implements JFXWindow {
-    private Stage            _stage;
-    private JFXScreen[]      _screens;
-    private JFXScreen        _currentScreen;
+    private Stage _stage;
+    private JFXScreen[] _screens;
+    private JFXScreen _currentScreen;
     private Stack<JFXScreen> _navigatedScreenStack;
 
 
-    protected JFXWindowBase( final JFXScreen... screens ) {
+    protected JFXWindowBase(final JFXScreen... screens) {
         _screens = screens;
         _currentScreen = null;
         _navigatedScreenStack = new Stack<>();
 
         // validate screen list
-        if ( _screens.length == 0 ) {
-            throw new RuntimeException( "Empty screen list, windows must have at least 1 screen to renderer!" );
+        if (_screens.length == 0) {
+            throw new RuntimeException("Empty screen list, windows must have at least 1 screen to renderer!");
         }
 
         // notify screens attached window
-        for ( JFXScreen screen : _screens ) {
-            if ( screen instanceof FXMLScreen ) {
-                ((FXMLScreen) screen).setWindow( this );
+        for (JFXScreen screen : _screens) {
+            if (screen instanceof FXMLScreen) {
+                ((FXMLScreen) screen).setWindow(this);
             }
         }
     }
 
 
     @Override
-    public void attach( final Stage stage ) {
+    public void attach(final Stage stage) {
         // validate parameter
-        if ( stage == null ) {
-            throw new NullPointerException( "Can not attach null stage!" );
+        if (stage == null) {
+            throw new NullPointerException("Can not attach null stage!");
         }
 
         _stage = stage;
@@ -42,7 +42,7 @@ public class JFXWindowBase implements JFXWindow {
         // reset navigation and show first screen
         _currentScreen = null;
         _navigatedScreenStack.clear();
-        navigate( _screens[0] );
+        navigate(_screens[0]);
     }
 
     @Override
@@ -52,54 +52,53 @@ public class JFXWindowBase implements JFXWindow {
 
 
     @Override
-    public <T> void navigate( final Class<T> clazz ) {
-        for ( JFXScreen screen : _screens ) {
-            if ( clazz.isInstance( screen ) ) {
-                navigate( screen );
+    public <T> void navigate(final Class<T> clazz) {
+        for (JFXScreen screen : _screens) {
+            if (clazz.isInstance(screen)) {
+                navigate(screen);
                 return;
             }
         }
 
         // Invalid case: no screen matched
-        throw new RuntimeException( String.format( "Can not navigate, screen of type %s has not been defined!", clazz.getSimpleName() ) );
+        throw new RuntimeException(String.format("Can not navigate, screen of type %s has not been defined!", clazz.getSimpleName()));
     }
 
     @Override
     public void navigateBack() {
         // validate navigation stack
-        if ( _navigatedScreenStack.empty() ) {
-            throw new RuntimeException( "Can not navigate back, there is no screen stack before current screen!" );
+        if (_navigatedScreenStack.empty()) {
+            throw new RuntimeException("Can not navigate back, there is no screen stack before current screen!");
         }
 
-        navigate( _navigatedScreenStack.peek() );
+        navigate(_navigatedScreenStack.peek());
     }
 
-    private void navigate( final JFXScreen screen ) {
+    private void navigate(final JFXScreen screen) {
         // validate stage and screen
-        if ( _stage == null ) {
-            throw new NullPointerException( "Can not navigate, no stage attached. Stage must be attached before doing navigation!" );
+        if (_stage == null) {
+            throw new NullPointerException("Can not navigate, no stage attached. Stage must be attached before doing navigation!");
         }
-        if ( screen == null ) {
-            throw new NullPointerException( "Can not navigate to null screen!" );
+        if (screen == null) {
+            throw new NullPointerException("Can not navigate to null screen!");
         }
-        if ( _currentScreen == screen ) {
-            throw new RuntimeException( "Invalid navigation, can not navigate to a screen from itself!" );
+        if (_currentScreen == screen) {
+            throw new RuntimeException("Invalid navigation, can not navigate to a screen from itself!");
         }
 
         // check for back navigation
-        boolean isBack = _navigatedScreenStack.contains( screen );
+        boolean isBack = _navigatedScreenStack.contains(screen);
 
-        if ( isBack ) {
+        if (isBack) {
             // play transition exit stack
-            while ( screen != _navigatedScreenStack.peek() ) {
+            while (screen != _navigatedScreenStack.peek()) {
                 _navigatedScreenStack.pop();
             }
-            setCurrentScreen( _navigatedScreenStack.pop() );
-        }
-        else {
+            setCurrentScreen(_navigatedScreenStack.pop());
+        } else {
             // play transition enter stack
-            _navigatedScreenStack.push( _currentScreen );
-            setCurrentScreen( screen );
+            _navigatedScreenStack.push(_currentScreen);
+            setCurrentScreen(screen);
         }
     }
 
@@ -114,14 +113,14 @@ public class JFXWindowBase implements JFXWindow {
         return _currentScreen;
     }
 
-    private void setCurrentScreen( final JFXScreen screen ) {
+    private void setCurrentScreen(final JFXScreen screen) {
         JFXScreen oldScreen = _currentScreen;
         _currentScreen = screen;
-        _stage.setScene( _currentScreen.render() );
+        _stage.setScene(_currentScreen.render());
 
         // notify navigation event
-        NavigationEvent navigationEvent = new NavigationEvent( _currentScreen, oldScreen );
-        if ( oldScreen != null ) oldScreen.onNavigation( navigationEvent );
-        if ( _currentScreen != null ) _currentScreen.onNavigation( navigationEvent );
+        NavigationEvent navigationEvent = new NavigationEvent(_currentScreen, oldScreen);
+        if (oldScreen != null) oldScreen.onNavigation(navigationEvent);
+        if (_currentScreen != null) _currentScreen.onNavigation(navigationEvent);
     }
 }

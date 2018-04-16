@@ -58,7 +58,7 @@ clean {
 }
 
 // Wrapper configurations
-task wrapper( type: Wrapper ) {
+task wrapper(type: Wrapper) {
     gradleVersion = '2.10'
 }
 

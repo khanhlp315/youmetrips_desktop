@@ -10,9 +10,9 @@ public abstract class FXMLView implements JFXView {
 
 
     protected FXMLView() {
-        if ( !lazy() ) {
+        if (!lazy()) {
             // eager load
-            loadRenderer( fxmlPath() );
+            loadRenderer(fxmlPath());
         }
     }
 
@@ -25,8 +25,8 @@ public abstract class FXMLView implements JFXView {
 
     @Override
     public Parent render() {
-        if ( _renderer == null ) {
-            loadRenderer( fxmlPath() );
+        if (_renderer == null) {
+            loadRenderer(fxmlPath());
         }
         return _renderer;
     }
@@ -35,15 +35,14 @@ public abstract class FXMLView implements JFXView {
         return _renderer;
     }
 
-    private void loadRenderer( final String fxmlPath ) {
-        FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( fxmlPath ) );
-        fxmlLoader.setController( this );
+    private void loadRenderer(final String fxmlPath) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlPath));
+        fxmlLoader.setController(this);
 
         try {
             _renderer = fxmlLoader.load();
-        }
-        catch ( IOException e ) {
-            throw new RuntimeException( e );
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }
