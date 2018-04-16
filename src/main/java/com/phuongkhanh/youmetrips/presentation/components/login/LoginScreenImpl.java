@@ -60,7 +60,7 @@ public class LoginScreenImpl extends FXMLScreen implements LoginScreen, Initiali
 
     @Override
     protected String fxmlPath() {
-        return "/sign_in_help_code.fxml";
+        return "/sign_in.fxml";
     }
 
     @Override
@@ -76,10 +76,6 @@ public class LoginScreenImpl extends FXMLScreen implements LoginScreen, Initiali
     public void loginWithFB() {
          _presenter.loginWithFB();
     }
-@FXML
-public void xacnhan(){
-
-}
 
     @FXML
     public void createAccount()
