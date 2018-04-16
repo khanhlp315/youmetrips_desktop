@@ -24,7 +24,7 @@
                                       prefWidth="99.0" promptText="First Name" unFocusColor="#ccd0d2"/>
                     </children>
                 </AnchorPane>
-                <JFXButton layoutX="11.0" layoutY="251.0" prefHeight="38.0" prefWidth="190.0" ripplerFill="#ffffff42"
+                <JFXButton onMouseClicked="#signUp" layoutX="11.0" layoutY="251.0" prefHeight="38.0" prefWidth="190.0" ripplerFill="#ffffff42"
                            style="-fx-background-color: #1a535c; -fx-background-radius: 100;" text="CREATE ACCOUNT"
                            textFill="WHITE">
                     <font>

@@ -4,8 +4,13 @@ import com.phuongkhanh.youmetrips.presentation.components.login.LoginPresenter;
 import com.phuongkhanh.youmetrips.presentation.components.login.LoginScreen;
 import com.phuongkhanh.youmetrips.presentation.components.login.LoginScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.login.LoginService;
+import com.phuongkhanh.youmetrips.presentation.components.signup.SignUpPresenter;
+import com.phuongkhanh.youmetrips.presentation.components.signup.SignUpScreen;
+import com.phuongkhanh.youmetrips.presentation.components.signup.SignUpScreenImpl;
+import com.phuongkhanh.youmetrips.presentation.components.signup.SignUpService;
 import com.phuongkhanh.youmetrips.presentation.windows.LoginWindow;
 import com.phuongkhanh.youmetrips.services.api.RestApi;
+import com.phuongkhanh.youmetrips.services.api.models.SignUp;
 import com.phuongkhanh.youmetrips.services.components.LoginServiceImpl;
 import dagger.Component;
 import dagger.Module;
@@ -32,6 +37,16 @@ public interface ApplicationContext {
         @Provides
         static LoginPresenter loginPresenter(LoginService loginService ) {
             return new LoginPresenter( loginService );
+        }
+
+        @Provides
+        static SignUpScreen signUpScreen(SignUpPresenter presenter ) {
+            return new SignUpScreenImpl( presenter );
+        }
+
+        @Provides
+        static SignUpPresenter signUpPresenter(SignUpService signUpService ) {
+            return new SignUpPresenter( signUpService );
         }
 
     }

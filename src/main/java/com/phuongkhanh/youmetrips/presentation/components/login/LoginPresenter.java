@@ -46,32 +46,6 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
         ).start();
     }
 
-    public void signUp(String emailOrPhone,
-                       String password,
-                       String confirmPassword,
-                       String firstName,
-                       String lastName) {
-        new Thread(
-                new Task<Object>() {
-                    @Override
-                    protected Object call() throws Exception {
-                        doSignUp(emailOrPhone, password, confirmPassword, firstName, lastName);
-                        return null;
-                    }
-
-                    @Override
-                    protected void succeeded() {
-                        onSignUpSuccess();
-                    }
-
-                    @Override
-                    protected void failed() {
-                        onSignUpFailed(getException());
-                    }
-                }
-        ).start();
-    }
-
 
     public void loginWithFB() {
         // cho view loading
@@ -95,26 +69,6 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
                     }
                 }
         ).start();
-    }
-
-    public void doSignUp(String emailOrPhone,
-                          String password,
-                          String confirmPassword,
-                          String firstName,
-                          String lastName) {
-        if (!validateEmail(emailOrPhone)) {
-            throw new InvalidEmailException();
-        }
-
-        if (!password.equals(confirmPassword)) {
-            throw new ConfirmPasswordNotMatchException();
-        }
-
-        if (emailOrPhone.trim().isEmpty() || password.trim().isEmpty() || firstName.trim().isEmpty() || lastName.trim().isEmpty()) {
-            throw new EmptyFieldException();
-        }
-
-        _service.signUp(emailOrPhone, password, firstName, lastName);
     }
 
 
@@ -193,11 +147,7 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
 
     }
 
-    private void onSignUpSuccess() {
-        getView().showSuccess("Sign up success");
-        // xu ly sign up success
-        // go to Confirm Code Screen
-    }
+
 
 
 }

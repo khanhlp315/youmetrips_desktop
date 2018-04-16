@@ -1,6 +1,7 @@
 package com.phuongkhanh.youmetrips.services.components;
 
 import com.phuongkhanh.youmetrips.presentation.components.login.LoginService;
+import com.phuongkhanh.youmetrips.presentation.components.signup.SignUpService;
 import com.phuongkhanh.youmetrips.presentation.exceptions.*;
 import com.phuongkhanh.youmetrips.presentation.models.User;
 import com.phuongkhanh.youmetrips.services.api.RestApi;
@@ -10,7 +11,7 @@ import com.phuongkhanh.youmetrips.services.api.models.SignUp;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class LoginServiceImpl implements LoginService {
+public class LoginServiceImpl implements LoginService, SignUpService {
     private final RestApi _api;
 
     public LoginServiceImpl(final RestApi api) {

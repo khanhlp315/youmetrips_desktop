@@ -18,16 +18,6 @@ public class LoginScreenImpl extends FXMLScreen implements LoginScreen, Initiali
     @FXML
     private JFXPasswordField _txtPasswordLogin;
     @FXML
-    private JFXTextField _txtEmailOrPhoneSignUp;
-    @FXML
-    private JFXPasswordField _txtPasswordSignUp;
-    @FXML
-    private JFXPasswordField _txtConfirmPasswordSignUp;
-    @FXML
-    private JFXTextField _txtFirstNameSignUp;
-    @FXML
-    private JFXTextField _txtLastNameSignUp;
-    @FXML
     private JFXPasswordField _txtConfirmPasswordNewPassword;
     @FXML
     private JFXPasswordField _txtNewPassword;
@@ -70,7 +60,7 @@ public class LoginScreenImpl extends FXMLScreen implements LoginScreen, Initiali
 
     @Override
     protected String fxmlPath() {
-        return "/sign_in_main.fxml";
+        return "/sign_in_help_code.fxml";
     }
 
     @Override
@@ -79,21 +69,22 @@ public class LoginScreenImpl extends FXMLScreen implements LoginScreen, Initiali
 
     @FXML
     public void login() {
-        _presenter.login(_txtEmailOrPhoneSignUp.getText(), _txtPasswordSignUp.getText());
+        _presenter.login(_txtEmailOrPhoneLogin.getText(), _txtPasswordLogin.getText());
     }
 
     @FXML
     public void loginWithFB() {
          _presenter.loginWithFB();
     }
+@FXML
+public void xacnhan(){
+
+}
 
     @FXML
-    public void signUp() {
-        _presenter.signUp(_txtEmailOrPhoneSignUp.getText(),
-                _txtPasswordSignUp.getText(),
-                _txtConfirmPasswordSignUp.getText(),
-                _txtFirstNameSignUp.getText(),
-                _txtLastNameSignUp.getText());
+    public void createAccount()
+    {
+        // click button Create in sign_in.fxml
     }
 
 
