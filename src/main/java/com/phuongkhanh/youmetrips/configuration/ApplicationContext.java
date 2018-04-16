@@ -10,36 +10,35 @@ import dagger.Component;
 import dagger.Module;
 import dagger.Provides;
 
-import javax.inject.Provider;
 import javax.inject.Singleton;
 
 @Singleton
-@Component( modules = {
+@Component(modules = {
         ApplicationContext.PresentationModule.class,
         ApplicationContext.ServiceModule.class
-} )
+})
 
 public interface ApplicationContext {
     LoginWindow loginWindow();
 
     @Module
-    static class PresentationModule{
+    class PresentationModule {
         @Provides
-        static LoginScreen loginScreen(LoginPresenter presenter ) {
-            return new LoginScreenImpl( presenter );
+        static LoginScreen loginScreen(LoginPresenter presenter) {
+            return new LoginScreenImpl(presenter);
         }
 
         @Provides
-        static LoginPresenter loginPresenter(LoginService loginService ) {
-            return new LoginPresenter( loginService );
+        static LoginPresenter loginPresenter(LoginService loginService) {
+            return new LoginPresenter(loginService);
         }
 
     }
 
     @Module
-    static class ServiceModule{
+    class ServiceModule {
         @Provides
-        static LoginService loginService(  ) {
+        static LoginService loginService() {
             return new LoginServiceImpl();
         }
 

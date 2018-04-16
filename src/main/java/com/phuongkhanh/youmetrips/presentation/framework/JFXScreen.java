@@ -7,9 +7,9 @@ public interface JFXScreen {
 
     JFXWindow getWindow();
 
-    <T> void navigate( final Class<T> clazz );
+    <T> void navigate(final Class<T> clazz);
 
     void navigateBack();
 
-    void onNavigation( final NavigationEvent event );
+    void onNavigation(final NavigationEvent event);
 }

@@ -8,7 +8,7 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
     private final LoginService _service;
 
     @Inject
-    public LoginPresenter( LoginService service ) {
+    public LoginPresenter(LoginService service) {
         _service = service;
     }
 
