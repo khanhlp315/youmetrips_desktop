@@ -8,7 +8,7 @@
 
 <?import com.phuongkhanh.youmetrips.presentation.controls.LoginPane?>
 <LoginPane>
-    <children>
+    <loginNodes>
 
         <AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1">
             <children>
@@ -70,5 +70,5 @@
             </children>
         </AnchorPane>
 
-    </children>
+    </loginNodes>
 </LoginPane>

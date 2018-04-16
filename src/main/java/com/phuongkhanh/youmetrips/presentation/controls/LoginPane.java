@@ -1,5 +1,6 @@
 package com.phuongkhanh.youmetrips.presentation.controls;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -16,7 +17,6 @@ public class LoginPane extends AnchorPane
     @FXML
     private AnchorPane _anchor;
 
-    private Node _node;
     public LoginPane() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
                 "../../../../../../resources/custom_controls/login_pane.fxml"));
@@ -44,5 +44,14 @@ public class LoginPane extends AnchorPane
         }
 
         _anchor.getChildren().addAll(loginNodes);
+    }
+
+    public void setLoginNodes(Node ...loginNodes){
+        _anchor.getChildren().clear();
+        _anchor.getChildren().addAll(loginNodes);
+    }
+
+    public ObservableList<Node> getLoginNodes(){
+        return _anchor.getChildren();
     }
 }
