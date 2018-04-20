@@ -1,32 +1,34 @@
 package com.phuongkhanh.youmetrips.services.api.models;
 
 public class Login {
-    private int _userId;
-    private String _accessToken;
-    private String _userFirstName;
-    private String _userLastName;
+    private int userId;
+    private String accessToken;
+    private String userFirstName;
+    private String userLastName;
 
     public int getUserId() {
-        return _userId;
+        return userId;
     }
 
     public void setUserId(int userId) {
-        _userId = userId;
+        this.userId = userId;
     }
 
     public String getAccessToken() {
-        return _accessToken;
+        return accessToken;
     }
 
     public void setAccessToken(String accessToken) {
-        _accessToken = accessToken;
+        this.accessToken = accessToken;
     }
 
-    public String getUserLastName() {return _userLastName;}
+    public String getUserLastName() {return userLastName;}
 
-    public void setUserLastName(String userLastName) {_userLastName = userLastName;}
+    public void setUserLastName(String userLastName) {
+        this.userLastName = userLastName;}
 
-    public String getUserFirstName() {return _userFirstName;}
+    public String getUserFirstName() {return userFirstName;}
 
-    public void setUserFirstName(String userFirstName) {_userFirstName = userFirstName;}
+    public void setUserFirstName(String userFirstName) {
+        this.userFirstName = userFirstName;}
 }

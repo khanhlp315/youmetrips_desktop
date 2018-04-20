@@ -3,7 +3,6 @@ package com.phuongkhanh.youmetrips.presentation.models;
 public class User {
     private int _id;
     private String _avatar;
-    private String _accessToken;
     private String _userFirstName;
     private String _userLastName;
 
@@ -21,14 +20,6 @@ public class User {
 
     public void setAvatar(String avatar) {
         _avatar = avatar;
-    }
-
-    public String getAccessToken() {
-        return _accessToken;
-    }
-
-    public void setAccessToken(String accessToken) {
-        _accessToken = accessToken;
     }
 
     public String getUserLastName() {return _userLastName;}

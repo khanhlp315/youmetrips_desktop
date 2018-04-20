@@ -1,9 +1,8 @@
-package com.phuongkhanh.youmetrips.presentation.components.signup;
+package com.phuongkhanh.youmetrips.presentation.components.signup.signup;
 
-import com.phuongkhanh.youmetrips.presentation.exceptions.ConfirmPasswordNotMatchException;
-import com.phuongkhanh.youmetrips.presentation.exceptions.EmptyFieldException;
-import com.phuongkhanh.youmetrips.presentation.exceptions.InvalidEmailException;
+import com.phuongkhanh.youmetrips.presentation.exceptions.*;
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
+import com.phuongkhanh.youmetrips.presentation.models.User;
 import javafx.concurrent.Task;
 
 import javax.inject.Inject;
@@ -47,7 +46,7 @@ public class SignUpPresenter extends PresenterBase<SignUpScreen> {
         ).start();
     }
 
-    public void doSignUp(String emailOrPhone,
+    private void doSignUp(String emailOrPhone,
                          String password,
                          String confirmPassword,
                          String firstName,
@@ -68,15 +67,45 @@ public class SignUpPresenter extends PresenterBase<SignUpScreen> {
     }
 
     private void onSignUpSuccess() {
-        getView().showSuccess("Sign up success");
+        getView().onNavigateToSignUpReceiveCode();
         // xu ly sign up success
         // go to Confirm Code Screen
     }
 
     private void onSignUpFailed(final Throwable ex) {
-        getView().showSuccess("Sign up success");
-        // xu ly sign up success
-        // go to Confirm Code Screen
+        if(ex instanceof InvalidEmailException)
+        {
+            getView().showError("This email is invalid");
+        }
+        else if(ex instanceof AlreadyUsedEmailOrPhoneNumberException)
+        {
+            getView().showError("This email has already created");
+        }
+        else if(ex instanceof ConfirmPasswordNotMatchException)
+        {
+            getView().showError("Confirm password is not match");
+        }
+        else if(ex instanceof EmptyFieldException)
+        {
+            getView().showError("Please fill in all fields");
+        }
+        else if(ex instanceof InvalidEmailOrPhoneNumberException)
+        {
+            getView().showError("Email or Phone number is incorrect");
+        }
+        else if(ex instanceof InvalidPasswordException)
+        {
+            getView().showError("Password must have at least 6 and at most 20 characters!");
+        }
+        else if(ex instanceof InvalidUserFirstNameException)
+        {
+            getView().showError("Please fill in first name");
+        }
+        else if(ex instanceof InvalidUserLastNameException)
+        {
+            getView().showError("Please fill in last name");
+        }
+
     }
 
 }

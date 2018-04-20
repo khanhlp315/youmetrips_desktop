@@ -12,6 +12,7 @@ import static com.phuongkhanh.youmetrips.utils.CommonUtils.validatePhoneNumber;
 
 public class LoginPresenter extends PresenterBase<LoginScreen> {
     private final LoginService _service;
+    private User _currentUser;
 
     @Inject
     public LoginPresenter(LoginService service) {
@@ -73,11 +74,11 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
 
 
     private void doLogin(String email, String password) {
-        if (!(validatePhoneNumber(email) && validateEmail(email)))
+        if (!(validatePhoneNumber(email) || validateEmail(email)))
         {
             throw new InvalidEmailException();
         }
-        User user = _service.login(email, password);
+        _currentUser = _service.login(email, password);
     }
 
     private void doLoginWithFB(String accessToken)
@@ -108,44 +109,10 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
     }
 
     private void onLoginSuccess() {
-        getView().showSuccess("Log in success");
+        getView().showSuccess("Hello " + _currentUser.getUserLastName() + " " + _currentUser.getUserFirstName());
     }
 
-    private void onSignUpFailed(final Throwable ex) {
-        if(ex instanceof InvalidEmailException)
-        {
-            getView().showError("This email is invalid");
-        }
-        else if(ex instanceof AlreadyUsedEmailOrPhoneNumberException)
-        {
-            getView().showError("This email has already created");
-        }
-        else if(ex instanceof ConfirmPasswordNotMatchException)
-        {
-            getView().showError("Confirm password is not match");
-        }
-        else if(ex instanceof EmptyFieldException)
-        {
-            getView().showError("Please fill in all fields");
-        }
-        else if(ex instanceof InvalidEmailOrPhoneNumberException)
-        {
-            getView().showError("Email or Phone number is incorrect");
-        }
-        else if(ex instanceof InvalidPasswordException)
-        {
-            getView().showError("Password must have at least 6 and at most 20 characters!");
-        }
-        else if(ex instanceof InvalidUserFirstNameException)
-        {
-            getView().showError("Please fill in first name");
-        }
-        else if(ex instanceof InvalidUserLastNameException)
-        {
-            getView().showError("Please fill in last name");
-        }
 
-    }
 
 
 

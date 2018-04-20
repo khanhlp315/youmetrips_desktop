@@ -19,11 +19,12 @@
                             <children>
                                 <AnchorPane>
                                     <children>
-                                        <JFXTextField fx:id="_txtVerifiedCode" focusColor="#ffba33" labelFloat="true"
+                                        <JFXTextField fx:id="_txtVerifyCode" focusColor="#ffba33" labelFloat="true"
                                                       layoutY="11.0" prefHeight="31.0"
                                                       prefWidth="190.0" promptText="Enter the code"
                                                       unFocusColor="#ccd0d2"/>
-                                        <JFXButton fx:id="_btnNextHelpCode" layoutY="63.0" prefHeight="38.0"
+                                        <JFXButton fx:id="_btnNextHelpCode" onMouseClicked="#next" layoutY="63.0"
+                                                   prefHeight="38.0"
                                                    prefWidth="190.0" ripplerFill="#ffffff42"
                                                    style="-fx-background-color: #1a535c; -fx-background-radius: 100;"
                                                    text="NEXT" textFill="WHITE">
@@ -35,18 +36,19 @@
                                 </AnchorPane>
                                 <AnchorPane visible="false">
                                     <children>
-                                        <JFXTextField focusColor="#ffba33" labelFloat="true" layoutY="11.0"
-                                                      prefHeight="31.0"
-                                                      prefWidth="190.0" promptText="Email or Phone"
-                                                      unFocusColor="#ccd0d2"/>
                                         <JFXButton layoutY="63.0" prefHeight="38.0" prefWidth="190.0"
                                                    ripplerFill="#ffffff42"
                                                    style="-fx-background-color: #1a535c; -fx-background-radius: 100;"
-                                                   text="NEXT" textFill="WHITE" onMouseClicked="#xacnhan">
+                                                   text="NEXT" textFill="WHITE">
                                             <font>
                                                 <Font size="10.0"/>
                                             </font>
                                         </JFXButton>
+                                        <JFXTextField focusColor="#ffba33" labelFloat="true" layoutY="11.0"
+                                                      prefHeight="31.0"
+                                                      prefWidth="190.0" promptText="Email or Phone"
+                                                      unFocusColor="#ccd0d2"/>
+
                                     </children>
                                 </AnchorPane>
                             </children>
@@ -62,26 +64,9 @@
                                 </Label>
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="11.0" layoutY="221.0" prefWidth="191.0">
-                            <children>
-                                <Text layoutX="1.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                                      style="-fx-font-weight: bold;" text="Didn't get the code?"/>
-                                <Text layoutX="1.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                                      text="1. Make sure you entered your email correctly" wrappingWidth="190.0"/>
-                                <Text layoutX="1.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                                      text="2. Check your spam folder" wrappingWidth="190.0"/>
-                            </children>
-                        </AnchorPane>
                     </children>
                 </AnchorPane>
-                <AnchorPane layoutY="455.0" prefHeight="35.0" prefWidth="310.0" style="-fx-background-color: #323232;">
-                    <children>
-                        <Text fill="WHITE" layoutX="10.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                              text="Still not yet?"/>
-                        <JFXButton layoutX="237.0" prefHeight="35.0" ripplerFill="#ffffff42" text="RESEND IT"
-                                   textFill="#ffc146"/>
-                    </children>
-                </AnchorPane>
+
             </children>
         </AnchorPane>
 

@@ -25,7 +25,7 @@
                                         <Font size="9.0"/>
                                     </font>
                                 </Label>
-                                <JFXButton layoutX="142.0" text="Need help?" textFill="#ccd0d2">
+                                <JFXButton onMouseClicked="#needHelp" layoutX="142.0" text="Need help?" textFill="#ccd0d2">
                                     <font>
                                         <Font size="10.0"/>
                                     </font>
@@ -34,20 +34,20 @@
                         </AnchorPane>
                         <AnchorPane layoutX="11.0" layoutY="59.0">
                             <children>
-                                <JFXTextField focusColor="#ffba33" labelFloat="true" layoutY="7.0" prefHeight="31.0"
+                                <JFXTextField fx:id="_txtEmailOrPhoneLogin" focusColor="#ffba33" labelFloat="true" layoutY="7.0" prefHeight="31.0"
                                               prefWidth="190.0" promptText="Email or Phone" unFocusColor="#ccd0d2"/>
-                                <JFXPasswordField focusColor="#ffba33" labelFloat="true" layoutY="60.0" prefHeight="31.0"
+                                <JFXPasswordField fx:id="_txtPasswordLogin" focusColor="#ffba33" labelFloat="true" layoutY="60.0" prefHeight="31.0"
                                                   prefWidth="190.0" promptText="Password" unFocusColor="#ccd0d2"/>
                             </children>
                         </AnchorPane>
-                        <JFXButton layoutX="109.0" layoutY="168.0" prefHeight="38.0" prefWidth="90.0" ripplerFill="#ffffff42"
+                        <JFXButton onMouseClicked="#login" layoutX="109.0" layoutY="168.0" prefHeight="38.0" prefWidth="90.0" ripplerFill="#ffffff42"
                                    style="-fx-background-color: #1a535c; -fx-background-radius: 100;" text="SIGN IN"
                                    textFill="WHITE">
                             <font>
                                 <Font size="10.0"/>
                             </font>
                         </JFXButton>
-                        <JFXButton layoutX="12.0" layoutY="168.0" prefHeight="38.0" prefWidth="90.0" ripplerFill="#ffffff42"
+                        <JFXButton onMouseClicked="#navigateToSignUp" layoutX="12.0" layoutY="168.0" prefHeight="38.0" prefWidth="90.0" ripplerFill="#ffffff42"
                                    style="-fx-background-radius: 100; -fx-border-radius: 100; -fx-border-color: #1a535c;"
                                    text="CREATE" textFill="#1a535c">
                             <font>
@@ -63,7 +63,7 @@
                 </Label>
                 <AnchorPane layoutX="59.0" layoutY="390.0" prefHeight="48.0" prefWidth="212.0">
                     <children>
-                        <JFXButton layoutY="10.0" prefHeight="38.0" prefWidth="212.0" ripplerFill="#ffffff42"
+                        <JFXButton onMouseClicked="#loginWithFB" layoutY="10.0" prefHeight="38.0" prefWidth="212.0" ripplerFill="#ffffff42"
                                    style="-fx-background-color: white; -fx-background-radius: 100; -fx-effect: dropshadow(gaussian, #cf9d3c, 10, 0, 3, 3);"
                                    text="          SIGN IN WITH FACEBOOK" textFill="#4267b2">
                             <font>

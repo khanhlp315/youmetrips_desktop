@@ -1,4 +1,6 @@
-package com.phuongkhanh.youmetrips.presentation.components.signup;
+package com.phuongkhanh.youmetrips.presentation.components.signup.signup;
+
+import com.phuongkhanh.youmetrips.presentation.models.User;
 
 /*
  * @author by LeVoGiaKhang

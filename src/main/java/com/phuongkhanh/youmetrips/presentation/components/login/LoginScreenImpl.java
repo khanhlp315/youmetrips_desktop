@@ -2,6 +2,8 @@ package com.phuongkhanh.youmetrips.presentation.components.login;
 
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import com.phuongkhanh.youmetrips.presentation.components.needhelp.init_email.NewPasswordInitEmailScreenImpl;
+import com.phuongkhanh.youmetrips.presentation.components.signup.signup.SignUpScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,14 +19,6 @@ public class LoginScreenImpl extends FXMLScreen implements LoginScreen, Initiali
     private JFXTextField _txtEmailOrPhoneLogin;
     @FXML
     private JFXPasswordField _txtPasswordLogin;
-    @FXML
-    private JFXPasswordField _txtConfirmPasswordNewPassword;
-    @FXML
-    private JFXPasswordField _txtNewPassword;
-    @FXML
-    private JFXTextField _txtEmailOrPhoneHelp;
-    @FXML
-    private JFXTextField _txtVerifiedCode;
 
 
     public LoginScreenImpl(final LoginPresenter presenter) {
@@ -69,6 +63,7 @@ public class LoginScreenImpl extends FXMLScreen implements LoginScreen, Initiali
 
     @FXML
     public void login() {
+        System.out.println(_txtEmailOrPhoneLogin.getText() + "" + _txtPasswordLogin.getText());
         _presenter.login(_txtEmailOrPhoneLogin.getText(), _txtPasswordLogin.getText());
     }
 
@@ -78,11 +73,14 @@ public class LoginScreenImpl extends FXMLScreen implements LoginScreen, Initiali
     }
 
     @FXML
-    public void createAccount()
+    public void navigateToSignUp()
     {
         // click button Create in sign_in.fxml
+        navigate(SignUpScreenImpl.class);
     }
 
-
-
+    @FXML
+    public void needHelp() {
+        navigate(NewPasswordInitEmailScreenImpl.class);
+    }
 }
