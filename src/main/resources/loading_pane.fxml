@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="_loadingPane" alignment="CENTER" opacity="0.26"
+      style="-fx-background-color: #000000;" visible="false" xmlns="http://javafx.com/javafx/9.0.1">
+    <children>
+        <ProgressIndicator/>
+    </children>
+</VBox>
