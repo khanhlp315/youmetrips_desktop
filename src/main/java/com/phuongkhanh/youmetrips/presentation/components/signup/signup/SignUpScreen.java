@@ -10,4 +10,5 @@ public interface SignUpScreen extends JFXScreen {
     void showSuccess(String message);
     void showLoading();
     void onNavigateToSignUpReceiveCode();
+    void onNavigateBackLogin();
 }

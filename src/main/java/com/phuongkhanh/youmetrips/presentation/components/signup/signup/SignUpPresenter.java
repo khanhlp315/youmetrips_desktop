@@ -46,6 +46,11 @@ public class SignUpPresenter extends PresenterBase<SignUpScreen> {
         ).start();
     }
 
+    public void requestToNavigateBackLogin()
+    {
+        getView().onNavigateBackLogin();
+    }
+
     private void doSignUp(String emailOrPhone,
                          String password,
                          String confirmPassword,
@@ -107,5 +112,6 @@ public class SignUpPresenter extends PresenterBase<SignUpScreen> {
         }
 
     }
+
 
 }

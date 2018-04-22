@@ -67,7 +67,12 @@ public class SignUpScreenImpl extends FXMLScreen implements SignUpScreen, Initia
     public void initialize(URL location, ResourceBundle resources) {}
 
     @FXML
-    public void navigateBackLogin()
+    public void requestToNavigateBackLogin()
+    {
+        _presenter.requestToNavigateBackLogin();
+    }
+
+    public void onNavigateBackLogin()
     {
         navigateBack();
     }
