@@ -1,9 +1,11 @@
 package com.phuongkhanh.youmetrips.presentation.components.signup.signup;
 
+import com.jfoenix.controls.JFXButton;
 import com.phuongkhanh.youmetrips.presentation.exceptions.*;
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
 import com.phuongkhanh.youmetrips.presentation.models.User;
 import javafx.concurrent.Task;
+import javafx.scene.control.ProgressIndicator;
 
 import javax.inject.Inject;
 
@@ -41,6 +43,11 @@ public class SignUpPresenter extends PresenterBase<SignUpScreen> {
                     @Override
                     protected void failed() {
                         onSignUpFailed(getException());
+                    }
+
+                    @Override
+                    protected void running() {
+                        onRunning();
                     }
                 }
         ).start();
@@ -111,6 +118,11 @@ public class SignUpPresenter extends PresenterBase<SignUpScreen> {
             getView().showError("Please fill in last name");
         }
 
+    }
+
+    private void onRunning()
+    {
+        getView().showLoading();
     }
 
 

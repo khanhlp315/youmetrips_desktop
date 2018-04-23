@@ -1,11 +1,12 @@
 package com.phuongkhanh.youmetrips.presentation.exceptions;
 
+
 /*
  * @author by LeVoGiaKhang
  */
 public class NotFoundUserEmailException extends PresentationException {
-    public String getMessage()
+    public NotFoundUserEmailException()
     {
-        return "Email is not found";
+        message("Email is not found");
     }
 }

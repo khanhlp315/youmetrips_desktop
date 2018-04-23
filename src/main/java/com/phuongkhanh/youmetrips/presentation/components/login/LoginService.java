@@ -8,4 +8,5 @@ public interface LoginService {
     User loginWithFB(final String token);
 
     String getAccessToken();
+
 }

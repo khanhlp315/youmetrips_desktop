@@ -1,12 +1,15 @@
 package com.phuongkhanh.youmetrips.presentation.components.signup.signup;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.phuongkhanh.youmetrips.presentation.components.signup.confirmation_code.SignUpConfirmationCodeScreenImpl;
+import com.phuongkhanh.youmetrips.presentation.controls.LoadingPane;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ProgressIndicator;
 
 import javax.inject.Inject;
 import java.net.URL;
@@ -29,6 +32,10 @@ public class SignUpScreenImpl extends FXMLScreen implements SignUpScreen, Initia
     private JFXTextField _txtFirstNameSignUp;
     @FXML
     private JFXTextField _txtLastNameSignUp;
+    @FXML
+    private JFXButton _btnCreateAccount;
+    @FXML
+    private LoadingPane _loadingPane;
 
     public SignUpScreenImpl(final SignUpPresenter presenter)
     {
@@ -43,6 +50,9 @@ public class SignUpScreenImpl extends FXMLScreen implements SignUpScreen, Initia
         alert.setTitle( "Error" );
         alert.setContentText( message );
         alert.showAndWait();
+
+        _btnCreateAccount.setVisible(true);
+        _loadingPane.setVisible(false);
     }
 
     @Override
@@ -51,11 +61,15 @@ public class SignUpScreenImpl extends FXMLScreen implements SignUpScreen, Initia
         alert.setTitle( "Success" );
         alert.setContentText( message );
         alert.showAndWait();
+
+        _btnCreateAccount.setVisible(true);
+        _loadingPane.setVisible(false);
     }
 
     @Override
     public void showLoading() {
-
+        _loadingPane.setVisible(true);
+        _btnCreateAccount.setVisible(false);
     }
 
     @Override
@@ -64,7 +78,9 @@ public class SignUpScreenImpl extends FXMLScreen implements SignUpScreen, Initia
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {}
+    public void initialize(URL location, ResourceBundle resources) {
+        _loadingPane.setVisible(false);
+    }
 
     @FXML
     public void requestToNavigateBackLogin()

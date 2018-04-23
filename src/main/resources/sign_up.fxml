@@ -7,9 +7,9 @@
 <?import javafx.scene.text.Font?>
 
 <?import com.phuongkhanh.youmetrips.presentation.controls.LoginPane?>
+<?import com.phuongkhanh.youmetrips.presentation.controls.LoadingPane?>
 <LoginPane>
     <loginNodes>
-
         <AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1">
             <children>
                 <AnchorPane layoutX="59.0" layoutY="125.0" maxHeight="400.0" maxWidth="-Infinity" minHeight="-Infinity"
@@ -24,32 +24,44 @@
                             <content>
                                 <AnchorPane prefWidth="190.0">
                                     <children>
-                                        <JFXTextField fx:id="_txtEmailOrPhoneSignUp" focusColor="#ffba33" labelFloat="true" layoutY="17.0"
+                                        <JFXTextField fx:id="_txtEmailOrPhoneSignUp" focusColor="#ffba33"
+                                                      labelFloat="true" layoutY="17.0"
                                                       prefHeight="31.0"
                                                       prefWidth="190.0" promptText="Email or Phone"
                                                       unFocusColor="#ccd0d2"/>
-                                        <JFXPasswordField fx:id="_txtPasswordSignUp" focusColor="#ffba33" labelFloat="true" layoutY="74.0"
+                                        <JFXPasswordField fx:id="_txtPasswordSignUp" focusColor="#ffba33"
+                                                          labelFloat="true" layoutY="74.0"
                                                           prefHeight="31.0" prefWidth="190.0" promptText="Password"
                                                           unFocusColor="#ccd0d2"/>
-                                        <JFXPasswordField fx:id="_txtConfirmPasswordSignUp" focusColor="#ffba33" labelFloat="true" layoutY="132.0"
+                                        <JFXPasswordField fx:id="_txtConfirmPasswordSignUp" focusColor="#ffba33"
+                                                          labelFloat="true" layoutY="132.0"
                                                           prefHeight="31.0" prefWidth="190.0"
                                                           promptText="Confirm Password"
                                                           unFocusColor="#ccd0d2"/>
-                                        <JFXTextField fx:id="_txtFirstNameSignUp" focusColor="#ffba33" labelFloat="true" layoutY="194.0"
+                                        <JFXTextField fx:id="_txtFirstNameSignUp" focusColor="#ffba33"
+                                                      labelFloat="true" layoutY="194.0"
                                                       prefHeight="31.0"
-                                                      prefWidth="99.0" promptText="First Name" unFocusColor="#ccd0d2"/>
-                                        <JFXTextField fx:id="_txtLastNameSignUp" focusColor="#ffba33" labelFloat="true" layoutX="119.0"
+                                                      prefWidth="99.0" promptText="First Name"
+                                                      unFocusColor="#ccd0d2"/>
+                                        <JFXTextField fx:id="_txtLastNameSignUp" focusColor="#ffba33"
+                                                      labelFloat="true" layoutX="119.0"
                                                       layoutY="194.0"
                                                       prefHeight="31.0" prefWidth="71.0" promptText="Last Name"
                                                       unFocusColor="#ccd0d2"/>
-                                        <JFXButton onMouseClicked="#signUp" layoutY="243.0" prefHeight="38.0" prefWidth="190.0"
+                                        <JFXButton fx:id="_btnCreateAccount" onMouseClicked="#signUp"
+                                                   layoutY="243.0" prefHeight="38.0" prefWidth="190.0"
                                                    ripplerFill="#ffffff42"
                                                    style="-fx-background-color: #1a535c; -fx-background-radius: 100;"
                                                    text="CREATE ACCOUNT" textFill="WHITE">
                                             <font>
                                                 <Font size="10.0"/>
                                             </font>
+
+
                                         </JFXButton>
+
+                                        <LoadingPane fx:id="_loadingPane" visible="false" layoutY="243.0" prefHeight="38.0" prefWidth="190.0"/>
+
                                     </children>
                                 </AnchorPane>
                             </content>
@@ -58,7 +70,8 @@
                                     style="-fx-effect: dropshadow(gaussian, #f7f1e6, 10, 0, 0, 3); -fx-background-color: white;">
                             <children>
                                 <Label layoutX="14.0" layoutY="3.0" prefHeight="17.0" style="-fx-font-weight: bold;"
-                                       text="&lt; ALREADY A MEMBER" onMouseClicked="#requestToNavigateBackLogin" textFill="#ffc146">
+                                       text="&lt; ALREADY A MEMBER" onMouseClicked="#requestToNavigateBackLogin"
+                                       textFill="#ffc146">
                                     <font>
                                         <Font size="9.0"/>
                                     </font>
@@ -69,6 +82,5 @@
                 </AnchorPane>
             </children>
         </AnchorPane>
-
     </loginNodes>
 </LoginPane>

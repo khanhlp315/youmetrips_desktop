@@ -6,6 +6,7 @@ import com.phuongkhanh.youmetrips.presentation.components.login.LoginScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 
 import java.awt.*;
 import java.net.URL;
@@ -41,12 +42,19 @@ public class NewPasswordScreenImpl extends FXMLScreen implements NewPasswordScre
 
     @Override
     public void showError(String message) {
+        Alert alert = new Alert( Alert.AlertType.WARNING );
+        alert.setTitle( "Error" );
+        alert.setContentText( message );
+        alert.showAndWait();
 
     }
 
     @Override
     public void showSuccess(String message) {
-
+        Alert alert = new Alert( Alert.AlertType.INFORMATION );
+        alert.setTitle( "Success" );
+        alert.setContentText( message );
+        alert.showAndWait();
     }
 
     @Override

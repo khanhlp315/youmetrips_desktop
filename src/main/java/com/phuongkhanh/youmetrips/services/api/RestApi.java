@@ -178,7 +178,7 @@ public class RestApi {
 
     public void resendConfirmationCOde()
     {
-        Response response = executePost("users/" + _currentUser.getUserId() + "/confirmnewuser", null, _currentUser.getResendConfirmationCodeToken());
+        Response response = executePost("users/" + _currentUser.getUserId() + "/resendnewuserconfirmationcode", null, _currentUser.getResendConfirmationCodeToken());
         validateResponse(response);
         parseResponseJsonBody(response, Login.class);
     }

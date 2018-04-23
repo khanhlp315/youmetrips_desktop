@@ -11,8 +11,17 @@ import com.phuongkhanh.youmetrips.presentation.models.User;
 import com.phuongkhanh.youmetrips.services.api.RestApi;
 import com.phuongkhanh.youmetrips.services.api.exceptions.*;
 import com.phuongkhanh.youmetrips.services.api.models.Login;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.events.WebDriverEventListener;
+
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public class AuthServiceImpl implements LoginService,
         SignUpService,
@@ -90,6 +99,7 @@ public class AuthServiceImpl implements LoginService,
         }
     }
 
+
     @Override
     public String getAccessToken() {
         String domain = "https://www.google.com.vn/";
@@ -97,19 +107,28 @@ public class AuthServiceImpl implements LoginService,
 
         String authUrl = "https://graph.facebook.com/oauth/authorize?type=user_agent&client_id=" + appId + "&redirect_uri=" + domain + "&scope=public_profile";
 
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 
+
+        WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
         driver.get(authUrl);
-        String accessToken;
-
-        while (true) {
-            if (!driver.getCurrentUrl().contains("facebook.com")) {
-                String url = driver.getCurrentUrl();
-                accessToken = url.replaceAll(".*#access_token=(.+)&.*", "$1");
-                driver.quit();
-                return accessToken;
+        String accessToken = "";
+        try {
+            while (true) {
+                if (!driver.getCurrentUrl().contains("facebook.com")) {
+                    String url = driver.getCurrentUrl();
+                    accessToken = url.replaceAll(".*#access_token=(.+)&.*", "$1");
+                    driver.quit();
+                    return accessToken;
+                }
             }
+        } catch (WebDriverException e) { //thrown after can't reach browser (browser closed)
+            //handle exception
+            throw e;
+        } finally {
+            if (driver != null)
+                driver.quit();
         }
     }
 

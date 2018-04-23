@@ -7,6 +7,7 @@
 <?import javafx.scene.text.Font?>
 
 <?import com.phuongkhanh.youmetrips.presentation.controls.LoginPane?>
+<?import com.phuongkhanh.youmetrips.presentation.controls.LoadingPane?>
 <LoginPane>
     <loginNodes>
 
@@ -29,6 +30,9 @@
                                                 <Font size="10.0"/>
                                             </font>
                                         </JFXButton>
+
+                                        <LoadingPane fx:id="_loadingPane" visible="false" layoutY="63.0" prefHeight="38.0" prefWidth="190.0"/>
+
                                     </children>
                                 </AnchorPane>
                                 <AnchorPane visible="false">

@@ -4,6 +4,7 @@ import com.phuongkhanh.youmetrips.presentation.exceptions.*;
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
 import com.phuongkhanh.youmetrips.presentation.models.User;
 import javafx.concurrent.Task;
+import org.openqa.selenium.WebDriverException;
 
 import javax.inject.Inject;
 
@@ -13,6 +14,12 @@ import static com.phuongkhanh.youmetrips.utils.CommonUtils.validatePhoneNumber;
 public class LoginPresenter extends PresenterBase<LoginScreen> {
     private final LoginService _service;
     private User _currentUser;
+
+    /*
+     * login                <-> state = 1;
+     * login With Facebook  <-> state = 2;
+     */
+    private int _state = 1;
 
     @Inject
     public LoginPresenter(LoginService service) {
@@ -43,6 +50,12 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
                     protected void failed() {
                         onLoginFailed(getException());
                     }
+
+                    @Override
+                    protected void running(){
+                        setState(1);
+                        onRunning();
+                    }
                 }
         ).start();
     }
@@ -55,6 +68,7 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
                 new Task<Object>() {
                     @Override
                     protected Object call() throws Exception {
+                        //doLoginWithFB(_service.getAccessToken());
                         doLoginWithFB(_service.getAccessToken());
                         return null;
                     }
@@ -67,6 +81,12 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
                     @Override
                     protected void failed() {
                         onLoginFailed(getException());
+                    }
+
+                    @Override
+                    protected void running(){
+                        setState(2);
+                        onRunning();
                     }
                 }
         ).start();
@@ -85,7 +105,7 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
     {
         // check invalid accessToken
         // can not connect to FB server exception
-        User user = _service.loginWithFB(accessToken);
+        _currentUser = _service.loginWithFB(accessToken);
     }
 
     private void onLoginFailed(final Throwable ex) {
@@ -106,15 +126,28 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
         {
             getView().showError("Can not login with facebook");
         }
+        else if(ex instanceof WebDriverException)
+        {
+            getView().showError("Quit WebDriver");
+        }
     }
 
     private void onLoginSuccess() {
         getView().showSuccess("Hello " + _currentUser.getUserLastName() + " " + _currentUser.getUserFirstName());
     }
 
+    private void onRunning()
+    {
+        getView().showLoading();
+    }
 
+    private void setState(int state)
+    {
+        _state = state;
+    }
 
-
-
-
+    public int getState()
+    {
+        return _state;
+    }
 }

@@ -29,6 +29,11 @@ public class NewPasswordInitEmailPresenter extends PresenterBase<NewPasswordInit
 
             @Override
             protected void failed(){onSendEmailToResetPasswordFailed(getException());}
+
+            @Override
+            protected void running(){
+                onRunning();
+            }
         }).start();
     }
 
@@ -52,6 +57,10 @@ public class NewPasswordInitEmailPresenter extends PresenterBase<NewPasswordInit
         {
             getView().showError(e.getMessage());
         }
+    }
+
+    private void onRunning(){
+        getView().showLoading();
     }
 
 }

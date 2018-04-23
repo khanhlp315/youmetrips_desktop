@@ -4,7 +4,8 @@ package com.phuongkhanh.youmetrips.presentation.exceptions;
  * @author by LeVoGiaKhang
  */
 public class AlreadyUsedEmailOrPhoneNumberException extends PresentationException {
-    public String getMessage(String language) {
-        return "Already Email or Phone";
+    public AlreadyUsedEmailOrPhoneNumberException()
+    {
+        message("Email or Phone has already");
     }
 }
