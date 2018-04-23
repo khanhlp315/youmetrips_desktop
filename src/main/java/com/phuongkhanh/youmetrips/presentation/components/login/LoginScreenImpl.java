@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.phuongkhanh.youmetrips.presentation.components.needhelp.init_email.NewPasswordInitEmailScreenImpl;
+import com.phuongkhanh.youmetrips.presentation.components.signup.confirmation_code.SignUpConfirmationCodeScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.signup.signup.SignUpScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.controls.LoadingPane;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
@@ -47,45 +48,43 @@ public class LoginScreenImpl extends FXMLScreen implements LoginScreen, Initiali
 
     @Override
     public void showError(String message) {
-        Alert alert = new Alert( Alert.AlertType.WARNING );
-        alert.setTitle( "Error" );
-        alert.setContentText( message );
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Error");
+        alert.setContentText(message);
         alert.showAndWait();
 
-        _loadingPane.setVisible(false);
-        _loadingPaneWithFB.setVisible(false);
-        _btnLogin.setVisible(true);
-        _btnLoginWithFB.setVisible(true);
-        _imgFB.setVisible(true);
     }
 
     @Override
     public void showSuccess(String message) {
-        Alert alert = new Alert( Alert.AlertType.INFORMATION );
-        alert.setTitle( "Success" );
-        alert.setContentText( message );
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Success");
+        alert.setContentText(message);
         alert.showAndWait();
-
-        _loadingPane.setVisible(false);
-        _loadingPaneWithFB.setVisible(false);
-        _btnLogin.setVisible(true);
-        _btnLoginWithFB.setVisible(true);
-        _imgFB.setVisible(true);
     }
 
     @Override
     public void showLoading() {
-        if(_presenter.getState() == 1)
-        {
-            _loadingPane.setVisible(true);
-            _btnLogin.setVisible(false);
-        }
-        else
-        {
+    }
 
+    @Override
+    public void setLoading(Boolean isLoading) {
+        if (isLoading) {
+            if (_presenter.getState() == 1) {
+                _loadingPane.setVisible(true);
+                _btnLogin.setVisible(false);
+            } else {
+
+                _loadingPaneWithFB.setVisible(false);
+                _btnLoginWithFB.setVisible(false);
+                _imgFB.setVisible(false);
+            }
+        } else {
+            _loadingPane.setVisible(false);
             _loadingPaneWithFB.setVisible(false);
-            _btnLoginWithFB.setVisible(false);
-            _imgFB.setVisible(false);
+            _btnLogin.setVisible(true);
+            _btnLoginWithFB.setVisible(true);
+            _imgFB.setVisible(true);
         }
     }
 
@@ -107,12 +106,11 @@ public class LoginScreenImpl extends FXMLScreen implements LoginScreen, Initiali
 
     @FXML
     public void loginWithFB() {
-         _presenter.loginWithFB();
+        _presenter.loginWithFB();
     }
 
     @FXML
-    public void navigateToSignUp()
-    {
+    public void navigateToSignUp() {
         // click button Create in sign_in.fxml
         navigate(SignUpScreenImpl.class);
     }
@@ -120,5 +118,10 @@ public class LoginScreenImpl extends FXMLScreen implements LoginScreen, Initiali
     @FXML
     public void needHelp() {
         navigate(NewPasswordInitEmailScreenImpl.class);
+    }
+
+    @Override
+    public void navigateToSignUpConfirmationCodeScreen() {
+        navigate(SignUpConfirmationCodeScreenImpl.class);
     }
 }

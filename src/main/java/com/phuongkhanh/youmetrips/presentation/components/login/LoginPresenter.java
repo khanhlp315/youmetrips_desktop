@@ -32,6 +32,8 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
 
     public void login(String email, String password) {
         // cho view loading
+        setState(1);
+        getView().setLoading(true);
 
         new Thread(
                 new Task<Object>() {
@@ -44,17 +46,13 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
                     @Override
                     protected void succeeded() {
                         onLoginSuccess();
+                        getView().setLoading(false);
                     }
 
                     @Override
                     protected void failed() {
                         onLoginFailed(getException());
-                    }
-
-                    @Override
-                    protected void running(){
-                        setState(1);
-                        onRunning();
+                        getView().setLoading(false);
                     }
                 }
         ).start();
@@ -62,7 +60,8 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
 
 
     public void loginWithFB() {
-        // cho view loading
+        setState(2);
+        getView().setLoading(true);
 
         new Thread(
                 new Task<Object>() {
@@ -76,17 +75,13 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
                     @Override
                     protected void succeeded() {
                         onLoginSuccess();
+                        getView().setLoading(false);
                     }
 
                     @Override
                     protected void failed() {
                         onLoginFailed(getException());
-                    }
-
-                    @Override
-                    protected void running(){
-                        setState(2);
-                        onRunning();
+                        getView().setLoading(false);
                     }
                 }
         ).start();
@@ -94,60 +89,46 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
 
 
     private void doLogin(String email, String password) {
-        if (!(validatePhoneNumber(email) || validateEmail(email)))
-        {
+        if (!(validatePhoneNumber(email) || validateEmail(email))) {
             throw new InvalidEmailException();
+        } else if (password.trim().length() < 6 || password.trim().length() > 20) {
+            throw new InvalidPasswordException();
         }
+
         _currentUser = _service.login(email, password);
     }
 
-    private void doLoginWithFB(String accessToken)
-    {
+    private void doLoginWithFB(String accessToken) {
         // check invalid accessToken
         // can not connect to FB server exception
         _currentUser = _service.loginWithFB(accessToken);
     }
 
     private void onLoginFailed(final Throwable ex) {
-        if(ex instanceof InvalidEmailException){
+        if (ex instanceof InvalidEmailException) {
             getView().showError(ex.getMessage());
-        }
-
-        else if(ex instanceof UserNotConfirmedException){
+        } else if (ex instanceof UserNotConfirmedException) {
             getView().showError("Please confirm your email");
-        }
-
-        else if(ex instanceof WrongEmailOrPasswordException)
-        {
+            getView().navigateToSignUpConfirmationCodeScreen();
+        } else if (ex instanceof WrongEmailOrPasswordException) {
             getView().showError("Email/Phone or Password is incorrect");
-        }
-
-        else if(ex instanceof InvalidFacebookAccessTokenException)
-        {
+        } else if (ex instanceof InvalidFacebookAccessTokenException) {
             getView().showError("Can not login with facebook");
-        }
-        else if(ex instanceof WebDriverException)
-        {
+        } else if (ex instanceof WebDriverException) {
             getView().showError("Quit WebDriver");
         }
     }
 
     private void onLoginSuccess() {
         getView().showSuccess("Hello " + _currentUser.getUserLastName() + " " + _currentUser.getUserFirstName());
+
     }
 
-    private void onRunning()
-    {
-        getView().showLoading();
-    }
-
-    private void setState(int state)
-    {
+    private void setState(int state) {
         _state = state;
     }
 
-    public int getState()
-    {
+    public int getState() {
         return _state;
     }
 }
