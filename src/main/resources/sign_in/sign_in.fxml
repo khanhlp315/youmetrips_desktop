@@ -72,7 +72,7 @@
                 </JFXButton>
                 <ImageView layoutX="29.0" layoutY="20.0">
                     <image>
-                        <Image url="@images/fb.png"/>
+                        <Image url="@../images/fb.png"/>
                     </image>
                 </ImageView>
             </children>

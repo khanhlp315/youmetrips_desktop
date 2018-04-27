@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import javafx.scene.layout.*?>
+<JFXDrawer xmlns:fx="http://javafx.com/fxml/1" fx:id="_drawer" prefHeight="490.0" prefWidth="230.0"
+           xmlns="http://javafx.com/javafx/9.0.1">
+    <children>
+        <AnchorPane>
+            <children>
+                <JFXHamburger fx:id="_hamburger" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0"/>
+                <VBox layoutY="52.0" prefWidth="230.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                      AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                    <children>
+                        <JFXButton prefHeight="40.0" prefWidth="230.0" ripplerFill="#ffffff42" text="Firstname Lastname"
+                                   textFill="#e8e6e6"/>
+                    </children>
+                </VBox>
+            </children>
+        </AnchorPane>
+    </children>
+</JFXDrawer>
