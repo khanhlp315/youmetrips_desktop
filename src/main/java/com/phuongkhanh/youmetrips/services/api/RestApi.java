@@ -5,11 +5,13 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.phuongkhanh.youmetrips.services.api.exceptions.*;
 import com.phuongkhanh.youmetrips.services.api.models.*;
+import com.phuongkhanh.youmetrips.services.stores.AuthenticationStore;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+import javax.inject.Inject;
 import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -26,6 +28,7 @@ public class RestApi {
     private NewUser _currentUser;
     private String _userIdToResetPassword;
     private String _userTokenToResetPassword;
+    private AuthenticationStore _store;
 
     public RestApi() {
         _client = new ThreadLocal<OkHttpClient>() {
@@ -129,6 +132,8 @@ public class RestApi {
         validateResponse(response);
 
         _currentUser = parseResponseJsonBody(response, NewUser.class);
+
+        _store.storeSignupData(_currentUser.getUserId(),_currentUser.getConfirmToken(),_currentUser.getResendConfirmationCodeToken());
     }
 
 
@@ -170,15 +175,15 @@ public class RestApi {
 
     public void sendConfirmationCode(String confirmationCode)
     {
-        Response response = executePost("users/" + _currentUser.getUserId() + "/confirmnewuser", ImmutableMap.of(
-                "confirmationCode", confirmationCode), _currentUser.getConfirmToken());
+        Response response = executePost("users/" + _store.getUserId() + "/confirmnewuser", ImmutableMap.of(
+                "confirmationCode", confirmationCode), _store.getConfirmToken());
         validateResponse(response);
         parseResponseJsonBody(response, Login.class);
     }
 
     public void resendConfirmationCOde()
     {
-        Response response = executePost("users/" + _currentUser.getUserId() + "/resendnewuserconfirmationcode", null, _currentUser.getResendConfirmationCodeToken());
+        Response response = executePost("users/" + _store.getUserId() + "/resendnewuserconfirmationcode", null, _store.getResendConfirmationCodeToken());
         validateResponse(response);
         parseResponseJsonBody(response, Login.class);
     }
@@ -189,20 +194,22 @@ public class RestApi {
                 "emailOrPhoneNumber", email));
         validateResponse(response);
         _userIdToResetPassword = String.valueOf(parseResponseJsonBody(response, UserResetPassword.class).getUserId());
+        _store.storeUserId(Integer.valueOf(_userIdToResetPassword));
     }
 
     public void sendCodeToResetPassword(String recoveryCode)
     {
-        Response response = executePost("users/" + _userIdToResetPassword + "/requestresetpasswordtoken", ImmutableMap.of(
+        Response response = executePost("users/" + _store.getUserId() + "/requestresetpasswordtoken", ImmutableMap.of(
                 "recoveryCode", recoveryCode));
         validateResponse(response);
         _userTokenToResetPassword = parseResponseJsonBody(response, UserResetPassword.class).getUserToken();
+        _store.storeResetPasswordToken(_userTokenToResetPassword);
     }
 
     public void sendPasswordToResetPassword(String newPassword)
     {
-        Response response = executePost("users/" + _userIdToResetPassword + "/resetpassword", ImmutableMap.of(
-                "newPassword", newPassword), _userTokenToResetPassword);
+        Response response = executePost("users/" + _store.getUserId() + "/resetpassword", ImmutableMap.of(
+                "newPassword", newPassword), _store.getResetPasswordToken());
         validateResponse(response);
     }
 
