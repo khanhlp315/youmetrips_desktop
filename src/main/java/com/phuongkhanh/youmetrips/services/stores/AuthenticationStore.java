@@ -18,76 +18,84 @@ public class AuthenticationStore
     }
 
     @SuppressWarnings("unchecked")
-    void storeLoginData(int userId, String jwt){
+    public void storeLoginData(int userId, String jwt){
         _store.setItem(USER_ID, userId);
         _store.setItem(JWT, jwt);
     }
 
+    /**
+     * Save the state of the <tt>ArrayList</tt> instance to a stream (that
+     * is, serialize it).
+     *
+     * @serialData The length of the array backing the <tt>ArrayList</tt>
+     *             instance is emitted (int), followed by all of its elements
+     *             (each an <tt>Object</tt>) in the proper order.
+     */
     @SuppressWarnings("unchecked")
-    void storeSignupData(int userId, String confirmToken, String resendConfirmationCodeToken){
+    public void storeSignupData(int userId, String confirmToken, String resendConfirmationCodeToken){
         _store.setItem(USER_ID, userId);
         _store.setItem(CONFIRM_TOKEN, confirmToken);
         _store.setItem(RESEND_CONFIRMATION_CODE_TOKEN, resendConfirmationCodeToken);
     }
 
     @SuppressWarnings("unchecked")
-    void storeUserId(int userId){
+    public void storeUserId(int userId){
         _store.setItem(USER_ID, userId);
     }
 
     @SuppressWarnings("unchecked")
-    void storeJwt(String jwt){
+    public void storeJwt(String jwt){
         _store.setItem(JWT, jwt);
     }
 
     @SuppressWarnings("unchecked")
-    void storeConfirmToken(String confirmToken){
+    public void storeConfirmToken(String confirmToken){
         _store.setItem(CONFIRM_TOKEN, confirmToken);
     }
 
     @SuppressWarnings("unchecked")
-    void storeResendConfirmationCodeToken(String resendConfirmationCodeToken){
+    public void storeResendConfirmationCodeToken(String resendConfirmationCodeToken){
         _store.setItem(RESEND_CONFIRMATION_CODE_TOKEN, resendConfirmationCodeToken);
     }
 
     @SuppressWarnings("unchecked")
-    void storeResetPasswordToken(String resetPasswordToken){
+    public void storeResetPasswordToken(String resetPasswordToken){
         _store.setItem(RESET_PASSWORD_TOKEN, resetPasswordToken);
     }
 
-    int getUserId(){
+    public int getUserId(){
         return (int)_store.getItem(USER_ID);
     }
 
-    String getJwt(){
+    public  String getJwt(){
         return (String)_store.getItem(JWT);
     }
 
-    String getConfirmToken(){
+    public String getConfirmToken(){
         return (String)_store.getItem(CONFIRM_TOKEN);
     }
 
-    String getResendConfirmationCodeToken(){
+    public String getResendConfirmationCodeToken(){
         return (String)_store.getItem(RESEND_CONFIRMATION_CODE_TOKEN);
     }
 
-    String getResetPasswordToken(){
+    public String getResetPasswordToken(){
         return (String)_store.getItem(RESET_PASSWORD_TOKEN);
     }
 
-    void addUserIdListener(StoreItem.Wrapper value){
+    public void addUserIdListener(StoreItem.Wrapper value){
     _store.addListener(USER_ID, value);
 }
 
-    void addJwtListener(StoreItem.Wrapper value){
+    public void addJwtListener(StoreItem.Wrapper value){
     _store.addListener(JWT, value);
 }
 
-    void removeUserIdListener(StoreItem.Wrapper value){
+    public void removeUserIdListener(StoreItem.Wrapper value){
     _store.removeListener(USER_ID, value);
 }
 
-    void removeJwtListener(StoreItem.Wrapper value){
+    public void removeJwtListener(StoreItem.Wrapper value){
     _store.removeListener(JWT, value);
 }
 }

@@ -23,9 +23,9 @@ public class StoreItem<T> {
         T oldValue = _item;
         _item = item;
 
-        _valueChangedListener.forEach((function) -> {
-            System.out.println("hello");
-        });
+//        _valueChangedListener.forEach((function) -> {
+//            System.out.println("hello");
+//        });
     }
 
     public void addListener(Wrapper<T, T> value) {
