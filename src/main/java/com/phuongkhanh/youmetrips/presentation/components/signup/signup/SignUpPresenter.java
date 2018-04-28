@@ -27,6 +27,9 @@ public class SignUpPresenter extends PresenterBase<SignUpScreen> {
                        String confirmPassword,
                        String firstName,
                        String lastName) {
+
+        getView().setLoading(true);
+
         new Thread(
                 new Task<Object>() {
                     @Override
@@ -43,11 +46,13 @@ public class SignUpPresenter extends PresenterBase<SignUpScreen> {
                     @Override
                     protected void failed() {
                         onSignUpFailed(getException());
+                        getView().setLoading(false);
                     }
 
                     @Override
                     protected void running() {
                         onRunning();
+                        getView().setLoading(false);
                     }
                 }
         ).start();

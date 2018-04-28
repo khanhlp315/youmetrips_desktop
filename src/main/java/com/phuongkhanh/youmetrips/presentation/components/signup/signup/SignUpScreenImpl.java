@@ -50,9 +50,6 @@ public class SignUpScreenImpl extends FXMLScreen implements SignUpScreen, Initia
         alert.setTitle( "Error" );
         alert.setContentText( message );
         alert.showAndWait();
-
-        _btnCreateAccount.setVisible(true);
-        _loadingPane.setVisible(false);
     }
 
     @Override
@@ -61,9 +58,20 @@ public class SignUpScreenImpl extends FXMLScreen implements SignUpScreen, Initia
         alert.setTitle( "Success" );
         alert.setContentText( message );
         alert.showAndWait();
+    }
 
-        _btnCreateAccount.setVisible(true);
-        _loadingPane.setVisible(false);
+    @Override
+    public void setLoading(Boolean isLoading){
+        if(isLoading)
+        {
+            _btnCreateAccount.setVisible(false);
+            _loadingPane.setVisible(true);
+        }
+        else
+        {
+            _btnCreateAccount.setVisible(true);
+            _loadingPane.setVisible(false);
+        }
     }
 
     @Override

@@ -50,9 +50,6 @@ public class NewPasswordInitEmailScreenImpl extends FXMLScreen implements NewPas
         alert.setTitle( "Error" );
         alert.setContentText( message );
         alert.showAndWait();
-
-        _btnNextHelp.setVisible(true);
-        _loadingPane.setVisible(false);
     }
 
     @Override
@@ -61,15 +58,10 @@ public class NewPasswordInitEmailScreenImpl extends FXMLScreen implements NewPas
         alert.setTitle( "Success" );
         alert.setContentText( message );
         alert.showAndWait();
-
-        _btnNextHelp.setVisible(true);
-        _loadingPane.setVisible(false);
     }
 
     @Override
     public void showLoading() {
-        _loadingPane.setVisible(true);
-        _btnNextHelp.setVisible(false);
     }
 
     @FXML
@@ -79,5 +71,18 @@ public class NewPasswordInitEmailScreenImpl extends FXMLScreen implements NewPas
 
     public void navigateToInputCode() {
         navigate(NewPasswordInitCodeScreenImpl.class);
+    }
+
+    @Override
+    public void setLoading(Boolean isLoading) {
+        if (isLoading)
+        {
+            _loadingPane.setVisible(true);
+            _btnNextHelp.setVisible(false);
+        }
+        else {
+            _loadingPane.setVisible(false);
+            _btnNextHelp.setVisible(true);
+        }
     }
 }

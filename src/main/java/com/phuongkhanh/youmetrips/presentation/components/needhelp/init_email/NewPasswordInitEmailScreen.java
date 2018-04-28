@@ -10,4 +10,5 @@ public interface NewPasswordInitEmailScreen extends JFXScreen {
     void showSuccess(String message);
     void showLoading();
     void navigateToInputCode();
+    void setLoading(Boolean isLoading);
 }

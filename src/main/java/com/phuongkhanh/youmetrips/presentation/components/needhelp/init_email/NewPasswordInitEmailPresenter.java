@@ -17,6 +17,9 @@ public class NewPasswordInitEmailPresenter extends PresenterBase<NewPasswordInit
 
     public void sendEmailToResetPassword(String email)
     {
+
+        getView().setLoading(true);
+
         new Thread(new Task<Object>() {
             @Override
             protected Object call() throws Exception {
@@ -25,15 +28,12 @@ public class NewPasswordInitEmailPresenter extends PresenterBase<NewPasswordInit
             }
 
             @Override
-            protected void succeeded(){onSendEmailToResetPasswordSuccess();}
+            protected void succeeded(){onSendEmailToResetPasswordSuccess();
+            getView().setLoading(false);}
 
             @Override
-            protected void failed(){onSendEmailToResetPasswordFailed(getException());}
-
-            @Override
-            protected void running(){
-                onRunning();
-            }
+            protected void failed(){onSendEmailToResetPasswordFailed(getException());
+                getView().setLoading(false);}
         }).start();
     }
 
@@ -58,9 +58,4 @@ public class NewPasswordInitEmailPresenter extends PresenterBase<NewPasswordInit
             getView().showError(e.getMessage());
         }
     }
-
-    private void onRunning(){
-        getView().showLoading();
-    }
-
 }

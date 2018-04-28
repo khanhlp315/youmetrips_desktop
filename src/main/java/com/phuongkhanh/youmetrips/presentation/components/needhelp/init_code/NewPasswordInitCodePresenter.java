@@ -10,15 +10,15 @@ import javafx.concurrent.Task;
 public class NewPasswordInitCodePresenter extends PresenterBase<NewPasswordInitCodeScreen> {
     private NewPasswordInitCodeService _service;
 
-    public NewPasswordInitCodePresenter(NewPasswordInitCodeService service)
-    {
+    public NewPasswordInitCodePresenter(NewPasswordInitCodeService service) {
         _service = service;
     }
 
-    
+
     //region SEND CODE
-    public void sendCode(String recoveryCode)
-    {
+    public void sendCode(String recoveryCode) {
+        getView().setLoading(true);
+
         new Thread(new Task<Object>() {
             @Override
             protected Object call() throws Exception {
@@ -27,43 +27,42 @@ public class NewPasswordInitCodePresenter extends PresenterBase<NewPasswordInitC
             }
 
             @Override
-            protected void succeeded(){
-                onSendCodeSuccess();};
+            protected void succeeded() {
+                onSendCodeSuccess();
+                getView().setLoading(false);
+            }
+
+
 
             @Override
-            protected void failed(){
-                onSendCodeFailed(getException());};
+            protected void failed() {
+                onSendCodeFailed(getException());
+                getView().setLoading(false);
+            }
+
         }).start();
     }
 
-    private void doSendCode(String recoveryCode)
-    {
+    private void doSendCode(String recoveryCode) {
         _service.sendCodeToResetPassword(recoveryCode);
     }
 
-    private void onSendCodeSuccess()
-    {
+    private void onSendCodeSuccess() {
         getView().navigateToInputNewPasswordScreen();
     }
 
-    private void onSendCodeFailed(final Throwable e)
-    {
-        if(e instanceof WrongRecoveryCodeException)
-        {
+    private void onSendCodeFailed(final Throwable e) {
+        if (e instanceof WrongRecoveryCodeException) {
             getView().showError(e.getMessage());
-        }
-        else
-        {
+        } else {
             getView().showError(e.getMessage());
         }
     }
     //endregion 
-    
-    
-    
+
+
     //region RESEND CODE
-    public void resendCode()
-    {
+    public void resendCode() {
         new Thread(new Task<Object>() {
             @Override
             protected Object call() throws Exception {
@@ -72,27 +71,30 @@ public class NewPasswordInitCodePresenter extends PresenterBase<NewPasswordInitC
             }
 
             @Override
-            protected void succeeded(){
-                onResendCodeSuccess();};
+            protected void succeeded() {
+                onResendCodeSuccess();
+            }
+
+            ;
 
             @Override
-            protected void failed(){
-                onResendCodeFailed(getException());};
+            protected void failed() {
+                onResendCodeFailed(getException());
+            }
+
+            ;
         }).start();
     }
 
-    private void doResendCode()
-    {
+    private void doResendCode() {
         _service.resendCodeToResetPassword();
     }
 
-    private void onResendCodeSuccess()
-    {
+    private void onResendCodeSuccess() {
         getView().showSuccess("Resend code success");
     }
 
-    private void onResendCodeFailed(final Throwable e)
-    {
+    private void onResendCodeFailed(final Throwable e) {
         getView().showSuccess("Resend code failed");
     }
     //endregion
