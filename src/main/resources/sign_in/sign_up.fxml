@@ -5,7 +5,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141">
     <children>
         <AnchorPane layoutX="59.0" layoutY="125.0" maxHeight="400.0" maxWidth="-Infinity" minHeight="-Infinity"
                     minWidth="-Infinity" prefHeight="312.0" prefWidth="212.0"
@@ -15,35 +15,47 @@
             <children>
                 <ScrollPane hbarPolicy="NEVER" layoutX="11.0" layoutY="59.0" prefWidth="200.0"
                             stylesheets="@../style/customScrollPane.css" AnchorPane.bottomAnchor="14.0"
-                            AnchorPane.topAnchor="59.0">
+                            AnchorPane.topAnchor="62.0">
                     <content>
-                        <AnchorPane prefWidth="190.0">
+                        <GridPane vgap="20.0">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                            </rowConstraints>
                             <children>
                                 <JFXTextField fx:id="_tfEmailOrPhone" focusColor="#ffba33" labelFloat="true"
-                                              layoutY="17.0" prefHeight="31.0" prefWidth="190.0"
-                                              promptText="Email or Phone" unFocusColor="#ccd0d2"/>
+                                              prefHeight="31.0" prefWidth="190.0" promptText="Email or Phone"
+                                              unFocusColor="#ccd0d2"/>
                                 <JFXPasswordField fx:id="_pfPassword" focusColor="#ffba33" labelFloat="true"
-                                                  layoutY="74.0" prefHeight="31.0" prefWidth="190.0"
-                                                  promptText="Password" unFocusColor="#ccd0d2"/>
+                                                  prefHeight="31.0" prefWidth="190.0" promptText="Password"
+                                                  unFocusColor="#ccd0d2" GridPane.rowIndex="1"/>
                                 <JFXPasswordField fx:id="_pfConfirmPassword" focusColor="#ffba33" labelFloat="true"
-                                                  layoutY="132.0" prefHeight="31.0" prefWidth="190.0"
-                                                  promptText="Confirm Password" unFocusColor="#ccd0d2"/>
+                                                  prefHeight="31.0" prefWidth="190.0" promptText="Confirm Password"
+                                                  unFocusColor="#ccd0d2" GridPane.rowIndex="2"/>
                                 <JFXTextField fx:id="_tfFirstName" focusColor="#ffba33" labelFloat="true"
-                                              layoutY="194.0" prefHeight="31.0" prefWidth="99.0" promptText="First Name"
-                                              unFocusColor="#ccd0d2"/>
-                                <JFXTextField fx:id="_tfLastName" focusColor="#ffba33" labelFloat="true" layoutX="119.0"
-                                              layoutY="194.0" prefHeight="31.0" prefWidth="71.0" promptText="Last Name"
-                                              unFocusColor="#ccd0d2"/>
-                                <JFXButton fx:id="_btnCreateAccount" layoutY="243.0" prefHeight="38.0" prefWidth="190.0"
+                                              prefHeight="31.0" prefWidth="99.0" promptText="First Name"
+                                              unFocusColor="#ccd0d2" GridPane.rowIndex="3"/>
+                                <JFXTextField fx:id="_tfLastName" focusColor="#ffba33" labelFloat="true"
+                                              prefHeight="31.0" prefWidth="71.0" promptText="Last Name"
+                                              unFocusColor="#ccd0d2" GridPane.rowIndex="4"/>
+                                <JFXButton fx:id="_btnCreateAccount" prefHeight="38.0" prefWidth="190.0"
                                            ripplerFill="#ffffff42"
                                            style="-fx-background-color: #1a535c; -fx-background-radius: 100;"
-                                           text="CREATE ACCOUNT" textFill="WHITE">
+                                           text="CREATE ACCOUNT" textFill="WHITE" GridPane.halignment="CENTER"
+                                           GridPane.rowIndex="5">
                                     <font>
                                         <Font size="10.0"/>
                                     </font>
                                 </JFXButton>
                             </children>
-                        </AnchorPane>
+                        </GridPane>
                     </content>
                 </ScrollPane>
                 <AnchorPane layoutX="1.0" layoutY="13.0" prefHeight="31.0" prefWidth="209.0"
