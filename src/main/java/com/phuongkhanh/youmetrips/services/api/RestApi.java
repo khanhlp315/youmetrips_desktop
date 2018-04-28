@@ -48,6 +48,7 @@ public class RestApi {
                 return new Gson();
             }
         };
+        _store = new AuthenticationStore();
     }
 
     public String getBaseUrl() {
