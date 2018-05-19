@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -18,7 +19,7 @@
                 </Label>
                 <HBox alignment="CENTER">
                     <VBox.margin>
-                        <Insets top="32.0"/>
+                        <Insets top="16.0"/>
                     </VBox.margin>
                     <children>
                         <Label text="Where"/>
@@ -101,6 +102,19 @@
                         </StackPane>
                     </children>
                 </HBox>
+                <Label text="Where are you going?">
+                    <VBox.margin>
+                        <Insets top="32.0"/>
+                    </VBox.margin>
+                </Label>
+                <JFXTextField>
+                    <padding>
+                        <Insets left="64.0" right="64.0"/>
+                    </padding>
+                    <VBox.margin>
+                        <Insets top="8.0"/>
+                    </VBox.margin>
+                </JFXTextField>
             </children>
         </VBox>
     </children>
