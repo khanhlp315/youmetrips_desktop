@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -9,7 +8,7 @@
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="556.0" prefWidth="412.0"
             xmlns="http://javafx.com/javafx/8.0.141">
     <children>
-        <VBox alignment="TOP_CENTER" layoutX="156.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.leftAnchor="0.0"
+        <VBox alignment="TOP_CENTER" layoutX="156.0" prefHeight="200.0" prefWidth="412.0" AnchorPane.leftAnchor="0.0"
               AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="8.0">
             <children>
                 <Label style="-fx-font-weight: bold;" text="Create trekking plan">
@@ -22,99 +21,91 @@
                         <Insets top="16.0"/>
                     </VBox.margin>
                     <children>
-                        <Label text="Where"/>
+                        <Label fx:id="_lblWhere" text="Where"/>
                         <Rectangle fill="#1a535c" height="5.0" stroke="#1a535c" strokeType="INSIDE" visible="false"
                                    width="30.0"/>
-                        <Label text="When" visible="false"/>
+                        <Label fx:id="_lblWhen" text="When" visible="false"/>
                         <Rectangle fill="#1a535c" height="5.0" stroke="#1a535c" strokeType="INSIDE" visible="false"
                                    width="20.0"/>
-                        <Label text="How long" visible="false"/>
+                        <Label fx:id="_lblHowLong" text="How long" visible="false"/>
                         <Rectangle fill="#1a535c" height="5.0" stroke="#1a535c" strokeType="INSIDE" visible="false"
                                    width="18.0"/>
-                        <Label text="Hotel" visible="false"/>
+                        <Label fx:id="_lblHotel" text="Hotel" visible="false"/>
                         <Rectangle fill="#1a535c" height="5.0" stroke="#1a535c" strokeType="INSIDE" visible="false"
                                    width="25.0"/>
-                        <Label text="Review" visible="false"/>
+                        <Label fx:id="_lblReview" text="Review" visible="false"/>
                     </children>
                 </HBox>
                 <HBox alignment="CENTER">
                     <VBox.margin>
-                        <Insets top="8.0"/>
+                        <Insets bottom="16.0" top="8.0"/>
                     </VBox.margin>
                     <children>
                         <StackPane>
                             <children>
-                                <Circle fill="#1a535c" radius="15.0" stroke="#1a535c" strokeType="INSIDE">
+                                <Circle fx:id="_circle1" fill="#1a535c" radius="15.0" stroke="#1a535c"
+                                        strokeType="INSIDE" strokeWidth="0.0">
                                     <StackPane.margin>
                                         <Insets/>
                                     </StackPane.margin>
                                 </Circle>
-                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="1"/>
+                                <Text fx:id="_txt1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="1"/>
                             </children>
                         </StackPane>
                         <Rectangle fill="#1a535c" height="5.0" stroke="#1a535c" strokeType="INSIDE" visible="false"
                                    width="30.0"/>
                         <StackPane>
                             <children>
-                                <Circle fill="#e4e5e7" radius="15.0" stroke="#e4e5e7" strokeType="INSIDE">
+                                <Circle fx:id="_circle2" fill="#e4e5e7" radius="15.0" stroke="#e4e5e7"
+                                        strokeType="INSIDE" strokeWidth="0.0">
                                     <StackPane.margin>
                                         <Insets/>
                                     </StackPane.margin>
                                 </Circle>
-                                <Text fill="#a6a9ae" strokeType="OUTSIDE" strokeWidth="0.0" text="2"/>
+                                <Text fx:id="_txt2" fill="#a6a9ae" strokeType="OUTSIDE" strokeWidth="0.0" text="2"/>
                             </children>
                         </StackPane>
                         <Rectangle fill="#1a535c" height="5.0" stroke="#1a535c" strokeType="INSIDE" visible="false"
                                    width="30.0"/>
                         <StackPane>
                             <children>
-                                <Circle fill="#e4e5e7" radius="15.0" stroke="#e4e5e7" strokeType="INSIDE">
+                                <Circle fx:id="_circle3" fill="#e4e5e7" radius="15.0" stroke="#e4e5e7"
+                                        strokeType="INSIDE" strokeWidth="0.0">
                                     <StackPane.margin>
                                         <Insets/>
                                     </StackPane.margin>
                                 </Circle>
-                                <Text fill="#a6a9ae" strokeType="OUTSIDE" strokeWidth="0.0" text="3"/>
+                                <Text fx:id="_txt3" fill="#a6a9ae" strokeType="OUTSIDE" strokeWidth="0.0" text="3"/>
                             </children>
                         </StackPane>
                         <Rectangle fill="#1a535c" height="5.0" stroke="#1a535c" strokeType="INSIDE" visible="false"
                                    width="30.0"/>
                         <StackPane>
                             <children>
-                                <Circle fill="#e4e5e7" radius="15.0" stroke="#e4e5e7" strokeType="INSIDE">
+                                <Circle fx:id="_circle4" fill="#e4e5e7" radius="15.0" stroke="#e4e5e7"
+                                        strokeType="INSIDE" strokeWidth="0.0">
                                     <StackPane.margin>
                                         <Insets/>
                                     </StackPane.margin>
                                 </Circle>
-                                <Text fill="#a6a9ae" strokeType="OUTSIDE" strokeWidth="0.0" text="4"/>
+                                <Text fx:id="_txt4" fill="#a6a9ae" strokeType="OUTSIDE" strokeWidth="0.0" text="4"/>
                             </children>
                         </StackPane>
                         <Rectangle fill="#1a535c" height="5.0" stroke="#1a535c" strokeType="INSIDE" visible="false"
                                    width="30.0"/>
                         <StackPane>
                             <children>
-                                <Circle fill="#e4e5e7" radius="15.0" stroke="#e4e5e7" strokeType="INSIDE">
+                                <Circle fx:id="_circle5" fill="#e4e5e7" radius="15.0" stroke="#e4e5e7"
+                                        strokeType="INSIDE" strokeWidth="0.0">
                                     <StackPane.margin>
                                         <Insets/>
                                     </StackPane.margin>
                                 </Circle>
-                                <Text fill="#a6a9ae" strokeType="OUTSIDE" strokeWidth="0.0" text="5"/>
+                                <Text fx:id="_txt5" fill="#a6a9ae" strokeType="OUTSIDE" strokeWidth="0.0" text="5"/>
                             </children>
                         </StackPane>
                     </children>
                 </HBox>
-                <Label text="Where are you going?">
-                    <VBox.margin>
-                        <Insets top="32.0"/>
-                    </VBox.margin>
-                </Label>
-                <JFXTextField>
-                    <padding>
-                        <Insets left="64.0" right="64.0"/>
-                    </padding>
-                    <VBox.margin>
-                        <Insets top="8.0"/>
-                    </VBox.margin>
-                </JFXTextField>
             </children>
         </VBox>
     </children>
