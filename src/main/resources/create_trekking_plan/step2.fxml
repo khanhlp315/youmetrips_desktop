@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" prefWidth="284.0" xmlns="http://javafx.com/javafx/8.0.141">
+    <children>
+        <Label text="Where will you be available?" textFill="#828282"/>
+        <JFXDatePicker fx:id="_dpFrom" defaultColor="#ffc146" promptText="From">
+            <VBox.margin>
+                <Insets/>
+            </VBox.margin>
+            <padding>
+                <Insets left="64.0" right="64.0" top="24.0"/>
+            </padding>
+        </JFXDatePicker>
+        <JFXDatePicker fx:id="_dpTo" defaultColor="#ffc146" promptText="To">
+            <padding>
+                <Insets left="64.0" right="64.0" top="24.0"/>
+            </padding>
+            <VBox.margin>
+                <Insets/>
+            </VBox.margin>
+        </JFXDatePicker>
+        <JFXButton fx:id="_btnNext" prefHeight="38.0" prefWidth="190.0" ripplerFill="#ffffff42"
+                   style="-fx-background-color: #1a535c; -fx-background-radius: 100;" text="NEXT" textFill="WHITE"
+                   visible="false">
+            <font>
+                <Font size="10.0"/>
+            </font>
+            <padding>
+                <Insets bottom="8.0" top="8.0"/>
+            </padding>
+            <VBox.margin>
+                <Insets top="16.0"/>
+            </VBox.margin>
+        </JFXButton>
+    </children>
+</VBox>
