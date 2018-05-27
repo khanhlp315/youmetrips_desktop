@@ -8,7 +8,7 @@
 <VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" prefWidth="284.0" xmlns="http://javafx.com/javafx/8.0.141">
     <children>
         <Label text="What kind of hotel will you stay?" textFill="#828282"/>
-        <Rating rating="0.0" updateOnHover="true">
+        <Rating fx:id="_ratingBar" rating="0.0" updateOnHover="true">
             <VBox.margin>
                 <Insets top="24.0"/>
             </VBox.margin>
