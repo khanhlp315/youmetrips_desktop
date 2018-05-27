@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.Rating?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" prefWidth="284.0" xmlns="http://javafx.com/javafx/8.0.141">
     <children>
         <Label text="What kind of hotel will you stay?" textFill="#828282"/>
