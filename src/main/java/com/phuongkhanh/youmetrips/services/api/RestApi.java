@@ -2,6 +2,7 @@ package com.phuongkhanh.youmetrips.services.api;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
+import com.phuongkhanh.youmetrips.presentation.models.User;
 import com.phuongkhanh.youmetrips.services.api.exceptions.CouldNotConnectApiServerException;
 import com.phuongkhanh.youmetrips.services.api.exceptions.CouldNotParseApiResponseBodyException;
 import com.phuongkhanh.youmetrips.services.api.exceptions.UnknownApiResponseContentTypeException;
@@ -108,5 +109,14 @@ public class RestApi {
                 "emailOrPhoneNumber", email,
                 "password", password ) );
         return parseResponseJsonBody( response, Login.class );
+    }
+
+    /**
+     * aa
+     */
+    public User getFriends()
+    {
+        Response response = executeGet()
+        return null;
     }
 }
