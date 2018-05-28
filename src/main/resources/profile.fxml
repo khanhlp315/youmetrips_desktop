@@ -1,67 +1,196 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import com.jfoenix.controls.*?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.*?>
 <ScrollPane xmlns:fx="http://javafx.com/fxml/1" hbarPolicy="NEVER" stylesheets="@style/customScrollPane.css"
             xmlns="http://javafx.com/javafx/8.0.141">
     <content>
-        <AnchorPane>
+        <VBox prefWidth="412.0" style="-fx-background-color: f5f7fb;">
             <children>
-                <ImageView fitHeight="150.0" fitWidth="410.0" preserveRatio="true">
-                    <image>
-                        <Image url="@images/no_cover.png"/>
-                    </image>
-                </ImageView>
-                <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="155.0" layoutY="116.0" preserveRatio="true"
-                           style="-fx-effect: dropshadow(gaussian, #00000042, 3, 0, 0, 3);">
-                    <image>
-                        <Image url="@images/img_placeholder.png"/>
-                    </image>
-                </ImageView>
-                <GridPane layoutX="110.0" layoutY="245.0" vgap="20.0" AnchorPane.bottomAnchor="16.0"
-                          AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="245.0">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
-                    </rowConstraints>
+                <VBox alignment="TOP_CENTER" style="-fx-background-color: white;">
                     <children>
-                        <JFXTextField fx:id="_tfEmailOrPhone" focusColor="#ffba33" labelFloat="true" prefHeight="31.0"
-                                      prefWidth="190.0" promptText="Email or Phone" unFocusColor="#ccd0d2"/>
-                        <JFXPasswordField fx:id="_pfPassword" focusColor="#ffba33" labelFloat="true" prefHeight="31.0"
-                                          prefWidth="190.0" promptText="Password" unFocusColor="#ccd0d2"
-                                          GridPane.rowIndex="1"/>
-                        <JFXPasswordField fx:id="_pfConfirmPassword" focusColor="#ffba33" labelFloat="true"
-                                          prefHeight="31.0" prefWidth="190.0" promptText="Confirm Password"
-                                          unFocusColor="#ccd0d2" GridPane.rowIndex="2"/>
-                        <JFXTextField fx:id="_tfFirstName" focusColor="#ffba33" labelFloat="true" prefHeight="31.0"
-                                      prefWidth="99.0" promptText="First Name" unFocusColor="#ccd0d2"
-                                      GridPane.rowIndex="3"/>
-                        <JFXTextField fx:id="_tfLastName" focusColor="#ffba33" labelFloat="true" prefHeight="31.0"
-                                      prefWidth="71.0" promptText="Last Name" unFocusColor="#ccd0d2"
-                                      GridPane.rowIndex="4"/>
-                        <JFXButton fx:id="_btnCreateAccount" prefHeight="38.0" prefWidth="190.0" ripplerFill="#ffffff42"
-                                   style="-fx-background-color: #1a535c; -fx-background-radius: 100;"
-                                   text="CREATE ACCOUNT" textFill="WHITE" GridPane.halignment="CENTER"
-                                   GridPane.rowIndex="5">
+                        <HBox>
+                            <children>
+                                <Rectangle fx:id="_rectAvatar" arcHeight="30.0" arcWidth="30.0" fill="DODGERBLUE"
+                                           height="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0"
+                                           width="100.0">
+                                    <HBox.margin>
+                                        <Insets left="32.0"/>
+                                    </HBox.margin>
+                                </Rectangle>
+                                <VBox>
+                                    <children>
+                                        <HBox>
+                                            <children>
+                                                <Label fx:id="_lblFirstName" text="Firstname">
+                                                    <font>
+                                                        <Font name="System Bold" size="24.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label fx:id="_lblLastName" text="Lastname">
+                                                    <HBox.margin>
+                                                        <Insets left="8.0"/>
+                                                    </HBox.margin>
+                                                    <font>
+                                                        <Font size="24.0"/>
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <Label fx:id="_lblJob" text="Job" textFill="#787878">
+                                            <graphic>
+                                                <FontAwesomeIconView fill="#787878" glyphName="BRIEFCASE"/>
+                                            </graphic>
+                                            <VBox.margin>
+                                                <Insets top="8.0"/>
+                                            </VBox.margin>
+                                        </Label>
+                                        <Label fx:id="_lblHometown" text="Job" textFill="#787878">
+                                            <graphic>
+                                                <FontAwesomeIconView fill="#787878" glyphName="HOME"/>
+                                            </graphic>
+                                            <VBox.margin>
+                                                <Insets top="8.0"/>
+                                            </VBox.margin>
+                                        </Label>
+                                    </children>
+                                    <padding>
+                                        <Insets left="16.0" top="6.0"/>
+                                    </padding>
+                                </VBox>
+                            </children>
+                        </HBox>
+                        <Label text="Bio.">
+                            <VBox.margin>
+                                <Insets top="16.0"/>
+                            </VBox.margin>
                             <font>
-                                <Font size="10.0"/>
+                                <Font size="13.0"/>
+                            </font>
+                        </Label>
+                        <JFXButton text="Edit" textFill="#1a535c">
+                            <font>
+                                <Font name="System Bold" size="12.0"/>
                             </font>
                         </JFXButton>
                     </children>
-                </GridPane>
+                    <padding>
+                        <Insets bottom="8.0" top="10.0"/>
+                    </padding>
+                </VBox>
+                <VBox alignment="TOP_CENTER" style="-fx-background-color: white;">
+                    <padding>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="10.0"/>
+                    </padding>
+                    <VBox.margin>
+                        <Insets top="8.0"/>
+                    </VBox.margin>
+                    <children>
+                        <HBox alignment="CENTER_LEFT">
+                            <children>
+                                <StackPane>
+                                    <children>
+                                        <Circle fill="#1a535c" radius="15.0" stroke="BLACK" strokeType="INSIDE"
+                                                strokeWidth="0.0"/>
+                                        <FontAwesomeIconView fill="WHITE" glyphName="PLANE" size="18">
+                                            <StackPane.margin>
+                                                <Insets top="2.0"/>
+                                            </StackPane.margin>
+                                        </FontAwesomeIconView>
+                                    </children>
+                                </StackPane>
+                                <Label text="Your trekking plans">
+                                    <HBox.margin>
+                                        <Insets left="8.0"/>
+                                    </HBox.margin>
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <JFXListView prefHeight="200.0" style="-fx-background-color: white;">
+                            <VBox.margin>
+                                <Insets top="10.0"/>
+                            </VBox.margin>
+                        </JFXListView>
+                        <AnchorPane>
+                            <VBox.margin>
+                                <Insets/>
+                            </VBox.margin>
+                            <children>
+                                <JFXButton fx:id="_btnUpdate" prefHeight="38.0" prefWidth="300.0"
+                                           ripplerFill="#ffffff42"
+                                           style="-fx-background-color: #1a535c; -fx-background-radius: 100;"
+                                           text="Have a new plan" textFill="WHITE" AnchorPane.leftAnchor="0.0"
+                                           AnchorPane.rightAnchor="0.0">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                </JFXButton>
+                                <AnchorPane prefHeight="1.0" prefWidth="200.0" style="-fx-background-color: #f0f0f0;"
+                                            AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                            AnchorPane.topAnchor="50.0"/>
+                            </children>
+                        </AnchorPane>
+                        <JFXButton text="See All Plans    &gt;" textFill="#787878">
+                            <VBox.margin>
+                                <Insets top="4.0"/>
+                            </VBox.margin>
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </JFXButton>
+                    </children>
+                </VBox>
+                <VBox alignment="TOP_CENTER" style="-fx-background-color: white;">
+                    <padding>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="10.0"/>
+                    </padding>
+                    <children>
+                        <HBox alignment="CENTER_LEFT">
+                            <children>
+                                <StackPane>
+                                    <children>
+                                        <Circle fill="#ed5851" radius="15.0" stroke="BLACK" strokeType="INSIDE"
+                                                strokeWidth="0.0"/>
+                                        <MaterialIconView fill="WHITE" glyphName="PEOPLE" size="18"/>
+                                    </children>
+                                </StackPane>
+                                <Label text="Your friends">
+                                    <HBox.margin>
+                                        <Insets left="8.0"/>
+                                    </HBox.margin>
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                </Label>
+                                <Label fx:id="_lblFriendCount" text="0">
+                                    <HBox.margin>
+                                        <Insets left="16.0"/>
+                                    </HBox.margin>
+                                    <font>
+                                        <Font name="System Bold" size="14.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <JFXListView orientation="HORIZONTAL" prefHeight="100.0" style="-fx-background-color: white;">
+                            <VBox.margin>
+                                <Insets top="10.0"/>
+                            </VBox.margin>
+                        </JFXListView>
+                    </children>
+                    <VBox.margin>
+                        <Insets top="8.0"/>
+                    </VBox.margin>
+                </VBox>
             </children>
-        </AnchorPane>
+        </VBox>
     </content>
 </ScrollPane>

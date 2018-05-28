@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -192,19 +191,6 @@
                         <Insets left="24.0" right="24.0" top="8.0"/>
                     </VBox.margin>
                 </JFXTextArea>
-                <JFXButton fx:id="_btnCreatePlan" prefHeight="38.0" prefWidth="190.0" ripplerFill="#ffffff42"
-                           style="-fx-background-color: #1a535c; -fx-background-radius: 100;" text="CREATE PLAN"
-                           textFill="WHITE" visible="false">
-                    <font>
-                        <Font size="10.0"/>
-                    </font>
-                    <padding>
-                        <Insets bottom="8.0" top="8.0"/>
-                    </padding>
-                    <VBox.margin>
-                        <Insets top="16.0"/>
-                    </VBox.margin>
-                </JFXButton>
             </children>
         </VBox>
     </content>
