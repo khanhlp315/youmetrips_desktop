@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import com.phuongkhanh.youmetrips.presentation.controls.LoginPane?>
+<?import com.phuongkhanh.youmetrips.presentation.controls.LoadingPane?>
+<LoginPane>
+    <loginNodes>
+        <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="490.0" prefWidth="338.0"
+                    xmlns="http://javafx.com/javafx/9.0.1">
+            <children>
+                <AnchorPane layoutX="59.0" layoutY="127.0" prefHeight="221.0" prefWidth="212.0"
+                            style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, #cf9d3c, 10, 0, 3, 3);">
+                    <children>
+                        <AnchorPane layoutX="1.0" layoutY="13.0" prefHeight="31.0" prefWidth="209.0"
+                                    style="-fx-effect: dropshadow(gaussian, #f7f1e6, 10, 0, 0, 3); -fx-background-color: white;">
+                            <children>
+                                <JFXButton onMouseClicked="#needHelp" layoutX="142.0" text="Need help?" textFill="#ccd0d2">
+                                    <font>
+                                        <Font size="11.0"/>
+                                    </font>
+                                </JFXButton>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="11.0" layoutY="59.0">
+                            <children>
+                                <JFXTextField fx:id="_txtEmailOrPhoneLogin" focusColor="#ffba33" labelFloat="true" layoutY="7.0" prefHeight="31.0"
+                                              prefWidth="190.0" promptText="Email or Phone" unFocusColor="#ccd0d2"/>
+                                <JFXPasswordField fx:id="_txtPasswordLogin" focusColor="#ffba33" labelFloat="true" layoutY="60.0" prefHeight="31.0"
+                                                  prefWidth="190.0" promptText="Password" unFocusColor="#ccd0d2"/>
+                            </children>
+                        </AnchorPane>
+                        <JFXButton fx:id="_btnLogin" onMouseClicked="#login" layoutX="109.0" layoutY="168.0" prefHeight="38.0" prefWidth="90.0" ripplerFill="#ffffff42"
+                                   style="-fx-background-color: #1a535c; -fx-background-radius: 100;" text="SIGN IN"
+                                   textFill="WHITE">
+                            <font>
+                                <Font size="10.0"/>
+                            </font>
+                        </JFXButton>
+
+                        <LoadingPane fx:id="_loadingPane" visible="false" layoutX="109.0" layoutY="168.0" prefHeight="38.0" prefWidth="90.0"/>
+
+
+                        <JFXButton onMouseClicked="#navigateToSignUp" layoutX="12.0" layoutY="168.0" prefHeight="38.0" prefWidth="90.0" ripplerFill="#ffffff42"
+                                   style="-fx-background-radius: 100; -fx-border-radius: 100; -fx-border-color: #1a535c;"
+                                   text="CREATE" textFill="#1a535c">
+                            <font>
+                                <Font size="10.0"/>
+                            </font>
+                        </JFXButton>
+                    </children>
+                </AnchorPane>
+                <Label layoutX="160.0" layoutY="366.0" text="or" textFill="WHITE">
+                    <font>
+                        <Font size="11.0"/>
+                    </font>
+                </Label>
+                <AnchorPane layoutX="59.0" layoutY="390.0" prefHeight="48.0" prefWidth="212.0">
+                    <children>
+                        <JFXButton fx:id="_btnLoginWithFB" onMouseClicked="#loginWithFB" layoutY="10.0" prefHeight="38.0" prefWidth="212.0" ripplerFill="#ffffff42"
+                                   style="-fx-background-color: white; -fx-background-radius: 100; -fx-effect: dropshadow(gaussian, #cf9d3c, 10, 0, 3, 3);"
+                                   text="          SIGN IN WITH FACEBOOK" textFill="#4267b2">
+                            <font>
+                                <Font size="10.0"/>
+                            </font>
+                        </JFXButton>
+
+                        <LoadingPane fx:id="_loadingPaneWithFB" visible="false" layoutY="10.0" prefHeight="38.0" prefWidth="212.0" />
+
+                        <ImageView fx:id="_imgFB" layoutX="29.0" layoutY="20.0">
+                            <image>
+                                <Image url="@images/fb.png"/>
+                            </image>
+                        </ImageView>
+                    </children>
+                </AnchorPane>
+            </children>
+        </AnchorPane>
+    </loginNodes>
+</LoginPane>

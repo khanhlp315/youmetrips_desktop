@@ -1,19 +1,28 @@
 package com.phuongkhanh.youmetrips.presentation.components.login;
 
+import com.phuongkhanh.youmetrips.presentation.exceptions.*;
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
 import com.phuongkhanh.youmetrips.presentation.models.User;
-import com.phuongkhanh.youmetrips.utils.CommonUtils;
 import javafx.concurrent.Task;
+import org.openqa.selenium.WebDriverException;
 
 import javax.inject.Inject;
 
 import static com.phuongkhanh.youmetrips.utils.CommonUtils.validateEmail;
+import static com.phuongkhanh.youmetrips.utils.CommonUtils.validatePhoneNumber;
 
 public class LoginPresenter extends PresenterBase<LoginScreen> {
     private final LoginService _service;
+    private User _currentUser;
+
+    /*
+     * login                <-> state = 1;
+     * login With Facebook  <-> state = 2;
+     */
+    private int _state = 1;
 
     @Inject
-    public LoginPresenter( LoginService service ) {
+    public LoginPresenter(LoginService service) {
         _service = service;
     }
 
@@ -21,44 +30,105 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
         getView().navigateToSignup();
     }
 
-    public void loginWithEmailPassword(String email, String password){
+    public void login(String email, String password) {
         // cho view loading
+        setState(1);
+        getView().setLoading(true);
 
         new Thread(
                 new Task<Object>() {
                     @Override
                     protected Object call() throws Exception {
-                        doLogin( email, password );
+                        doLogin(email, password);
                         return null;
                     }
 
                     @Override
                     protected void succeeded() {
                         onLoginSuccess();
+                        getView().setLoading(false);
                     }
 
                     @Override
                     protected void failed() {
-                        onLoginFailed( getException() );
+                        onLoginFailed(getException());
+                        getView().setLoading(false);
                     }
                 }
         ).start();
     }
 
-    private void doLogin(String email, String password){
-        if ( !validateEmail( email ) ) {
 
-            //throw new InvalidEmailException();
+    public void loginWithFB() {
+        setState(2);
+        getView().setLoading(true);
+
+        new Thread(
+                new Task<Object>() {
+                    @Override
+                    protected Object call() throws Exception {
+                        //doLoginWithFB(_service.getAccessToken());
+                        doLoginWithFB(_service.getAccessToken());
+                        return null;
+                    }
+
+                    @Override
+                    protected void succeeded() {
+                        onLoginSuccess();
+                        getView().setLoading(false);
+                    }
+
+                    @Override
+                    protected void failed() {
+                        onLoginFailed(getException());
+                        getView().setLoading(false);
+                    }
+                }
+        ).start();
+    }
+
+
+    private void doLogin(String email, String password) {
+        if (!(validatePhoneNumber(email) || validateEmail(email))) {
+            throw new InvalidEmailException();
+        } else if (password.trim().length() < 6 || password.trim().length() > 20) {
+            throw new InvalidPasswordException();
         }
-        User user = _service.login( email, password );
+
+        _currentUser = _service.login(email, password);
     }
 
-    private void onLoginFailed(final Throwable ex){
-        // xu ly login fail
-        //if(exception instanceof InvalidEmailException)...
+    private void doLoginWithFB(String accessToken) {
+        // check invalid accessToken
+        // can not connect to FB server exception
+        _currentUser = _service.loginWithFB(accessToken);
     }
 
-    private void onLoginSuccess(){
-        // xu ly login thanh cong
+    private void onLoginFailed(final Throwable ex) {
+        if (ex instanceof InvalidEmailException) {
+            getView().showError(ex.getMessage());
+        } else if (ex instanceof UserNotConfirmedException) {
+            getView().showError("Please confirm your email");
+            getView().navigateToSignUpConfirmationCodeScreen();
+        } else if (ex instanceof WrongEmailOrPasswordException) {
+            getView().showError("Email/Phone or Password is incorrect");
+        } else if (ex instanceof InvalidFacebookAccessTokenException) {
+            getView().showError("Can not login with facebook");
+        } else if (ex instanceof WebDriverException) {
+            getView().showError("Quit WebDriver");
+        }
+    }
+
+    private void onLoginSuccess() {
+        getView().showSuccess("Hello " + _currentUser.getUserLastName() + " " + _currentUser.getUserFirstName());
+
+    }
+
+    private void setState(int state) {
+        _state = state;
+    }
+
+    public int getState() {
+        return _state;
     }
 }

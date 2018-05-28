@@ -11,4 +11,8 @@ public class CommonUtils {
     public static boolean validateUrl( final String url ) {
         return new RegexValidator( "(https?://.*)(:(\\d+))?\\/?(.*)" ).isValid( url );
     }
+
+    public static boolean validatePhoneNumber( final String number ) {
+        return new RegexValidator( "^\\+(?:[0-9] ?){6,14}[0-9]$" ).isValid( number );
+    }
 }
