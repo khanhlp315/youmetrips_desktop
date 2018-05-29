@@ -67,7 +67,7 @@
                                 </VBox>
                             </children>
                         </HBox>
-                        <Label fx:id="_lblBio" text="Bio.">
+                        <Label text="Bio.">
                             <VBox.margin>
                                 <Insets top="16.0"/>
                             </VBox.margin>
@@ -75,7 +75,7 @@
                                 <Font size="13.0"/>
                             </font>
                         </Label>
-                        <JFXButton fx:id="_btnEditBio" text="Edit" textFill="#1a535c">
+                        <JFXButton text="Edit" textFill="#1a535c">
                             <font>
                                 <Font name="System Bold" size="12.0"/>
                             </font>
@@ -116,7 +116,7 @@
                                 </Label>
                             </children>
                         </HBox>
-                        <JFXListView fx:id="_lvPlans" prefHeight="200.0" style="-fx-background-color: white;">
+                        <JFXListView prefHeight="200.0" style="-fx-background-color: white;">
                             <VBox.margin>
                                 <Insets top="10.0"/>
                             </VBox.margin>
@@ -126,7 +126,7 @@
                                 <Insets/>
                             </VBox.margin>
                             <children>
-                                <JFXButton fx:id="_btnCreatePlan" prefHeight="38.0" prefWidth="300.0"
+                                <JFXButton fx:id="_btnUpdate" prefHeight="38.0" prefWidth="300.0"
                                            ripplerFill="#ffffff42"
                                            style="-fx-background-color: #1a535c; -fx-background-radius: 100;"
                                            text="Have a new plan" textFill="WHITE" AnchorPane.leftAnchor="0.0"
@@ -135,14 +135,12 @@
                                         <Font size="14.0"/>
                                     </font>
                                 </JFXButton>
+                                <AnchorPane prefHeight="1.0" prefWidth="200.0" style="-fx-background-color: #f0f0f0;"
+                                            AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                            AnchorPane.topAnchor="50.0"/>
                             </children>
                         </AnchorPane>
-                        <AnchorPane prefHeight="1.0" prefWidth="200.0" style="-fx-background-color: #f0f0f0;">
-                            <VBox.margin>
-                                <Insets top="8.0"/>
-                            </VBox.margin>
-                        </AnchorPane>
-                        <JFXButton fx:id="_btnSeeAllPlans" text="See All Plans    &gt;" textFill="#787878">
+                        <JFXButton text="See All Plans    &gt;" textFill="#787878">
                             <VBox.margin>
                                 <Insets top="4.0"/>
                             </VBox.margin>
@@ -184,22 +182,11 @@
                                 </Label>
                             </children>
                         </HBox>
-                        <JFXListView fx:id="_lvFriends" orientation="HORIZONTAL" prefHeight="100.0"
-                                     style="-fx-background-color: white;">
+                        <JFXListView orientation="HORIZONTAL" prefHeight="100.0" style="-fx-background-color: white;">
                             <VBox.margin>
                                 <Insets top="10.0"/>
                             </VBox.margin>
                         </JFXListView>
-                        <AnchorPane prefHeight="1.0" prefWidth="200.0" style="-fx-background-color: #f0f0f0;">
-                            <VBox.margin>
-                                <Insets top="8.0"/>
-                            </VBox.margin>
-                        </AnchorPane>
-                        <JFXButton fx:id="_btnSeeAllFriends" text="See All Friends    &gt;" textFill="#787878">
-                            <font>
-                                <Font size="14.0"/>
-                            </font>
-                        </JFXButton>
                     </children>
                     <VBox.margin>
                         <Insets top="8.0"/>
