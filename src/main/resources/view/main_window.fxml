@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.*?>
 <GridPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="490.0" prefWidth="640.0"
-          xmlns="http://javafx.com/javafx/9.0.1">
+          xmlns="http://javafx.com/javafx/8.0.141">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="635.0" minWidth="10.0" prefWidth="230.0"/>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="523.0" minWidth="10.0" prefWidth="411.0"/>
@@ -14,5 +13,6 @@
     </rowConstraints>
     <children>
         <fx:include fx:id="_drawer" source="drawer.fxml"/>
+        <ScrollPane hbarPolicy="NEVER" stylesheets="@../style/customScrollPane.css" GridPane.columnIndex="1"/>
     </children>
 </GridPane>
