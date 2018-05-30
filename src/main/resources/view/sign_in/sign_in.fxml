@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="490.0" prefWidth="338.0"
-            xmlns="http://javafx.com/javafx/9.0.1">
+            xmlns="http://javafx.com/javafx/8.0.141">
     <children>
         <AnchorPane layoutX="59.0" layoutY="127.0" prefHeight="221.0" prefWidth="212.0"
                     style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, #cf9d3c, 10, 0, 3, 3);">
@@ -72,7 +72,7 @@
                 </JFXButton>
                 <ImageView layoutX="29.0" layoutY="20.0">
                     <image>
-                        <Image url="@../images/fb.png"/>
+                        <Image url="@../../images/fb.png"/>
                     </image>
                 </ImageView>
             </children>
