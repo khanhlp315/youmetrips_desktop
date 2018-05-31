@@ -52,7 +52,7 @@ public class SignUpConfirmationCodeScreenImpl extends FXMLScreen implements Sign
 
     @Override
     protected String fxmlPath() {
-        return "/sign_up_code.fxml";
+        return "/view/sign_in/sign_up_code.fxml";
     }
 
     @Override

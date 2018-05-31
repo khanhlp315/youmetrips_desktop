@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<JFXDrawer fx:id="_drawer" prefHeight="490.0" prefWidth="230.0" style="-fx-background-color: #002b2d;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <AnchorPane>
+            <children>
+                <JFXHamburger fx:id="_hamburger" prefHeight="30.0" prefWidth="40.0" stylesheets="@../style/hamburger.css" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding></JFXHamburger>
+                <VBox layoutY="52.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                    <children>
+                  <JFXTextField focusColor="WHITE" promptText="Search" unFocusColor="#e8e6e6">
+                     <VBox.margin>
+                        <Insets left="24.0" right="24.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="4.0" top="8.0" />
+                     </padding>
+                  </JFXTextField>
+                        <JFXButton alignment="BASELINE_LEFT" graphicTextGap="24.0" prefHeight="40.0" prefWidth="270.0" ripplerFill="#ffffff42" text="Home" textFill="#e8e6e6">
+                     <graphic>
+                        <FontAwesomeIconView fill="#e8e6e6" glyphName="HOME" size="18" />
+                     </graphic>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="24.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets left="24.0" />
+                     </padding></JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" graphicTextGap="24.0" prefHeight="40.0" prefWidth="270.0" ripplerFill="#ffffff42" text="Create Trekking Place" textFill="#e8e6e6">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <padding>
+                        <Insets left="24.0" />
+                     </padding>
+                     <graphic>
+                        <MaterialDesignIconView fill="#e8e6e6" glyphName="MAP_MARKER_PLUS" size="18" />
+                     </graphic>
+                  </JFXButton>
+                    </children>
+                </VBox>
+            <HBox alignment="CENTER_LEFT" layoutY="442.0" AnchorPane.bottomAnchor="8.0">
+               <children>
+                  <JFXButton alignment="BASELINE_LEFT" graphicTextGap="16.0" prefHeight="40.0" prefWidth="230.0" ripplerFill="#ffffff42" text="Firstname Lastname" textFill="#e8e6e6">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <padding>
+                        <Insets left="16.0" />
+                     </padding>
+                     <graphic>
+                        <Circle fill="DODGERBLUE" radius="16.0" stroke="BLACK" strokeType="INSIDE" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton text="." textFill="TRANSPARENT">
+                     <graphic>
+                        <MaterialDesignIconView fill="#e8e6e6" glyphName="SETTINGS" size="18" />
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </HBox>
+            </children>
+        </AnchorPane>
+    </children>
+</JFXDrawer>

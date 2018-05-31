@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" prefWidth="284.0" xmlns="http://javafx.com/javafx/8.0.141">
+    <children>
+        <Label text="How does the place looks like?" textFill="#828282"/>
+        <AnchorPane>
+            <children>
+                <JFXButton fx:id="_btnCreate" prefHeight="38.0" prefWidth="90.0" ripplerFill="#ffffff42"
+                           style="-fx-background-radius: 100; -fx-border-radius: 100; -fx-border-color: #1a535c;"
+                           text="ADD PHOTOS" textFill="#1a535c" AnchorPane.leftAnchor="8.0"
+                           AnchorPane.rightAnchor="8.0">
+                    <font>
+                        <Font size="10.0"/>
+                    </font>
+                </JFXButton>
+            </children>
+            <VBox.margin>
+                <Insets top="24.0"/>
+            </VBox.margin>
+        </AnchorPane>
+        <ListView orientation="HORIZONTAL" style="-fx-background-color: trasparent;">
+            <VBox.margin>
+                <Insets top="24.0"/>
+            </VBox.margin>
+        </ListView>
+    </children>
+</VBox>

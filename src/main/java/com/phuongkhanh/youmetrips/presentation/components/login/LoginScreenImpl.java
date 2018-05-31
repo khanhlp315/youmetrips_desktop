@@ -90,7 +90,7 @@ public class LoginScreenImpl extends FXMLScreen implements LoginScreen, Initiali
 
     @Override
     protected String fxmlPath() {
-        return "/sign_in.fxml";
+        return "/view/sign_in/sign_in.fxml";
     }
 
     @Override

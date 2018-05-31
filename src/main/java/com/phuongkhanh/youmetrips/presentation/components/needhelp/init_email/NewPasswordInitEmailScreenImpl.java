@@ -36,7 +36,7 @@ public class NewPasswordInitEmailScreenImpl extends FXMLScreen implements NewPas
 
     @Override
     protected String fxmlPath() {
-        return "/sign_in_help.fxml";
+        return "/view/sign_in/sign_in_help.fxml";
     }
 
     @Override

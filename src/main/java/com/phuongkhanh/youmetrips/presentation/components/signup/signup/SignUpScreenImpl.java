@@ -82,7 +82,7 @@ public class SignUpScreenImpl extends FXMLScreen implements SignUpScreen, Initia
 
     @Override
     protected String fxmlPath() {
-        return "/sign_up.fxml";
+        return "/view/sign_in/sign_up.fxml";
     }
 
     @Override
