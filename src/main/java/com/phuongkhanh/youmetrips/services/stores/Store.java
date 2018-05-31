@@ -1,8 +1,5 @@
 package com.phuongkhanh.youmetrips.services.stores;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +9,7 @@ import static com.phuongkhanh.youmetrips.services.api.utils.Constants.APP_DATA;
 /*
  * @author by LeVoGiaKhang
  */
-public class Store<T> {
+public class Store {
     private Map<String, StoreItem> _items;
 
     public Store() {
@@ -20,14 +17,14 @@ public class Store<T> {
     }
 
     @SuppressWarnings("unchecked")
-    public T getItem(String key) {
+    public Object getItem(String key) {
         return _items.containsKey(key)
-                ? (T) _items.get(key).getItem()
+                ?  _items.get(key).getItem()
                 : null;
     }
 
     @SuppressWarnings("unchecked")
-    public void setItem(String key, T value) {
+    public void setItem(String key, Object value) {
         if (_items.containsKey(key)) {
             _items.get(key).setItem(value);
         } else {
