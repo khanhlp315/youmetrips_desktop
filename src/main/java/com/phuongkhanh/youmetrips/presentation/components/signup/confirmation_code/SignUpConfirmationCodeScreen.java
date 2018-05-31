@@ -10,4 +10,5 @@ public interface SignUpConfirmationCodeScreen extends JFXScreen {
     void showSuccess(String message);
     void showLoading();
     void onNavigateToHome();
+    void onNavigateBackSignUpScreen();
 }

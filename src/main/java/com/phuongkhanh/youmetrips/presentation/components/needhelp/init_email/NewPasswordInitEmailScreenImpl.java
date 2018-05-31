@@ -85,4 +85,16 @@ public class NewPasswordInitEmailScreenImpl extends FXMLScreen implements NewPas
             _btnNextHelp.setVisible(true);
         }
     }
+
+    @FXML
+    public void requestToNavigateBack()
+    {
+        _presenter.requestToNavigateBack();
+    }
+
+    @Override
+    public void onNavigateBack()
+    {
+        navigateBack();
+    }
 }

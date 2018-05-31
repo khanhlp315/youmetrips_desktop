@@ -10,4 +10,5 @@ public interface NewPasswordScreen extends JFXScreen {
     void showSuccess(String message);
     void showLoading();
     void navigateToLoginScreen();
+    void onNavigateBack();
 }

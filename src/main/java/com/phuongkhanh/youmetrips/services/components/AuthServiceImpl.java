@@ -62,9 +62,9 @@ public class AuthServiceImpl implements LoginService,
     }
 
     @Override
-    public void signUp(String emailOrPhone, String password, String firstName, String lastName) {
+    public SignUp signUp(String emailOrPhone, String password, String firstName, String lastName) {
         try {
-            _api.signUp(emailOrPhone, password, firstName, lastName);
+            return _api.signUp(emailOrPhone, password, firstName, lastName);
         } catch (ApiCodedException exception) {
             if (exception.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.AlreadyUsedEmailOrPhoneNumberException")) {
                 throw new AlreadyUsedEmailOrPhoneNumberException();

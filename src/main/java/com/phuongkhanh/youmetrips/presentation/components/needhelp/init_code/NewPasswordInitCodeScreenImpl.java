@@ -87,4 +87,16 @@ public class NewPasswordInitCodeScreenImpl extends FXMLScreen implements NewPass
             _btnNextHelpCode.setVisible(true);
         }
     }
+
+    @FXML
+    public void requestToNavigateBack()
+    {
+        _presenter.requestToNavigateBack();
+    }
+
+    @Override
+    public void onNavigateBack()
+    {
+        navigateBack();
+    }
 }

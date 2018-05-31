@@ -72,4 +72,16 @@ public class NewPasswordScreenImpl extends FXMLScreen implements NewPasswordScre
     {
         navigate(LoginScreenImpl.class);
     }
+
+    @FXML
+    public void requestToNavigateBack()
+    {
+        _presenter.requestToNavigateBack();
+    }
+
+    @Override
+    public void onNavigateBack()
+    {
+        navigateBack();
+    }
 }

@@ -73,4 +73,9 @@ public class NewPasswordPresenter extends PresenterBase<NewPasswordScreen> {
         }
     }
 
+    public void requestToNavigateBack()
+    {
+        getView().onNavigateBack();
+    }
+
 }

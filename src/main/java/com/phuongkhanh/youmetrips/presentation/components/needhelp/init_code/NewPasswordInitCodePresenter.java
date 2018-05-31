@@ -101,4 +101,8 @@ public class NewPasswordInitCodePresenter extends PresenterBase<NewPasswordInitC
     }
     //endregion
 
+    public void requestToNavigateBack()
+    {
+        getView().onNavigateBack();
+    }
 }

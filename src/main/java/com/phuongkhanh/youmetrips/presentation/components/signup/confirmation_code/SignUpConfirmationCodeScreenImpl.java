@@ -72,9 +72,20 @@ public class SignUpConfirmationCodeScreenImpl extends FXMLScreen implements Sign
         _presenter.resendCode();
     }
 
+    @FXML
+    public void requestToNavigateBackSignUpScreen()
+    {
+        _presenter.requestToNavigateBackSignUpScreen();
+    }
+
     @Override
     public void onNavigateToHome()
     {
         showSuccess("This is home");
+    }
+
+    @Override
+    public void onNavigateBackSignUpScreen() {
+        navigateBack();
     }
 }

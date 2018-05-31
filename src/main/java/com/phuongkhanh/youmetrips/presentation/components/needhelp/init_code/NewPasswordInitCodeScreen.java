@@ -11,4 +11,5 @@ public interface NewPasswordInitCodeScreen extends JFXScreen {
     void showLoading();
     void navigateToInputNewPasswordScreen();
     void setLoading(Boolean isLoading);
+    void onNavigateBack();
 }

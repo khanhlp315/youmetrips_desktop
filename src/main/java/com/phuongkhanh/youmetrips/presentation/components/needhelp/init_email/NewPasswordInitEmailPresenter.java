@@ -58,4 +58,9 @@ public class NewPasswordInitEmailPresenter extends PresenterBase<NewPasswordInit
             getView().showError(e.getMessage());
         }
     }
+
+    public void requestToNavigateBack()
+    {
+        getView().onNavigateBack();
+    }
 }

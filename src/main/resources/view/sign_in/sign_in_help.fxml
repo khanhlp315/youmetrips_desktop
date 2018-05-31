@@ -54,6 +54,7 @@
                                     style="-fx-effect: dropshadow(gaussian, #f7f1e6, 10, 0, 0, 3); -fx-background-color: white;">
                             <children>
                                 <Label layoutX="14.0" layoutY="3.0" prefHeight="17.0" style="-fx-font-weight: bold;"
+                                       onMouseClicked="#requestToNavigateBack"
                                        text="&lt; FIND YOUR EMAIL" textFill="#ffc146">
                                     <font>
                                         <Font size="9.0"/>

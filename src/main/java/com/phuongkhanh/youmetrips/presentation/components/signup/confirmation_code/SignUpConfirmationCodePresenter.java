@@ -132,4 +132,8 @@ public class SignUpConfirmationCodePresenter extends PresenterBase<SignUpConfirm
         }
     }
     //endregion
+
+    void requestToNavigateBackSignUpScreen(){
+        getView().onNavigateBackSignUpScreen();
+    };
 }
