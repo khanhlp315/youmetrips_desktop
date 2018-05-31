@@ -62,9 +62,9 @@ public class AuthServiceImpl implements LoginService,
     }
 
     @Override
-    public void signUp(String emailOrPhone, String password, String firstName, String lastName) {
+    public SignUp signUp(String emailOrPhone, String password, String firstName, String lastName) {
         try {
-            _api.signUp(emailOrPhone, password, firstName, lastName);
+            return _api.signUp(emailOrPhone, password, firstName, lastName);
         } catch (ApiCodedException exception) {
             if (exception.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.AlreadyUsedEmailOrPhoneNumberException")) {
                 throw new AlreadyUsedEmailOrPhoneNumberException();
@@ -136,9 +136,9 @@ public class AuthServiceImpl implements LoginService,
     }
 
     @Override
-    public void sendConfirmationCode(String confirmationCode, int userId, String jwt) {
+    public Login sendConfirmationCode(String confirmationCode, int userId, String jwt) {
         try {
-            _api.sendConfirmationCode(confirmationCode, userId, jwt);
+            return _api.sendConfirmationCode(confirmationCode, userId, jwt);
         } catch (ApiCodedException exception) {
             if (exception.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidJwtException")) {
                 throw new InvalidJwtException();
@@ -164,9 +164,9 @@ public class AuthServiceImpl implements LoginService,
 
 
     @Override
-    public void sendEmailToResetPassword(String email) {
+    public int sendEmailToResetPassword(String email) {
         try {
-            _api.sendEmailToResetPassword(email);
+            return _api.sendEmailToResetPassword(email);
         } catch (ApiCodedException exception) {
             if (exception.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.NotFoundUserEmailException")) {
                 throw new NotFoundUserEmailException();
@@ -176,9 +176,9 @@ public class AuthServiceImpl implements LoginService,
     }
 
     @Override
-    public void sendCodeToResetPassword(String recoveryCode, int userId) {
+    public String sendCodeToResetPassword(String recoveryCode, int userId) {
         try {
-            _api.sendCodeToResetPassword(recoveryCode, userId);
+            return _api.sendCodeToResetPassword(recoveryCode, userId);
         } catch (ApiCodedException ex) {
             if (ex.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.WrongRecoveryCodeException")) {
                 throw new WrongRecoveryCodeException();
@@ -201,9 +201,9 @@ public class AuthServiceImpl implements LoginService,
 
 
     @Override
-    public void resetPassword(String newPassword, int userId, String resetPasswordToken) {
+    public Login resetPassword(String newPassword, int userId, String resetPasswordToken) {
         try {
-            _api.resetPassword(newPassword, userId, resetPasswordToken);
+            return _api.resetPassword(newPassword, userId, resetPasswordToken);
         } catch (ApiCodedException exception) {
             if (exception.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.ExpiredJwtException")) {
                 throw new ExpiredJwtException();

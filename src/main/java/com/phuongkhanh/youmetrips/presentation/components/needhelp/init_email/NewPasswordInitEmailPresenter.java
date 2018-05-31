@@ -2,6 +2,7 @@ package com.phuongkhanh.youmetrips.presentation.components.needhelp.init_email;
 
 import com.phuongkhanh.youmetrips.presentation.exceptions.NotFoundUserEmailException;
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
+import com.phuongkhanh.youmetrips.services.stores.AuthenticationStore;
 import javafx.concurrent.Task;
 
 /*
@@ -37,9 +38,11 @@ public class NewPasswordInitEmailPresenter extends PresenterBase<NewPasswordInit
         }).start();
     }
 
-    private void doSendEmailToResetPassword(String email)
-    {
-        _service.sendEmailToResetPassword(email);
+    private void doSendEmailToResetPassword(String email) {
+        int id = _service.sendEmailToResetPassword(email);
+
+        AuthenticationStore authenticationStore = _service.getAuthenticationStore();
+        authenticationStore.storeUserId(id);
     }
 
     private void onSendEmailToResetPasswordSuccess()

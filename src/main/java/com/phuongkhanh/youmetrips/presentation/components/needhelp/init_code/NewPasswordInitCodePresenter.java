@@ -46,7 +46,8 @@ public class NewPasswordInitCodePresenter extends PresenterBase<NewPasswordInitC
 
     private void doSendCode(String recoveryCode) {
         AuthenticationStore authenticationStore = _service.getAuthenticationStore();
-        _service.sendCodeToResetPassword(recoveryCode, authenticationStore.getUserId());
+        String token = _service.sendCodeToResetPassword(recoveryCode, authenticationStore.getUserId());
+        authenticationStore.storeResetPasswordToken(token);
     }
 
     private void onSendCodeSuccess() {

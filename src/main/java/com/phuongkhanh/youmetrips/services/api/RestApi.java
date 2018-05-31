@@ -316,11 +316,11 @@ public class RestApi {
         throw new ApiServerException(error);
     }
 
-    public void sendConfirmationCode(String confirmationCode, int userId, String token) {
+    public Login sendConfirmationCode(String confirmationCode, int userId, String token) {
         Response response = executePost("users/" + userId + "/confirmnewuser", ImmutableMap.of(
                 "confirmationCode", confirmationCode), token);
         validateResponse(response);
-        parseResponseJsonBody(response, Login.class);
+        return parseResponseJsonBody(response, Login.class);
     }
 
     public void resendConfirmationCode(int userId, String token) {
@@ -329,22 +329,26 @@ public class RestApi {
         parseResponseJsonBody(response, Login.class);
     }
 
-    public void sendEmailToResetPassword(String email) {
+    public int sendEmailToResetPassword(String email) {
         Response response = executePost("requestrecoverycode", ImmutableMap.of(
                 "emailOrPhoneNumber", email));
         validateResponse(response);
+        return parseResponseJsonBodyAsInt(response, "userId");
     }
 
-    public void sendCodeToResetPassword(String recoveryCode, int userId) {
+    public String sendCodeToResetPassword(String recoveryCode, int userId) {
         Response response = executePost("users/" + userId + "/requestresetpasswordtoken", ImmutableMap.of(
                 "recoveryCode", recoveryCode));
         validateResponse(response);
+        return parseResponseJsonBodyAsString(response, "resetPasswordToken");
     }
 
-    public void resetPassword(String newPassword, int userId, String token) {
+    public Login resetPassword(String newPassword, int userId, String token) {
         Response response = executePost("users/" + userId + "/resetpassword", ImmutableMap.of(
                 "newPassword", newPassword), token);
         validateResponse(response);
+        return parseResponseJsonBody(response, Login.class);
+
     }
 
     public void resendCodeToResetPassword() {
