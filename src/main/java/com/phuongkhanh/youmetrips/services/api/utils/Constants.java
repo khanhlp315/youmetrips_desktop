@@ -11,5 +11,7 @@ public final class Constants {
             APPLICATION_JSON,
             CHARSET_UTF8 ) );
     public static final MediaType MEDIA_TYPE_IMAGE            = MediaType.parse( String.format("%s", IMAGE));
+
+    public static final String    APP_DATA                    = "APPDATA";
 }
 

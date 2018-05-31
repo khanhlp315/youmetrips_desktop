@@ -463,7 +463,7 @@ public class RestApi {
                 _store.getJwt()
         );
         validateResponse(response);
-        return parseResponseJsonBody(response, Place.class).getId();
+        return parseResponseJsonBody(response, PlaceDetails.class).getId();
     }
 
     public void sendPlaceId(String name, String coverImageUrl)
@@ -482,7 +482,7 @@ public class RestApi {
                 _store.getJwt()
         );
         validateResponse(response);
-        parseResponseJsonBody(response, Place.class);
+        parseResponseJsonBody(response, PlaceDetails.class);
     }
 
     /**
@@ -496,7 +496,7 @@ public class RestApi {
                 _store.getJwt()
         );
         validateResponse(response);
-        return parseResponseJsonBodyAsList(response, "places", Place.class);
+        return parseResponseJsonBodyAsList(response, "places", PlaceDetails.class);
     }
 
     /**

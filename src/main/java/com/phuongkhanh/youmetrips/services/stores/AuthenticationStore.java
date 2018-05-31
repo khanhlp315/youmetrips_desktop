@@ -1,5 +1,7 @@
 package com.phuongkhanh.youmetrips.services.stores;
 
+import com.phuongkhanh.youmetrips.services.api.models.Profile;
+
 /*
  * @author by LeVoGiaKhang
  */
@@ -10,17 +12,40 @@ public class AuthenticationStore
     private static final String CONFIRM_TOKEN = "CONFIRM_TOKEN";
     private static final String RESEND_CONFIRMATION_CODE_TOKEN = "RESEND_CONFIRMATION_CODE_TOKEN";
     private static final String RESET_PASSWORD_TOKEN = "RESET_PASSWORD_TOKEN";
+    private static final String PROFILE = "PROFILE";
 
     private Store _store;
 
+    @SuppressWarnings("unchecked")
     public AuthenticationStore(){
         _store = new Store();
+        _store.setItem(USER_ID, null);
+        _store.setItem(JWT, null);
+        _store.setItem(CONFIRM_TOKEN, null);
+        _store.setItem(RESEND_CONFIRMATION_CODE_TOKEN, null);
+        _store.setItem(RESET_PASSWORD_TOKEN, null);
+        _store.setItem(PROFILE, null);
+    }
+
+    @SuppressWarnings("unchecked")
+    void clearLoginData()
+    {
+        _store.setItem(USER_ID, null);
+        _store.setItem(JWT, null);
+        _store.setItem(PROFILE, null);
+        _store.save("authentication.txt");
     }
 
     @SuppressWarnings("unchecked")
     public void storeLoginData(int userId, String jwt){
         _store.setItem(USER_ID, userId);
         _store.setItem(JWT, jwt);
+        _store.save("authentication.txt");
+    }
+
+    public void load()
+    {
+        _store.load("authentication.txt");
     }
 
     /**
@@ -83,6 +108,11 @@ public class AuthenticationStore
         return (String)_store.getItem(RESET_PASSWORD_TOKEN);
     }
 
+    public Profile getProfile()
+    {
+        return (Profile)_store.getItem(PROFILE);
+    }
+
     public void addUserIdListener(StoreItem.Wrapper value){
     _store.addListener(USER_ID, value);
 }
@@ -98,4 +128,5 @@ public class AuthenticationStore
     public void removeJwtListener(StoreItem.Wrapper value){
     _store.removeListener(JWT, value);
 }
+
 }
