@@ -3,25 +3,27 @@ package com.phuongkhanh.youmetrips.services.api;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.phuongkhanh.youmetrips.services.api.exceptions.*;
 import com.phuongkhanh.youmetrips.services.api.models.*;
 import com.phuongkhanh.youmetrips.services.stores.AuthenticationStore;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
+import okhttp3.*;
+import org.apache.commons.httpclient.methods.multipart.MultipartRequestEntity;
 
 import javax.inject.Inject;
+import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import static com.phuongkhanh.youmetrips.services.api.utils.Constants.APPLICATION_JSON;
-import static com.phuongkhanh.youmetrips.services.api.utils.Constants.CONTENT_TYPE;
-import static com.phuongkhanh.youmetrips.services.api.utils.Constants.MEDIA_TYPE_APPLICATION_JSON;
+import static com.phuongkhanh.youmetrips.services.api.utils.Constants.*;
 import static java.util.Objects.requireNonNull;
 
 public class RestApi {
@@ -145,6 +147,26 @@ public class RestApi {
         }
     }
 
+    private Response executePostFile(final String path, final File file, final String authorization)
+    {
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("file", file.getName(), RequestBody.create(MEDIA_TYPE_IMAGE, file))
+                .build();
+
+        Request request = new Request.Builder()
+                .url(getUrl(path))
+                .addHeader("Authorization", "Bearer " + authorization)
+                .post(requestBody)
+                .build();
+
+        try {
+            return _client.get().newCall(request).execute();
+        } catch (IOException e) {
+            throw new CouldNotConnectApiServerException();
+        }
+    }
+
     private Response executeDelete(final String path, String authorization) {
         Request request = new Request.Builder()
                 .url(getUrl(path))
@@ -167,6 +189,57 @@ public class RestApi {
         try {
             String json = requireNonNull(response.body()).string();
             return requireNonNull(_gson.get().fromJson(json, clazz));
+        } catch (Throwable e) {
+            throw new CouldNotParseApiResponseBodyException();
+        }
+    }
+
+    private int parseResponseJsonBodyAsInt(final Response response, String field )
+    {
+        if (!APPLICATION_JSON.equals(response.header(CONTENT_TYPE))) {
+            throw new UnknownApiResponseContentTypeException();
+        }
+
+        try {
+            String json = requireNonNull(response.body()).string();
+            JsonObject jsonObject = requireNonNull(_gson.get().fromJson(json, JsonObject.class));
+            return jsonObject.get(field).getAsInt();
+        } catch (Throwable e) {
+            throw new CouldNotParseApiResponseBodyException();
+        }
+    }
+
+    private String parseResponseJsonBodyAsString(final Response response, String field )
+    {
+        if (!APPLICATION_JSON.equals(response.header(CONTENT_TYPE))) {
+            throw new UnknownApiResponseContentTypeException();
+        }
+
+        try {
+            String json = requireNonNull(response.body()).string();
+            JsonObject jsonObject = requireNonNull(_gson.get().fromJson(json, JsonObject.class));
+            return jsonObject.get(field).getAsString();
+        } catch (Throwable e) {
+            throw new CouldNotParseApiResponseBodyException();
+        }
+    }
+
+    private <T> List<T> parseResponseJsonBodyAsList(final Response response, String field, Class<T> clazz )
+    {
+        if (!APPLICATION_JSON.equals(response.header(CONTENT_TYPE))) {
+            throw new UnknownApiResponseContentTypeException();
+        }
+
+        try {
+            String json = requireNonNull(response.body()).string();
+            JsonObject jsonObject = requireNonNull(_gson.get().fromJson(json, JsonObject.class));
+            JsonArray jsonArray = jsonObject.get(field).getAsJsonArray();
+            List<T> ret = new ArrayList<>();
+            for(JsonElement element: jsonArray)
+            {
+                ret.add(_gson.get().fromJson(element, clazz));
+            }
+            return ret;
         } catch (Throwable e) {
             throw new CouldNotParseApiResponseBodyException();
         }
@@ -297,7 +370,7 @@ public class RestApi {
                 "users/" + _store.getUserId() + "/friendrequests",
                 ImmutableMap.of(
                         "toUserId", String.valueOf(_store.getUserId())),
-                "Unknown Authorization"
+                _store.getJwt()
         );
         validateResponse(response);
 
@@ -317,7 +390,7 @@ public class RestApi {
     public void getFriendRequest() {
         Response response = executeGet(
                 "user/" + _store.getUserId() + "/friendrequests",
-                "Unknown Authorization"
+                _store.getJwt()
         );
         validateResponse(response);
 
@@ -337,7 +410,7 @@ public class RestApi {
                         "photoUrl", photoUrl,
                         "caption", caption
                 ),
-                "Unknown Authorization"
+                _store.getJwt()
         );
         validateResponse(response);
     }
@@ -356,7 +429,7 @@ public class RestApi {
     {
         Response response = executeGet(
                 "users/" + _store.getUserId() + "/places/" + "placeID" + "/review",
-                "Unknown Authorization"
+                _store.getJwt()
         );
         validateResponse(response);
 
@@ -387,7 +460,7 @@ public class RestApi {
         Response response = executePost(
                 "users/" + _store.getUserId() + "/places",
                 map,
-                "Unknown Authorization"
+                _store.getJwt()
         );
         validateResponse(response);
         return parseResponseJsonBody(response, Place.class).getId();
@@ -406,7 +479,7 @@ public class RestApi {
     {
         Response response = executeGet(
                 "users/" + _store.getUserId() + "/places/" + placeId,
-                "authorization"
+                _store.getJwt()
         );
         validateResponse(response);
         parseResponseJsonBody(response, Place.class);
@@ -420,14 +493,10 @@ public class RestApi {
     {
         Response response = executeGet(
                 "users/" + _store.getUserId() + "/places/all",
-                "authorization"
+                _store.getJwt()
         );
         validateResponse(response);
-        class Places
-        {
-            private List places = null;
-        }
-        return parseResponseJsonBody(response, Places.class).places;
+        return parseResponseJsonBodyAsList(response, "places", Place.class);
     }
 
     /**
@@ -440,7 +509,7 @@ public class RestApi {
         Response response = executePost(
                 "users/" + _store.getUserId() + "/trekkingplans/" + trekkingPlanId + "/comments",
                 ImmutableMap.of("comment", comment),
-                "authorization"
+                _store.getJwt()
         );
         validateResponse(response);
     }
@@ -453,7 +522,7 @@ public class RestApi {
     {
         Response response = executeGet(
                 "users/" + _store.getUserId() + "/trekkingplans/" + trekkingPlanId + "/comments",
-                "authorization"
+                _store.getJwt()
         );
         validateResponse(response);
         // dm thang cho Phuc, how to parse :"))
@@ -466,14 +535,10 @@ public class RestApi {
     {
         Response response = executeGet(
                 "users/" + _store.getUserId() + "/relevanttrekkingplans",
-                "authorization"
+                _store.getJwt()
         );
         validateResponse(response);
-        class relevantPlans
-        {
-            public List relevantPlans;
-        }
-        parseResponseJsonBody(response, relevantPlans.class);
+        parseResponseJsonBodyAsList(response, "relevantPlans", RelevantPlan.class);
     }
 
     /**
@@ -508,13 +573,9 @@ public class RestApi {
         Response response = executePost(
                 "users/" + _store.getUserId() + "trekkingplans",
                 map,
-                "authorization"
+                _store.getJwt()
         );
-        class trekkingplans
-        {
-            public int id;
-        }
-        return parseResponseJsonBody(response, trekkingplans.class).id;
+        return parseResponseJsonBodyAsInt(response, "id");
     }
 
     /**
@@ -525,7 +586,7 @@ public class RestApi {
     {
         Response response = executeGet(
                 "users/" + _store.getUserId() + "/profile",
-                "authorization"
+                _store.getJwt()
         );
         validateResponse(response);
         return parseResponseJsonBody(response, Profile.class);
@@ -574,14 +635,9 @@ public class RestApi {
         Response response = executePut(
                 "users/" + _store.getUserId() + "/profile",
                 map,
-                "authorization"
+                _store.getJwt()
         );
         validateResponse(response);
-    }
-
-    public void uploadFile()
-    {
-        //TODO: uploadFile - multipart
     }
 
     /**
@@ -629,7 +685,7 @@ public class RestApi {
         Response response = executePut(
                 "users/" + _store.getUserId() + "/trekkingplans/" + trekkingplanid,
                 map,
-                "authorization"
+                _store.getJwt()
         );
         validateResponse(response);
     }
@@ -648,7 +704,7 @@ public class RestApi {
                         "name", name,
                         "coverImageUrl", coverImageUrl
                 ),
-                "authorization"
+                _store.getJwt()
         );
         validateResponse(response);
     }
@@ -662,7 +718,7 @@ public class RestApi {
         Response response = executePut(
                 "users/" + _store.getUserId() + "/places/" + placeId + "/like",
                 ImmutableMap.of(),
-                "authorization"
+                _store.getJwt()
         );
         validateResponse(response);
     }
@@ -676,7 +732,7 @@ public class RestApi {
         Response response = executePut(
                 "users/" + _store.getUserId() + "/places/" + placeId + "/dislike",
                 ImmutableMap.of(),
-                "authorization"
+                _store.getJwt()
         );
         validateResponse(response);
     }
@@ -695,7 +751,7 @@ public class RestApi {
                         "rate", String.valueOf(rate),
                         "message", message
                 ),
-                "authorization"
+                _store.getJwt()
         );
         validateResponse(response);
     }
@@ -713,7 +769,7 @@ public class RestApi {
                 ImmutableMap.of(
                         "caption", caption
                 ),
-                "authorization"
+                _store.getJwt()
         );
         validateResponse(response);
     }
@@ -732,7 +788,7 @@ public class RestApi {
                         "tag", tag,
                         "type", type
                 ),
-                "authorization"
+                _store.getJwt()
         );
         validateResponse(response);
     }
@@ -746,7 +802,7 @@ public class RestApi {
         Response response = executePut(
                 "users/" + _store.getUserId() + "/friendrequests/" + fromUserId + "/accept",
                 ImmutableMap.of(),
-                "authorization"
+                _store.getJwt()
         );
         validateResponse(response);
     }
@@ -760,7 +816,7 @@ public class RestApi {
         Response response = executePut(
                 "users/" + _store.getUserId() + "/friendrequests/" + fromUserId + "/decline",
                 ImmutableMap.of(),
-                "authorization"
+                _store.getJwt()
         );
         validateResponse(response);
     }
@@ -773,7 +829,7 @@ public class RestApi {
     {
         Response response = executeDelete(
                 "users/" + _store.getUserId() + "/trekkingplans/" + trekkingPlanId,
-                "authorization"
+                _store.getJwt()
         );
         validateResponse(response);
     }
@@ -787,7 +843,7 @@ public class RestApi {
     {
         Response response = executeDelete(
                 "users/" + _store.getUserId() + "/places/" + placeId + "/photos/" + photoId,
-                "authorization"
+                _store.getJwt()
         );
         validateResponse(response);
     }
@@ -800,7 +856,7 @@ public class RestApi {
     {
         Response response = executeDelete(
                 "users/" + _store.getUserId() + "/friendrequests/" + toUserId,
-                "authorization"
+                _store.getJwt()
         );
         validateResponse(response);
     }
@@ -814,9 +870,21 @@ public class RestApi {
         Response response = executePut(
                 "users/" + _store.getUserId() + "/friendrequests/" + fromUserId + "/decline",
                 ImmutableMap.of(),
-                "authorization"
+                _store.getJwt()
         );
         validateResponse(response);
     }
+
+    public String uploadFile(File file)
+    {
+        Response response = executePostFile(
+                "users/" + _store.getUserId() + "/uploadfile",
+                file,
+                _store.getJwt()
+        );
+        validateResponse(response);
+        return parseResponseJsonBodyAsString(response, "url");
+    }
 }
+
 
