@@ -10,7 +10,10 @@ import com.phuongkhanh.youmetrips.presentation.exceptions.*;
 import com.phuongkhanh.youmetrips.presentation.models.User;
 import com.phuongkhanh.youmetrips.services.api.RestApi;
 import com.phuongkhanh.youmetrips.services.api.exceptions.*;
+import com.phuongkhanh.youmetrips.services.api.models.ApiError;
 import com.phuongkhanh.youmetrips.services.api.models.Login;
+import com.phuongkhanh.youmetrips.services.api.models.SignUp;
+import com.phuongkhanh.youmetrips.services.stores.AuthenticationStore;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
@@ -22,6 +25,7 @@ import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Map;
 
 public class AuthServiceImpl implements LoginService,
         SignUpService,
@@ -30,28 +34,28 @@ public class AuthServiceImpl implements LoginService,
         NewPasswordInitCodeService,
         NewPasswordService {
     private final RestApi _api;
+    private final AuthenticationStore _authenticationStore;
 
-
-    public AuthServiceImpl(final RestApi api) {
+    public AuthServiceImpl(final RestApi api, final AuthenticationStore authenticationStore) {
         _api = api;
+        _authenticationStore = authenticationStore;
     }
 
     @Override
-    public User login(String email, String password) {
+    public Login login(String email, String password) {
         try {
-            Login result = _api.login(email, password);
-
-            User user = new User();
-            user.setId(result.getUserId());
-            user.setUserFirstName(result.getUserFirstName());
-            user.setUserLastName(result.getUserLastName());
-            return user;
+            return _api.login(email, password);
         } catch (ApiCodedException exception) {
             if (exception.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.WrongEmailOrPasswordException")) {
                 throw new WrongEmailOrPasswordException();
             }
             if (exception.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.UserNotConfirmedException")) {
-                throw new UserNotConfirmedException();
+                SignUp signUp = new SignUp();
+                Map<String, Object> data = exception.getError().getData();
+                signUp.setUserId(((Double)data.get("userId")).intValue());
+                signUp.setConfirmToken((String)data.get("confirmToken"));
+                signUp.setResendConfirmationCodeToken((String)data.get("resendConfirmationCodeToken"));
+                throw new UserNotConfirmedException(signUp);
             }
             throw exception;
         }
@@ -82,15 +86,9 @@ public class AuthServiceImpl implements LoginService,
     }
 
     @Override
-    public User loginWithFB(String accessToken) {
+    public Login loginWithFB(String accessToken) {
         try {
-            Login result = _api.loginWithFB(accessToken);
-
-            User user = new User();
-            user.setId(result.getUserId());
-            user.setUserLastName(result.getUserLastName());
-            user.setUserFirstName(result.getUserFirstName());
-            return user;
+            return _api.loginWithFB(accessToken);
         } catch (ApiCodedException exception) {
             if (exception.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidFacebookAccessTokenException")) {
                 throw new InvalidFacebookAccessTokenException();
@@ -133,9 +131,14 @@ public class AuthServiceImpl implements LoginService,
     }
 
     @Override
-    public void sendConfirmationCode(String confirmationCode) {
+    public AuthenticationStore getAuthenticationStore() {
+        return _authenticationStore;
+    }
+
+    @Override
+    public void sendConfirmationCode(String confirmationCode, int userId, String jwt) {
         try {
-            _api.sendConfirmationCode(confirmationCode);
+            _api.sendConfirmationCode(confirmationCode, userId, jwt);
         } catch (ApiCodedException exception) {
             if (exception.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidJwtException")) {
                 throw new InvalidJwtException();
@@ -148,9 +151,9 @@ public class AuthServiceImpl implements LoginService,
     }
 
     @Override
-    public void resendConfirmationCode() {
+    public void resendConfirmationCode(int userId, String token) {
         try {
-            _api.resendConfirmationCOde();
+            _api.resendConfirmationCode(userId, token);
         } catch (ApiCodedException exception) {
             if (exception.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidJwtException")) {
                 throw new InvalidJwtException();
@@ -173,9 +176,9 @@ public class AuthServiceImpl implements LoginService,
     }
 
     @Override
-    public void sendCodeToResetPassword(String recoveryCode) {
+    public void sendCodeToResetPassword(String recoveryCode, int userId) {
         try {
-            _api.sendCodeToResetPassword(recoveryCode);
+            _api.sendCodeToResetPassword(recoveryCode, userId);
         } catch (ApiCodedException ex) {
             if (ex.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.WrongRecoveryCodeException")) {
                 throw new WrongRecoveryCodeException();
@@ -198,9 +201,9 @@ public class AuthServiceImpl implements LoginService,
 
 
     @Override
-    public void sendPasswordToResetPassword(String newPassword) {
+    public void resetPassword(String newPassword, int userId, String resetPasswordToken) {
         try {
-            _api.sendPasswordToResetPassword(newPassword);
+            _api.resetPassword(newPassword, userId, resetPasswordToken);
         } catch (ApiCodedException exception) {
             if (exception.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.ExpiredJwtException")) {
                 throw new ExpiredJwtException();

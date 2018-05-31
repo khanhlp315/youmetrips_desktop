@@ -2,20 +2,17 @@ package com.phuongkhanh.youmetrips.services.api.models;
 
 import java.util.List;
 
-;
-;
-
 public class Profile {
      private int userId;
      private String firstName;
      private String lastName;
      private String avatar;
      private String bio;
-     private eNationality nationality;
+     private String nationality;
      private String nationalityName;
      private String nationalityFlagUrl;
      private String birthday;
-     private eGender gender;
+     private String gender;
      private String occupation;
      private String address;
      private String email;
@@ -63,11 +60,11 @@ public class Profile {
         this.bio = bio;
     }
 
-    public eNationality getNationality() {
+    public String getNationality() {
         return nationality;
     }
 
-    public void setNationality(eNationality nationality) {
+    public void setNationality(String nationality) {
         this.nationality = nationality;
     }
 
@@ -95,11 +92,11 @@ public class Profile {
         this.birthday = birthday;
     }
 
-    public eGender getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(eGender gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 

@@ -27,6 +27,7 @@ import com.phuongkhanh.youmetrips.presentation.components.signup.signup.SignUpSe
 import com.phuongkhanh.youmetrips.presentation.windows.LoginWindow;
 import com.phuongkhanh.youmetrips.services.api.RestApi;
 import com.phuongkhanh.youmetrips.services.components.AuthServiceImpl;
+import com.phuongkhanh.youmetrips.services.stores.AuthenticationStore;
 import dagger.Component;
 import dagger.Module;
 import dagger.Provides;
@@ -117,44 +118,48 @@ public interface ApplicationContext {
     @Module
     static class ServiceModule{
         static RestApi _restApi = new RestApi();
+        static AuthenticationStore _authenticationStore = new AuthenticationStore();
 
         @Provides
         static LoginService loginService(  ) {
-            return new AuthServiceImpl(restApi());
+            return new AuthServiceImpl(restApi(), authenticationStore());
         }
 
         @Provides
         static SignUpService signUpService(){
-            return new AuthServiceImpl(restApi());
+            return new AuthServiceImpl(restApi(), authenticationStore());
         }
 
         @Provides
         static SignUpConfirmationCodeService signUpReceiveCodeService()
         {
-            return new AuthServiceImpl(restApi());
+            return new AuthServiceImpl(restApi(), authenticationStore());
         }
 
         @Provides
         static NewPasswordInitEmailService newPasswordInitEmailService()
         {
-            return new AuthServiceImpl(restApi());
+            return new AuthServiceImpl(restApi(), authenticationStore());
         }
 
         @Provides
         static NewPasswordInitCodeService newPasswordInitCodeService()
         {
-            return new AuthServiceImpl(restApi());
+            return new AuthServiceImpl(restApi(), authenticationStore());
         }
 
         @Provides
         static NewPasswordService newPasswordService()
         {
-            return new AuthServiceImpl(restApi());
+            return new AuthServiceImpl(restApi(), authenticationStore());
         }
 
         @Provides
         static RestApi restApi() {
             return _restApi;
         }
+
+        @Provides
+        static AuthenticationStore authenticationStore() { return _authenticationStore; }
     }
 }

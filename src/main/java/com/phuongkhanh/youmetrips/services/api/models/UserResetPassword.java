@@ -7,9 +7,7 @@ public class UserResetPassword {
     private int userId;
     private String resetPasswordToken;
 
-    public UserResetPassword()
-    {
-
+    public UserResetPassword() {
     }
 
     public void setUserId(int id)

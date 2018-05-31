@@ -4,6 +4,8 @@ import com.jfoenix.controls.JFXButton;
 import com.phuongkhanh.youmetrips.presentation.exceptions.*;
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
 import com.phuongkhanh.youmetrips.presentation.models.User;
+import com.phuongkhanh.youmetrips.services.api.models.SignUp;
+import com.phuongkhanh.youmetrips.services.stores.AuthenticationStore;
 import javafx.concurrent.Task;
 import javafx.scene.control.ProgressIndicator;
 
@@ -80,7 +82,9 @@ public class SignUpPresenter extends PresenterBase<SignUpScreen> {
             throw new EmptyFieldException();
         }
 
-        _service.signUp(emailOrPhone, password, firstName, lastName);
+        SignUp signUp = _service.signUp(emailOrPhone, password, firstName, lastName);
+        AuthenticationStore authenticationStore = _service.getAuthenticationStore();
+        authenticationStore.storeSignupData(signUp.getUserId(), signUp.getConfirmToken(), signUp.getResendConfirmationCodeToken());
     }
 
     private void onSignUpSuccess() {

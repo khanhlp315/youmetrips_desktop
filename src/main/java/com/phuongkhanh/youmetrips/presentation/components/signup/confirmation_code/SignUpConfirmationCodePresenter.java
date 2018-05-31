@@ -3,6 +3,7 @@ package com.phuongkhanh.youmetrips.presentation.components.signup.confirmation_c
 import com.phuongkhanh.youmetrips.presentation.exceptions.InvalidJwtException;
 import com.phuongkhanh.youmetrips.presentation.exceptions.WrongConfirmationCodeException;
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
+import com.phuongkhanh.youmetrips.services.stores.AuthenticationStore;
 import javafx.concurrent.Task;
 
 import javax.inject.Inject;
@@ -49,7 +50,8 @@ public class SignUpConfirmationCodePresenter extends PresenterBase<SignUpConfirm
 
     private void doSendConfirmationCode(String confirmationCode)
     {
-        _service.sendConfirmationCode(confirmationCode);
+        AuthenticationStore authenticationStore = _service.getAuthenticationStore();
+        _service.sendConfirmationCode(confirmationCode, authenticationStore.getUserId(), authenticationStore.getConfirmToken());
     }
 
     private void onSendConfirmationCodeSuccess()
@@ -110,7 +112,9 @@ public class SignUpConfirmationCodePresenter extends PresenterBase<SignUpConfirm
 
     private void doResendConfirmationCode()
     {
-        _service.resendConfirmationCode();
+        AuthenticationStore authenticationStore = _service.getAuthenticationStore();
+
+        _service.resendConfirmationCode(authenticationStore.getUserId(), authenticationStore.getResendConfirmationCodeToken());
     }
 
     private void onResendConfirmationCodeSuccess() {

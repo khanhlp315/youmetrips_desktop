@@ -3,6 +3,9 @@ package com.phuongkhanh.youmetrips.presentation.components.login;
 import com.phuongkhanh.youmetrips.presentation.exceptions.*;
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
 import com.phuongkhanh.youmetrips.presentation.models.User;
+import com.phuongkhanh.youmetrips.services.api.models.Login;
+import com.phuongkhanh.youmetrips.services.api.models.SignUp;
+import com.phuongkhanh.youmetrips.services.stores.AuthenticationStore;
 import javafx.concurrent.Task;
 import org.openqa.selenium.WebDriverException;
 
@@ -13,7 +16,6 @@ import static com.phuongkhanh.youmetrips.utils.CommonUtils.validatePhoneNumber;
 
 public class LoginPresenter extends PresenterBase<LoginScreen> {
     private final LoginService _service;
-    private User _currentUser;
 
     /*
      * login                <-> state = 1;
@@ -95,19 +97,26 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
             throw new InvalidPasswordException();
         }
 
-        _currentUser = _service.login(email, password);
+        Login login = _service.login(email, password);
+
+        AuthenticationStore authenticationStore = _service.getAuthenticationStore();
+        authenticationStore.storeLoginData(login.getUserId(), login.getJwt());
     }
 
     private void doLoginWithFB(String accessToken) {
         // check invalid accessToken
         // can not connect to FB server exception
-        _currentUser = _service.loginWithFB(accessToken);
+        Login login = _service.loginWithFB(accessToken);
+        AuthenticationStore authenticationStore = _service.getAuthenticationStore();
+        authenticationStore.storeLoginData(login.getUserId(), login.getJwt());
+
     }
 
     private void onLoginFailed(final Throwable ex) {
         if (ex instanceof InvalidEmailException) {
             getView().showError(ex.getMessage());
         } else if (ex instanceof UserNotConfirmedException) {
+
             getView().showError("Please confirm your email");
             getView().navigateToSignUpConfirmationCodeScreen();
         } else if (ex instanceof WrongEmailOrPasswordException) {
@@ -120,7 +129,6 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
     }
 
     private void onLoginSuccess() {
-        getView().showSuccess("Hello " + _currentUser.getUserLastName() + " " + _currentUser.getUserFirstName());
 
     }
 

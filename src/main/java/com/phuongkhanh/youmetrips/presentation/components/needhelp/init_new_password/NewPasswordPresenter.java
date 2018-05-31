@@ -4,6 +4,7 @@ import com.phuongkhanh.youmetrips.presentation.exceptions.ConfirmPasswordNotMatc
 import com.phuongkhanh.youmetrips.presentation.exceptions.ExpiredJwtException;
 import com.phuongkhanh.youmetrips.presentation.exceptions.InvalidPasswordException;
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
+import com.phuongkhanh.youmetrips.services.stores.AuthenticationStore;
 import javafx.concurrent.Task;
 
 /*
@@ -41,8 +42,9 @@ public class NewPasswordPresenter extends PresenterBase<NewPasswordScreen> {
         if (!newPassword.equals(confirmPassword)) {
             throw new ConfirmPasswordNotMatchException();
         }
+        AuthenticationStore authenticationStore = _service.getAuthenticationStore();
 
-        _service.sendPasswordToResetPassword(newPassword);
+        _service.resetPassword(newPassword, authenticationStore.getUserId(), authenticationStore.getResetPasswordToken());
     }
 
     private void onSendNewPasswordSuccess()

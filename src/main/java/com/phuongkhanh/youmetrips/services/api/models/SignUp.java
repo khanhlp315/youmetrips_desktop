@@ -3,13 +3,13 @@ package com.phuongkhanh.youmetrips.services.api.models;
 /*
  * @author by LeVoGiaKhang
  */
-public class NewUser {
+public class SignUp {
 
     private int userId;
     private String confirmToken;
     private String resendConfirmationCodeToken;
 
-    public NewUser() {
+    public SignUp() {
     }
 
     public int getUserId() {

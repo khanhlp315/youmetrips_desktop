@@ -2,7 +2,7 @@ package com.phuongkhanh.youmetrips.services.api.models;
 
 public class Login {
     private int userId;
-    private String accessToken;
+    private String jwt;
     private String userFirstName;
     private String userLastName;
 
@@ -14,12 +14,12 @@ public class Login {
         this.userId = userId;
     }
 
-    public String getAccessToken() {
-        return accessToken;
+    public String getJwt() {
+        return jwt;
     }
 
-    public void setAccessToken(String accessToken) {
-        this.accessToken = accessToken;
+    public void setJwt(String accessToken) {
+        this.jwt = accessToken;
     }
 
     public String getUserLastName() {return userLastName;}
