@@ -6,6 +6,7 @@ public class ApiError {
     private String _errorCode;
     private Map<String, String> _userMessageDict;
     private Map<String, String> _moreInformationDict;
+    private Map<String, Object> _data;
 
     public String getErrorCode() {
         return _errorCode;
@@ -31,4 +32,11 @@ public class ApiError {
         _moreInformationDict = moreInformationDict;
     }
 
+    public Map<String, Object> getData() {
+        return _data;
+    }
+
+    public void setData(Map<String, Object> data) {
+        this._data = data;
+    }
 }

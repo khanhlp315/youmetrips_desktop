@@ -8,7 +8,7 @@ public class RelevantPlan {
     private String userOccupation;
     private String userNationalityFlagUrl;
     private int planId;
-    private Place place;
+    private PlaceDetails place;
     private int numberOfComments;
     private String whenToGoMin;
     private String whenToGoMax;
@@ -74,11 +74,11 @@ public class RelevantPlan {
         this.planId = planId;
     }
 
-    public Place getPlace() {
+    public PlaceDetails getPlace() {
         return place;
     }
 
-    public void setPlace(Place place) {
+    public void setPlace(PlaceDetails place) {
         this.place = place;
     }
 

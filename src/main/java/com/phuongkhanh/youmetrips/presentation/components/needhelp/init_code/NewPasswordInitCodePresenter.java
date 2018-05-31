@@ -2,6 +2,7 @@ package com.phuongkhanh.youmetrips.presentation.components.needhelp.init_code;
 
 import com.phuongkhanh.youmetrips.presentation.exceptions.WrongRecoveryCodeException;
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
+import com.phuongkhanh.youmetrips.services.stores.AuthenticationStore;
 import javafx.concurrent.Task;
 
 /*
@@ -44,7 +45,8 @@ public class NewPasswordInitCodePresenter extends PresenterBase<NewPasswordInitC
     }
 
     private void doSendCode(String recoveryCode) {
-        _service.sendCodeToResetPassword(recoveryCode);
+        AuthenticationStore authenticationStore = _service.getAuthenticationStore();
+        _service.sendCodeToResetPassword(recoveryCode, authenticationStore.getUserId());
     }
 
     private void onSendCodeSuccess() {

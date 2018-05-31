@@ -2,7 +2,7 @@ package com.phuongkhanh.youmetrips.services.api.models;
 
 public class TrekkingPlanSet {
     private int id;
-    private Place place;
+    private PlaceDetails place;
     private int numberOfComments;
     private String whenToGoMin;
     private String whenToGoMax;
@@ -19,11 +19,11 @@ public class TrekkingPlanSet {
         this.id = id;
     }
 
-    public Place getPlace() {
+    public PlaceDetails getPlace() {
         return place;
     }
 
-    public void setPlace(Place place) {
+    public void setPlace(PlaceDetails place) {
         this.place = place;
     }
 

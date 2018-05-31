@@ -2,7 +2,7 @@ package com.phuongkhanh.youmetrips.services.api.models;
 
 import java.util.List;
 
-public class Place {
+public class PlaceDetails {
     private int id;
     private String name;
     private String coverImageUrl;
