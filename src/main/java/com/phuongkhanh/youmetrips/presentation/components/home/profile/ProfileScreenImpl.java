@@ -3,11 +3,14 @@ package com.phuongkhanh.youmetrips.presentation.components.home.profile;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import com.phuongkhanh.youmetrips.services.api.models.Friend;
 import com.phuongkhanh.youmetrips.services.api.models.Profile;
+import javafx.fxml.Initializable;
 
+import java.net.URL;
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class ProfileScreenImpl extends FXMLScreen
-        implements ProfileScreen
+        implements ProfileScreen, Initializable
 {
     @Override
     public void updateProfile(Profile profile) {
@@ -52,5 +55,10 @@ public class ProfileScreenImpl extends FXMLScreen
     @Override
     protected String fxmlPath() {
         return null;
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
     }
 }
