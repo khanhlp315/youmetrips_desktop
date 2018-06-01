@@ -22,7 +22,7 @@ public class PlanPresenter extends PresenterBase<PlanScreen> {
         _service = service;
     }
 
-    void fetchPlans() {
+    public void fetchPlans() {
         assert(getView() != null);
 
         HomeStore homeStore = _service.getHomeStore();

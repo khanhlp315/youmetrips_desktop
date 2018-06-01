@@ -78,7 +78,7 @@ public class PlaceDetailsPresenter extends PresenterBase<PlaceDetailsScreen> {
         new Thread(task).start();
     }
 
-    void onUserRatingChanged(int rate) {
+    public void onUserRatingChanged(int rate) {
         getView().updateUserRating(rate);
     }
 

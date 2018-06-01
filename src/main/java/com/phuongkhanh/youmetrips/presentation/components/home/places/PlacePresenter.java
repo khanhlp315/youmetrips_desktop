@@ -19,7 +19,7 @@ public class PlacePresenter extends PresenterBase<PlaceScreen> {
         _service = service;
     }
 
-    void fetchPlaces() {
+    public void fetchPlaces() {
         assert(getView() != null);
 
         HomeStore homeStore = _service.getHomeStore();

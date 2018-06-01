@@ -146,7 +146,7 @@ public class HomeStore {
     }
 
     @SuppressWarnings("unchecked")
-    void removeRequest(int fromId){
+    public void removeRequest(int fromId){
         List<FriendRequest> requests =  (List<FriendRequest>)_store.getItem(FRIEND_REQUESTS);
         requests.removeIf(request -> request.getUserId() == fromId);
     }
