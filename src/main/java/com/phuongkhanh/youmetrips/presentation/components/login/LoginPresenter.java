@@ -47,12 +47,14 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
 
                     @Override
                     protected void succeeded() {
+                        super.succeeded();
                         onLoginSuccess();
                         getView().setLoading(false);
                     }
 
                     @Override
                     protected void failed() {
+                        super.failed();
                         onLoginFailed(getException());
                         getView().setLoading(false);
                     }
