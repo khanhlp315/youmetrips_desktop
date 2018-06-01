@@ -10,7 +10,6 @@ import javafx.concurrent.Task;
 
 import javax.inject.Inject;
 import java.util.List;
-import java.util.concurrent.Future;
 
 public class PlanPresenter extends PresenterBase<PlanScreen> {
     private final PlanService _service;
