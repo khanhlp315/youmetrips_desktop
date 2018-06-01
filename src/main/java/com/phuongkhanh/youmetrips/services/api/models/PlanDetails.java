@@ -18,7 +18,7 @@ public class PlanDetails {
 
     private PlanDetailsPlace place;
 
-    PlanDetails(
+    public PlanDetails(
             int id,
             String whenToGoMin,
             String whenToGoMax,
