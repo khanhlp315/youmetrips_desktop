@@ -4,6 +4,7 @@ import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
 import com.phuongkhanh.youmetrips.services.api.models.FriendRequest;
 import com.phuongkhanh.youmetrips.services.stores.AuthenticationStore;
 import com.phuongkhanh.youmetrips.services.stores.HomeStore;
+import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 
 import javax.inject.Inject;
@@ -29,29 +30,20 @@ public class FriendRequestsPresenter extends PresenterBase<FriendRequestsScreen>
             return;
         }
 
-        _doFetchFriendRequests()
-                .then((requests){
-                        _onFetchFriendRequestsSucceeded(requests);
-    })
-        .catchError((error){
-                _onFetchFriendRequestsFailed(error);
-    });
-
-        Task<Profile> task = new Task<Profile>() {
+        Task<List<FriendRequest>> task = new Task<List<FriendRequest>>() {
             @Override
-            protected Profile call() throws Exception {
-                return _doFetchProfile();
+            protected List<FriendRequest> call() throws Exception {
+                return _doFetchFriendRequests();
             }
 
             @Override
             protected void failed() {
-                _onFetchUserFailed(getException());
+                _onFetchFriendRequestsFailed(getException());
             }
         };
-
         task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, event -> {
-            Profile result = task.getValue();
-            _onFetchUserSucceeded(result);
+            List<FriendRequest> result = task.getValue();
+            _onFetchFriendRequestsSucceeded(result);
         });
         new Thread(task).start();
     }
@@ -72,28 +64,43 @@ public class FriendRequestsPresenter extends PresenterBase<FriendRequestsScreen>
     }
 
     public void refreshRequests() {
-        return _doFetchFriendRequests()
-                .then((requests){
-                        _onFetchFriendRequestsSucceeded(requests);
-    })
-        .catchError((error){
-                _onFetchFriendRequestsFailed(error);
-    }).then((_){
-        return null;
-    });
+        Task<List<FriendRequest>> task = new Task<List<FriendRequest>>() {
+            @Override
+            protected List<FriendRequest> call() throws Exception {
+                return _doFetchFriendRequests();
+            }
 
+            @Override
+            protected void failed() {
+                _onFetchFriendRequestsFailed(getException());
+            }
+        };
+        task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, event -> {
+            List<FriendRequest> result = task.getValue();
+            _onFetchFriendRequestsSucceeded(result);
+        });
+        new Thread(task).start();
     }
 
     public void acceptRequest(int id) {
         assert(getView() != null);
 
-        _doAcceptRequest(id)
-                .then((_){
-                        _onAcceptRequestSuceeded(id);
-    })
-        .catchError((error){
-                _onAcceptRequestFailed(error);
-    });
+        Task<Object> task = new Task<Object>() {
+            @Override
+            protected Object call() throws Exception {
+                _doAcceptRequest(id);
+                return null;
+            }
+
+            @Override
+            protected void failed() {
+                _onAcceptRequestFailed(getException());
+            }
+        };
+        task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, event -> {
+            _onAcceptRequestSuceeded(id);
+        });
+        new Thread(task).start();
     }
 
     private void _doAcceptRequest(int id) {
@@ -112,13 +119,22 @@ public class FriendRequestsPresenter extends PresenterBase<FriendRequestsScreen>
     public void declineRequest(int id) {
         assert(getView() != null);
 
-        _doDeclineRequest(id)
-                .then((_){
-                        _onDeclineRequestSuceeded(id);
-    })
-        .catchError((error){
-                _onDeclineRequestFailed(error);
-    });
+        Task<Object> task = new Task<Object>() {
+            @Override
+            protected Object call() throws Exception {
+                _doDeclineRequest(id);
+                return null;
+            }
+
+            @Override
+            protected void failed() {
+                _onDeclineRequestFailed(getException());
+            }
+        };
+        task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, event -> {
+            _onDeclineRequestSuceeded(id);
+        });
+        new Thread(task).start();
     }
 
     private void  _doDeclineRequest(int id) {
