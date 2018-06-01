@@ -19,7 +19,7 @@ public class ProfilePresenter extends PresenterBase<ProfileScreen> {
         _service = service;
     }
 
-    void fetchProfile() {
+    public void fetchProfile() {
         assert (getView() != null);
 
         AuthenticationStore authenticationStore = _service.getAuthenticationStore();
@@ -30,30 +30,26 @@ public class ProfilePresenter extends PresenterBase<ProfileScreen> {
             return;
         }
 
-        new Thread(
-                new Task<Object>() {
-                    @Override
-                    protected Object call() throws Exception {
-                        _doFetchProfile();
-                        return null;
-                    }
+        Task<Profile> task = new Task<Profile>() {
+            @Override
+            protected Profile call() throws Exception {
+                return _doFetchProfile();
+            }
 
-                    @Override
-                    protected void succeeded() {
-                        _onFetchUserSucceeded(profile);
-                        //getView().setLoading(false);
-                    }
+            @Override
+            protected void failed() {
+                _onFetchUserFailed(getException());
+            }
+        };
 
-                    @Override
-                    protected void failed() {
-                        _onFetchUserFailed(getException());
-                        //getView().setLoading(false);
-                    }
-                }
-        ).start();
+        task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, event -> {
+            Profile result = task.getValue();
+            _onFetchUserSucceeded(result);
+        });
+        new Thread(task).start();
     }
 
-    void fetchFriends() {
+    public void fetchFriends() {
         assert (getView() != null);
 
         HomeStore homeStore = _service.getHomeStore();
