@@ -8,7 +8,7 @@ public class PlanDetailsPlace {
     private String coverImageUrl;
     private List<String> tags;
 
-    PlanDetailsPlace(int id, String name, String coverImageUrl, List<String> tags) {
+    public PlanDetailsPlace(int id, String name, String coverImageUrl, List<String> tags) {
         this.id = id;
         this.name = name;
         this.coverImageUrl = coverImageUrl;
