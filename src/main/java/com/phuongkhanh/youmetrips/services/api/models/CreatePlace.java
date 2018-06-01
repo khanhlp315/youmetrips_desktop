@@ -9,6 +9,15 @@ public class CreatePlace {
     private List<String> photoUrls;
     private List<String> tags;
 
+    public CreatePlace(String name, String location, String coverImageUrl, List<String> photoUrls, List<String> tags)
+    {
+        this.name = name;
+        this.location = location;
+        this.coverImageUrl = coverImageUrl;
+        this.photoUrls = photoUrls;
+        this.tags = tags;
+    }
+
     public String getName() {
         return name;
     }
