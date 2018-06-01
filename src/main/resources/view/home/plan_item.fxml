@@ -40,8 +40,8 @@
                 </VBox>
                 <VBox alignment="CENTER">
                     <children>
-                        <MaterialDesignIconView fill="#3a5788" glyphName="COMMENT" size="16"/>
-                        <Label fx:id="_lblCmtCount" text="Count" textFill="#3b5887e7">
+                        <MaterialDesignIconView fill="#1a535c" glyphName="COMMENT" size="16"/>
+                        <Label fx:id="_lblCmtCount" text="Count" textFill="#1a535ce8">
                             <VBox.margin>
                                 <Insets left="2.0" top="-2.0"/>
                             </VBox.margin>
