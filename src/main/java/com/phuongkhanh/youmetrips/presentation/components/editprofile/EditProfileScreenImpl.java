@@ -11,9 +11,14 @@ import java.util.ResourceBundle;
 
 public class EditProfileScreenImpl extends FXMLScreen
 implements EditProfileScreen, Initializable {
+
+    public EditProfileScreenImpl(EditProfilePresenter presenter)
+    {
+
+    }
     @Override
     public void updateProfile(Profile profile) {
-        
+
     }
 
     @Override
