@@ -131,7 +131,7 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
     }
 
     private void onLoginSuccess() {
-
+        getView().navigateToHome();
     }
 
     private void setState(int state) {

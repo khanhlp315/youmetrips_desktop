@@ -24,6 +24,7 @@ import com.phuongkhanh.youmetrips.presentation.components.signup.signup.SignUpPr
 import com.phuongkhanh.youmetrips.presentation.components.signup.signup.SignUpScreen;
 import com.phuongkhanh.youmetrips.presentation.components.signup.signup.SignUpScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.signup.signup.SignUpService;
+import com.phuongkhanh.youmetrips.presentation.windows.HomeWindow;
 import com.phuongkhanh.youmetrips.presentation.windows.LoginWindow;
 import com.phuongkhanh.youmetrips.services.api.RestApi;
 import com.phuongkhanh.youmetrips.services.components.AuthServiceImpl;
@@ -32,6 +33,7 @@ import dagger.Component;
 import dagger.Module;
 import dagger.Provides;
 
+import javax.inject.Provider;
 import javax.inject.Singleton;
 
 @Singleton
@@ -42,12 +44,13 @@ import javax.inject.Singleton;
 
 public interface ApplicationContext {
     LoginWindow loginWindow();
+    HomeWindow homeWindow();
 
     @Module
     static class PresentationModule{
         @Provides
-        static LoginScreen loginScreen(LoginPresenter presenter ) {
-            return new LoginScreenImpl( presenter );
+        static LoginScreen loginScreen(LoginPresenter presenter, Provider<HomeWindow> homeWindowProvider ) {
+            return new LoginScreenImpl( presenter, homeWindowProvider  );
         }
 
         @Provides

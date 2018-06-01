@@ -18,8 +18,8 @@ public class LoginPane extends AnchorPane
     private AnchorPane _anchor;
 
     public LoginPane() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
-                "../../../../../../resources/custom_controls/login_pane.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource(
+                "view/sign_in/login_pane.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -32,8 +32,8 @@ public class LoginPane extends AnchorPane
     }
 
     public LoginPane(Node ...loginNodes) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
-                "../../../../../../resources/custom_controls/login_pane.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource(
+                "view/sign_in/login_pane.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

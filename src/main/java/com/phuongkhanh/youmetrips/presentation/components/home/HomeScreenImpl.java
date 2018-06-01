@@ -35,7 +35,7 @@ implements HomeScreen, Initializable {
 
     @Override
     protected String fxmlPath() {
-        return null;
+        return "/view/main_window.fxml";
     }
 
     @Override

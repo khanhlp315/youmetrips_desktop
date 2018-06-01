@@ -9,4 +9,5 @@ public interface LoginScreen extends JFXScreen {
     void showLoading();
     void setLoading(Boolean isLoading);
     void navigateToSignUpConfirmationCodeScreen();
+    void navigateToHome();
 }
