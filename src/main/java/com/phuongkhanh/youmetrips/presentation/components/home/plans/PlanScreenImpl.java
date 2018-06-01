@@ -10,8 +10,9 @@ import java.util.ResourceBundle;
 
 public class PlanScreenImpl extends FXMLScreen
 implements PlanScreen, Initializable {
+
     @Override
-    public void updatePlans(List<RelevantPlan> invidualPlans, List<RelevantPlan> groupPlans) {
+    public void updatePlans(List<RelevantPlan> invidualPlans) {
 
     }
 
