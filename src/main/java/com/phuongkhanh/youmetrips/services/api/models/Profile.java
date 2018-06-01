@@ -18,7 +18,7 @@ public class Profile {
      private String email;
      private String phoneNumber;
      private String identifyingMethod;
-     private TrekkingPlanSet trekkingPlanSet;
+     private List<UserTrekkingPlan> trekkingPlanSet;
 
     public int getUserId() {
         return userId;
@@ -140,11 +140,12 @@ public class Profile {
         this.identifyingMethod = identifyingMethod;
     }
 
-    public TrekkingPlanSet getTrekkingPlanSet() {
+    public List<UserTrekkingPlan> getTrekkingPlanSet() {
         return trekkingPlanSet;
     }
 
-    public void setTrekkingPlanSet(TrekkingPlanSet trekkingPlanSet) {
+    public void setTrekkingPlanSet(List<UserTrekkingPlan> trekkingPlanSet) {
         this.trekkingPlanSet = trekkingPlanSet;
     }
 }
+

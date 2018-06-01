@@ -28,7 +28,7 @@ public class AuthenticationStore
     }
 
     @SuppressWarnings("unchecked")
-    void clearLoginData()
+    public void clearLoginData()
     {
         _store.setItem(USER_ID, null);
         _store.setItem(JWT, null);
@@ -86,6 +86,11 @@ public class AuthenticationStore
     @SuppressWarnings("unchecked")
     public void storeResetPasswordToken(String resetPasswordToken){
         _store.setItem(RESET_PASSWORD_TOKEN, resetPasswordToken);
+    }
+
+    @SuppressWarnings("unchecked")
+    public void storeProfile(Profile user){
+        _store.setItem(PROFILE, user);
     }
 
     public int getUserId(){
