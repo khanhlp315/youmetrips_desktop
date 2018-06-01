@@ -25,6 +25,7 @@ public class ProfilePresenter extends PresenterBase<ProfileScreen> {
 
         if (profile != null) {
             getView().updateProfile(profile);
+            return;
         }
 
         new Thread(
@@ -144,11 +145,25 @@ public class ProfilePresenter extends PresenterBase<ProfileScreen> {
     }
 
     public void refreshUser() {
-        try {
-            _onFetchUserSucceeded(_doFetchProfile());
-        } catch (Exception e) {
-            _onFetchUserFailed(e);
-        }
+        new Thread(
+                new Task<Object>() {
+                    @Override
+                    protected Object call() throws Exception {
+                        _doFetchProfile();
+                        return null;
+                    }
+
+                    @Override
+                    protected void succeeded() {
+                        _onFetchUserSucceeded(_doFetchProfile());
+                    }
+
+                    @Override
+                    protected void failed() {
+                        _onFetchUserFailed(getException());
+                    }
+                }
+        ).start();
     }
 
     public void requestNavigateToCreateTrekkingPlan() {
@@ -162,11 +177,25 @@ public class ProfilePresenter extends PresenterBase<ProfileScreen> {
     }
 
     public void refreshFriends() {
-        try {
-            _onFetchFriendsSucceeded(_doFetchFriends());
-        } catch (Exception e) {
-            _onFetchFriendsFailed(e);
-        }
+        new Thread(
+                new Task<Object>() {
+                    @Override
+                    protected Object call() throws Exception {
+                        _doFetchFriends();
+                        return null;
+                    }
+
+                    @Override
+                    protected void succeeded() {
+                        _onFetchFriendsSucceeded(_doFetchFriends());
+                    }
+
+                    @Override
+                    protected void failed() {
+                        _onFetchFriendsFailed(getException());
+                    }
+                }
+        ).start();
     }
 
     public void requestNavigateToFriendList() {
