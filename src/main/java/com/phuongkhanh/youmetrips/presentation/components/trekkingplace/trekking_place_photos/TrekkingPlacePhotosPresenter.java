@@ -6,7 +6,7 @@ import java.io.File;
 
 public class TrekkingPlacePhotosPresenter extends PresenterBase<TrekkingPlacePhotosScreen> {
 
-    void onCoverPhotoUpdated(File selectedPhoto) {
+    public void onCoverPhotoUpdated(File selectedPhoto) {
         assert(getView() != null);
         if (selectedPhoto == null){
             getView().hideContinue();
@@ -16,34 +16,29 @@ public class TrekkingPlacePhotosPresenter extends PresenterBase<TrekkingPlacePho
         }
     }
 
-    void pickImage() {
+    public void pickImage(File image) {
         assert(getView() != null);
-        var image = ImagePicker.pickImage();
-
         if(image == null){
             return;
         }
-
         getView().addImage(image);
     }
 
-    void requestRemoveImage(File image) {
+    public void requestRemoveImage(File image) {
         assert(getView() != null);
         getView().removeImage(image);
     }
 
-    Future pickCoverImage() async {
+    public void pickCoverImage(File image) {
         assert(getView() != null);
-        var image = await ImagePicker.pickImage();
 
         if(image == null){
             return;
         }
-
         getView().changeCoverImage(image);
     }
 
-    void requestRemoveCoverImage() {
+    public void requestRemoveCoverImage() {
         assert(getView() != null);
         getView().removeCoverImage();
     }
