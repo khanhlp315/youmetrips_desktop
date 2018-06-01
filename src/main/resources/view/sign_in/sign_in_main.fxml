@@ -7,7 +7,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<?import java.net.URL?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
             minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.141">
     <children>
@@ -33,6 +32,7 @@
                                     AnchorPane.rightAnchor="67.0" AnchorPane.topAnchor="127.0">
                             <children>
                                 <ScrollPane hbarPolicy="NEVER" layoutX="11.0" layoutY="59.0" prefWidth="200.0"
+                                            stylesheets="@../../style/customScrollPane.css"
                                             AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="11.0"
                                             AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="59.0">
                                     <content>
@@ -64,10 +64,6 @@
                                             </children>
                                         </AnchorPane>
                                     </content>
-                                    <stylesheets>
-                                        <URL value="@../style/customScrollPane.css"/>
-                                        <URL value="@../../style/customScrollPane.css"/>
-                                    </stylesheets>
                                 </ScrollPane>
                                 <AnchorPane layoutX="1.0" layoutY="13.0" prefHeight="31.0" prefWidth="209.0"
                                             style="-fx-effect: dropshadow(gaussian, #f7f1e6, 10, 0, 0, 3); -fx-background-color: white;"
