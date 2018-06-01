@@ -26,12 +26,12 @@ public class PlanDetails {
             int howLongMax,
             int hotelLevel,
             String description,
+            PlanDetailsPlace place,
             int userId,
             String userFirstName,
             String userLastName,
             String userAvatarUrl,
-            String userOccupation,
-            PlanDetailsPlace place)
+            String userOccupation)
     {
         this.id = id;
         this.whenToGoMin = whenToGoMin;
