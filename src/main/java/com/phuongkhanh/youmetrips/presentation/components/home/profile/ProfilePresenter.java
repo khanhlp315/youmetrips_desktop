@@ -5,6 +5,8 @@ import com.phuongkhanh.youmetrips.services.api.models.*;
 import com.phuongkhanh.youmetrips.services.stores.AuthenticationStore;
 import com.phuongkhanh.youmetrips.services.stores.HomeStore;
 import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
+import javafx.event.EventHandler;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -61,25 +63,24 @@ public class ProfilePresenter extends PresenterBase<ProfileScreen> {
             getView().updateFriends(friends);
         }
 
-        new Thread(
-                new Task<Object>() {
-                    @Override
-                    protected Object call() throws Exception {
-                        _doFetchFriends();
-                        return null;
-                    }
+        Task<List<Friend>> task = new Task<List<Friend>>() {
+            @Override
+            protected List<Friend> call() throws Exception {
+                return _doFetchFriends();
+            }
 
-                    @Override
-                    protected void succeeded() {
-                        _onFetchFriendsSucceeded(friends);
-                    }
+            @Override
+            protected void failed() {
+                _onFetchFriendsFailed(getException());
+            }
+        };
 
-                    @Override
-                    protected void failed() {
-                        _onFetchFriendsFailed(getException());
-                    }
-                }
-        ).start();
+        task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, event -> {
+            List<Friend> result = task.getValue();
+            _onFetchFriendsSucceeded(friends);
+        });
+
+        new Thread(task).start();
     }
 
     private Profile _doFetchProfile() {
@@ -145,25 +146,23 @@ public class ProfilePresenter extends PresenterBase<ProfileScreen> {
     }
 
     public void refreshUser() {
-        new Thread(
-                new Task<Object>() {
-                    @Override
-                    protected Object call() throws Exception {
-                        _doFetchProfile();
-                        return null;
-                    }
+        Task<Profile> task = new Task<Profile>() {
+            @Override
+            protected Profile call() throws Exception {
+                return _doFetchProfile();
+            }
 
-                    @Override
-                    protected void succeeded() {
-                        _onFetchUserSucceeded(_doFetchProfile());
-                    }
+            @Override
+            protected void failed() {
+                _onFetchUserFailed(getException());
+            }
+        };
 
-                    @Override
-                    protected void failed() {
-                        _onFetchUserFailed(getException());
-                    }
-                }
-        ).start();
+        task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, event -> {
+            Profile result = task.getValue();
+            _onFetchUserSucceeded(result);
+        });
+        new Thread(task).start();
     }
 
     public void requestNavigateToCreateTrekkingPlan() {
@@ -177,25 +176,24 @@ public class ProfilePresenter extends PresenterBase<ProfileScreen> {
     }
 
     public void refreshFriends() {
-        new Thread(
-                new Task<Object>() {
-                    @Override
-                    protected Object call() throws Exception {
-                        _doFetchFriends();
-                        return null;
-                    }
+        Task<List<Friend>> task = new Task<List<Friend>>() {
+            @Override
+            protected List<Friend> call() throws Exception {
+                return _doFetchFriends();
+            }
 
-                    @Override
-                    protected void succeeded() {
-                        _onFetchFriendsSucceeded(_doFetchFriends());
-                    }
+            @Override
+            protected void failed() {
+                _onFetchFriendsFailed(getException());
+            }
+        };
 
-                    @Override
-                    protected void failed() {
-                        _onFetchFriendsFailed(getException());
-                    }
-                }
-        ).start();
+        task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, event -> {
+            List<Friend> result = task.getValue();
+            _onFetchFriendsSucceeded(result);
+        });
+
+        new Thread(task).start();
     }
 
     public void requestNavigateToFriendList() {

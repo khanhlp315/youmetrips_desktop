@@ -3,10 +3,12 @@ package com.phuongkhanh.youmetrips.presentation.components.home.plans;
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
 import com.phuongkhanh.youmetrips.services.api.models.PlanDetails;
 import com.phuongkhanh.youmetrips.services.api.models.PlanDetailsPlace;
+import com.phuongkhanh.youmetrips.services.api.models.Profile;
 import com.phuongkhanh.youmetrips.services.api.models.RelevantPlan;
 import com.phuongkhanh.youmetrips.services.stores.AuthenticationStore;
 import com.phuongkhanh.youmetrips.services.stores.HomeStore;
 import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -31,25 +33,22 @@ public class PlanPresenter extends PresenterBase<PlanScreen> {
             return;
         }
 
-        new Thread(
-                new Task<Object>() {
-                    @Override
-                    protected Object call() throws Exception {
-                        _doFetchPlans();
-                        return null;
-                    }
+        Task<List<RelevantPlan>> task = new Task<List<RelevantPlan>>() {
+            @Override
+            protected List<RelevantPlan>  call() throws Exception {
+                return _doFetchPlans();
+            }
 
-                    @Override
-                    protected void succeeded() {
-                        _onFetchPlansSucceeded(plans);
-                    }
-
-                    @Override
-                    protected void failed() {
-                        _onFetchPlansFailed(getException());
-                    }
-                }
-        ).start();
+            @Override
+            protected void failed() {
+                _onFetchPlansFailed(getException());
+            }
+        };
+        task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, event -> {
+            List<RelevantPlan> result = task.getValue();
+            _onFetchPlansSucceeded(result);
+        });
+        new Thread(task).start();
     }
 
     private List<RelevantPlan> _doFetchPlans() {
@@ -87,7 +86,7 @@ public class PlanPresenter extends PresenterBase<PlanScreen> {
         getView().updatePlans(plans);
     }
 
-    void _onFetchPlansFailed(Throwable throwable){
+    private void _onFetchPlansFailed(Throwable throwable){
     }
 
     public void requestNavigateToCreateTrekkingPlan() {
@@ -95,25 +94,22 @@ public class PlanPresenter extends PresenterBase<PlanScreen> {
     }
 
     public void refreshPlans() {
-        new Thread(
-                new Task<Object>() {
-                    @Override
-                    protected Object call() throws Exception {
-                        _doFetchPlans();
-                        return null;
-                    }
+        Task<List<RelevantPlan>> task = new Task<List<RelevantPlan>>() {
+            @Override
+            protected List<RelevantPlan>  call() throws Exception {
+                return _doFetchPlans();
+            }
 
-                    @Override
-                    protected void succeeded() {
-                        _onFetchPlansSucceeded(_doFetchPlans());
-                    }
-
-                    @Override
-                    protected void failed() {
-                        _onFetchPlansFailed(getException());
-                    }
-                }
-        ).start();
+            @Override
+            protected void failed() {
+                _onFetchPlansFailed(getException());
+            }
+        };
+        task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, event -> {
+            List<RelevantPlan> result = task.getValue();
+            _onFetchPlansSucceeded(result);
+        });
+        new Thread(task).start();
     }
 
     public void requestShowAddFriendPopup(int userId) {
@@ -121,25 +117,23 @@ public class PlanPresenter extends PresenterBase<PlanScreen> {
     }
 
     public void addFriend(int userId) {
-        new Thread(
-                new Task<Object>() {
-                    @Override
-                    protected Object call() throws Exception {
-                        _doAddFriend(userId);
-                        return null;
-                    }
+        Task<Object> task = new Task<Object>() {
+            @Override
+            protected Object call() throws Exception {
+                 _doAddFriend(userId);
+                 return null;
+            }
 
-                    @Override
-                    protected void succeeded() {
-                        _onAddFriendSucceeded();
-                    }
+            @Override
+            protected void failed() {
+                _onAddFriendFailed(getException());
+            }
+        };
 
-                    @Override
-                    protected void failed() {
-                        _onAddFriendFailed(getException());
-                    }
-                }
-        ).start();
+        task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, event -> {
+            _onAddFriendSucceeded();
+        });
+        new Thread(task).start();
     }
 
     private void _doAddFriend(int userId) {

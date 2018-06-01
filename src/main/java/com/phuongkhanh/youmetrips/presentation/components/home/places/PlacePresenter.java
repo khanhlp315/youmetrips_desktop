@@ -5,6 +5,7 @@ import com.phuongkhanh.youmetrips.services.api.models.Place;
 import com.phuongkhanh.youmetrips.services.stores.AuthenticationStore;
 import com.phuongkhanh.youmetrips.services.stores.HomeStore;
 import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -29,47 +30,41 @@ public class PlacePresenter extends PresenterBase<PlaceScreen> {
             return;
         }
 
-        new Thread(
-                new Task<Object>() {
-                    @Override
-                    protected Object call() throws Exception {
-                        _doFetchPlaces();
-                        return null;
-                    }
+        Task<List<Place>> task = new Task<List<Place>>() {
+            @Override
+            protected List<Place> call() throws Exception {
+                return _doFetchPlaces();
+            }
 
-                    @Override
-                    protected void succeeded() {
-                        _onFetchPlacesSucceeded(places);
-                    }
-
-                    @Override
-                    protected void failed() {
-                        _onFetchPlacesFailed(getException());
-                    }
-                }
-        ).start();
+            @Override
+            protected void failed() {
+                _onFetchPlacesFailed(getException());
+            }
+        };
+        task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, event -> {
+            List<Place> result = task.getValue();
+            _onFetchPlacesSucceeded(result);
+        });
+        new Thread(task).start();
     }
 
     public void refreshPlaces(){
-        new Thread(
-                new Task<Object>() {
-                    @Override
-                    protected Object call() throws Exception {
-                        _doFetchPlaces();
-                        return null;
-                    }
+        Task<List<Place>> task = new Task<List<Place>>() {
+            @Override
+            protected List<Place> call() throws Exception {
+                return _doFetchPlaces();
+            }
 
-                    @Override
-                    protected void succeeded() {
-                        _onFetchPlacesSucceeded(_doFetchPlaces());
-                    }
-
-                    @Override
-                    protected void failed() {
-                        _onFetchPlacesFailed(getException());
-                    }
-                }
-        ).start();
+            @Override
+            protected void failed() {
+                _onFetchPlacesFailed(getException());
+            }
+        };
+        task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, event -> {
+            List<Place> result = task.getValue();
+            _onFetchPlacesSucceeded(result);
+        });
+        new Thread(task).start();
     }
 
     private List<Place> _doFetchPlaces() {
@@ -92,48 +87,42 @@ public class PlacePresenter extends PresenterBase<PlaceScreen> {
 
     public void like(int id) {
         assert(getView() != null);
-        new Thread(
-                new Task<Object>() {
-                    @Override
-                    protected Object call() throws Exception {
-                        _doLike(id);
-                        return null;
-                    }
+        Task<Object> task = new Task<Object>() {
+            @Override
+            protected Object call() throws Exception {
+                _doLike(id);
+                return null;
+            }
 
-                    @Override
-                    protected void succeeded() {
-                        _onLikeSucceeded(id);
-                    }
-
-                    @Override
-                    protected void failed() {
-                        _onLikeFailed(getException());
-                    }
-                }
-        ).start();
+            @Override
+            protected void failed() {
+                _onLikeFailed(getException());
+            }
+        };
+        task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, event -> {
+            _onLikeSucceeded(id);
+        });
+        new Thread(task).start();
     }
 
     public void unlike(int id) {
         assert(getView() != null);
-        new Thread(
-                new Task<Object>() {
-                    @Override
-                    protected Object call() throws Exception {
-                        _doUnlike(id);
-                        return null;
-                    }
+        Task<Object> task = new Task<Object>() {
+            @Override
+            protected Object call() throws Exception {
+                _doUnlike(id);
+                return null;
+            }
 
-                    @Override
-                    protected void succeeded() {
-                        _onUnlikeSucceeded(id);
-                    }
-
-                    @Override
-                    protected void failed() {
-                        _onUnlikeFailed(getException());
-                    }
-                }
-        ).start();
+            @Override
+            protected void failed() {
+                _onUnlikeFailed(getException());
+            }
+        };
+        task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, event -> {
+            _onUnlikeSucceeded(id);
+        });
+        new Thread(task).start();
     }
 
     private void _doLike(int id)  {
