@@ -2,7 +2,7 @@ package com.phuongkhanh.youmetrips.presentation.components.trekkingplace;
 
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
 import com.phuongkhanh.youmetrips.services.api.exceptions.ApiException;
-import com.phuongkhanh.youmetrips.services.api.exceptions.EmptyRequiredFieldException;
+import com.phuongkhanh.youmetrips.presentation.exceptions.EmptyRequiredFieldException;
 import com.phuongkhanh.youmetrips.services.api.models.CreatePlace;
 import com.phuongkhanh.youmetrips.services.stores.AuthenticationStore;
 import javafx.concurrent.Task;

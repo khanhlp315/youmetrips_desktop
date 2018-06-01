@@ -1,4 +1,6 @@
-package com.phuongkhanh.youmetrips.services.api.exceptions;
+package com.phuongkhanh.youmetrips.presentation.exceptions;
+
+import com.phuongkhanh.youmetrips.services.api.exceptions.ApiException;
 
 public class EmptyRequiredFieldException extends ApiException {
     @Override
