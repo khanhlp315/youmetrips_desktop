@@ -16,6 +16,11 @@ implements PlanScreen, Initializable {
     }
 
     @Override
+    public void updatePlans(List<RelevantPlan> invidualPlans) {
+
+    }
+
+    @Override
     public void navigateToCreateTrekkingPlan() {
 
     }
