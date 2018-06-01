@@ -1,25 +1,22 @@
-package com.phuongkhanh.youmetrips.presentation.components.trekkingplace;
+package com.phuongkhanh.youmetrips.presentation.components.planlist;
 
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
+import com.phuongkhanh.youmetrips.services.api.models.UserTrekkingPlan;
 import javafx.fxml.Initializable;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
-public class TrekkingPlaceScreenImpl extends FXMLScreen
-implements TrekkingPlaceScreen, Initializable {
+public class PlanListScreenImpl extends FXMLScreen
+implements PlanListScreen, Initializable {
     @Override
-    public void returnPlace(int placeId) {
+    public void updatePlans(List<UserTrekkingPlan> plans) {
 
     }
 
     @Override
-    public void showError(String title, String message) {
-
-    }
-
-    @Override
-    public void setLoading(boolean value) {
+    public void navigateToPlanDetails(int planId) {
 
     }
 
