@@ -39,6 +39,8 @@ public class LoginScreenImpl extends FXMLScreen implements LoginScreen, Initiali
     public LoginScreenImpl(final LoginPresenter presenter) {
         _presenter = presenter;
         _presenter.setView(this);
+        _presenter.checkForAutoLogin();
+
     }
 
     @Override
