@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.phuongkhanh.youmetrips.services.api.utils.Constants.APP_DATA;
+import static com.phuongkhanh.youmetrips.utils.CommonUtils.getLocalFilePath;
 
 /*
  * @author by LeVoGiaKhang
@@ -33,9 +34,6 @@ public class Store {
         }
     }
 
-    private String getLocalFilePath(String fileName) {
-        return System.getenv(APP_DATA) + "/" + fileName;
-    }
 
     public void save(String fileName) {
         FileOutputStream fos = null;
@@ -43,6 +41,8 @@ public class Store {
             fos = new FileOutputStream(getLocalFilePath(fileName));
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(_items);
+            oos.close();
+            fos.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -6,7 +6,7 @@ import java.util.List;
 /*
  * @author by LeVoGiaKhang
  */
-public class StoreItem<T> {
+public class StoreItem<T> implements java.io.Serializable {
 
     private T _item;
     private List<Wrapper<T, T>> _valueChangedListener;
