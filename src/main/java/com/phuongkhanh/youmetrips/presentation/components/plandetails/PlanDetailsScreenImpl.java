@@ -5,12 +5,20 @@ import com.phuongkhanh.youmetrips.services.api.models.Comment;
 import com.phuongkhanh.youmetrips.services.api.models.PlanDetails;
 import javafx.fxml.Initializable;
 
+import javax.inject.Inject;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class PlanDetailsScreenImpl extends FXMLScreen
 implements PlanDetailsScreen, Initializable {
+
+    @Inject
+    public PlanDetailsScreenImpl(PlanDetailsPresenter presenter)
+    {
+
+    }
+
     @Override
     public void updateMapUrl(String mapUrl) {
 

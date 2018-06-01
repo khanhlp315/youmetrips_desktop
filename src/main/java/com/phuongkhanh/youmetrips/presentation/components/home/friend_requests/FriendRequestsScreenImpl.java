@@ -4,12 +4,20 @@ import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import com.phuongkhanh.youmetrips.services.api.models.FriendRequest;
 import javafx.fxml.Initializable;
 
+import javax.inject.Inject;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class FriendRequestsScreenImpl extends FXMLScreen
 implements FriendRequestsScreen, Initializable {
+
+    @Inject
+    public FriendRequestsScreenImpl(FriendRequestsPresenter presenter)
+    {
+
+    }
+
     @Override
     public void updateRequests(List<FriendRequest> requests) {
 

@@ -3,11 +3,19 @@ package com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekkin
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import javafx.fxml.Initializable;
 
+import javax.inject.Inject;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class TrekkingPlaceNameScreenImpl extends FXMLScreen
 implements TrekkingPlaceNameScreen, Initializable {
+
+    @Inject
+    public TrekkingPlaceNameScreenImpl(TrekkingPlaceNamePresenter presenter)
+    {
+
+    }
+
     @Override
     public void showContinue() {
 

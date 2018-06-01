@@ -3,12 +3,20 @@ package com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekkin
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import javafx.fxml.Initializable;
 
+import javax.inject.Inject;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class TrekkingPlacePhotosScreenImpl extends FXMLScreen
 implements TrekkingPlacePhotosScreen, Initializable {
+
+    @Inject
+    public TrekkingPlacePhotosScreenImpl(TrekkingPlacePhotosPresenter presenter)
+    {
+
+    }
+
     @Override
     public void showContinue() {
 

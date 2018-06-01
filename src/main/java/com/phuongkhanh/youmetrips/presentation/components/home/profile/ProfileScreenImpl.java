@@ -5,6 +5,7 @@ import com.phuongkhanh.youmetrips.services.api.models.Friend;
 import com.phuongkhanh.youmetrips.services.api.models.Profile;
 import javafx.fxml.Initializable;
 
+import javax.inject.Inject;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -12,6 +13,13 @@ import java.util.ResourceBundle;
 public class ProfileScreenImpl extends FXMLScreen
         implements ProfileScreen, Initializable
 {
+
+    @Inject
+    public ProfileScreenImpl(ProfilePresenter presenter)
+    {
+
+    }
+
     @Override
     public void updateProfile(Profile profile) {
 

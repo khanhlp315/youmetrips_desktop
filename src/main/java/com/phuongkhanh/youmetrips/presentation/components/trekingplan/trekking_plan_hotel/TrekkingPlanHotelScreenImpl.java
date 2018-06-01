@@ -3,11 +3,19 @@ package com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import javafx.fxml.Initializable;
 
+import javax.inject.Inject;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class TrekkingPlanHotelScreenImpl extends FXMLScreen
 implements TrekkingPlanHotelScreen, Initializable {
+
+    @Inject
+    public TrekkingPlanHotelScreenImpl(TrekkingPlanHotelPresenter presenter)
+    {
+
+    }
+
     @Override
     public void setCanNext(boolean value) {
 
