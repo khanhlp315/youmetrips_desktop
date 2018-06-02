@@ -4,12 +4,20 @@ import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import com.phuongkhanh.youmetrips.services.api.models.PlaceDetails;
 import javafx.fxml.Initializable;
 
+import javax.inject.Inject;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class PlaceDetailsScreenImpl extends FXMLScreen
 implements PlaceDetailsScreen, Initializable
 {
+
+    @Inject
+    public PlaceDetailsScreenImpl(PlaceDetailsPresenter presenter)
+    {
+
+    }
+
     @Override
     public void updatePlaceInfo(PlaceDetails placeDetails) {
 

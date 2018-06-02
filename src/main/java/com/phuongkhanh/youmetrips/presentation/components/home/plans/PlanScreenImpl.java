@@ -4,12 +4,19 @@ import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import com.phuongkhanh.youmetrips.services.api.models.RelevantPlan;
 import javafx.fxml.Initializable;
 
+import javax.inject.Inject;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class PlanScreenImpl extends FXMLScreen
 implements PlanScreen, Initializable {
+
+    @Inject
+    public PlanScreenImpl(PlanPresenter presenter)
+    {
+
+    }
 
     @Override
     public void updatePlans(List<RelevantPlan> invidualPlans) {

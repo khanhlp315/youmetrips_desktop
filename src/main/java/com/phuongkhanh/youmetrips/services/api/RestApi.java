@@ -365,9 +365,10 @@ public class RestApi {
      *     "userAvatarUrl": "string"
      * }
      */
-    public void getFriends(int userId, String jwt) {
+    public List<Friend> getFriends(int userId, String jwt) {
         Response response = executeGet("users/" + userId + "/friends", jwt);
         validateResponse(response);
+        return parseResponseJsonBodyAsList(response, Friend.class);
     }
 
     /**
@@ -443,7 +444,7 @@ public class RestApi {
     }
 
 
-    public void createPlace(CreatePlace place, int userId, String jwt)
+    public int createPlace(CreatePlace place, int userId, String jwt)
     {
         HashMap map = new HashMap<>();
         map.put("name" , place.getName());
@@ -457,20 +458,21 @@ public class RestApi {
                 jwt
         );
         validateResponse(response);
+        return parseResponseJsonBodyAsInt(response, "id");
     }
 
     /**
      * get a place
      * @param placeId
      */
-    public void getPlaceDetails(int placeId, int userId, String jwt)
+    public PlaceDetails getPlaceDetails(int placeId, int userId, String jwt)
     {
         Response response = executeGet(
                 "users/" + userId + "/places/" + placeId,
                 jwt
         );
         validateResponse(response);
-        parseResponseJsonBody(response, PlaceDetails.class);
+        return parseResponseJsonBody(response, PlaceDetails.class);
     }
 
     /**
@@ -506,13 +508,14 @@ public class RestApi {
      * get all comments about something
      * @param trekkingPlanId    id of the plan's trek
      */
-    public void getComments(int trekkingPlanId, int userId, String jwt)
+    public List<Comment> getComments(int trekkingPlanId, int userId, String jwt)
     {
         Response response = executeGet(
                 "users/" + userId + "/trekkingplans/" + trekkingPlanId + "/comments",
                 jwt
         );
         validateResponse(response);
+        return parseResponseJsonBodyAsList(response, Comment.class);
     }
 
     /**
@@ -528,7 +531,7 @@ public class RestApi {
         return parseResponseJsonBodyAsList(response, "relevantPlans", RelevantPlan.class);
     }
 
-    public void createTrekkingPlan(CreatePlan plan, int userId, String jwt)
+    public int createTrekkingPlan(CreatePlan plan, int userId, String jwt)
     {
         HashMap<String,String> map = new HashMap<>();
         map.put("placeId", String.valueOf(plan.getPlaceId()));
@@ -546,6 +549,7 @@ public class RestApi {
         );
 
         validateResponse(response);
+        return parseResponseJsonBodyAsInt(response, "id");
     }
 
     /**
@@ -562,7 +566,7 @@ public class RestApi {
         return parseResponseJsonBody(response, Profile.class);
     }
 
-    public void updateProfile(Profile profile, int userId, String jwt)
+    public void updateProfile(EditedUserProfile profile, int userId, String jwt)
     {
         HashMap<String,String> map = new HashMap<>();
         map.put("firstName", profile.getFirstName());
