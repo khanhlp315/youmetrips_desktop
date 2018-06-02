@@ -1,5 +1,7 @@
 package com.phuongkhanh.youmetrips.presentation.components.home.plans;
 
+import com.jfoenix.controls.JFXListView;
+import com.phuongkhanh.youmetrips.presentation.controls.PlanItem;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import com.phuongkhanh.youmetrips.services.api.models.RelevantPlan;
 import javafx.fxml.FXML;
@@ -9,19 +11,42 @@ import javax.inject.Inject;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class PlanScreenImpl extends FXMLScreen
 implements PlanScreen, Initializable {
 
+    private final PlanPresenter _presenter;
+
+    @FXML
+    private JFXListView _lvPlans;
+
     @Inject
     public PlanScreenImpl(PlanPresenter presenter)
     {
-
+        _presenter = presenter;
+        _presenter.setView(this);
+        _presenter.fetchPlans();
     }
 
     @Override
     public void updatePlans(List<RelevantPlan> invidualPlans) {
+        List<PlanItem> planItems = invidualPlans.stream().map(plan -> {
+            return new PlanItem(
+                    plan.getUserFirstName(),
+                    plan.getUserLastName(),
+                    plan.getUserAvatarUrl(),
+                    plan.getUserOccupation(),
+                    plan.getUserNationalityFlagUrl(),
+                    plan.getPlace().getName(),
+                    plan.getHotelLevel(),
+                    "",
+                    "",
+                    plan.getNumberOfComments()
+            );
+        }).collect(Collectors.toList());
 
+        _lvPlans.getItems().addAll(planItems);
     }
 
     @Override
@@ -46,7 +71,7 @@ implements PlanScreen, Initializable {
 
     @Override
     protected String fxmlPath() {
-        return "/view/home/profile/plan.fxml";
+        return "/view/home/plans/plans.fxml";
     }
 
     @Override
