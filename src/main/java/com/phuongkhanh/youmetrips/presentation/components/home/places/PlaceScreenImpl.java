@@ -2,6 +2,7 @@ package com.phuongkhanh.youmetrips.presentation.components.home.places;
 
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import com.phuongkhanh.youmetrips.services.api.models.Place;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import javax.inject.Inject;
@@ -50,6 +51,41 @@ implements PlaceScreen, Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+    }
+    @FXML
+    public void onPlanClicked()
+    {
+
+    }
+
+    @FXML
+    public void onFriendRequestClicked()
+    {
+
+    }
+
+    @FXML
+    public void onCreateTrekkingPlanClicked()
+    {
+
+    }
+
+    @FXML
+    public void onCreateTrekkingPlaceClicked()
+    {
+
+    }
+
+    @FXML
+    public void onProfileClicked()
+    {
+
+    }
+
+    @FXML
+    public void onEditProfileClicked()
+    {
 
     }
 }
