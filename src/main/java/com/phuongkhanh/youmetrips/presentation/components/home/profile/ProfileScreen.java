@@ -10,10 +10,12 @@ public interface ProfileScreen extends JFXScreen {
      void updateProfile(Profile profile);
      void navigateToStart();
      void navigateToCreateTrekkingPlan();
+     void navigateToCreateTrekkingPlace();
      void navigateToEditProfile();
      void navigateToPlanList();
      void navigateToFriendList();
      void navigateToPlanDetails(int planId);
+     void navigateToPlace();
 
      void updateFriends(List<Friend> friends);
 

@@ -12,14 +12,12 @@
 <?import javafx.scene.text.*?>
 
 <?import com.phuongkhanh.youmetrips.presentation.controls.HomePane?>
-<HomePane  onBackClicked="#"
-           onPlaceClicked="#"
-           onPlanClicked="#"
-           onFriendRequestClicked="#"
-           onCreatePlaceClicked="#"
-           onCreatePlanClicked="#"
-           onProfileClicked="#"
-           onEditProfileClicked="#">
+<HomePane  onPlaceClicked="#onPlaceClicked"
+           onPlanClicked="#onPlanClicked"
+           onFriendRequestClicked="#onFriendRequestClicked"
+           onCreatePlaceClicked="#onCreateTrekkingPlaceClicked"
+           onCreatePlanClicked="#onCreateTrekkingPlanClicked"
+           onEditProfileClicked="#onEditProfileClicked">
     <homeNode>
         <VBox xmlns:fx="http://javafx.com/fxml/1" prefWidth="412.0" style="-fx-background-color: f5f7fb;"
               xmlns="http://javafx.com/javafx/8.0.141">
