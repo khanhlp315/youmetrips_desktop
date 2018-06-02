@@ -10,6 +10,7 @@ import com.phuongkhanh.youmetrips.services.api.models.Friend;
 import com.phuongkhanh.youmetrips.services.api.models.Profile;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 
 import javax.inject.Inject;
 import java.net.URL;
@@ -21,17 +22,26 @@ public class ProfileScreenImpl extends FXMLScreen
 {
     private final ProfilePresenter _presenter;
 
+    @FXML
+    private Label _lblFirstName;
+
+    @FXML
+    private Label _lblLastName;
+
+
+
     @Inject
     public ProfileScreenImpl(final ProfilePresenter presenter)
     {
         _presenter = presenter;
         _presenter.setView(this);
+        _presenter.fetchProfile();
 
     }
 
     @Override
     public void updateProfile(Profile profile) {
-
+        _lblFirstName.setText(profile.getFirstName());
     }
 
     @Override

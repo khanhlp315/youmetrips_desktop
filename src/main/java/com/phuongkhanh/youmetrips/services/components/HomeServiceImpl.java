@@ -338,7 +338,7 @@ public class HomeServiceImpl implements
 
     @Override
     public AuthenticationStore getAuthenticationStore() {
-        return null;
+        return _authenticationStore;
     }
 
     @Override
@@ -361,7 +361,7 @@ public class HomeServiceImpl implements
 
     @Override
     public HomeStore getHomeStore() {
-        return null;
+        return _homeStore;
     }
 
     @Override
