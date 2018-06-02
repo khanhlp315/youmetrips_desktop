@@ -6,6 +6,7 @@ import com.phuongkhanh.youmetrips.presentation.components.home.friend_requests.F
 import com.phuongkhanh.youmetrips.presentation.components.home.places.PlaceScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.home.plans.PlanScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.plandetails.PlanDetailsScreenImpl;
+import com.phuongkhanh.youmetrips.presentation.controls.UserPlanItem;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import com.phuongkhanh.youmetrips.services.api.models.Friend;
 import com.phuongkhanh.youmetrips.services.api.models.Profile;
@@ -17,10 +18,10 @@ import javax.inject.Inject;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class ProfileScreenImpl extends FXMLScreen
-        implements ProfileScreen, Initializable
-{
+        implements ProfileScreen, Initializable {
     private final ProfilePresenter _presenter;
 
     @FXML
@@ -40,8 +41,7 @@ public class ProfileScreenImpl extends FXMLScreen
 
 
     @Inject
-    public ProfileScreenImpl(final ProfilePresenter presenter)
-    {
+    public ProfileScreenImpl(final ProfilePresenter presenter) {
         _presenter = presenter;
         _presenter.setView(this);
         _presenter.fetchProfile();
@@ -52,18 +52,26 @@ public class ProfileScreenImpl extends FXMLScreen
     public void updateProfile(Profile profile) {
         _lblFirstName.setText(profile.getFirstName());
         _lblLastName.setText(profile.getLastName());
-        if(profile.getOccupation() != null){
+        if (profile.getOccupation() != null) {
             _lblOccupation.setText(profile.getOccupation());
-        }
-        else {
+        } else {
             _lblOccupation.setText("Occupation not yet updated");
         }
-        if(profile.getNationality() != null){
+        if (profile.getNationality() != null) {
             _lblNationality.setText(profile.getNationality());
-        }
-        else {
+        } else {
             _lblNationality.setText("Nationality not yet updated");
         }
+
+        List<UserPlanItem> userPlanItems = profile.getTrekkingPlanSet().stream().map(plan -> {
+            return new UserPlanItem(
+                    plan.getPlace().getCoverImageUrl(),
+                    plan.getPlace().getName(),
+                    plan.getWhenToGoMin().toString() + " - " + plan.getWhenToGoMax().toString(),
+                    String.valueOf(plan.getHowLongMin()) + " - " + String.valueOf(plan.getHowLongMax()) + " days");
+        }).collect(Collectors.toList());
+
+        _lvPlans.getItems().addAll(userPlanItems);
     }
 
     @Override
@@ -111,46 +119,40 @@ public class ProfileScreenImpl extends FXMLScreen
     }
 
     @FXML
-    public void onFriendRequestClicked(){
+    public void onFriendRequestClicked() {
         _presenter.requestNavigateToFriendList();
     }
 
     @FXML
-    public void onPlanClicked()
-    {
+    public void onPlanClicked() {
         _presenter.requestNavigateToPlanList();
     }
 
     @FXML
-    public void onPlaceClicked()
-    {
+    public void onPlaceClicked() {
         //_presenter.requestNavigateToPlaceList();
     }
 
     @FXML
-    public void onCreateTrekkingPlanClicked()
-    {
+    public void onCreateTrekkingPlanClicked() {
         _presenter.requestNavigateToCreateTrekkingPlan();
     }
 
     @FXML
-    public void onCreateTrekkingPlaceClicked()
-    {
-      //  _presenter.requestNavigateToCreateTrekkingPlace();
+    public void onCreateTrekkingPlaceClicked() {
+        //  _presenter.requestNavigateToCreateTrekkingPlace();
     }
 
     @FXML
-    public void onEditProfileClicked()
-    {
-       // _presenter.requestNavigateToEditProfile();
+    public void onEditProfileClicked() {
+        // _presenter.requestNavigateToEditProfile();
     }
 
     @FXML
-    public void onPlaceDetailsClicked()
-    {
+    public void onPlaceDetailsClicked() {
 
     }
-    
+
     @Override
     protected String fxmlPath() {
         return "/view/home/profile/profile.fxml";
