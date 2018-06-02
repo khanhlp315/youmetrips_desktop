@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXListView;
 import com.phuongkhanh.youmetrips.presentation.components.editprofile.EditProfileScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.home.friend_requests.FriendRequestsScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.home.places.PlaceScreenImpl;
+import com.phuongkhanh.youmetrips.presentation.components.home.plans.PlanScreen;
 import com.phuongkhanh.youmetrips.presentation.components.home.plans.PlanScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.plandetails.PlanDetailsScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.controls.FriendItem;

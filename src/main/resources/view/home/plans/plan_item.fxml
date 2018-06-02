@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.*?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+<fx:root type="javafx.scene.layout.AnchorPane" xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
             minWidth="-Infinity" prefHeight="167.0" prefWidth="355.0" style="-fx-background-color: white;"
             xmlns="http://javafx.com/javafx/8.0.141">
     <children>
@@ -31,7 +31,7 @@
                                 </Label>
                             </children>
                         </HBox>
-                        <Label fx:id="_lblJob" text="Job" textFill="#3b5887e7">
+                        <Label fx:id="_lblOccupation" text="Occupation" textFill="#3b5887e7">
                             <font>
                                 <Font name="Segoe UI Light" size="11.0"/>
                             </font>
@@ -41,7 +41,7 @@
                 <VBox alignment="CENTER">
                     <children>
                         <MaterialDesignIconView fill="#1a535c" glyphName="COMMENT" size="16"/>
-                        <Label fx:id="_lblCmtCount" text="Count" textFill="#1a535ce8">
+                        <Label fx:id="_lblComments" text="Count" textFill="#1a535ce8">
                             <VBox.margin>
                                 <Insets left="2.0" top="-2.0"/>
                             </VBox.margin>
@@ -71,7 +71,7 @@
                 <ImageView fitHeight="120.0" fitWidth="355.0" pickOnBounds="true" GridPane.columnSpan="2147483647"
                            GridPane.rowSpan="2147483647">
                     <image>
-                        <Image url="@../../../images/login_page.png"/>
+                        <Image fx:id="_imageCover" url="@../../../images/login_page.png"/>
                     </image>
                 </ImageView>
                 <VBox alignment="CENTER" prefWidth="116.0" GridPane.rowIndex="1">
@@ -79,7 +79,7 @@
                         <MaterialDesignIconView fill="WHITE" glyphName="HOTEL" size="22"/>
                         <HBox alignment="CENTER">
                             <children>
-                                <Label fx:id="_lblStar" text="5" textFill="WHITE">
+                                <Label fx:id="_lblStars" text="5" textFill="WHITE">
                                     <font>
                                         <Font size="11.0"/>
                                     </font>
@@ -119,6 +119,15 @@
                         </Label>
                     </children>
                 </VBox>
+                <VBox alignment="CENTER" GridPane.columnIndex="1">
+                    <children>
+                        <Label fx:id="_lblPlaceName" text="Place" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
             </children>
         </GridPane>
         <Circle fx:id="_cirAvatar" fill="DODGERBLUE" radius="28.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0"
@@ -126,4 +135,4 @@
         <Circle fx:id="_cirCountry" fill="DODGERBLUE" layoutX="66.0" layoutY="53.0" radius="13.0" stroke="WHITE"
                 strokeType="INSIDE" strokeWidth="2.0"/>
     </children>
-</AnchorPane>
+</fx:root>
