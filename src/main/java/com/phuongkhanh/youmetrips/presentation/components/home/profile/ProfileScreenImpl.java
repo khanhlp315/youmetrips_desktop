@@ -113,6 +113,12 @@ public class ProfileScreenImpl extends FXMLScreen
        // _presenter.requestNavigateToEditProfile();
     }
 
+    @FXML
+    public void onPlaceDetailsClicked()
+    {
+
+    }
+    
     @Override
     protected String fxmlPath() {
         return "/view/home/profile/profile.fxml";
