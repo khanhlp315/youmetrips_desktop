@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXTabPane?>
@@ -17,11 +16,12 @@
         <JFXTabPane style="-fx-background-color: white;" stylesheets="@../../style/tabPane.css"
                     AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="242.0">
             <tabs>
-                <Tab text="Visitors">
+                <Tab fx:id="_tabVisitors" text="Visitors">
                     <content>
                         <VBox>
                             <children>
-                                <JFXListView orientation="HORIZONTAL" style="-fx-background-color: transparent;"/>
+                                <JFXListView fx:id="_lbHashtags" orientation="HORIZONTAL"
+                                             style="-fx-background-color: transparent;"/>
                                 <AnchorPane prefHeight="1.0" prefWidth="200.0" style="-fx-background-color: #f0f0f0;">
                                     <VBox.margin>
                                         <Insets top="8.0"/>
@@ -34,7 +34,7 @@
                                     <children>
                                         <VBox alignment="CENTER" prefWidth="115.0">
                                             <children>
-                                                <Label fx:id="_lblPeopleCount" alignment="CENTER" text="+1">
+                                                <Label fx:id="_lblLikeCount" alignment="CENTER" text="+1">
                                                     <font>
                                                         <Font name="System Bold" size="24.0"/>
                                                     </font>
@@ -54,7 +54,7 @@
                                         </AnchorPane>
                                         <VBox alignment="CENTER" prefWidth="115.0">
                                             <children>
-                                                <Label fx:id="_lblPeopleCount1" alignment="CENTER" text="+1">
+                                                <Label fx:id="_lblGoingCount" alignment="CENTER" text="+1">
                                                     <font>
                                                         <Font name="System Bold" size="24.0"/>
                                                     </font>
@@ -74,7 +74,7 @@
                                         </AnchorPane>
                                         <VBox alignment="CENTER" prefWidth="115.0">
                                             <children>
-                                                <Label fx:id="_lblPeopleCount11" alignment="CENTER" text="+1">
+                                                <Label fx:id="_lblCheckedInCount" alignment="CENTER" text="+1">
                                                     <font>
                                                         <Font name="System Bold" size="24.0"/>
                                                     </font>
@@ -156,21 +156,21 @@
                         </VBox>
                     </content>
                 </Tab>
-                <Tab text="MAP">
+                <Tab fx:id="_tabMap" text="MAP">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
                     </content>
                 </Tab>
-                <Tab text="REVIEWS">
+                <Tab fx:id="_tabReviews" text="REVIEWS">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
                     </content>
                 </Tab>
             </tabs>
         </JFXTabPane>
-        <ImageView fitHeight="242.0" fitWidth="375.0" pickOnBounds="true" preserveRatio="true"
+        <ImageView fx:id="_ivPlaceImg" fitHeight="242.0" fitWidth="375.0" pickOnBounds="true" preserveRatio="true"
                    AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
-        <JFXButton fx:id="_btnCreate" layoutX="39.0" layoutY="208.0" prefHeight="40.0" prefWidth="145.0"
+        <JFXButton fx:id="_btnLike" layoutX="39.0" layoutY="208.0" prefHeight="40.0" prefWidth="145.0"
                    ripplerFill="#ffffff42"
                    style="-fx-background-radius: 100; -fx-background-color: #FF4C4C; -fx-border-radius: 100; -fx-border-color: #FF4C4C;"
                    text="Like" textFill="WHITE" AnchorPane.leftAnchor="39.0" AnchorPane.topAnchor="190.0">
@@ -181,7 +181,7 @@
                 <Insets left="16.0"/>
             </padding>
         </JFXButton>
-        <JFXButton fx:id="_btnSignIn" layoutX="192.0" layoutY="208.0" prefHeight="40.0" prefWidth="145.0"
+        <JFXButton fx:id="_btnGoNow" layoutX="192.0" layoutY="208.0" prefHeight="40.0" prefWidth="145.0"
                    ripplerFill="#ffffff42" style="-fx-background-color: #ffc146; -fx-background-radius: 100;"
                    text="Go now" textFill="WHITE" AnchorPane.leftAnchor="192.0" AnchorPane.topAnchor="190.0">
             <font>
