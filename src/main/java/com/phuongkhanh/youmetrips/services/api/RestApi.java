@@ -479,14 +479,14 @@ public class RestApi {
      * get all places
      * @return      a List
      */
-    public List getAllPlaces(int userId, String jwt)
+    public List<Place> getAllPlaces(int userId, String jwt)
     {
         Response response = executeGet(
                 "users/" + userId + "/places/all",
                 jwt
         );
         validateResponse(response);
-        return parseResponseJsonBodyAsList(response, "places", PlaceDetails.class);
+        return parseResponseJsonBodyAsList(response, "places", Place.class);
     }
 
     /**

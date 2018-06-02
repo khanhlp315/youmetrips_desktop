@@ -1,5 +1,7 @@
 package com.phuongkhanh.youmetrips.presentation.components.home.places;
 
+import com.jfoenix.controls.JFXListView;
+import com.phuongkhanh.youmetrips.presentation.controls.PlaceItem;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import com.phuongkhanh.youmetrips.services.api.models.Place;
 import javafx.fxml.FXML;
@@ -9,19 +11,42 @@ import javax.inject.Inject;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class PlaceScreenImpl extends FXMLScreen
 implements PlaceScreen, Initializable {
 
+    @FXML
+    private JFXListView _lvPlaces;
+
+    private final PlacePresenter _presenter;
+
     @Inject
     public PlaceScreenImpl(PlacePresenter presenter)
     {
-
+        _presenter = presenter;
+        _presenter.setView(this);
+        _presenter.fetchPlaces();
     }
 
     @Override
     public void updatePlaces(List<Place> places) {
+        List<PlaceItem> placeItems = places.stream().map(
+                place -> {
+                    String tags = "";
+                    for (String tag: place.getTags()) {
+                        tags = tag + ",";
+                    }
+                    return new PlaceItem(
+                            place.getCoverImageUrl(),
+                            place.getName(),
+                            tags,
+                            place.getNumberOfPeopleGoing(),
+                            place.getNumberOfLikes()
+                    );
+                }).collect(Collectors.toList());
 
+        _lvPlaces.getItems().addAll(placeItems);
     }
 
     @Override
@@ -46,7 +71,7 @@ implements PlaceScreen, Initializable {
 
     @Override
     protected String fxmlPath() {
-        return null;
+        return "/view/home/places/places.fxml";
     }
 
     @Override
