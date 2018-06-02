@@ -1,5 +1,6 @@
 package com.phuongkhanh.youmetrips.presentation.windows;
 
+import com.phuongkhanh.youmetrips.presentation.components.editprofile.EditProfileScreen;
 import com.phuongkhanh.youmetrips.presentation.components.home.places.PlaceScreen;
 import com.phuongkhanh.youmetrips.presentation.components.home.plans.PlanScreen;
 import com.phuongkhanh.youmetrips.presentation.components.home.profile.ProfileScreen;

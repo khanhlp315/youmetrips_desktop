@@ -157,4 +157,26 @@ public class PlacePresenter extends PresenterBase<PlaceScreen> {
 
     }
 
+    public void requestNavigateToPlan()
+    {
+        assert (getView() != null);
+        getView().navigateToPlan();
+    }
+
+    public void requestNavigateToProfile()
+    {
+        assert (getView() != null);
+        getView().navigateToProfile();
+    }
+    public void requestNavigateToFriendRequest()
+    {
+        assert (getView() != null);
+        getView().navigateToFriendRequest();
+    }
+
+    public void requestNavigateToEditProfile()
+    {
+        assert (getView() != null);
+        getView().navigateToEditProfile();
+    }
 }

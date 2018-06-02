@@ -152,4 +152,26 @@ public class PlanPresenter extends PresenterBase<PlanScreen> {
         assert(getView() != null);
         getView().navigateToPlanDetails(planId);
     }
+
+    public void requestNavigateToPlace() {
+        assert(getView() != null);
+        getView().navigateToPlace();
+    }
+
+    public void requestNavigateToProfile() {
+        assert(getView() != null);
+        getView().navigateToProfile();
+    }
+
+    public void requestNavigateToEditProfile() {
+        assert(getView() != null);
+        getView().navigateToEditProfile();
+    }
+
+    public void requestNavigateToFriendRequest()
+    {
+        assert (getView()!= null);
+        getView().navigateToFriendRequest();
+    }
+
 }
