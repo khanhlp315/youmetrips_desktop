@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<JFXDrawer fx:id="_drawer" prefHeight="490.0" style="-fx-background-color: #002b2d;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root type="com.jfoenix.controls.JFXDrawer" fx:id="_drawer" prefHeight="490.0" style="-fx-background-color: #002b2d;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <AnchorPane>
             <children>
@@ -115,7 +115,7 @@
                                 <Circle fx:id="_cirAvatar" fill="DODGERBLUE" radius="16.0" stroke="BLACK" strokeType="INSIDE" />
                             </graphic>
                         </JFXButton>
-                        <JFXButton text="." textFill="TRANSPARENT">
+                        <JFXButton fx:id="_btnEditProfile" text="." textFill="TRANSPARENT">
                             <graphic>
                                 <MaterialDesignIconView fx:id="_btnSettings" fill="#e8e6e6" glyphName="SETTINGS" size="18" />
                             </graphic>
@@ -125,4 +125,4 @@
             </children>
         </AnchorPane>
     </children>
-</JFXDrawer>
+</fx:root>

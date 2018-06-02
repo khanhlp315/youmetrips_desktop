@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.*?>
+<?import com.phuongkhanh.youmetrips.presentation.controls.Drawer?>
 <GridPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="490.0" prefWidth="640.0"
           xmlns="http://javafx.com/javafx/8.0.141">
     <columnConstraints>
@@ -12,7 +13,7 @@
         <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
     </rowConstraints>
     <children>
-        <fx:include fx:id="_drawer" source="drawer.fxml"/>
+        <Drawer fx:id="_drawer"/>
         <ScrollPane hbarPolicy="NEVER" stylesheets="@../../style/customScrollPane.css" GridPane.columnIndex="1"/>
     </children>
 </GridPane>

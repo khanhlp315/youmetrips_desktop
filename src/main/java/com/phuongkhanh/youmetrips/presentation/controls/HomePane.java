@@ -17,8 +17,6 @@ public class HomePane extends VBox {
     @FXML
     private AnchorPane _anchor;
 
-    @FXML
-    private JFXButton _profileButton;
 
     public HomePane()
     {
@@ -58,15 +56,5 @@ public class HomePane extends VBox {
     public ObservableList<Node> getLoginNodes(){
         return _anchor.getChildren();
     }
-
-    public final EventHandler<? super MouseEvent> getOnProfileClicked() {
-        return _profileButton.getOnMouseClicked();
-    }
-
-    public final void setOnProfileClicked(
-            EventHandler<? super MouseEvent> value) {
-        _profileButton.setOnMouseClicked(value);
-    }
-
 
 }
