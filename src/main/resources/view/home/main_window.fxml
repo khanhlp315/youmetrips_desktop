@@ -13,6 +13,6 @@
     </rowConstraints>
     <children>
         <fx:include fx:id="_drawer" source="drawer.fxml"/>
-        <ScrollPane hbarPolicy="NEVER" stylesheets="@../style/customScrollPane.css" GridPane.columnIndex="1"/>
+        <ScrollPane hbarPolicy="NEVER" stylesheets="@../../style/customScrollPane.css" GridPane.columnIndex="1"/>
     </children>
 </GridPane>
