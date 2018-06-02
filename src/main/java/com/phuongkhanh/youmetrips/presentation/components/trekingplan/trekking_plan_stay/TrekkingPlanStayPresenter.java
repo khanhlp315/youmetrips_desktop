@@ -1,7 +1,6 @@
 package com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_stay;
 
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
-import org.joda.time.DateTime;
 
 public class TrekkingPlanStayPresenter extends PresenterBase<TrekkingPlanStayScreen> {
 

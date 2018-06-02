@@ -1,11 +1,10 @@
 package com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_time;
 
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
-import org.joda.time.DateTime;
 
 public class TrekkingPlanTimePresenter extends PresenterBase<TrekkingPlanTimeScreen> {
     
-    public void onInputUpdated(DateTime start, DateTime end){
+    public void onInputUpdated(String start, String end){
         assert(getView() != null);
         if (_isValidInput(start, end)){
             getView().setCanNext(true);
@@ -15,14 +14,14 @@ public class TrekkingPlanTimePresenter extends PresenterBase<TrekkingPlanTimeScr
         }
     }
 
-    private boolean _isValidInput(DateTime start, DateTime end) {
+    private boolean _isValidInput(String start, String end) {
         if(start == null || end == null){
             return false;
         }
 
-        if(end.isBefore(start)){
-            return false;
-        }
+//        if(end.isBefore(start)){
+//            return false;
+//        }
 
         return true;
     }
