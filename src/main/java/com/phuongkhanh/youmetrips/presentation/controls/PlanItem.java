@@ -34,6 +34,9 @@ public class PlanItem extends AnchorPane {
     private Label _lblOccupation;
 
     @FXML
+    private Label _lblPlaceName;
+
+    @FXML
     private Image _imageCover;
 
     @FXML
@@ -43,7 +46,7 @@ public class PlanItem extends AnchorPane {
     private Circle _cirCountry;
 
     private String _avatarUrl;
-    private String _countryUrl;
+    private String _countryFlagUrl;
 
 
     public PlanItem(){
@@ -78,11 +81,14 @@ public class PlanItem extends AnchorPane {
         _lblOccupation.setText(userOccupation);
         //_cirAvatar.setFill(new ImagePattern(new Image(userAvatarUrl)));
         //_cirCountry.setFill(new ImagePattern(new Image(userNationalityFlagUrl)));
-        //TODO: place name
+        _lblPlaceName.setText(placeName);
         _lblStars.setText(String.valueOf(hotelStars));
         _lblDateRange.setText(dateRange);
         _lblTimeRange.setText(timeRange);
         _lblComments.setText(String.valueOf(numberOfComments));
+
+        _avatarUrl = userAvatarUrl;
+        _countryFlagUrl = userNationalityFlagUrl;
     }
 
     void setUserFirstName(String value){
@@ -110,6 +116,7 @@ public class PlanItem extends AnchorPane {
     }
 
     void setUserAvatarUrl(String value){
+        _avatarUrl = value;
         _cirAvatar.setFill(new ImagePattern(new Image(value)));
     }
 
@@ -118,15 +125,16 @@ public class PlanItem extends AnchorPane {
     }
 
     void setUserNationalityFlagUrl(String value){
+        _countryFlagUrl = value;
         _cirCountry.setFill(new ImagePattern(new Image(value)));
     }
 
     void setPlaceName(String value){
-
+        _lblPlaceName.setText(value);
     }
 
     String getPlaceName(){
-        return "";
+        return _lblPlaceName.getText();
     }
 
     void setHotelStars(int value){

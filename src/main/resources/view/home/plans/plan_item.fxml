@@ -126,11 +126,6 @@
                                 <Font name="System Bold" size="18.0"/>
                             </font>
                         </Label>
-                        <Label fx:id="_lblCountry" text="Country" textFill="WHITE">
-                            <font>
-                                <Font size="11.0"/>
-                            </font>
-                        </Label>
                     </children>
                 </VBox>
             </children>
