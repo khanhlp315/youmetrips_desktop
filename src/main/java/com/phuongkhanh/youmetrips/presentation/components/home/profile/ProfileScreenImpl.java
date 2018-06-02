@@ -1,5 +1,6 @@
 package com.phuongkhanh.youmetrips.presentation.components.home.profile;
 
+import com.jfoenix.controls.JFXListView;
 import com.phuongkhanh.youmetrips.presentation.components.editprofile.EditProfileScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.home.friend_requests.FriendRequestsScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.home.places.PlaceScreenImpl;
@@ -28,6 +29,14 @@ public class ProfileScreenImpl extends FXMLScreen
     @FXML
     private Label _lblLastName;
 
+    @FXML
+    private Label _lblOccupation;
+
+    @FXML
+    private Label _lblNationality;
+
+    @FXML
+    private JFXListView _lvPlans;
 
 
     @Inject
@@ -42,6 +51,19 @@ public class ProfileScreenImpl extends FXMLScreen
     @Override
     public void updateProfile(Profile profile) {
         _lblFirstName.setText(profile.getFirstName());
+        _lblLastName.setText(profile.getLastName());
+        if(profile.getOccupation() != null){
+            _lblOccupation.setText(profile.getOccupation());
+        }
+        else {
+            _lblOccupation.setText("Occupation not yet updated");
+        }
+        if(profile.getNationality() != null){
+            _lblNationality.setText(profile.getNationality());
+        }
+        else {
+            _lblNationality.setText("Nationality not yet updated");
+        }
     }
 
     @Override

@@ -71,7 +71,7 @@
                 <ImageView fitHeight="120.0" fitWidth="355.0" pickOnBounds="true" GridPane.columnSpan="2147483647"
                            GridPane.rowSpan="2147483647">
                     <image>
-                        <Image url="@../../images/login_page.png"/>
+                        <Image url="@../../../images/login_page.png"/>
                     </image>
                 </ImageView>
                 <VBox alignment="CENTER" prefWidth="116.0" GridPane.rowIndex="1">
@@ -89,7 +89,7 @@
                                 </Label>
                                 <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../../images/white_star.png"/>
+                                        <Image url="@../../../images/white_star.png"/>
                                     </image>
                                     <HBox.margin>
                                         <Insets left="4.0"/>
