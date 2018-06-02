@@ -43,7 +43,7 @@ implements HomeScreen, Initializable {
 
     @Override
     protected String fxmlPath() {
-        return "/view/home/main_window.fxml";
+        return "/view/home/profile/profile.fxml";
     }
 
     @Override

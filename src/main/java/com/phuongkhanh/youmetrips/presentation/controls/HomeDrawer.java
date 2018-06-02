@@ -9,7 +9,7 @@ import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 
-public class Drawer extends JFXDrawer {
+public class HomeDrawer extends JFXDrawer {
 
 
     @FXML
@@ -36,10 +36,10 @@ public class Drawer extends JFXDrawer {
     @FXML
     private JFXButton _btnEditProfile;
 
-    public Drawer()
+    public HomeDrawer()
     {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource(
-                "view/home/drawer.fxml"));
+                "view/home/home_drawer.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
