@@ -16,6 +16,7 @@ import com.phuongkhanh.youmetrips.services.api.models.Friend;
 import com.phuongkhanh.youmetrips.services.api.models.Profile;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
@@ -63,8 +64,7 @@ public class ProfileScreenImpl extends FXMLScreen
     public ProfileScreenImpl(final ProfilePresenter presenter) {
         _presenter = presenter;
         _presenter.setView(this);
-        _presenter.fetchProfile();
-        _presenter.fetchFriends();
+
     }
 
     @Override
@@ -135,6 +135,13 @@ public class ProfileScreenImpl extends FXMLScreen
     @Override
     public void setLoading(boolean isLoading) {
         _homePane.setHomeNode(isLoading? _loadingPane: _profileBox);
+    }
+
+    @Override
+    public Scene render() {
+        _presenter.fetchProfile();
+        _presenter.fetchFriends();
+        return super.render();
     }
 
     @Override

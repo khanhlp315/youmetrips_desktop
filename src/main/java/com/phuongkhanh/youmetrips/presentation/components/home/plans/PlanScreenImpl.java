@@ -6,6 +6,7 @@ import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import com.phuongkhanh.youmetrips.services.api.models.RelevantPlan;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 
 import javax.inject.Inject;
 import java.net.URL;
@@ -21,12 +22,17 @@ implements PlanScreen, Initializable {
     @FXML
     private JFXListView _lvPlans;
 
+    @Override
+    public Scene render() {
+        _presenter.fetchPlans();
+        return super.render();
+    }
+
     @Inject
     public PlanScreenImpl(PlanPresenter presenter)
     {
         _presenter = presenter;
         _presenter.setView(this);
-        _presenter.fetchPlans();
     }
 
     @Override

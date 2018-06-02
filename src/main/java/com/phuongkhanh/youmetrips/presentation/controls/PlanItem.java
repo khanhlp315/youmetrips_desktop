@@ -10,6 +10,9 @@ import javafx.scene.shape.Circle;
 
 import java.io.IOException;
 
+import static com.phuongkhanh.youmetrips.utils.CommonUtils.getNeutralAvatar;
+import static com.phuongkhanh.youmetrips.utils.CommonUtils.getNeutralFlag;
+
 public class PlanItem extends AnchorPane {
 
     @FXML
@@ -48,18 +51,21 @@ public class PlanItem extends AnchorPane {
     private String _avatarUrl;
     private String _countryFlagUrl;
 
+    private static FXMLLoader fxmlLoader = new FXMLLoader(PlanItem.class.getClassLoader().getResource(
+                "view/home/plans/plan_item.fxml"));
+
 
     public PlanItem(){
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource(
-                "view/home/plans/plan_item.fxml"));
-        fxmlLoader.setRoot(this);
-        fxmlLoader.setController(this);
+
 
         try {
             fxmlLoader.load();
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
     }
 
     public PlanItem(String userFirstName, String userLastName, String userAvatarUrl,
@@ -79,8 +85,9 @@ public class PlanItem extends AnchorPane {
         _lblFirstName.setText(userFirstName);
         _lblLastName.setText(userLastName);
         _lblOccupation.setText(userOccupation);
-        //_cirAvatar.setFill(new ImagePattern(new Image(userAvatarUrl)));
-        //_cirCountry.setFill(new ImagePattern(new Image(userNationalityFlagUrl)));
+        //Image avatarImage = new Image(userAvatarUrl == null ? getNeutralAvatar(): userAvatarUrl);
+        //_cirAvatar.setFill(new ImagePattern(avatarImage));
+        //_cirCountry.setFill(new ImagePattern(new Image(userNationalityFlagUrl == null ? getNeutralFlag(): userNationalityFlagUrl)));
         _lblPlaceName.setText(placeName);
         _lblStars.setText(String.valueOf(hotelStars));
         _lblDateRange.setText(dateRange);
@@ -117,7 +124,7 @@ public class PlanItem extends AnchorPane {
 
     void setUserAvatarUrl(String value){
         _avatarUrl = value;
-        _cirAvatar.setFill(new ImagePattern(new Image(value)));
+        _cirAvatar.setFill(new ImagePattern(new Image(value == null ? getNeutralAvatar(): value)));
     }
 
     String getUserAvatarUrl(){
@@ -126,7 +133,7 @@ public class PlanItem extends AnchorPane {
 
     void setUserNationalityFlagUrl(String value){
         _countryFlagUrl = value;
-        _cirCountry.setFill(new ImagePattern(new Image(value)));
+        _cirCountry.setFill(new ImagePattern(new Image(value == null ? getNeutralFlag(): value)));
     }
 
     void setPlaceName(String value){

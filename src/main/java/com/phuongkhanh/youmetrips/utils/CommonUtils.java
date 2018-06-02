@@ -35,4 +35,8 @@ public class CommonUtils {
     public static String getNeutralAvatar(){
         return "https://www.brcglobalstandards.com/media/165675/avatar-1577909-darker-neutral.png";
     }
+
+    public static String getNeutralFlag(){
+        return "https://img00.deviantart.net/8ad6/i/2016/006/1/3/futurama___flag_of_the_neutral_planet_by_theflagandanthemguy-d9mzn4j.png";
+    }
 }
