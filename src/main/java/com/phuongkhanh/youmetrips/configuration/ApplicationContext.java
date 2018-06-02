@@ -8,10 +8,6 @@ import com.phuongkhanh.youmetrips.presentation.components.friendlist.FriendListP
 import com.phuongkhanh.youmetrips.presentation.components.friendlist.FriendListScreen;
 import com.phuongkhanh.youmetrips.presentation.components.friendlist.FriendListScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.friendlist.FriendListService;
-import com.phuongkhanh.youmetrips.presentation.components.home.HomePresenter;
-import com.phuongkhanh.youmetrips.presentation.components.home.HomeScreen;
-import com.phuongkhanh.youmetrips.presentation.components.home.HomeScreenImpl;
-import com.phuongkhanh.youmetrips.presentation.components.home.HomeService;
 import com.phuongkhanh.youmetrips.presentation.components.home.friend_requests.FriendRequestsPresenter;
 import com.phuongkhanh.youmetrips.presentation.components.home.friend_requests.FriendRequestsScreen;
 import com.phuongkhanh.youmetrips.presentation.components.home.friend_requests.FriendRequestsScreenImpl;
@@ -104,7 +100,6 @@ import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_photos.TrekkingPlacePhotosScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.windows.LoginWindow;
 import com.phuongkhanh.youmetrips.services.api.RestApi;
-import com.phuongkhanh.youmetrips.services.api.models.FriendRequest;
 import com.phuongkhanh.youmetrips.services.components.AuthServiceImpl;
 import com.phuongkhanh.youmetrips.services.components.HomeServiceImpl;
 import com.phuongkhanh.youmetrips.services.stores.AuthenticationStore;
@@ -206,16 +201,6 @@ public interface ApplicationContext {
         @Provides
         static FriendListPresenter friendListPresenter(FriendListService service) {
             return new FriendListPresenter(service);
-        }
-
-        @Provides
-        static HomeScreen homeScreen(HomePresenter presenter) {
-            return new HomeScreenImpl(presenter);
-        }
-
-        @Provides
-        static HomePresenter homePresenter(HomeService service) {
-            return new HomePresenter(service);
         }
 
         @Provides
@@ -423,11 +408,6 @@ public interface ApplicationContext {
 
         @Provides
         static FriendListService friendListService() {
-            return new HomeServiceImpl(restApi(), authenticationStore(), homeStore());
-        }
-
-        @Provides
-        static HomeService homeService() {
             return new HomeServiceImpl(restApi(), authenticationStore(), homeStore());
         }
 

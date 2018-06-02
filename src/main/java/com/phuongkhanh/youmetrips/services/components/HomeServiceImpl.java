@@ -2,7 +2,6 @@ package com.phuongkhanh.youmetrips.services.components;
 
 import com.phuongkhanh.youmetrips.presentation.components.editprofile.EditProfileService;
 import com.phuongkhanh.youmetrips.presentation.components.friendlist.FriendListService;
-import com.phuongkhanh.youmetrips.presentation.components.home.HomeService;
 import com.phuongkhanh.youmetrips.presentation.components.home.friend_requests.FriendRequestsService;
 import com.phuongkhanh.youmetrips.presentation.components.home.place_details.PlaceDetailsService;
 import com.phuongkhanh.youmetrips.presentation.components.home.places.PlaceService;
@@ -27,7 +26,6 @@ import java.io.File;
 import java.util.List;
 
 public class HomeServiceImpl implements
-        HomeService,
         PlanService,
         PlaceService,
         FriendRequestsService,
