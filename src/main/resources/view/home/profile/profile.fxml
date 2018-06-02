@@ -15,10 +15,14 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<HomePane onCreatePlaceClicked="#onCreateTrekkingPlaceClicked" onCreatePlanClicked="#onCreateTrekkingPlanClicked" onEditProfileClicked="#onEditProfileClicked" onFriendRequestClicked="#onFriendRequestClicked" onPlaceClicked="#onPlaceClicked" onPlanClicked="#onPlanClicked" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<?import com.phuongkhanh.youmetrips.presentation.controls.LoadingPane?>
+<HomePane fx:id="_homePane" onCreatePlaceClicked="#onCreateTrekkingPlaceClicked" onCreatePlanClicked="#onCreateTrekkingPlanClicked" onEditProfileClicked="#onEditProfileClicked" onFriendRequestClicked="#onFriendRequestClicked" onPlaceClicked="#onPlaceClicked" onPlanClicked="#onPlanClicked" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <homeNode>
-        <VBox prefWidth="412.0" style="-fx-background-color: f5f7fb;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+
+
+        <VBox fx:id="_profileBox" prefWidth="412.0" style="-fx-background-color: f5f7fb;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
             <children>
+
                 <VBox alignment="TOP_CENTER" style="-fx-background-color: white;">
                     <children>
                         <HBox>
@@ -127,13 +131,6 @@
                             <VBox.margin>
                                 <Insets />
                             </VBox.margin>
-                            <children>
-                                <JFXButton fx:id="_btnCreatePlan" prefHeight="38.0" prefWidth="300.0" ripplerFill="#ffffff42" style="-fx-background-color: #1a535c; -fx-background-radius: 100;" text="Have a new plan" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                                    <font>
-                                        <Font size="14.0" />
-                                    </font>
-                                </JFXButton>
-                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="1.0" prefWidth="200.0" style="-fx-background-color: #f0f0f0;">
                             <VBox.margin>
@@ -203,5 +200,7 @@
                 </VBox>
             </children>
         </VBox>
+        <LoadingPane fx:id="_loadingPane"/>
+
     </homeNode>
 </HomePane>

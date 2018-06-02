@@ -31,4 +31,8 @@ public class CommonUtils {
 
         return System.getenv(APP_DATA) + "/youmetrips/" + fileName;
     }
+
+    public static String getNeutralAvatar(){
+        return "https://www.brcglobalstandards.com/media/165675/avatar-1577909-darker-neutral.png";
+    }
 }

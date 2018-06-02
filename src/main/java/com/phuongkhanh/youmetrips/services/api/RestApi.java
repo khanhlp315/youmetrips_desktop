@@ -245,7 +245,7 @@ public class RestApi {
 
         try {
             String json = requireNonNull(response.body()).string();
-            JsonArray jsonArray = requireNonNull(_gson.get().fromJson(json, JsonObject.class)).getAsJsonArray();
+            JsonArray jsonArray = requireNonNull(_gson.get().fromJson(json, JsonArray.class));
             List<T> ret = new ArrayList<>();
             for(JsonElement element: jsonArray)
             {

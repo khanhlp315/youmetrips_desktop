@@ -58,6 +58,7 @@ public class UserPlanItem extends HBox {
 
         Image img = new Image(imageUrl);
         _rectPlaceImage.setFill(new ImagePattern(img));
+        _tempUrl = imageUrl;
 
         _lblPlaceName.setText(placeName);
         _lblFromToDate.setText(date);

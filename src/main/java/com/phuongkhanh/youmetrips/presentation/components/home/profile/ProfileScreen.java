@@ -16,6 +16,7 @@ public interface ProfileScreen extends JFXScreen {
      void navigateToFriendList();
      void navigateToPlanDetails(int planId);
      void navigateToPlace();
+     void setLoading(boolean isLoading);
 
      void updateFriends(List<Friend> friends);
 

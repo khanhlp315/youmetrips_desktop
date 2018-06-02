@@ -6,6 +6,9 @@ import com.phuongkhanh.youmetrips.presentation.components.home.friend_requests.F
 import com.phuongkhanh.youmetrips.presentation.components.home.places.PlaceScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.home.plans.PlanScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.plandetails.PlanDetailsScreenImpl;
+import com.phuongkhanh.youmetrips.presentation.controls.FriendItem;
+import com.phuongkhanh.youmetrips.presentation.controls.HomePane;
+import com.phuongkhanh.youmetrips.presentation.controls.LoadingPane;
 import com.phuongkhanh.youmetrips.presentation.controls.UserPlanItem;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import com.phuongkhanh.youmetrips.services.api.models.Friend;
@@ -13,6 +16,7 @@ import com.phuongkhanh.youmetrips.services.api.models.Profile;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 
 import javax.inject.Inject;
 import java.net.URL;
@@ -39,13 +43,27 @@ public class ProfileScreenImpl extends FXMLScreen
     @FXML
     private JFXListView _lvPlans;
 
+    @FXML
+    private JFXListView _lvFriends;
+
+    @FXML
+    private Label _lblFriendCount;
+
+    @FXML
+    private LoadingPane _loadingPane;
+
+    @FXML
+    private VBox _profileBox;
+
+    @FXML
+    private HomePane _homePane;
 
     @Inject
     public ProfileScreenImpl(final ProfilePresenter presenter) {
         _presenter = presenter;
         _presenter.setView(this);
         _presenter.fetchProfile();
-
+        _presenter.fetchFriends();
     }
 
     @Override
@@ -114,8 +132,19 @@ public class ProfileScreenImpl extends FXMLScreen
     }
 
     @Override
-    public void updateFriends(List<Friend> friends) {
+    public void setLoading(boolean isLoading) {
+        _homePane.setHomeNode(isLoading? _loadingPane: _profileBox);
+    }
 
+    @Override
+    public void updateFriends(List<Friend> friends) {
+        _lblFriendCount.setText(String.valueOf(friends.size()));
+        List<FriendItem> friendItems = friends.stream().map(
+                friend -> {
+                    return new FriendItem(friend.getUserAvatarUrl(), friend.getUserFirstName(), friend.getUserLastName());
+                }).collect(Collectors.toList());
+
+        _lvFriends.getItems().addAll(friendItems);
     }
 
     @FXML

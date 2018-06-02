@@ -22,6 +22,8 @@ public class ProfilePresenter extends PresenterBase<ProfileScreen> {
     public void fetchProfile() {
         assert (getView() != null);
 
+        getView().setLoading(true);
+
         AuthenticationStore authenticationStore = _service.getAuthenticationStore();
         Profile profile = authenticationStore.getProfile();
 
@@ -73,7 +75,7 @@ public class ProfilePresenter extends PresenterBase<ProfileScreen> {
 
         task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, event -> {
             List<Friend> result = task.getValue();
-            _onFetchFriendsSucceeded(friends);
+            _onFetchFriendsSucceeded(result);
         });
 
         new Thread(task).start();
@@ -113,11 +115,12 @@ public class ProfilePresenter extends PresenterBase<ProfileScreen> {
                     )
             );
         }
+        getView().setLoading(false);
         getView().updateProfile(user);
-
     }
 
     private void _onFetchUserFailed(Throwable throwable) {
+        getView().setLoading(false);
     }
 
     private List<Friend> _doFetchFriends() {
