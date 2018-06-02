@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
@@ -79,8 +80,8 @@ public class PlanItem extends AnchorPane {
         _lblFirstName.setText(userFirstName);
         _lblLastName.setText(userLastName);
         _lblOccupation.setText(userOccupation);
-        //_cirAvatar.setFill(new ImagePattern(new Image(userAvatarUrl)));
-        //_cirCountry.setFill(new ImagePattern(new Image(userNationalityFlagUrl)));
+        _cirAvatar.setFill(new ImagePattern(new Image(userAvatarUrl)));
+        _cirCountry.setFill(new ImagePattern(new Image(userNationalityFlagUrl == null? getNeutralFlag())));
         _lblPlaceName.setText(placeName);
         _lblStars.setText(String.valueOf(hotelStars));
         _lblDateRange.setText(dateRange);

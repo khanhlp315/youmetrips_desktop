@@ -1,11 +1,17 @@
 package com.phuongkhanh.youmetrips.presentation.components.home.places;
 
 import com.jfoenix.controls.JFXListView;
+import com.phuongkhanh.youmetrips.presentation.components.editprofile.EditProfileScreenImpl;
+import com.phuongkhanh.youmetrips.presentation.components.home.friend_requests.FriendRequestsScreenImpl;
+import com.phuongkhanh.youmetrips.presentation.components.home.plans.PlanScreenImpl;
+import com.phuongkhanh.youmetrips.presentation.components.home.profile.ProfileScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.controls.PlaceItem;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import com.phuongkhanh.youmetrips.services.api.models.Place;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import org.omg.CORBA.ACTIVITY_REQUIRED;
 
 import javax.inject.Inject;
 import java.net.URL;
@@ -21,12 +27,17 @@ implements PlaceScreen, Initializable {
 
     private final PlacePresenter _presenter;
 
+    @Override
+    public Scene render() {
+        _presenter.fetchPlaces();
+        return super.render();
+    }
+
     @Inject
     public PlaceScreenImpl(PlacePresenter presenter)
     {
         _presenter = presenter;
         _presenter.setView(this);
-        _presenter.fetchPlaces();
     }
 
     @Override
@@ -52,6 +63,30 @@ implements PlaceScreen, Initializable {
     @Override
     public void navigateToCreateTrekkingPlace() {
 
+    }
+
+    @Override
+    public void navigateToCreateTrekkingPlan() {
+    }
+
+    @Override
+    public void navigateToPlan() {
+        navigate(PlanScreenImpl.class);
+    }
+
+    @Override
+    public void navigateToProfile() {
+        navigate(ProfileScreenImpl.class);
+    }
+
+    @Override
+    public void navigateToEditProfile() {
+        navigate(EditProfileScreenImpl.class);
+    }
+
+    @Override
+    public void navigateToFriendRequest() {
+        navigate(FriendRequestsScreenImpl.class);
     }
 
     @Override
@@ -81,13 +116,13 @@ implements PlaceScreen, Initializable {
     @FXML
     public void onPlanClicked()
     {
-
+        _presenter.requestNavigateToPlan();
     }
 
     @FXML
     public void onFriendRequestClicked()
     {
-
+        _presenter.requestNavigateToFriendRequest();
     }
 
     @FXML
@@ -105,12 +140,12 @@ implements PlaceScreen, Initializable {
     @FXML
     public void onProfileClicked()
     {
-
+        _presenter.requestNavigateToProfile();
     }
 
     @FXML
     public void onEditProfileClicked()
     {
-
+        _presenter.requestNavigateToEditProfile();
     }
 }
