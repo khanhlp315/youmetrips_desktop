@@ -368,7 +368,7 @@ public class RestApi {
     public List<Friend> getFriends(int userId, String jwt) {
         Response response = executeGet("users/" + userId + "/friends", jwt);
         validateResponse(response);
-        //TODO: return a list friends
+        return parseResponseJsonBodyAsList(response, Friend.class);
     }
 
     /**
@@ -515,7 +515,7 @@ public class RestApi {
                 jwt
         );
         validateResponse(response);
-        // TODO: return list comments
+        return parseResponseJsonBodyAsList(response, Comment.class);
     }
 
     /**

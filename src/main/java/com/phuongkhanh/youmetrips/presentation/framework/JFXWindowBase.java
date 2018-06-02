@@ -113,6 +113,41 @@ public class JFXWindowBase implements JFXWindow {
         return _currentScreen;
     }
 
+    @Override
+    public void show() {
+        if ( _stage == null ) {
+            throw new RuntimeException( "Can not show, no stage attached. Stage must be attached before being able to show!" );
+        }
+        if ( _stage.isShowing() ) {
+            throw new RuntimeException( "Window is currently showing!" );
+        }
+
+        _stage.show();
+
+    }
+
+    @Override
+    public void close() {
+        if ( _stage == null ) {
+            throw new RuntimeException( "Can not close, no stage attached. Stage must be attached before being able to close!" );
+        }
+
+        _stage.close();
+    }
+
+    @Override
+    public void hide() {
+        if ( _stage == null ) {
+            throw new RuntimeException( "Can not hide, no stage attached. Stage must be attached before being able to show!" );
+        }
+        if ( !_stage.isShowing() ) {
+            throw new RuntimeException( "Can not hide, window is not showing. Only can hide when window is showing!" );
+        }
+
+        _stage.hide();
+
+    }
+
     private void setCurrentScreen(final JFXScreen screen) {
         JFXScreen oldScreen = _currentScreen;
         _currentScreen = screen;

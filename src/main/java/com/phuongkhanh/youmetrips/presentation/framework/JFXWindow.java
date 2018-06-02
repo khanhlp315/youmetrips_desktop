@@ -14,4 +14,10 @@ public interface JFXWindow {
     JFXScreen[] getScreens();
 
     JFXScreen getCurrentScreen();
+
+    void show();
+
+    void close();
+
+    void hide();
 }

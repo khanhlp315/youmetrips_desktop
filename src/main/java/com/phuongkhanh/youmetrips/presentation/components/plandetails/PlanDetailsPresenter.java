@@ -205,7 +205,8 @@ public class PlanDetailsPresenter extends PresenterBase<PlanDetailsScreen> {
             protected void failed() {
                 onFetchAvatarFailed(getException());
             }
-        };
+        }
+        ;
 
         task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, event->{
             onFetchAvatarSucceeded(task.getValue());

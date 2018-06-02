@@ -131,7 +131,7 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
     }
 
     private void onLoginSuccess() {
-
+        getView().navigateToHome();
     }
 
     private void setState(int state) {
@@ -146,7 +146,7 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
         AuthenticationStore authenticationStore = _service.getAuthenticationStore();
         authenticationStore.load();
         if(authenticationStore.getJwt() != null){
-            System.out.println("Logged in as " + authenticationStore.getJwt());
+            //getView().navigateToHome();
         }
     }
 }

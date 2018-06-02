@@ -8,17 +8,21 @@ import com.phuongkhanh.youmetrips.presentation.components.signup.confirmation_co
 import com.phuongkhanh.youmetrips.presentation.components.signup.signup.SignUpScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.controls.LoadingPane;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
+import com.phuongkhanh.youmetrips.presentation.windows.HomeWindow;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
+import javax.inject.Provider;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class LoginScreenImpl extends FXMLScreen implements LoginScreen, Initializable {
     private final LoginPresenter _presenter;
+    private final Provider<HomeWindow> _homeWindow;
 
     @FXML
     private JFXTextField _txtEmailOrPhoneLogin;
@@ -36,11 +40,12 @@ public class LoginScreenImpl extends FXMLScreen implements LoginScreen, Initiali
     private ImageView _imgFB;
 
 
-    public LoginScreenImpl(final LoginPresenter presenter) {
+    public LoginScreenImpl(final LoginPresenter presenter, final Provider<HomeWindow> homeWindow) {
         _presenter = presenter;
         _presenter.setView(this);
         _presenter.checkForAutoLogin();
 
+        _homeWindow = homeWindow;
     }
 
     @Override
@@ -125,5 +130,14 @@ public class LoginScreenImpl extends FXMLScreen implements LoginScreen, Initiali
     @Override
     public void navigateToSignUpConfirmationCodeScreen() {
         navigate(SignUpConfirmationCodeScreenImpl.class);
+    }
+
+    @Override
+    public void navigateToHome() {
+        getWindow().close();
+
+        HomeWindow homeWindow = _homeWindow.get();
+        homeWindow.attach(new Stage());
+        homeWindow.show();
     }
 }
