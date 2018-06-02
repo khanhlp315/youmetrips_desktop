@@ -119,6 +119,20 @@
                         </Label>
                     </children>
                 </VBox>
+                <VBox alignment="CENTER" GridPane.columnIndex="1">
+                    <children>
+                        <Label fx:id="_lblPlaceName" text="Place" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="_lblCountry" text="Country" textFill="WHITE">
+                            <font>
+                                <Font size="11.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
             </children>
         </GridPane>
         <Circle fx:id="_cirAvatar" fill="DODGERBLUE" radius="28.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0"
