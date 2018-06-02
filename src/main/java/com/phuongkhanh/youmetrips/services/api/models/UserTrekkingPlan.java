@@ -4,8 +4,8 @@ public class UserTrekkingPlan {
     private int id;
     private UserTrekkingPlanPlace place;
     private int numberOfComments;
-    private String whenToGoMin;
-    private String whenToGoMax;
+    private DateTime whenToGoMin;
+    private DateTime whenToGoMax;
     private int howLongMin;
     private int howLongMax;
     private int hotelLevel;
@@ -35,19 +35,19 @@ public class UserTrekkingPlan {
         this.numberOfComments = numberOfComments;
     }
 
-    public String getWhenToGoMin() {
+    public DateTime getWhenToGoMin() {
         return whenToGoMin;
     }
 
-    public void setWhenToGoMin(String whenToGoMin) {
+    public void setWhenToGoMin(DateTime whenToGoMin) {
         this.whenToGoMin = whenToGoMin;
     }
 
-    public String getWhenToGoMax() {
+    public DateTime getWhenToGoMax() {
         return whenToGoMax;
     }
 
-    public void setWhenToGoMax(String whenToGoMax) {
+    public void setWhenToGoMax(DateTime whenToGoMax) {
         this.whenToGoMax = whenToGoMax;
     }
 

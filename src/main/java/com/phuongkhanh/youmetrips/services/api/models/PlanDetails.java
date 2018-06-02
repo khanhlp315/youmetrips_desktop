@@ -4,8 +4,8 @@ import java.util.List;
 
 public class PlanDetails {
     private int id;
-    private String whenToGoMin;
-    private String whenToGoMax;
+    private DateTime whenToGoMin;
+    private DateTime whenToGoMax;
     private int howLongMin;
     private int howLongMax;
     private int hotelLevel;
@@ -20,8 +20,8 @@ public class PlanDetails {
 
     public PlanDetails(
             int id,
-            String whenToGoMin,
-            String whenToGoMax,
+            DateTime whenToGoMin,
+            DateTime whenToGoMax,
             int howLongMin,
             int howLongMax,
             int hotelLevel,
@@ -56,19 +56,19 @@ public class PlanDetails {
         this.id = id;
     }
 
-    public String getWhenToGoMin() {
+    public DateTime getWhenToGoMin() {
         return whenToGoMin;
     }
 
-    public void setWhenToGoMin(String whenToGoMin) {
+    public void setWhenToGoMin(DateTime whenToGoMin) {
         this.whenToGoMin = whenToGoMin;
     }
 
-    public String getWhenToGoMax() {
+    public DateTime getWhenToGoMax() {
         return whenToGoMax;
     }
 
-    public void setWhenToGoMax(String whenToGoMax) {
+    public void setWhenToGoMax(DateTime whenToGoMax) {
         this.whenToGoMax = whenToGoMax;
     }
 
