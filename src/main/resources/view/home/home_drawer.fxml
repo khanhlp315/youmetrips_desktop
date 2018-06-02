@@ -104,7 +104,7 @@
                 </VBox>
                 <HBox alignment="CENTER_LEFT" layoutY="442.0" AnchorPane.bottomAnchor="8.0">
                     <children>
-                        <JFXButton fx:id="_btnProfile" alignment="BASELINE_LEFT" graphicTextGap="16.0" prefHeight="40.0" prefWidth="230.0" ripplerFill="#ffffff42" text="Firstname Lastname" textFill="#e8e6e6">
+                        <JFXButton fx:id="_btnProfile" alignment="BASELINE_LEFT" graphicTextGap="16.0" prefHeight="40.0" prefWidth="230.0" ripplerFill="#ffffff42" text="Profile" textFill="#e8e6e6">
                             <font>
                                 <Font size="13.0" />
                             </font>
@@ -112,7 +112,8 @@
                                 <Insets left="16.0" />
                             </padding>
                             <graphic>
-                                <Circle fx:id="_cirAvatar" fill="DODGERBLUE" radius="16.0" stroke="BLACK" strokeType="INSIDE" />
+                                <FontAwesomeIconView fill="#e8e6e6" glyphName="USER_CIRCLE" size="18" />
+
                             </graphic>
                         </JFXButton>
                         <JFXButton fx:id="_btnEditProfile" text="." textFill="TRANSPARENT">

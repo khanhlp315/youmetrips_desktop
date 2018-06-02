@@ -4,7 +4,6 @@ import com.jfoenix.controls.JFXListView;
 import com.phuongkhanh.youmetrips.presentation.components.editprofile.EditProfileScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.home.friend_requests.FriendRequestsScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.home.places.PlaceScreenImpl;
-import com.phuongkhanh.youmetrips.presentation.components.home.plans.PlanScreen;
 import com.phuongkhanh.youmetrips.presentation.components.home.plans.PlanScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.plandetails.PlanDetailsScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.controls.FriendItem;
@@ -14,10 +13,14 @@ import com.phuongkhanh.youmetrips.presentation.controls.UserPlanItem;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import com.phuongkhanh.youmetrips.services.api.models.Friend;
 import com.phuongkhanh.youmetrips.services.api.models.Profile;
+import com.phuongkhanh.youmetrips.utils.CommonUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Rectangle;
 
 import javax.inject.Inject;
 import java.net.URL;
@@ -59,6 +62,9 @@ public class ProfileScreenImpl extends FXMLScreen
     @FXML
     private HomePane _homePane;
 
+    @FXML
+    private Rectangle _rectAvatar;
+
     @Inject
     public ProfileScreenImpl(final ProfilePresenter presenter) {
         _presenter = presenter;
@@ -69,6 +75,8 @@ public class ProfileScreenImpl extends FXMLScreen
 
     @Override
     public void updateProfile(Profile profile) {
+        Image image = new Image(profile.getAvatar() == null ? CommonUtils.getNeutralAvatar() : profile.getAvatar());
+        _rectAvatar.setFill(new ImagePattern(image));
         _lblFirstName.setText(profile.getFirstName());
         _lblLastName.setText(profile.getLastName());
         if (profile.getOccupation() != null) {
@@ -118,6 +126,11 @@ public class ProfileScreenImpl extends FXMLScreen
     }
 
     @Override
+    public void navigateToPlaceList() {
+        navigate(PlaceScreenImpl.class);
+    }
+
+    @Override
     public void navigateToFriendList() {
         navigate(FriendRequestsScreenImpl.class);
     }
@@ -125,11 +138,6 @@ public class ProfileScreenImpl extends FXMLScreen
     @Override
     public void navigateToPlanDetails(int planId) {
         navigate(PlanDetailsScreenImpl.class);
-    }
-
-    @Override
-    public void navigateToPlace() {
-        navigate(PlaceScreenImpl.class);
     }
 
     @Override
@@ -160,7 +168,7 @@ public class ProfileScreenImpl extends FXMLScreen
 
     @FXML
     public void onPlaceClicked() {
-        //_presenter.requestNavigateToPlaceList();
+        _presenter.requestNavigateToPlaceList();
     }
 
     @FXML
