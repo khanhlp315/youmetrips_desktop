@@ -46,7 +46,7 @@ implements PlanScreen, Initializable {
 
     @Override
     protected String fxmlPath() {
-        return null;
+        return "/view/home/profile/plan.fxml";
     }
 
     @Override
