@@ -2,6 +2,7 @@ package com.phuongkhanh.youmetrips.presentation.components.home.friend_requests;
 
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import com.phuongkhanh.youmetrips.services.api.models.FriendRequest;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import javax.inject.Inject;
@@ -40,6 +41,42 @@ implements FriendRequestsScreen, Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+    }
+
+    @FXML
+    public void onPlaceClicked()
+    {
+
+    }
+
+    @FXML
+    public void onPlanClicked()
+    {
+
+    }
+
+    @FXML
+    public void onCreateTrekkingPlanClicked()
+    {
+
+    }
+
+    @FXML
+    public void onCreateTrekkingPlaceClicked()
+    {
+
+    }
+
+    @FXML
+    public void onProfileClicked()
+    {
+
+    }
+
+    @FXML
+    public void onEditProfileClicked()
+    {
 
     }
 }
