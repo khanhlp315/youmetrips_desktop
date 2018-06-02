@@ -12,8 +12,8 @@ public class LoadingPane extends VBox {
 
     public LoadingPane()
     {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
-                "../../../../../../resources/custom_controls/loading_pane.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource(
+                "custom_controls/loading_pane.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
