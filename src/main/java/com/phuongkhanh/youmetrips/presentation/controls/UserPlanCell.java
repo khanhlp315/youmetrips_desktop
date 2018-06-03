@@ -1,6 +1,8 @@
 package com.phuongkhanh.youmetrips.presentation.controls;
 
 import com.phuongkhanh.youmetrips.services.api.models.UserTrekkingPlan;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.fxml.FXML;
@@ -56,20 +58,15 @@ public class UserPlanCell extends ListCell<UserTrekkingPlan> {
             setContentDisplay(ContentDisplay.TEXT_ONLY);
         }
         else {
-            Task<Image> task = new Task<Image>() {
+            Image image = new Image(item.getPlace().getCoverImageUrl(), true);
+            image.progressProperty().addListener(new ChangeListener<Number>() {
                 @Override
-                protected Image call() {
-                    Image image = new Image(item.getPlace().getCoverImageUrl(), true);
-
-                    while(!(image.getProgress() == 1.0)){
+                public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                    if(newValue.doubleValue() == 1.0){
+                        _rectPlaceImage.setFill(new ImagePattern(image));
                     }
-                    return image;
                 }
-            };
-            task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, event->{
-                _rectPlaceImage.setFill(new ImagePattern(task.getValue()));
             });
-            //new Thread(task).start();
             _lblPlaceName.setText(item.getPlace().getName());
             String fromToDate = "";
             if(item.getWhenToGoMin().getYear() == item.getWhenToGoMax().getYear()){

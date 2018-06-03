@@ -1,6 +1,8 @@
 package com.phuongkhanh.youmetrips.presentation.controls;
 
 import com.phuongkhanh.youmetrips.services.api.models.Friend;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.fxml.FXML;
@@ -8,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
@@ -23,6 +26,9 @@ public final class FriendCell extends ListCell<Friend> {
 
     @FXML
     private Label _lblName;
+
+    @FXML
+    private ProgressIndicator _avatarProgressIndicator;
 
     private Friend _currentItem;
 
@@ -56,20 +62,20 @@ public final class FriendCell extends ListCell<Friend> {
         else {
             if(_currentItem == null || !item.equals(_currentItem)){
                 _currentItem = item;
-                Task<Image> task = new Task<Image>() {
+                Image image = new Image(item.getUserAvatarUrl() == null? getNeutralAvatar(): item.getUserAvatarUrl(), true);
+                image.progressProperty().addListener(new ChangeListener<Number>() {
                     @Override
-                    protected Image call() {
-                        Image image = new Image(item.getUserAvatarUrl() == null? getNeutralAvatar(): item.getUserAvatarUrl(), true);
-
-                        while(!(image.getProgress() == 1.0)){
-                        }
-                        return image;
+                    public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                       if(newValue.doubleValue() == 1.0){
+                           _avatarProgressIndicator.setVisible(false);
+                           _rectAvatar.setFill(new ImagePattern(image));
+                       }
+                       else {
+                           _avatarProgressIndicator.setVisible(true);
+                           _avatarProgressIndicator.setProgress(newValue.doubleValue());
+                       }
                     }
-                };
-                task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, event->{
-                    _rectAvatar.setFill(new ImagePattern(task.getValue()));
                 });
-                //new Thread(task).start();
                 _lblName.setText(item.getUserFirstName() + " " + item.getUserLastName());
             }
             setContentDisplay(ContentDisplay.GRAPHIC_ONLY);

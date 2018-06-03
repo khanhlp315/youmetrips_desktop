@@ -7,12 +7,18 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<fx:root type="javafx.scene.control.ListCell" xmlns:fx="http://javafx.com/fxml/1"  xmlns="http://javafx.com/javafx/8.0.141">
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.ProgressIndicator?>
+<fx:root type="javafx.scene.control.ListCell" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141">
     <graphic>
         <VBox alignment="CENTER">
             <children>
-                <Rectangle fx:id="_rectAvatar" arcHeight="30.0" arcWidth="30.0" fill="DODGERBLUE" height="100.0" stroke="BLACK"
-                           strokeType="INSIDE" strokeWidth="0.0" width="100.0"/>
+                <StackPane>
+                    <Rectangle fx:id="_rectAvatar" arcHeight="30.0" arcWidth="30.0" fill="DODGERBLUE" height="100.0" stroke="BLACK"
+                               strokeType="INSIDE" strokeWidth="0.0" width="100.0"/>
+                    <ProgressIndicator fx:id="_avatarProgressIndicator" style="-fx-progress-color: #1a535c"/>
+                </StackPane>
+
                 <Label fx:id="_lblName" text="First Lastname">
                     <font>
                         <Font size="13.0"/>

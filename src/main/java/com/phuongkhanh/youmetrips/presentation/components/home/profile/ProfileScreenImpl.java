@@ -13,18 +13,24 @@ import com.phuongkhanh.youmetrips.presentation.controls.UserPlanCell;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import com.phuongkhanh.youmetrips.services.api.models.Friend;
 import com.phuongkhanh.youmetrips.services.api.models.Profile;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
 import javax.inject.Inject;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import static com.phuongkhanh.youmetrips.utils.CommonUtils.getNeutralAvatar;
 
 public class ProfileScreenImpl extends FXMLScreen
         implements ProfileScreen, Initializable {
@@ -70,8 +76,12 @@ public class ProfileScreenImpl extends FXMLScreen
 
     @Override
     public void updateProfile(Profile profile) {
-        //Image image = new Image(profile.getAvatar() == null ? CommonUtils.getNeutralAvatar() : profile.getAvatar());
-        //_rectAvatar.setFill(new ImagePattern(image));
+        Image image = new Image(profile.getAvatar() == null ? getNeutralAvatar() : profile.getAvatar(), true);
+        image.progressProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue.doubleValue() ==1.0){
+                _rectAvatar.setFill(new ImagePattern(image));
+            }
+        });
         _lblFirstName.setText(profile.getFirstName());
         _lblLastName.setText(profile.getLastName());
         if (profile.getOccupation() != null) {

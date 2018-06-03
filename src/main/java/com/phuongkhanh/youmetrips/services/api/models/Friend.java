@@ -45,7 +45,7 @@ public class Friend {
         {
             Friend friend = (Friend) obj;
             return friend.userId == userId &&
-                    friend.userAvatarUrl.equals(userAvatarUrl) &&
+                    (friend.userAvatarUrl == null || userAvatarUrl == null || friend.userAvatarUrl.equals(userAvatarUrl)) &&
                     friend.userFirstName.equals(userFirstName) &&
                     friend.userLastName.equals(userLastName);
         }
