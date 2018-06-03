@@ -56,17 +56,20 @@ public class PlaceCell extends ListCell<Place> {
             setContentDisplay(ContentDisplay.TEXT_ONLY);
         }
         else {
-            if(item.eq)
-            //_ivPlaceImg.setImage(null);
-            //_ivPlaceImg.setImage(new Image(imageUrl));
-            _lblPlaceName.setText(item.getName());
-            String allTags = "";
-            for(String hashtag: item.getTags()){
-                allTags += "#" + hashtag +" ";
+            if(_currentPlace == null || !item.equals(_currentPlace)){
+                _currentPlace = item;
+                //_ivPlaceImg.setImage(null);
+                //_ivPlaceImg.setImage(new Image(imageUrl));
+                _lblPlaceName.setText(item.getName());
+                String allTags = "";
+                for(String hashtag: item.getTags()){
+                    allTags += "#" + hashtag +" ";
+                }
+                _lblHashtag.setText(allTags);
+                _lblPeopleCount.setText(String.valueOf(item.getNumberOfPeopleGoing()));
+                _lblJob1.setText(String.valueOf(item.getNumberOfLikes()));
             }
-            _lblHashtag.setText(allTags);
-            _lblPeopleCount.setText(String.valueOf(item.getNumberOfPeopleGoing()));
-            _lblJob1.setText(String.valueOf(item.getNumberOfLikes()));
+
             setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
         }
     }
