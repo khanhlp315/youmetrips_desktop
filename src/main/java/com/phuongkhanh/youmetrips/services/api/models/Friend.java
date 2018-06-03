@@ -38,4 +38,18 @@ public class Friend {
     public void setUserAvatarUrl(String userAvatarUrl) {
         this.userAvatarUrl = userAvatarUrl;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof  Friend)
+        {
+            Friend friend = (Friend) obj;
+            return friend.userId == userId &&
+                    friend.userAvatarUrl.equals(userAvatarUrl) &&
+                    friend.userFirstName.equals(userFirstName) &&
+                    friend.userLastName.equals(userLastName);
+        }
+
+        return false;
+    }
 }

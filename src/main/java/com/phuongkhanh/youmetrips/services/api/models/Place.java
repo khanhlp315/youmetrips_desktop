@@ -66,4 +66,20 @@ public class Place {
     public void setTags(List<String> tags) {
         this.tags = tags;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Place){
+            Place place = (Place) obj;
+            return place.id == id &&
+                    place.name.equals(name) &&
+                    place.coverImageUrl.equals(coverImageUrl) &&
+                    place.numberOfLikes == numberOfLikes &&
+                    place.numberOfPeopleGoing == numberOfPeopleGoing &&
+                    place.liked == liked &&
+                    place.tags.equals(tags);
+        }
+
+        return false;
+    }
 }

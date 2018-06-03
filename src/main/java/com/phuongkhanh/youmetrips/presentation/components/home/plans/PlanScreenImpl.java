@@ -5,9 +5,10 @@ import com.phuongkhanh.youmetrips.presentation.components.editprofile.EditProfil
 import com.phuongkhanh.youmetrips.presentation.components.home.friend_requests.FriendRequestsScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.home.places.PlaceScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.home.profile.ProfileScreenImpl;
-import com.phuongkhanh.youmetrips.presentation.controls.PlanItem;
+import com.phuongkhanh.youmetrips.presentation.controls.RelevantPlanCell;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import com.phuongkhanh.youmetrips.services.api.models.RelevantPlan;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -41,22 +42,7 @@ implements PlanScreen, Initializable {
 
     @Override
     public void updatePlans(List<RelevantPlan> invidualPlans) {
-        List<PlanItem> planItems = invidualPlans.stream().map(plan -> {
-            return new PlanItem(
-                    plan.getUserFirstName(),
-                    plan.getUserLastName(),
-                    plan.getUserAvatarUrl(),
-                    plan.getUserOccupation(),
-                    plan.getUserNationalityFlagUrl(),
-                    plan.getPlace().getName(),
-                    plan.getHotelLevel(),
-                    "",
-                    "",
-                    plan.getNumberOfComments()
-            );
-        }).collect(Collectors.toList());
-
-        _lvPlans.getItems().addAll(planItems);
+        _lvPlans.setItems(FXCollections.observableArrayList(invidualPlans));
     }
 
     @Override
@@ -111,7 +97,7 @@ implements PlanScreen, Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        _lvPlans.setCellFactory(param-> new RelevantPlanCell());
     }
 
     @FXML
