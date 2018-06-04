@@ -16,7 +16,7 @@
                 <StackPane>
                     <Rectangle fx:id="_rectAvatar" arcHeight="30.0" arcWidth="30.0" fill="DODGERBLUE" height="100.0" stroke="BLACK"
                                strokeType="INSIDE" strokeWidth="0.0" width="100.0"/>
-                    <ProgressIndicator fx:id="_avatarProgressIndicator" style="-fx-progress-color: #1a535c"/>
+                    <ProgressIndicator fx:id="_avatarProgressIndicator" style="-fx-progress-color: #1a535c" visible="false"/>
                 </StackPane>
 
                 <Label fx:id="_lblName" text="First Lastname">
