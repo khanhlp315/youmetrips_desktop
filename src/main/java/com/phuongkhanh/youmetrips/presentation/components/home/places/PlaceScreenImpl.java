@@ -99,6 +99,7 @@ implements PlaceScreen, Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         _lvPlaces.setCellFactory(param->new PlaceCell());
     }
+
     @FXML
     public void onPlanClicked()
     {

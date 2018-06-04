@@ -70,11 +70,8 @@
                         <RowConstraints maxHeight="65.0" minHeight="10.0" prefHeight="62.0" vgrow="SOMETIMES"/>
                     </rowConstraints>
                     <children>
-                        <ImageView fitHeight="120.0" fitWidth="355.0" pickOnBounds="true" GridPane.columnSpan="2147483647"
+                        <ImageView fx:id="_ivImageCover" fitHeight="120.0" fitWidth="355.0" pickOnBounds="true" GridPane.columnSpan="2147483647"
                                    GridPane.rowSpan="2147483647">
-                            <image>
-                                <Image fx:id="_imageCover" url="@../../../images/login_page.png"/>
-                            </image>
                         </ImageView>
                         <VBox alignment="CENTER" prefWidth="116.0" GridPane.rowIndex="1">
                             <children>

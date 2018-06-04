@@ -3,6 +3,7 @@ package com.phuongkhanh.youmetrips.utils;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.apache.commons.validator.routines.RegexValidator;
 
+import java.awt.*;
 import java.io.File;
 
 import static com.phuongkhanh.youmetrips.services.api.utils.Constants.APP_DATA;
@@ -34,6 +35,16 @@ public class CommonUtils {
 
     public static String getNeutralAvatar(){
         return "https://www.brcglobalstandards.com/media/165675/avatar-1577909-darker-neutral.png";
+    }
+
+    public static Double getScreenWidth()
+    {
+        return Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+    }
+
+    public static Double getScreenHeight()
+    {
+        return Toolkit.getDefaultToolkit().getScreenSize().getHeight();
     }
 
     public static String getNeutralFlag(){
