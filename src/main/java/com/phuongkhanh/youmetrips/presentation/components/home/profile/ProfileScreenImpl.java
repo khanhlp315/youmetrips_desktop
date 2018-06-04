@@ -6,14 +6,16 @@ import com.phuongkhanh.youmetrips.presentation.components.home.friend_requests.F
 import com.phuongkhanh.youmetrips.presentation.components.home.places.PlaceScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.home.plans.PlanScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.plandetails.PlanDetailsScreenImpl;
-import com.phuongkhanh.youmetrips.presentation.controls.FriendItem;
+import com.phuongkhanh.youmetrips.presentation.controls.FriendCell;
 import com.phuongkhanh.youmetrips.presentation.controls.HomePane;
 import com.phuongkhanh.youmetrips.presentation.controls.LoadingPane;
-import com.phuongkhanh.youmetrips.presentation.controls.UserPlanItem;
+import com.phuongkhanh.youmetrips.presentation.controls.UserPlanCell;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import com.phuongkhanh.youmetrips.services.api.models.Friend;
 import com.phuongkhanh.youmetrips.services.api.models.Profile;
-import com.phuongkhanh.youmetrips.utils.CommonUtils;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -27,7 +29,8 @@ import javax.inject.Inject;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
+
+import static com.phuongkhanh.youmetrips.utils.CommonUtils.getNeutralAvatar;
 
 public class ProfileScreenImpl extends FXMLScreen
         implements ProfileScreen, Initializable {
@@ -55,13 +58,11 @@ public class ProfileScreenImpl extends FXMLScreen
     private Label _lblFriendCount;
 
     @FXML
-    private LoadingPane _loadingPane;
+    private Label _lblBio;
 
     @FXML
     private VBox _profileBox;
 
-    @FXML
-    private HomePane _homePane;
 
     @FXML
     private Rectangle _rectAvatar;
@@ -75,8 +76,12 @@ public class ProfileScreenImpl extends FXMLScreen
 
     @Override
     public void updateProfile(Profile profile) {
-        Image image = new Image(profile.getAvatar() == null ? CommonUtils.getNeutralAvatar() : profile.getAvatar());
-        _rectAvatar.setFill(new ImagePattern(image));
+        Image image = new Image(profile.getAvatar() == null ? getNeutralAvatar() : profile.getAvatar(), true);
+        image.progressProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue.doubleValue() ==1.0){
+                _rectAvatar.setFill(new ImagePattern(image));
+            }
+        });
         _lblFirstName.setText(profile.getFirstName());
         _lblLastName.setText(profile.getLastName());
         if (profile.getOccupation() != null) {
@@ -89,16 +94,8 @@ public class ProfileScreenImpl extends FXMLScreen
         } else {
             _lblNationality.setText("Nationality not yet updated");
         }
-
-        List<UserPlanItem> userPlanItems = profile.getTrekkingPlanSet().stream().map(plan -> {
-            return new UserPlanItem(
-                    plan.getPlace().getCoverImageUrl(),
-                    plan.getPlace().getName(),
-                    plan.getWhenToGoMin().toString() + " - " + plan.getWhenToGoMax().toString(),
-                    String.valueOf(plan.getHowLongMin()) + " - " + String.valueOf(plan.getHowLongMax()) + " days");
-        }).collect(Collectors.toList());
-
-        _lvPlans.getItems().addAll(userPlanItems);
+        _lblBio.setText(profile.getBio());
+        _lvPlans.setItems(FXCollections.observableArrayList(profile.getTrekkingPlanSet()));
     }
 
     @Override
@@ -142,7 +139,7 @@ public class ProfileScreenImpl extends FXMLScreen
 
     @Override
     public void setLoading(boolean isLoading) {
-        _homePane.setHomeNode(isLoading? _loadingPane: _profileBox);
+
     }
 
     @Override
@@ -155,12 +152,7 @@ public class ProfileScreenImpl extends FXMLScreen
     @Override
     public void updateFriends(List<Friend> friends) {
         _lblFriendCount.setText(String.valueOf(friends.size()));
-        List<FriendItem> friendItems = friends.stream().map(
-                friend -> {
-                    return new FriendItem(friend.getUserAvatarUrl(), friend.getUserFirstName(), friend.getUserLastName());
-                }).collect(Collectors.toList());
-
-        _lvFriends.getItems().addAll(friendItems);
+        _lvFriends.setItems(FXCollections.observableArrayList(friends));
     }
 
     @FXML
@@ -205,6 +197,8 @@ public class ProfileScreenImpl extends FXMLScreen
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        _lvFriends.setCellFactory(param -> new FriendCell());
+        _lvPlans.setCellFactory(param -> new UserPlanCell());
 
     }
 }

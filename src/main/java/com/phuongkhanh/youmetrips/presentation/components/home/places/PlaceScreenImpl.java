@@ -5,9 +5,10 @@ import com.phuongkhanh.youmetrips.presentation.components.editprofile.EditProfil
 import com.phuongkhanh.youmetrips.presentation.components.home.friend_requests.FriendRequestsScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.home.plans.PlanScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.home.profile.ProfileScreenImpl;
-import com.phuongkhanh.youmetrips.presentation.controls.PlaceItem;
+import com.phuongkhanh.youmetrips.presentation.controls.PlaceCell;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import com.phuongkhanh.youmetrips.services.api.models.Place;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -42,22 +43,7 @@ implements PlaceScreen, Initializable {
 
     @Override
     public void updatePlaces(List<Place> places) {
-        List<PlaceItem> placeItems = places.stream().map(
-                place -> {
-                    String tags = "";
-                    for (String tag: place.getTags()) {
-                        tags = tag + ",";
-                    }
-                    return new PlaceItem(
-                            place.getCoverImageUrl(),
-                            place.getName(),
-                            tags,
-                            place.getNumberOfPeopleGoing(),
-                            place.getNumberOfLikes()
-                    );
-                }).collect(Collectors.toList());
-
-        _lvPlaces.getItems().addAll(placeItems);
+        _lvPlaces.setItems(FXCollections.observableArrayList(places));
     }
 
     @Override
@@ -111,7 +97,7 @@ implements PlaceScreen, Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        _lvPlaces.setCellFactory(param->new PlaceCell());
     }
     @FXML
     public void onPlanClicked()
