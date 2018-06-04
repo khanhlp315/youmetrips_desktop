@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
@@ -53,10 +52,10 @@ public class PlanItem extends AnchorPane {
     private String _countryFlagUrl;
 
     private static FXMLLoader fxmlLoader = new FXMLLoader(PlanItem.class.getClassLoader().getResource(
-                "view/home/plans/plan_item.fxml"));
+            "view/home/plans/plan_item.fxml"));
 
 
-    public PlanItem(){
+    public PlanItem() {
 
 
         try {
@@ -71,7 +70,7 @@ public class PlanItem extends AnchorPane {
 
     public PlanItem(String userFirstName, String userLastName, String userAvatarUrl,
                     String userOccupation, String userNationalityFlagUrl, String placeName,
-                    int hotelStars, String dateRange, String timeRange, int numberOfComments){
+                    int hotelStars, String dateRange, String timeRange, int numberOfComments) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource(
                 "view/home/plans/plan_item.fxml"));
         fxmlLoader.setRoot(this);
@@ -83,11 +82,14 @@ public class PlanItem extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
+        Image imgAvatar = new Image(userAvatarUrl == null ? getNeutralAvatar() : userAvatarUrl);
+        Image imgCountry = new Image(userNationalityFlagUrl == null ? getNeutralAvatar() : userNationalityFlagUrl);
+
         _lblFirstName.setText(userFirstName);
         _lblLastName.setText(userLastName);
         _lblOccupation.setText(userOccupation);
-        _cirAvatar.setFill(new ImagePattern(new Image(userAvatarUrl)));
-        _cirCountry.setFill(new ImagePattern(new Image(userNationalityFlagUrl == null? getNeutralFlag())));
+        _cirAvatar.setFill(new ImagePattern(imgAvatar));
+        _cirCountry.setFill(new ImagePattern(imgCountry));
 
         _lblPlaceName.setText(placeName);
         _lblStars.setText(String.valueOf(hotelStars));
@@ -99,73 +101,73 @@ public class PlanItem extends AnchorPane {
         _countryFlagUrl = userNationalityFlagUrl;
     }
 
-    void setUserFirstName(String value){
+    void setUserFirstName(String value) {
         _lblFirstName.setText(value);
     }
 
-    String getUserFirstName(){
+    String getUserFirstName() {
         return _lblFirstName.getText();
     }
 
-    void setUserLastName(String value){
+    void setUserLastName(String value) {
         _lblLastName.setText(value);
     }
 
-    String getUserLastName(){
+    String getUserLastName() {
         return _lblLastName.getText();
     }
 
-    void setOccupation(String value){
+    void setOccupation(String value) {
         _lblOccupation.setText(value);
     }
 
-    String getOccupation(){
+    String getOccupation() {
         return _lblOccupation.getText();
     }
 
-    void setUserAvatarUrl(String value){
+    void setUserAvatarUrl(String value) {
         _avatarUrl = value;
-        _cirAvatar.setFill(new ImagePattern(new Image(value == null ? getNeutralAvatar(): value)));
+        _cirAvatar.setFill(new ImagePattern(new Image(value == null ? getNeutralAvatar() : value)));
     }
 
-    String getUserAvatarUrl(){
+    String getUserAvatarUrl() {
         return _avatarUrl;
     }
 
-    void setUserNationalityFlagUrl(String value){
+    void setUserNationalityFlagUrl(String value) {
         _countryFlagUrl = value;
-        _cirCountry.setFill(new ImagePattern(new Image(value == null ? getNeutralFlag(): value)));
+        _cirCountry.setFill(new ImagePattern(new Image(value == null ? getNeutralFlag() : value)));
     }
 
-    void setPlaceName(String value){
+    void setPlaceName(String value) {
         _lblPlaceName.setText(value);
     }
 
-    String getPlaceName(){
+    String getPlaceName() {
         return _lblPlaceName.getText();
     }
 
-    void setHotelStars(int value){
+    void setHotelStars(int value) {
         _lblStars.setText(String.valueOf(value));
     }
 
-    int getHotelStars(){
+    int getHotelStars() {
         return Integer.parseInt(_lblStars.getText());
     }
 
-    void setDateRange(String value){
+    void setDateRange(String value) {
         _lblDateRange.setText(value);
     }
 
-    String getDateRange(){
+    String getDateRange() {
         return _lblDateRange.getText();
     }
 
-    void setTimeRange(String value){
+    void setTimeRange(String value) {
         _lblTimeRange.setText(value);
     }
 
-    String getTimeRange(){
+    String getTimeRange() {
         return _lblTimeRange.getText();
     }
 }
