@@ -1,6 +1,8 @@
 package com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_location;
 
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
+import com.phuongkhanh.youmetrips.services.api.models.CreatePlace;
+import com.phuongkhanh.youmetrips.services.stores.HomeStore;
 
 import javax.inject.Inject;
 
@@ -32,8 +34,12 @@ public class TrekkingPlaceLocationPresenter extends PresenterBase<TrekkingPlaceL
         }
     }
 
-    public void requestToNavigateToPhotos() {
+    public void requestToNavigateToPhotos(String selectedPlace) {
         assert (getView() != null);
+        HomeStore homeStore = _service.getHomeStore();
+        CreatePlace place = homeStore.getCreatePlace();
+        place.setLocation(selectedPlace);
+        homeStore.storeCreatePlace(place);
         getView().navigateToPhotos();
     }
 }

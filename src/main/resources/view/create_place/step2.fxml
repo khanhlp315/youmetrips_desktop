@@ -3,10 +3,10 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.phuongkhanh.youmetrips.presentation.controls.TrekkingPlacePane?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <TrekkingPlacePane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <trekkingPlaceNodes>
         <VBox alignment="CENTER" prefWidth="284.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
@@ -21,6 +21,6 @@
         </VBox>
     </trekkingPlaceNodes>
    <children>
-      <Button onMouseClicked="#onNavigateToPhotos" mnemonicParsing="false" text="Next" />
+      <JFXButton fx:id="_btnNext" onMouseClicked="#onNavigateToPhotos" disable="true" mnemonicParsing="false" text="Next" />
    </children>
 </TrekkingPlacePane>

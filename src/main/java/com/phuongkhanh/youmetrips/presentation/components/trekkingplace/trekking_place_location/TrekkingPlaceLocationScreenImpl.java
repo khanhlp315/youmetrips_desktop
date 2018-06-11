@@ -1,7 +1,11 @@
 package com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_location;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_photos.TrekkingPlacePhotosScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
@@ -14,6 +18,12 @@ public class TrekkingPlaceLocationScreenImpl extends FXMLScreen
 
     private TrekkingPlaceLocationPresenter _presenter;
 
+    @FXML
+    private JFXButton _btnNext;
+
+    @FXML
+    private JFXTextField _tfPlace;
+
     @Inject
     public TrekkingPlaceLocationScreenImpl(TrekkingPlaceLocationPresenter presenter) {
         _presenter = presenter;
@@ -22,12 +32,12 @@ public class TrekkingPlaceLocationScreenImpl extends FXMLScreen
 
     @Override
     public void showContinue() {
-
+        _btnNext.setDisable(false);
     }
 
     @Override
     public void hideContinue() {
-
+        _btnNext.setDisable(true);
     }
 
     @Override
@@ -48,7 +58,7 @@ public class TrekkingPlaceLocationScreenImpl extends FXMLScreen
     @FXML
     public void onNavigateToPhotos()
     {
-        _presenter.requestToNavigateToPhotos();
+        _presenter.requestToNavigateToPhotos(_tfPlace.getText());
     }
     @Override
     protected String fxmlPath() {
@@ -57,6 +67,11 @@ public class TrekkingPlaceLocationScreenImpl extends FXMLScreen
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        _tfPlace.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                _presenter.onLocationUpdated(_tfPlace.getText());
+            }
+        });
     }
 }
