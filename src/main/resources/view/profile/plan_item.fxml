@@ -17,16 +17,12 @@
         </Rectangle>
         <VBox>
             <children>
+                <Label fx:id="_lblPlaceName" text="Place">
+                    <font>
+                        <Font name="System Bold" size="16.0"/>
+                    </font>
+                </Label>
                 <HBox>
-                    <children>
-                        <Label fx:id="_lblPlaceName" text="Place">
-                            <font>
-                                <Font name="System Bold" size="16.0"/>
-                            </font>
-                        </Label>
-                    </children>
-                </HBox>
-                <AnchorPane>
                     <VBox.margin>
                         <Insets top="8.0"/>
                     </VBox.margin>
@@ -36,14 +32,16 @@
                                 <MaterialDesignIconView fill="#787878" glyphName="CALENDAR_CLOCK" size="16"/>
                             </graphic>
                         </Label>
-                        <Label fx:id="_lblHowLong" layoutX="160.0" text="2 - 5 days" textFill="#787878"
-                               AnchorPane.leftAnchor="160.0">
+                        <Label fx:id="_lblHowLong" text="2 - 5 days" textFill="#787878">
                             <graphic>
                                 <MaterialDesignIconView fill="#787878" glyphName="CALENDAR_CLOCK" size="16"/>
                             </graphic>
+                            <HBox.margin>
+                                <Insets left="16.0"/>
+                            </HBox.margin>
                         </Label>
                     </children>
-                </AnchorPane>
+                </HBox>
             </children>
             <HBox.margin>
                 <Insets left="16.0"/>
@@ -51,7 +49,7 @@
         </VBox>
         <JFXButton fx:id="_btnEnter" text="&gt;" textFill="#828282">
             <HBox.margin>
-                <Insets left="16.0"/>
+                <Insets left="8.0"/>
             </HBox.margin>
             <font>
                 <Font name="System Bold" size="24.0"/>
@@ -59,6 +57,6 @@
         </JFXButton>
     </children>
     <padding>
-        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0"/>
+        <Insets bottom="8.0" left="8.0" top="8.0"/>
     </padding>
 </HBox>
