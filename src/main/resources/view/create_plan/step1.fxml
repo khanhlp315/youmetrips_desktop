@@ -13,6 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <TrekkingPlanPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <trekkingPlanNodes>
         <VBox alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
@@ -45,6 +46,6 @@
         </VBox>
     </trekkingPlanNodes>
    <children>
-      <Button onMouseClicked="#onNavigateToTime" mnemonicParsing="false" text="Next" />
+      <JFXButton fx:id="_btnNext" disable="true" onMouseClicked="#onNavigateToTime" mnemonicParsing="false" text="Next" />
    </children>
 </TrekkingPlanPane>

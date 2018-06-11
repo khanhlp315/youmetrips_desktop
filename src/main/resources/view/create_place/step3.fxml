@@ -36,6 +36,6 @@
         </VBox>
     </trekkingPlaceNodes>
    <children>
-      <JFXButton fx:id="_btnNext" onMouseClicked="#onNavigateToHashtags" mnemonicParsing="false" text="Next" />
+      <JFXButton fx:id="_btnNext" disable="true" onMouseClicked="#onNavigateToHashtags" mnemonicParsing="false" text="Next" />
    </children>
 </TrekkingPlacePane>

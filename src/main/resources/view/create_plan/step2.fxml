@@ -32,6 +32,6 @@
         </VBox>
     </trekkingPlanNodes>
    <children>
-      <JFXButton fx:id="_btnNext" onMouseClicked="#onNavigateToStay" mnemonicParsing="false" text="Next" />
+      <JFXButton fx:id="_btnNext" disable="true" onMouseClicked="#onNavigateToStay" mnemonicParsing="false" text="Next" />
    </children>
 </TrekkingPlanPane>
