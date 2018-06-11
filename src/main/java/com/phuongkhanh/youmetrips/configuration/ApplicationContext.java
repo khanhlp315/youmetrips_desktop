@@ -300,6 +300,12 @@ public interface ApplicationContext {
         }
 
         @Provides
+        static TrekkingPlanHotelPresenter trekkingPlanHotelPresenter(TrekkingPlanHotelService service)
+        {
+            return new TrekkingPlanHotelPresenter(service);
+        }
+
+        @Provides
         static TrekkingPlanPlaceScreen trekkingPlanPlaceScreen(TrekkingPlanPlacePresenter presenter) {
             return new TrekkingPlanPlaceScreenImpl(presenter);
         }
@@ -325,8 +331,20 @@ public interface ApplicationContext {
         }
 
         @Provides
+        static TrekkingPlanStayPresenter trekkingPlanStayPresenter(TrekkingPlanStayService service)
+        {
+            return new TrekkingPlanStayPresenter(service);
+        }
+
+        @Provides
         static TrekkingPlanTimeScreen trekkingPlanTimeScreen(TrekkingPlanTimePresenter presenter) {
             return new TrekkingPlanTimeScreenImpl(presenter);
+        }
+
+        @Provides
+        static TrekkingPlanTimePresenter trekkingPlanTimePresenter(TrekkingPlanTimeService service)
+        {
+            return new TrekkingPlanTimePresenter(service);
         }
 
         @Provides
@@ -345,8 +363,20 @@ public interface ApplicationContext {
         }
 
         @Provides
+        static TrekkingPlaceHashtagsPresenter trekkingPlaceHashtagsPresenter(TrekkingPlaceHashtagsService service)
+        {
+            return new TrekkingPlaceHashtagsPresenter(service);
+        }
+
+        @Provides
         static TrekkingPlaceLocationScreen trekkingPlaceLocationScreen(TrekkingPlaceLocationPresenter presenter) {
             return new TrekkingPlaceLocationScreenImpl(presenter);
+        }
+
+        @Provides
+        static TrekkingPlaceLocationPresenter trekkingPlaceLocationPresenter(TrekkingPlaceLocationService service)
+        {
+            return new TrekkingPlaceLocationPresenter(service);
         }
 
         @Provides
@@ -355,10 +385,21 @@ public interface ApplicationContext {
         }
 
         @Provides
+        static TrekkingPlaceNamePresenter trekkingPlaceNamePresenter(TrekkingPlaceNameService service)
+        {
+            return new TrekkingPlaceNamePresenter(service);
+        }
+
+        @Provides
         static TrekkingPlacePhotosScreen trekkingPlacePhotosScreen(TrekkingPlacePhotosPresenter presenter) {
             return new TrekkingPlacePhotosScreenImpl(presenter);
         }
 
+        @Provides
+        static TrekkingPlacePhotosPresenter trekkingPlacePhotosPresenter(TrekkingPlacePhotosService service)
+        {
+            return new TrekkingPlacePhotosPresenter(service);
+        }
     }
 
     @Module

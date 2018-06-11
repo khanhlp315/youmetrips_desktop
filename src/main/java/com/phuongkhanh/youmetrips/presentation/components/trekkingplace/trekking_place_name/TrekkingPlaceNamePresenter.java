@@ -6,15 +6,18 @@ import javax.inject.Inject;
 
 public class TrekkingPlaceNamePresenter extends PresenterBase<TrekkingPlaceNameScreen> {
 
-    @Inject
-    public TrekkingPlaceNamePresenter() {}
+    private final TrekkingPlaceNameService _service;
 
-    public void onInputUpdated(String placeName){
-        assert(getView() != null);
-        if (_isValidInput(placeName)){
+    @Inject
+    public TrekkingPlaceNamePresenter(TrekkingPlaceNameService service) {
+        _service = service;
+    }
+
+    public void onInputUpdated(String placeName) {
+        assert (getView() != null);
+        if (_isValidInput(placeName)) {
             getView().showContinue();
-        }
-        else {
+        } else {
             getView().hideContinue();
         }
     }
@@ -23,8 +26,7 @@ public class TrekkingPlaceNamePresenter extends PresenterBase<TrekkingPlaceNameS
         return placeName.trim() != "";
     }
 
-    public void requestToNavigateToLocation()
-    {
+    public void requestToNavigateToLocation() {
         assert (getView() != null);
         getView().navigateToLocation();
     }

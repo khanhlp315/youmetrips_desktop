@@ -6,9 +6,11 @@ import javax.inject.Inject;
 
 public class TrekkingPlaceLocationPresenter extends PresenterBase<TrekkingPlaceLocationScreen> {
 
-    @Inject
-    public TrekkingPlaceLocationPresenter() {
+    private final TrekkingPlaceLocationService _service;
 
+    @Inject
+    public TrekkingPlaceLocationPresenter(TrekkingPlaceLocationService service) {
+        _service = service;
     }
 
     private boolean _isValidInput(String placeName) {

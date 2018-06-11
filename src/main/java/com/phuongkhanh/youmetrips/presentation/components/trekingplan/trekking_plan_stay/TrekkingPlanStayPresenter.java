@@ -6,10 +6,12 @@ import javax.inject.Inject;
 
 public class TrekkingPlanStayPresenter extends PresenterBase<TrekkingPlanStayScreen> {
 
-    @Inject
-    public TrekkingPlanStayPresenter()
-    {
+    private final TrekkingPlanStayService _service;
 
+    @Inject
+    public TrekkingPlanStayPresenter(TrekkingPlanStayService service)
+    {
+        _service = service;
     }
 
     public void onInputUpdated(int from, int to){

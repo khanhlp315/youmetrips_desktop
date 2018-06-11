@@ -6,8 +6,12 @@ import javax.inject.Inject;
 
 public class TrekkingPlanHotelPresenter extends PresenterBase<TrekkingPlanHotelScreen> {
 
+    private final TrekkingPlanHotelService _service;
+
     @Inject
-    public TrekkingPlanHotelPresenter() {}
+    public TrekkingPlanHotelPresenter(TrekkingPlanHotelService service) {
+        _service = service;
+    }
 
     void onStarsUpdated(int stars){
         assert(getView() != null);

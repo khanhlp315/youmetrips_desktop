@@ -7,8 +7,11 @@ import java.io.File;
 
 public class TrekkingPlacePhotosPresenter extends PresenterBase<TrekkingPlacePhotosScreen> {
 
+    private final TrekkingPlacePhotosService _service;
+
     @Inject
-    public TrekkingPlacePhotosPresenter() {
+    public TrekkingPlacePhotosPresenter(TrekkingPlacePhotosService service) {
+        _service = service;
     }
 
     public void onCoverPhotoUpdated(File selectedPhoto) {

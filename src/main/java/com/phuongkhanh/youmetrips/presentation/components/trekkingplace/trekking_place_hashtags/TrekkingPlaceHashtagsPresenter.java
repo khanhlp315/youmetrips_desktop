@@ -7,8 +7,12 @@ import java.util.List;
 
 public class TrekkingPlaceHashtagsPresenter extends PresenterBase<TrekkingPlaceHashtagsScreen> {
 
+    private final TrekkingPlaceHashtagsService _service;
+
     @Inject
-    public TrekkingPlaceHashtagsPresenter() {}
+    public TrekkingPlaceHashtagsPresenter(TrekkingPlaceHashtagsService service) {
+        _service = service;
+    }
 
     public void onInputUpdated(List<String> hashtags){
         assert(getView() != null);
