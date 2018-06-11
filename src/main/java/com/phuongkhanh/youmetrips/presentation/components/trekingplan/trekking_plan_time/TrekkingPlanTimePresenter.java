@@ -2,8 +2,16 @@ package com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_
 
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
 
+import javax.inject.Inject;
+
 public class TrekkingPlanTimePresenter extends PresenterBase<TrekkingPlanTimeScreen> {
-    
+
+    @Inject
+    public TrekkingPlanTimePresenter()
+    {
+
+    }
+
     public void onInputUpdated(String start, String end){
         assert(getView() != null);
         if (_isValidInput(start, end)){

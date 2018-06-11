@@ -33,7 +33,7 @@ implements TrekkingPlaceNameScreen, Initializable {
 
     @Override
     protected String fxmlPath() {
-        return null;
+        return "/view/create_place/step1.fxml";
     }
 
     @Override

@@ -60,6 +60,7 @@ import com.phuongkhanh.youmetrips.presentation.components.signup.signup.SignUpPr
 import com.phuongkhanh.youmetrips.presentation.components.signup.signup.SignUpScreen;
 import com.phuongkhanh.youmetrips.presentation.components.signup.signup.SignUpScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.signup.signup.SignUpService;
+import com.phuongkhanh.youmetrips.presentation.windows.CreatePlanWindow;
 import com.phuongkhanh.youmetrips.presentation.windows.HomeWindow;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.TrekkingPlanPresenter;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.TrekkingPlanScreen;
@@ -120,6 +121,7 @@ import javax.inject.Singleton;
 public interface ApplicationContext {
     LoginWindow loginWindow();
     HomeWindow homeWindow();
+    CreatePlanWindow createPlanWindow();
 
     @Module
     static class PresentationModule {
@@ -244,8 +246,8 @@ public interface ApplicationContext {
         }
 
         @Provides
-        static ProfileScreen profileScreen(ProfilePresenter presenter) {
-            return new ProfileScreenImpl(presenter);
+        static ProfileScreen profileScreen(ProfilePresenter presenter, Provider<CreatePlanWindow> createPlanWindowProvider) {
+            return new ProfileScreenImpl(presenter, createPlanWindowProvider);
         }
 
         @Provides

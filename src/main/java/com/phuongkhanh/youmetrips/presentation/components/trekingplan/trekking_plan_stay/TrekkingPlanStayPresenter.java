@@ -2,7 +2,15 @@ package com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_
 
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
 
+import javax.inject.Inject;
+
 public class TrekkingPlanStayPresenter extends PresenterBase<TrekkingPlanStayScreen> {
+
+    @Inject
+    public TrekkingPlanStayPresenter()
+    {
+
+    }
 
     public void onInputUpdated(int from, int to){
         assert(getView() != null);

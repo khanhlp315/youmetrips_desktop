@@ -54,7 +54,7 @@ implements TrekkingPlacePhotosScreen, Initializable {
 
     @Override
     protected String fxmlPath() {
-        return null;
+        return "/view/create_place/step3.fxml";
     }
 
     @Override

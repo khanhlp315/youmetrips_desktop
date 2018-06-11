@@ -28,7 +28,7 @@ implements TrekkingPlanHotelScreen, Initializable {
 
     @Override
     protected String fxmlPath() {
-        return null;
+        return "/view/create_plan/step4.fxml";
     }
 
     @Override

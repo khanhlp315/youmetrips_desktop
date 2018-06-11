@@ -2,7 +2,13 @@ package com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_
 
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
 
+import javax.inject.Inject;
+
 public class TrekkingPlanHotelPresenter extends PresenterBase<TrekkingPlanHotelScreen> {
+
+    @Inject
+    public TrekkingPlanHotelPresenter() {}
+
     void onStarsUpdated(int stars){
         assert(getView() != null);
         if (_isValidInput(stars)){

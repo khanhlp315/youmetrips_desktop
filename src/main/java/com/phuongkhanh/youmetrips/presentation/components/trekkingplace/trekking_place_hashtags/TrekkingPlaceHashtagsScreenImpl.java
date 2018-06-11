@@ -18,7 +18,7 @@ implements TrekkingPlaceHashtagsScreen, Initializable{
 
     @Override
     protected String fxmlPath() {
-        return null;
+        return "/view/create_place/step4.fxml";
     }
 
     @Override

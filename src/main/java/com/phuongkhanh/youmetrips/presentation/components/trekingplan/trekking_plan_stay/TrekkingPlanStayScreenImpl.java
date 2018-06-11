@@ -23,7 +23,7 @@ implements TrekkingPlanStayScreen, Initializable {
 
     @Override
     protected String fxmlPath() {
-        return null;
+        return "/view/create_plan/step3.fxml";
     }
 
     @Override

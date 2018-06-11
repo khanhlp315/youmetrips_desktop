@@ -6,11 +6,13 @@ import com.phuongkhanh.youmetrips.presentation.components.home.friend_requests.F
 import com.phuongkhanh.youmetrips.presentation.components.home.places.PlaceScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.home.plans.PlanScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.plandetails.PlanDetailsScreenImpl;
+import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_place.TrekkingPlanPlaceScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.controls.FriendCell;
 import com.phuongkhanh.youmetrips.presentation.controls.HomePane;
 import com.phuongkhanh.youmetrips.presentation.controls.LoadingPane;
 import com.phuongkhanh.youmetrips.presentation.controls.UserPlanCell;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
+import com.phuongkhanh.youmetrips.presentation.windows.CreatePlanWindow;
 import com.phuongkhanh.youmetrips.services.api.models.Friend;
 import com.phuongkhanh.youmetrips.services.api.models.Profile;
 import javafx.beans.value.ChangeListener;
@@ -24,8 +26,10 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -35,6 +39,7 @@ import static com.phuongkhanh.youmetrips.utils.CommonUtils.getNeutralAvatar;
 public class ProfileScreenImpl extends FXMLScreen
         implements ProfileScreen, Initializable {
     private final ProfilePresenter _presenter;
+    private final Provider<CreatePlanWindow> _window;
 
     @FXML
     private Label _lblFirstName;
@@ -68,9 +73,11 @@ public class ProfileScreenImpl extends FXMLScreen
     private Rectangle _rectAvatar;
 
     @Inject
-    public ProfileScreenImpl(final ProfilePresenter presenter) {
+    public ProfileScreenImpl(final ProfilePresenter presenter, Provider<CreatePlanWindow> window) {
         _presenter = presenter;
         _presenter.setView(this);
+
+        _window = window;
 
     }
 
@@ -105,6 +112,9 @@ public class ProfileScreenImpl extends FXMLScreen
 
     @Override
     public void navigateToCreateTrekkingPlan() {
+        CreatePlanWindow createPlanWindow = _window.get();
+        createPlanWindow.attach(new Stage());
+        createPlanWindow.show();
     }
 
     @Override
