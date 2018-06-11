@@ -1,6 +1,8 @@
 package com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_stay;
 
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
+import com.phuongkhanh.youmetrips.services.api.models.CreatePlan;
+import com.phuongkhanh.youmetrips.services.stores.HomeStore;
 
 import javax.inject.Inject;
 
@@ -38,6 +40,9 @@ public class TrekkingPlanStayPresenter extends PresenterBase<TrekkingPlanStayScr
 
     public void requestToNavigateToHotel(){
         assert (getView() != null);
+        HomeStore homeStore = _service.getHomeStore();
+        CreatePlan plan = homeStore.getCreatePlan();
+        homeStore.storeCreatePlan(plan);
         getView().navigateToHotel();
     }
 }
