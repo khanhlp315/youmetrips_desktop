@@ -60,6 +60,7 @@ import com.phuongkhanh.youmetrips.presentation.components.signup.signup.SignUpPr
 import com.phuongkhanh.youmetrips.presentation.components.signup.signup.SignUpScreen;
 import com.phuongkhanh.youmetrips.presentation.components.signup.signup.SignUpScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.signup.signup.SignUpService;
+import com.phuongkhanh.youmetrips.presentation.windows.CreatePlaceWindow;
 import com.phuongkhanh.youmetrips.presentation.windows.CreatePlanWindow;
 import com.phuongkhanh.youmetrips.presentation.windows.HomeWindow;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.TrekkingPlanPresenter;
@@ -122,6 +123,7 @@ public interface ApplicationContext {
     LoginWindow loginWindow();
     HomeWindow homeWindow();
     CreatePlanWindow createPlanWindow();
+    CreatePlaceWindow createPlaceWindow();
 
     @Module
     static class PresentationModule {
