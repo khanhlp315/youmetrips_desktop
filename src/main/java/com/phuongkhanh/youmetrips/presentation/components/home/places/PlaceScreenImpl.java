@@ -7,14 +7,18 @@ import com.phuongkhanh.youmetrips.presentation.components.home.plans.PlanScreenI
 import com.phuongkhanh.youmetrips.presentation.components.home.profile.ProfileScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.controls.PlaceCell;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
+import com.phuongkhanh.youmetrips.presentation.windows.CreatePlaceWindow;
+import com.phuongkhanh.youmetrips.presentation.windows.CreatePlanWindow;
 import com.phuongkhanh.youmetrips.services.api.models.Place;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 import org.omg.CORBA.ACTIVITY_REQUIRED;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -27,6 +31,8 @@ implements PlaceScreen, Initializable {
     private JFXListView _lvPlaces;
 
     private final PlacePresenter _presenter;
+    private final Provider<CreatePlanWindow> _planWindow;
+    private final Provider<CreatePlaceWindow> _placeWindow;
 
     @Override
     public Scene render() {
@@ -35,10 +41,12 @@ implements PlaceScreen, Initializable {
     }
 
     @Inject
-    public PlaceScreenImpl(PlacePresenter presenter)
+    public PlaceScreenImpl(PlacePresenter presenter, Provider<CreatePlanWindow> planWindow, Provider<CreatePlaceWindow> placeWindow)
     {
         _presenter = presenter;
         _presenter.setView(this);
+        _planWindow = planWindow;
+        _placeWindow = placeWindow;
     }
 
     @Override
@@ -48,11 +56,16 @@ implements PlaceScreen, Initializable {
 
     @Override
     public void navigateToCreateTrekkingPlace() {
-
+        CreatePlaceWindow createPlaceWindow = _placeWindow.get();
+        createPlaceWindow.attach(new Stage());
+        createPlaceWindow.show();
     }
 
     @Override
     public void navigateToCreateTrekkingPlan() {
+        CreatePlanWindow createPlanWindow = _planWindow.get();
+        createPlanWindow.attach(new Stage());
+        createPlanWindow.show();
     }
 
     @Override
@@ -115,13 +128,13 @@ implements PlaceScreen, Initializable {
     @FXML
     public void onCreateTrekkingPlanClicked()
     {
-
+        _presenter.requestNavigateToCreateTrekkingPlan();
     }
 
     @FXML
     public void onCreateTrekkingPlaceClicked()
     {
-
+        _presenter.requestNavigateToCreateTrekkingPlace();
     }
 
     @FXML

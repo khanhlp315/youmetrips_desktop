@@ -228,8 +228,8 @@ public interface ApplicationContext {
         }
 
         @Provides
-        static PlaceScreen placeScreen(PlacePresenter presenter) {
-            return new PlaceScreenImpl(presenter);
+        static PlaceScreen placeScreen(PlacePresenter presenter, Provider<CreatePlanWindow> planWindowProvider, Provider<CreatePlaceWindow> placeWindowProvider) {
+            return new PlaceScreenImpl(presenter, planWindowProvider, placeWindowProvider);
         }
 
         @Provides
@@ -238,8 +238,8 @@ public interface ApplicationContext {
         }
 
         @Provides
-        static PlanScreen planScreen(PlanPresenter presenter) {
-            return new PlanScreenImpl(presenter);
+        static PlanScreen planScreen(PlanPresenter presenter, Provider<CreatePlanWindow> planWindowProvider, Provider<CreatePlaceWindow> placeWindowProvider) {
+            return new PlanScreenImpl(presenter, planWindowProvider, placeWindowProvider);
         }
 
         @Provides
@@ -248,8 +248,8 @@ public interface ApplicationContext {
         }
 
         @Provides
-        static ProfileScreen profileScreen(ProfilePresenter presenter, Provider<CreatePlanWindow> createPlanWindowProvider) {
-            return new ProfileScreenImpl(presenter, createPlanWindowProvider);
+        static ProfileScreen profileScreen(ProfilePresenter presenter, Provider<CreatePlanWindow> planWindowProvider, Provider<CreatePlaceWindow> placeWindowProvider) {
+            return new ProfileScreenImpl(presenter, planWindowProvider, placeWindowProvider);
         }
 
         @Provides
