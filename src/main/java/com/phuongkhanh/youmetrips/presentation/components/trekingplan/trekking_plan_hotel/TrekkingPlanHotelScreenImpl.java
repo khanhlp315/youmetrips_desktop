@@ -1,9 +1,13 @@
 package com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_hotel;
 
+import com.jfoenix.controls.JFXButton;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_preview.TrekkingPlanPreviewScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import org.controlsfx.control.Rating;
 
 import javax.inject.Inject;
 import java.net.URL;
@@ -14,6 +18,12 @@ implements TrekkingPlanHotelScreen, Initializable {
 
     private TrekkingPlanHotelPresenter _presenter;
 
+    @FXML
+    private JFXButton _btnNext;
+
+    @FXML
+    private Rating _ratingBar;
+
     @Inject
     public TrekkingPlanHotelScreenImpl(TrekkingPlanHotelPresenter presenter)
     {
@@ -23,7 +33,7 @@ implements TrekkingPlanHotelScreen, Initializable {
 
     @Override
     public void setCanNext(boolean value) {
-
+        _btnNext.setDisable(value);
     }
 
     @Override
@@ -49,6 +59,11 @@ implements TrekkingPlanHotelScreen, Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        _ratingBar.ratingProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                _presenter.onStarsUpdated((int)_ratingBar.getRating());
+            }
+        });
     }
 }
