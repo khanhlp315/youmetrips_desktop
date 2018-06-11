@@ -12,12 +12,14 @@
             minWidth="-Infinity" prefHeight="217.0" prefWidth="355.0" style="-fx-background-color: white;"
             xmlns="http://javafx.com/javafx/8.0.141">
     <children>
-        <ImageView fx:id="_ivPlaceImg" fitHeight="141.0" fitWidth="355.0" pickOnBounds="true">
+        <ImageView fx:id="_ivPlaceImg" fitHeight="141.0" fitWidth="355.0" pickOnBounds="true"
+                   AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <image>
                 <Image url="@../../images/login_page.png"/>
             </image>
         </ImageView>
-        <Label fx:id="_lblPlaceName" layoutX="12.0" layoutY="152.0" text="Place">
+        <Label fx:id="_lblPlaceName" layoutX="12.0" layoutY="152.0" text="Place" wrapText="true"
+               AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="152.0">
             <font>
                 <Font name="System Bold" size="18.0"/>
             </font>
@@ -35,7 +37,7 @@
         <Circle fx:id="_cirAvatar1" fill="DODGERBLUE" radius="19.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0"
                 AnchorPane.leftAnchor="306.0" AnchorPane.topAnchor="123.0"/>
         <Label fx:id="_lblCmtCount" layoutX="266.0" layoutY="164.0" text="PEOPLE GOING" textFill="#1a535c"
-               AnchorPane.leftAnchor="266.0" AnchorPane.topAnchor="164.0">
+               AnchorPane.bottomAnchor="37.0" AnchorPane.rightAnchor="14.0">
             <font>
                 <Font size="11.0"/>
             </font>
