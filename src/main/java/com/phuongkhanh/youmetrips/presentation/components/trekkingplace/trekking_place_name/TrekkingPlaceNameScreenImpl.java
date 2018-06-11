@@ -5,6 +5,8 @@ import com.jfoenix.controls.JFXTextField;
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_location.TrekkingPlaceLocationScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import com.phuongkhanh.youmetrips.services.api.models.CreatePlace;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
@@ -47,16 +49,13 @@ implements TrekkingPlaceNameScreen, Initializable {
 
     @Override
     public void navigateToLocation() {
-        CreatePlace createPlace = new CreatePlace();
-        createPlace.setName(_tfPlace.getText());
-
         navigate(TrekkingPlaceLocationScreenImpl.class);
     }
 
     @FXML
     public void onNavigateToLocation()
     {
-        _presenter.onInputUpdated(_tfPlace.getText());
+        _presenter.requestToNavigateToLocation(_tfPlace.getText());
     }
 
     @Override
@@ -66,6 +65,11 @@ implements TrekkingPlaceNameScreen, Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        _tfPlace.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                _presenter.onInputUpdated(_tfPlace.getText());
+            }
+        });
     }
 }

@@ -18,10 +18,6 @@ public class TrekkingPlaceNamePresenter extends PresenterBase<TrekkingPlaceNameS
     public void onInputUpdated(String placeName) {
         assert (getView() != null);
         if (_isValidInput(placeName)) {
-            CreatePlace place = new CreatePlace();
-            place.setName(placeName);
-            HomeStore homeStore = _service.getHomeStore();
-            homeStore.storeCreatePlace(place);
             getView().showContinue();
         } else {
             getView().hideContinue();
@@ -29,7 +25,15 @@ public class TrekkingPlaceNamePresenter extends PresenterBase<TrekkingPlaceNameS
     }
 
     private boolean _isValidInput(String placeName) {
-        return placeName.trim() != "";
+        return !placeName.trim().equals("");
     }
 
+    public void requestToNavigateToLocation(String placeName) {
+        assert (getView() != null);
+        CreatePlace place = new CreatePlace();
+        place.setName(placeName);
+        HomeStore homeStore = _service.getHomeStore();
+        homeStore.storeCreatePlace(place);
+        getView().navigateToLocation();
+    }
 }
