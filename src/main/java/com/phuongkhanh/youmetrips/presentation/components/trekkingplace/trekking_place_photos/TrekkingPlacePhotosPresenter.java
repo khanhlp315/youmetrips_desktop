@@ -2,9 +2,14 @@ package com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekkin
 
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
 
+import javax.inject.Inject;
 import java.io.File;
 
 public class TrekkingPlacePhotosPresenter extends PresenterBase<TrekkingPlacePhotosScreen> {
+
+    @Inject
+    public TrekkingPlacePhotosPresenter()
+    {}
 
     public void onCoverPhotoUpdated(File selectedPhoto) {
         assert(getView() != null);

@@ -2,9 +2,13 @@ package com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekkin
 
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
 
+import javax.inject.Inject;
 import java.util.List;
 
 public class TrekkingPlaceHashtagsPresenter extends PresenterBase<TrekkingPlaceHashtagsScreen> {
+
+    @Inject
+    public TrekkingPlaceHashtagsPresenter() {}
 
     public void onInputUpdated(List<String> hashtags){
         assert(getView() != null);
