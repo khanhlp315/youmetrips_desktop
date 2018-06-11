@@ -16,6 +16,7 @@ public class HomeStore {
    private static final String FRIENDS = "FRIENDS";
    private static final String COUNTRIES = "COUNTRIES";
    private static final String COMMENTS = "COMMENTS";
+   private static final String CREATING_PLACE = "CREATING_PLACE";
    private Store _store;
 
 
@@ -31,6 +32,7 @@ public class HomeStore {
        _store.setItem(PLAN_DETAILS, new HashMap<Integer, PlanDetails>());
        _store.setItem(PLACE_DETAILS, new HashMap<Integer, PlaceDetails>());
        _store.setItem(COMMENTS, new HashMap<Integer, List<Comment>>());
+       _store.setItem(CREATING_PLACE, new CreatePlace());
    }
     @SuppressWarnings("unchecked")
     public void storePlans(List<RelevantPlan> plans){
@@ -55,6 +57,10 @@ public class HomeStore {
     @SuppressWarnings("unchecked")
     public void storeCountries(List<Country> countries) {
         _store.setItem(COUNTRIES, countries);
+    }
+
+    public void storeCreatePlace(CreatePlace place){
+        _store.setItem(CREATING_PLACE, place);
     }
 
     @SuppressWarnings("unchecked")
@@ -95,6 +101,11 @@ public class HomeStore {
         else {
             return (PlanDetails) map.get(id);
         }
+    }
+
+    public CreatePlace getCreatePlace()
+    {
+        return  (CreatePlace)_store.getItem(CREATING_PLACE);
     }
 
     @SuppressWarnings("unchecked")
