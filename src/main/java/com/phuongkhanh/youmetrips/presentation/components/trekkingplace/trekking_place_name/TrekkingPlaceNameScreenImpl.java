@@ -10,10 +10,13 @@ import java.util.ResourceBundle;
 public class TrekkingPlaceNameScreenImpl extends FXMLScreen
 implements TrekkingPlaceNameScreen, Initializable {
 
+    private TrekkingPlaceNamePresenter _presenter;
+
     @Inject
     public TrekkingPlaceNameScreenImpl(TrekkingPlaceNamePresenter presenter)
     {
-
+        _presenter = presenter;
+        _presenter.setView(this);
     }
 
     @Override

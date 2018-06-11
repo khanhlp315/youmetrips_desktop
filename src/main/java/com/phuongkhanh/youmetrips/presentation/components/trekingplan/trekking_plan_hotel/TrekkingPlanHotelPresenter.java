@@ -23,4 +23,9 @@ public class TrekkingPlanHotelPresenter extends PresenterBase<TrekkingPlanHotelS
         return stars != 0;
     }
 
+    public void requestToNavigateToPreview()
+    {
+        assert (getView() != null);
+        getView().navigateToPreview();
+    }
 }

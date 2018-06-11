@@ -10,10 +10,13 @@ import java.util.ResourceBundle;
 public class TrekkingPlaceHashtagsScreenImpl extends FXMLScreen
 implements TrekkingPlaceHashtagsScreen, Initializable{
 
+    private TrekkingPlaceHashtagsPresenter _presenter;
+
     @Inject
     public TrekkingPlaceHashtagsScreenImpl(TrekkingPlaceHashtagsPresenter presenter)
     {
-
+        _presenter = presenter;
+        _presenter.setView(this);
     }
 
     @Override

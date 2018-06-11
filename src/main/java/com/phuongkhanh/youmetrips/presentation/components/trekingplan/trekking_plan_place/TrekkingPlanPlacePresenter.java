@@ -91,6 +91,12 @@ public class TrekkingPlanPlacePresenter extends PresenterBase<TrekkingPlanPlaceS
         getView().navigateToCreateTrekkingPlace();
     }
 
+    public void requestNavigateToTime()
+    {
+        assert (getView() != null);
+        getView().navigateToTime();
+    }
+
     public void onSelectedPlaceUpdated(Place place) {
         assert (getView() != null);
 

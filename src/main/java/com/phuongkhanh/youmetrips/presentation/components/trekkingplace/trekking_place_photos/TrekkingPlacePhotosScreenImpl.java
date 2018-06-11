@@ -9,12 +9,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class TrekkingPlacePhotosScreenImpl extends FXMLScreen
-implements TrekkingPlacePhotosScreen, Initializable {
+        implements TrekkingPlacePhotosScreen, Initializable {
+
+    private TrekkingPlacePhotosPresenter _presenter;
 
     @Inject
-    public TrekkingPlacePhotosScreenImpl(TrekkingPlacePhotosPresenter presenter)
-    {
-
+    public TrekkingPlacePhotosScreenImpl(TrekkingPlacePhotosPresenter presenter) {
+        _presenter = presenter;
+        _presenter.setView(this);
     }
 
     @Override

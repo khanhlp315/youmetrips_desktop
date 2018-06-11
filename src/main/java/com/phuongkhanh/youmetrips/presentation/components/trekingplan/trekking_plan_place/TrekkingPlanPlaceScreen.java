@@ -14,4 +14,6 @@ public interface TrekkingPlanPlaceScreen extends JFXScreen {
     void navigateToCreateTrekkingPlace();
 
     void updateMapUrl(String mapUrl);
+
+    void navigateToTime();
 }

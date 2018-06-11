@@ -10,10 +10,13 @@ import java.util.ResourceBundle;
 public class TrekkingPlanPreviewScreenImpl extends FXMLScreen
 implements TrekkingPlanPreviewScreen, Initializable {
 
+    private TrekkingPlanPreviewPresenter _presenter;
+
     @Inject
     public TrekkingPlanPreviewScreenImpl(TrekkingPlanPreviewPresenter presenter)
     {
-
+        _presenter = presenter;
+        _presenter.setView(this);
     }
 
     @Override

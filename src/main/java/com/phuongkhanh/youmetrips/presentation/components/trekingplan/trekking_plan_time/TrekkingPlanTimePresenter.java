@@ -34,4 +34,9 @@ public class TrekkingPlanTimePresenter extends PresenterBase<TrekkingPlanTimeScr
         return true;
     }
 
+    public void requestToNavigateToStay()
+    {
+        assert (getView() != null);
+        getView().navigateToStay();
+    }
 }

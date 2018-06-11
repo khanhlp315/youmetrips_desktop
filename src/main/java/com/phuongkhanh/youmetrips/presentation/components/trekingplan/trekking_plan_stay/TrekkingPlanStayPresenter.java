@@ -33,4 +33,9 @@ public class TrekkingPlanStayPresenter extends PresenterBase<TrekkingPlanStayScr
 
         return true;
     }
+
+    public void requestToNavigateToHotel(){
+        assert (getView() != null);
+        getView().navigateToHotel();
+    }
 }
