@@ -21,6 +21,6 @@
         </VBox>
     </trekkingPlaceNodes>
    <children>
-      <Button onMouseClicked="#onNavigateToLocation" mnemonicParsing="false" text="Next" />
+      <Button fx:id="_btnNext" onMouseClicked="#onNavigateToLocation" mnemonicParsing="false" text="Next" />
    </children>
 </TrekkingPlacePane>

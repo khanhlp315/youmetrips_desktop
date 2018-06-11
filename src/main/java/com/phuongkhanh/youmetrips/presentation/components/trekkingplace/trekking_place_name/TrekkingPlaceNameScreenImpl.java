@@ -1,5 +1,6 @@
 package com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_name;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_location.TrekkingPlaceLocationScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
@@ -19,6 +20,9 @@ implements TrekkingPlaceNameScreen, Initializable {
     @FXML
     private JFXTextField _tfPlace;
 
+    @FXML
+    private JFXButton _btnNext;
+
     @Inject
     public TrekkingPlaceNameScreenImpl(TrekkingPlaceNamePresenter presenter)
     {
@@ -28,12 +32,12 @@ implements TrekkingPlaceNameScreen, Initializable {
 
     @Override
     public void showContinue() {
-
+        _btnNext.setDisable(false);
     }
 
     @Override
     public void hideContinue() {
-
+        _btnNext.setDisable(true);
     }
 
     @Override
@@ -52,7 +56,7 @@ implements TrekkingPlaceNameScreen, Initializable {
     @FXML
     public void onNavigateToLocation()
     {
-        _presenter.requestToNavigateToLocation();
+        _presenter.onInputUpdated(_tfPlace.getText());
     }
 
     @Override

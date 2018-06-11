@@ -1,6 +1,8 @@
 package com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_name;
 
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
+import com.phuongkhanh.youmetrips.services.api.models.CreatePlace;
+import com.phuongkhanh.youmetrips.services.stores.HomeStore;
 
 import javax.inject.Inject;
 
@@ -16,6 +18,10 @@ public class TrekkingPlaceNamePresenter extends PresenterBase<TrekkingPlaceNameS
     public void onInputUpdated(String placeName) {
         assert (getView() != null);
         if (_isValidInput(placeName)) {
+            CreatePlace place = new CreatePlace();
+            place.setName(placeName);
+            HomeStore homeStore = _service.getHomeStore();
+            homeStore.storeCreatePlace(place);
             getView().showContinue();
         } else {
             getView().hideContinue();
@@ -26,8 +32,4 @@ public class TrekkingPlaceNamePresenter extends PresenterBase<TrekkingPlaceNameS
         return placeName.trim() != "";
     }
 
-    public void requestToNavigateToLocation() {
-        assert (getView() != null);
-        getView().navigateToLocation();
-    }
 }
