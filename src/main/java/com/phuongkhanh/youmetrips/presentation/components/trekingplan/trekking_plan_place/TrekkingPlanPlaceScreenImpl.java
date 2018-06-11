@@ -1,5 +1,6 @@
 package com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_place;
 
+import com.jfoenix.controls.JFXButton;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_time.TrekkingPlanTimeScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import com.phuongkhanh.youmetrips.presentation.windows.CreatePlanWindow;
@@ -19,6 +20,9 @@ implements TrekkingPlanPlaceScreen, Initializable {
 
     private TrekkingPlanPlacePresenter _presenter;
 
+    @FXML
+    private JFXButton _btnNext;
+
     @Inject
     public TrekkingPlanPlaceScreenImpl(TrekkingPlanPlacePresenter presenter)
     {
@@ -28,17 +32,17 @@ implements TrekkingPlanPlaceScreen, Initializable {
 
     @Override
     public void showContinue() {
-
+        _btnNext.setDisable(true);
     }
 
     @Override
     public void hideContinue() {
-
+        _btnNext.setDisable(false);
     }
 
     @Override
     public void updatePlaces(List<Place> places) {
-
+        // Hiện ra list cho user chọn
     }
 
     @Override

@@ -1,6 +1,8 @@
 package com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_place;
 
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
+import com.phuongkhanh.youmetrips.services.api.models.CreatePlace;
+import com.phuongkhanh.youmetrips.services.api.models.CreatePlan;
 import com.phuongkhanh.youmetrips.services.api.models.Place;
 import com.phuongkhanh.youmetrips.services.api.models.PlaceDetails;
 import com.phuongkhanh.youmetrips.services.stores.AuthenticationStore;
@@ -94,6 +96,13 @@ public class TrekkingPlanPlacePresenter extends PresenterBase<TrekkingPlanPlaceS
     public void requestNavigateToTime()
     {
         assert (getView() != null);
+        HomeStore homeStore = _service.getHomeStore();
+        CreatePlan plan;
+        if(homeStore.getCreatePlan() == null)
+            plan = new CreatePlan();
+        else plan = homeStore.getCreatePlan();
+        plan.setPlaceId(0);
+        homeStore.storeCreatePlan(plan);
         getView().navigateToTime();
     }
 
