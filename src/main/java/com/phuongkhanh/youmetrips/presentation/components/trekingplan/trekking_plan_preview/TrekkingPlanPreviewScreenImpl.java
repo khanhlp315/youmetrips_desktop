@@ -1,6 +1,8 @@
 package com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_preview;
 
+import com.jfoenix.controls.JFXButton;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import javax.inject.Inject;
@@ -12,6 +14,9 @@ implements TrekkingPlanPreviewScreen, Initializable {
 
     private TrekkingPlanPreviewPresenter _presenter;
 
+    @FXML
+    private JFXButton _btnNext;
+
     @Inject
     public TrekkingPlanPreviewScreenImpl(TrekkingPlanPreviewPresenter presenter)
     {
@@ -21,7 +26,7 @@ implements TrekkingPlanPreviewScreen, Initializable {
 
     @Override
     public void setLoading(boolean value) {
-
+        _btnNext.setDisable(value);
     }
 
     @Override
