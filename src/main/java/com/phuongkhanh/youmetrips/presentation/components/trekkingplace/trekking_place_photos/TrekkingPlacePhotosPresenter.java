@@ -52,6 +52,7 @@ public class TrekkingPlacePhotosPresenter extends PresenterBase<TrekkingPlacePho
 
     public void requestToNavigateToHashtags() {
         assert (getView() != null);
+
         getView().navigateToHashTags();
     }
 }
