@@ -10,9 +10,16 @@ import com.phuongkhanh.youmetrips.presentation.components.home.profile.ProfileSe
 import com.phuongkhanh.youmetrips.presentation.components.plandetails.PlanDetailsService;
 import com.phuongkhanh.youmetrips.presentation.components.planlist.PlanListService;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.TrekkingPlanService;
+import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_hotel.TrekkingPlanHotelService;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_place.TrekkingPlanPlaceService;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_preview.TrekkingPlanPreviewService;
+import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_stay.TrekkingPlanStayService;
+import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_time.TrekkingPlanTimeService;
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.TrekkingPlaceService;
+import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_hashtags.TrekkingPlaceHashtagsService;
+import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_location.TrekkingPlaceLocationService;
+import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_name.TrekkingPlaceNameService;
+import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_photos.TrekkingPlacePhotosService;
 import com.phuongkhanh.youmetrips.presentation.exceptions.ExpiredJwtException;
 import com.phuongkhanh.youmetrips.presentation.exceptions.InvalidJwtException;
 import com.phuongkhanh.youmetrips.services.api.RestApi;
@@ -31,14 +38,21 @@ public class HomeServiceImpl implements
         FriendRequestsService,
         TrekkingPlanService,
         TrekkingPlaceService,
-        TrekkingPlanPlaceService,
-        TrekkingPlanPreviewService,
         ProfileService,
         PlanListService,
         EditProfileService,
         PlaceDetailsService,
         PlanDetailsService,
-        FriendListService
+        FriendListService,
+        TrekkingPlaceNameService,
+        TrekkingPlaceLocationService,
+        TrekkingPlacePhotosService,
+        TrekkingPlaceHashtagsService,
+        TrekkingPlanPlaceService,
+        TrekkingPlanTimeService,
+        TrekkingPlanStayService,
+        TrekkingPlanHotelService,
+        TrekkingPlanPreviewService
 {
     private final RestApi _api;
     private final HomeStore _homeStore;
