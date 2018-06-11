@@ -22,4 +22,10 @@ public class TrekkingPlaceNamePresenter extends PresenterBase<TrekkingPlaceNameS
     private boolean _isValidInput(String placeName) {
         return placeName.trim() != "";
     }
+
+    public void requestToNavigateToLocation()
+    {
+        assert (getView() != null);
+        getView().navigateToLocation();
+    }
 }

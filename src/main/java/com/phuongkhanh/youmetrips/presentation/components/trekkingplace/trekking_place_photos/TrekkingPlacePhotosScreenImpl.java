@@ -1,6 +1,8 @@
 package com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_photos;
 
+import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_hashtags.TrekkingPlaceHashtagsScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import javax.inject.Inject;
@@ -52,6 +54,17 @@ public class TrekkingPlacePhotosScreenImpl extends FXMLScreen
     @Override
     public void removeCoverImage() {
 
+    }
+
+    @Override
+    public void navigateToHashTags() {
+        navigate(TrekkingPlaceHashtagsScreenImpl.class);
+    }
+
+    @FXML
+    public void onNavigateToHashtags()
+    {
+        _presenter.requestToNavigateToHashtags();
     }
 
     @Override

@@ -1,6 +1,8 @@
 package com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_location;
 
+import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_photos.TrekkingPlacePhotosScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import javax.inject.Inject;
@@ -38,6 +40,16 @@ public class TrekkingPlaceLocationScreenImpl extends FXMLScreen
 
     }
 
+    @Override
+    public void navigateToPhotos() {
+        navigate(TrekkingPlacePhotosScreenImpl.class);
+    }
+
+    @FXML
+    public void onNavigateToPhotos()
+    {
+        _presenter.requestToNavigateToPhotos();
+    }
     @Override
     protected String fxmlPath() {
         return "/view/create_place/step2.fxml";

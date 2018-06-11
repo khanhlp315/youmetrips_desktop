@@ -1,6 +1,8 @@
 package com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_name;
 
+import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_location.TrekkingPlaceLocationScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import javax.inject.Inject;
@@ -32,6 +34,17 @@ implements TrekkingPlaceNameScreen, Initializable {
     @Override
     public void showError(String title, String message) {
 
+    }
+
+    @Override
+    public void navigateToLocation() {
+        navigate(TrekkingPlaceLocationScreenImpl.class);
+    }
+
+    @FXML
+    public void onNavigateToLocation()
+    {
+        _presenter.requestToNavigateToLocation();
     }
 
     @Override
