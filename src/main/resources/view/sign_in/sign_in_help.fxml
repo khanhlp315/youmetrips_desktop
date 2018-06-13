@@ -5,56 +5,67 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="490.0" prefWidth="338.0"
-            xmlns="http://javafx.com/javafx/9.0.1">
-    <children>
-        <AnchorPane layoutX="59.0" layoutY="127.0" prefHeight="305.0" prefWidth="212.0"
-                    style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, #cf9d3c, 10, 0, 3, 3);">
+
+<?import com.phuongkhanh.youmetrips.presentation.controls.LoginPane?>
+<?import com.phuongkhanh.youmetrips.presentation.controls.LoadingPane?>
+<LoginPane>
+    <loginNodes>
+
+        <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="490.0" prefWidth="338.0"
+                    xmlns="http://javafx.com/javafx/9.0.1">
             <children>
-                <AnchorPane layoutX="11.0" layoutY="59.0">
+                <AnchorPane layoutX="59.0" layoutY="127.0" prefHeight="305.0" prefWidth="212.0"
+                            style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, #cf9d3c, 10, 0, 3, 3);">
                     <children>
-                        <AnchorPane>
+                        <AnchorPane layoutX="11.0" layoutY="59.0">
                             <children>
-                                <JFXTextField fx:id="_tfEmailOrPhone" focusColor="#ffba33" labelFloat="true"
-                                              layoutY="11.0" prefHeight="31.0" prefWidth="190.0"
-                                              promptText="Email or Phone" unFocusColor="#ccd0d2"/>
-                                <JFXButton fx:id="_btnNext" layoutY="63.0" prefHeight="38.0" prefWidth="190.0"
-                                           ripplerFill="#ffffff42"
-                                           style="-fx-background-color: #1a535c; -fx-background-radius: 100;"
-                                           text="NEXT" textFill="WHITE">
-                                    <font>
-                                        <Font size="10.0"/>
-                                    </font>
-                                </JFXButton>
+                                <AnchorPane>
+                                    <children>
+                                        <JFXTextField  fx:id="_txtNewPasswordEmail" focusColor="#ffba33" labelFloat="true" layoutY="11.0" prefHeight="31.0"
+                                                      prefWidth="190.0" promptText="Email or Phone" unFocusColor="#ccd0d2"/>
+                                        <JFXButton fx:id="_btnNextHelp" onMouseClicked="#next" layoutY="63.0" prefHeight="38.0" prefWidth="190.0" ripplerFill="#ffffff42"
+                                                   style="-fx-background-color: #1a535c; -fx-background-radius: 100;"
+                                                   text="NEXT" textFill="WHITE">
+                                            <font>
+                                                <Font size="10.0"/>
+                                            </font>
+                                        </JFXButton>
+
+                                        <LoadingPane fx:id="_loadingPane" visible="false" layoutY="63.0" prefHeight="38.0" prefWidth="190.0"/>
+
+                                    </children>
+                                </AnchorPane>
+                                <AnchorPane visible="false">
+                                    <children>
+                                        <JFXTextField focusColor="#ffba33" labelFloat="true" layoutY="11.0" prefHeight="31.0"
+                                                      prefWidth="190.0" promptText="Email or Phone" unFocusColor="#ccd0d2"/>
+                                        <JFXButton layoutY="63.0" prefHeight="38.0" prefWidth="190.0" ripplerFill="#ffffff42"
+                                                   style="-fx-background-color: #1a535c; -fx-background-radius: 100;"
+                                                   text="NEXT" textFill="WHITE">
+                                            <font>
+                                                <Font size="10.0"/>
+                                            </font>
+                                        </JFXButton>
+                                    </children>
+                                </AnchorPane>
                             </children>
                         </AnchorPane>
-                        <AnchorPane visible="false">
+                        <AnchorPane layoutX="1.0" layoutY="13.0" prefHeight="31.0" prefWidth="209.0"
+                                    style="-fx-effect: dropshadow(gaussian, #f7f1e6, 10, 0, 0, 3); -fx-background-color: white;">
                             <children>
-                                <JFXTextField focusColor="#ffba33" labelFloat="true" layoutY="11.0" prefHeight="31.0"
-                                              prefWidth="190.0" promptText="Email or Phone" unFocusColor="#ccd0d2"/>
-                                <JFXButton layoutY="63.0" prefHeight="38.0" prefWidth="190.0" ripplerFill="#ffffff42"
-                                           style="-fx-background-color: #1a535c; -fx-background-radius: 100;"
-                                           text="NEXT" textFill="WHITE">
+                                <Label layoutX="14.0" layoutY="3.0" prefHeight="17.0" style="-fx-font-weight: bold;"
+                                       onMouseClicked="#requestToNavigateBack"
+                                       text="&lt; FIND YOUR EMAIL" textFill="#ffc146">
                                     <font>
-                                        <Font size="10.0"/>
+                                        <Font size="9.0"/>
                                     </font>
-                                </JFXButton>
+                                </Label>
                             </children>
                         </AnchorPane>
-                    </children>
-                </AnchorPane>
-                <AnchorPane layoutX="1.0" layoutY="13.0" prefHeight="31.0" prefWidth="209.0"
-                            style="-fx-effect: dropshadow(gaussian, #f7f1e6, 10, 0, 0, 3); -fx-background-color: white;">
-                    <children>
-                        <Label fx:id="_lblBack" layoutX="14.0" layoutY="3.0" prefHeight="17.0"
-                               style="-fx-font-weight: bold;" text="&lt; FIND YOUR EMAIL" textFill="#ffc146">
-                            <font>
-                                <Font size="9.0"/>
-                            </font>
-                        </Label>
                     </children>
                 </AnchorPane>
             </children>
         </AnchorPane>
-    </children>
-</AnchorPane>
+
+    </loginNodes>
+</LoginPane>

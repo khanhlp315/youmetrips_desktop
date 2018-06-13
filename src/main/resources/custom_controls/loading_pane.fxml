@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.layout.*?>
+
+<fx:root type="javafx.scene.layout.VBox" xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" opacity="0.26"
+      style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/9.0.1">
+
+        <ProgressIndicator style="-fx-progress-color: #1a535c"/>
+
+</fx:root>

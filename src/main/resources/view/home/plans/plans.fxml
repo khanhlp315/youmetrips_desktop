@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import com.phuongkhanh.youmetrips.presentation.controls.HomePane?>
+<?import com.jfoenix.controls.JFXListView?>
+
+<HomePane onPlaceClicked="#onPlaceClicked"
+          onProfileClicked="#onProfileClicked"
+          onFriendRequestClicked="#onFriendRequestClicked"
+          onCreatePlaceClicked="#onCreateTrekkingPlaceClicked"
+          onCreatePlanClicked="#onCreateTrekkingPlanClicked"
+          onEditProfileClicked="#onEditProfileClicked"
+          xmlns="http://javafx.com/javafx/8.0.141"
+          xmlns:fx="http://javafx.com/fxml/1">
+    <homeNode>
+        <JFXListView fx:id="_lvPlans"/>
+    </homeNode>
+</HomePane>
