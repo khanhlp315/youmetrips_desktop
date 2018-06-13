@@ -23,9 +23,9 @@
         <VBox alignment="CENTER">
             <JFXButton fx:id="_btnNext" disable="true" onMouseClicked="#onNavigateToPreview" minHeight="40.0" prefWidth="90.0"
                        ripplerFill="#ffffff42"  style="-fx-background-color: #1a535c; -fx-background-radius: 100;"
-                       text="Finish" textFill="WHITE">
+                       text="Next" textFill="WHITE">
                 <font>
-                    <Font size="10.0"/>
+                    <Font size="14.0"/>
                 </font>
                 <VBox.margin>
                     <Insets>
