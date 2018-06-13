@@ -8,6 +8,7 @@
 <?import com.phuongkhanh.youmetrips.presentation.controls.TrekkingPlacePane?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.JFXListView?>
 <TrekkingPlacePane step="4" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <trekkingPlaceNodes>
         <VBox alignment="TOP_CENTER" minHeight="410" prefWidth="284.0">
@@ -20,6 +21,8 @@
                         <Insets left="64.0" right="64.0" top="24.0"/>
                     </padding>
                 </JFXTextField>
+
+                <JFXListView fx:id="_lsView" />
             </children>
         </VBox>
         <VBox alignment="CENTER">

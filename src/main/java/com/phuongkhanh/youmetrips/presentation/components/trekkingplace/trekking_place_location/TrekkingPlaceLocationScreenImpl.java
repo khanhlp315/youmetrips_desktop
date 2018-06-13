@@ -76,7 +76,7 @@ public class TrekkingPlaceLocationScreenImpl extends FXMLScreen
     {
         _presenter.requestToNavigateToPhotos(_tfPlace.getText());
     }
-    
+
     @Override
     protected String fxmlPath() {
         return "/view/create_place/step2.fxml";

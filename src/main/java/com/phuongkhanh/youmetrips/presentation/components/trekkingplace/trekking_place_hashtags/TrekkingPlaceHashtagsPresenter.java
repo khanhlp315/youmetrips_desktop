@@ -3,15 +3,19 @@ package com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekkin
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TrekkingPlaceHashtagsPresenter extends PresenterBase<TrekkingPlaceHashtagsScreen> {
 
     private final TrekkingPlaceHashtagsService _service;
 
+    private List<String> _currentHashtags;
+
     @Inject
     public TrekkingPlaceHashtagsPresenter(TrekkingPlaceHashtagsService service) {
         _service = service;
+        _currentHashtags = new ArrayList<>();
     }
 
     public void onInputUpdated(List<String> hashtags){
@@ -28,19 +32,20 @@ public class TrekkingPlaceHashtagsPresenter extends PresenterBase<TrekkingPlaceH
         return true;
     }
 
-    public void requestAddHashtag(List<String> currentHashtags, String text) {
+    public void requestAddHashtag(String text) {
         assert(getView() != null);
 
         if(text.trim().equals("")){
             return;
         }
 
-        if(currentHashtags.contains(text)){
+        if(_currentHashtags.contains(text)){
             return;
         }
 
 
         getView().addHashtag(text);
+        _currentHashtags.add(text);
     }
 
     public void requestRemoveHashtag(String hashtag) {
