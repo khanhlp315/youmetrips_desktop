@@ -82,4 +82,9 @@ public class Place {
 
         return false;
     }
+
+    @Override
+    public String toString() {
+        return this.getName();
+    }
 }
