@@ -20,8 +20,6 @@ public class TrekkingPlanPlacePresenter extends PresenterBase<TrekkingPlanPlaceS
 
     List<Place> _places;
 
-    String _searchText;
-
     @Inject
     public TrekkingPlanPlacePresenter(TrekkingPlanPlaceService service) {
         _service = service;
@@ -56,31 +54,8 @@ public class TrekkingPlanPlacePresenter extends PresenterBase<TrekkingPlanPlaceS
         return _places;
     }
 
-    public void onSearchTextChanged(String text) {
-        assert (getView() != null);
-
-        _searchText = text;
-        getView().updatePlaces(_filterPlaces());
-    }
-
-    private List<Place> _filterPlaces() {
-        if (_searchText == null || _searchText.trim() == "") {
-            return null;
-        }
-        List<Place> filteredPlaces = new ArrayList<Place>();
-
-        for(Place place: _places)
-        {
-            if(place.getName().toLowerCase().trim().contains(_searchText.toLowerCase().trim()))
-            {
-                filteredPlaces.add(place);
-            }
-        }
-        return filteredPlaces;
-    }
-
     private void _onFetchPlacesSucceeded(List<Place> places) {
-        getView().updatePlaces(_filterPlaces());
+        getView().updatePlaces(places);
     }
 
     private void _onFetchPlacesFailed(Throwable throwable) {
