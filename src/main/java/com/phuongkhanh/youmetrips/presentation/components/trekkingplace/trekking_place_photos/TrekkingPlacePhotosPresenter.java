@@ -1,6 +1,8 @@
 package com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_photos;
 
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
+import org.apache.commons.compress.compressors.FileNameUtil;
+import org.apache.commons.io.FilenameUtils;
 
 import javax.inject.Inject;
 import java.io.File;
@@ -28,7 +30,10 @@ public class TrekkingPlacePhotosPresenter extends PresenterBase<TrekkingPlacePho
         if (image == null) {
             return;
         }
-        getView().addImage(image);
+
+        String extension = FilenameUtils.getExtension(image.getName());
+        if (extension.equals("jpg") || extension.equals("png") || extension.equals("bmp"))
+            getView().addImage(image);
     }
 
     public void requestRemoveImage(File image) {

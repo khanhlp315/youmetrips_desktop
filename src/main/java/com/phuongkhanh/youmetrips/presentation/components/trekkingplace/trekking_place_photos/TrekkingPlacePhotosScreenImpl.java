@@ -7,6 +7,10 @@ import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 
 import javax.inject.Inject;
 import java.io.File;
@@ -14,6 +18,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class TrekkingPlacePhotosScreenImpl extends FXMLScreen
         implements TrekkingPlacePhotosScreen, Initializable {
@@ -50,8 +55,11 @@ public class TrekkingPlacePhotosScreenImpl extends FXMLScreen
 
     @Override
     public void addImage(File image) {
+
         _listChosenImage.add(image);
-        _listView.setItems(FXCollections.observableArrayList(_listChosenImage));
+        _listView.setItems(FXCollections.observableArrayList(_listChosenImage.stream().map(file -> {
+            return new AnchorPane(new ImageView(new Image(file.toURI().toString())));
+        }).collect(Collectors.toList())));
     }
 
     @Override
@@ -76,20 +84,22 @@ public class TrekkingPlacePhotosScreenImpl extends FXMLScreen
     }
 
     @FXML
-    public void onNavigateToHashtags()
-    {
+    public void onNavigateToHashtags() {
         _presenter.requestToNavigateToHashtags();
     }
 
     @FXML
-    public void onAddImage()
-    {
-        //_presenter.pickImage();
+    public void onAddImage() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Chon Hinh");
+        File file = fileChooser.showOpenDialog(getWindow().getStage());
+        if (file != null) {
+            _presenter.pickImage(file);
+        }
     }
 
     @FXML
-    public void onRemoveImage()
-    {
+    public void onRemoveImage() {
 
     }
 
