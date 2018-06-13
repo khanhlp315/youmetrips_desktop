@@ -1,6 +1,5 @@
 package com.phuongkhanh.youmetrips.presentation.components.home.plans;
 
-import com.jfoenix.controls.JFXListView;
 import com.phuongkhanh.youmetrips.presentation.components.editprofile.EditProfileScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.home.friend_requests.FriendRequestsScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.home.places.PlaceScreenImpl;
@@ -12,6 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.ListView;
 
 import javax.inject.Inject;
 import java.net.URL;
@@ -24,7 +24,7 @@ public class PlanScreenImpl extends FXMLScreen
     private final PlanPresenter _presenter;
 
     @FXML
-    private JFXListView _lvPlans;
+    private ListView _lvPlans;
 
     @Inject
     public PlanScreenImpl(PlanPresenter presenter) {

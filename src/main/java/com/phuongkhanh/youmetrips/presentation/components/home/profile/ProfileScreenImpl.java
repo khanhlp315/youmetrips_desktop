@@ -1,6 +1,5 @@
 package com.phuongkhanh.youmetrips.presentation.components.home.profile;
 
-import com.jfoenix.controls.JFXListView;
 import com.phuongkhanh.youmetrips.presentation.components.editprofile.EditProfileScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.home.friend_requests.FriendRequestsScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.home.places.PlaceScreenImpl;
@@ -16,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
@@ -45,10 +45,10 @@ public class ProfileScreenImpl extends FXMLScreen
     private Label _lblNationality;
 
     @FXML
-    private JFXListView _lvPlans;
+    private ListView _lvPlans;
 
     @FXML
-    private JFXListView _lvFriends;
+    private ListView _lvFriends;
 
     @FXML
     private Label _lblFriendCount;
