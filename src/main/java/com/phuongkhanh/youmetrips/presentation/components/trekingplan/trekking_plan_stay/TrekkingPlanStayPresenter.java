@@ -27,7 +27,7 @@ public class TrekkingPlanStayPresenter extends PresenterBase<TrekkingPlanStayScr
     }
 
     private boolean _isValidInput(int from, int to) {
-        if(from == 0 || to == 0){
+        if(from <= 0 || to <= 0){
             return false;
         }
 
