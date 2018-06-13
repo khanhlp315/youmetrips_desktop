@@ -31,7 +31,7 @@ public class TrekkingPlanStayPresenter extends PresenterBase<TrekkingPlanStayScr
             return false;
         }
 
-        if(from >= to){
+        if(from > to){
             return false;
         }
 
