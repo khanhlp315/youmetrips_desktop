@@ -15,10 +15,9 @@
           onFriendRequestClicked="#onFriendRequestClicked" onPlaceClicked="#onPlaceClicked"
           onPlanClicked="#onPlanClicked" xmlns="http://javafx.com/javafx/8.0.121">
     <homeNode>
-        <VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="_profileBox" prefWidth="412.0"
-              style="-fx-background-color: f5f7fb;" xmlns="http://javafx.com/javafx/8.0.121">
+        <VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="_profileBox" style="-fx-background-color: f5f7fb;"
+              xmlns="http://javafx.com/javafx/8.0.121">
             <children>
-
                 <VBox alignment="TOP_CENTER" style="-fx-background-color: white;">
                     <children>
                         <HBox>
@@ -122,7 +121,7 @@
                                 </Label>
                             </children>
                         </HBox>
-                        <ListView fx:id="_lvPlans" prefHeight="200.0" stylesheets="@../../../style/listView.css">
+                        <ListView fx:id="_lvPlans" maxHeight="200.0" stylesheets="@../../../style/listView.css">
                             <VBox.margin>
                                 <Insets top="10.0"/>
                             </VBox.margin>
@@ -179,7 +178,7 @@
                                 </Label>
                             </children>
                         </HBox>
-                        <ListView fx:id="_lvFriends" orientation="HORIZONTAL" prefHeight="100.0"
+                        <ListView fx:id="_lvFriends" maxHeight="130.0" orientation="HORIZONTAL"
                                   stylesheets="@../../../style/listView.css">
                             <VBox.margin>
                                 <Insets top="10.0"/>
@@ -202,6 +201,6 @@
                 </VBox>
             </children>
         </VBox>
-
     </homeNode>
 </HomePane>
+
