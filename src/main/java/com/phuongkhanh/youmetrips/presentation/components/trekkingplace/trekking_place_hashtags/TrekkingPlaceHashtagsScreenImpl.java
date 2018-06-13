@@ -43,6 +43,7 @@ implements TrekkingPlaceHashtagsScreen, Initializable{
             public void handle(javafx.scene.input.KeyEvent event) {
                 if(event.getCode() == KeyCode.ENTER){
                     _presenter.requestAddHashtag(_tfPlace.getText());
+                    _tfPlace.setText("");
                 }
             }
         });
