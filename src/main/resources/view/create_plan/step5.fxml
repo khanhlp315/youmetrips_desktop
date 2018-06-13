@@ -19,175 +19,213 @@
 <?import com.jfoenix.controls.JFXButton?>
 <TrekkingPlanPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <trekkingPlanNodes>
-        <ScrollPane hbarPolicy="NEVER" prefHeight="500.0" prefWidth="412.0" stylesheets="@../style/customScrollPane.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
-            <content>
-                <VBox alignment="CENTER" prefWidth="284.0">
-                    <children>
-                        <Label text="Place" textFill="#828282" />
-                        <AnchorPane fx:id="_apPlaceImage">
-                            <children>
-                                <Rectangle fx:id="_rectPlaceMap" arcHeight="50.0" arcWidth="50.0" fill="DODGERBLUE" height="180.0" layoutX="8.0" layoutY="66.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-effect: dropshadow(gaussian, #828282, 11, 0, 0.5, 0.5);" width="268.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="66.0" />
-                                <StackPane alignment="TOP_CENTER" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0">
-                                    <children>
-                                        <Text fx:id="_txtPlace" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Place">
-                                            <StackPane.margin>
-                                                <Insets top="8.0" />
-                                            </StackPane.margin>
-                                            <font>
-                                                <Font name="System Bold" size="12.0" />
-                                            </font>
-                                        </Text>
-                                        <Rectangle fx:id="_rectPlaceImage" arcHeight="50.0" arcWidth="50.0" fill="DODGERBLUE" height="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="268.0" />
-                                    </children>
-                                </StackPane>
-                                <Rectangle fill="WHITE" height="2.0" layoutY="81.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="268.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" />
-                            </children>
-                            <VBox.margin>
-                                <Insets top="8.0" />
-                            </VBox.margin>
-                        </AnchorPane>
-                        <HBox alignment="TOP_CENTER">
-                            <VBox.margin>
-                                <Insets top="16.0" />
-                            </VBox.margin>
-                            <children>
-                                <VBox alignment="TOP_CENTER">
-                                    <children>
-                                        <Circle fill="WHITE" radius="3.0" stroke="#656565" strokeType="OUTSIDE" strokeWidth="3.0" />
-                                        <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#656565" height="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="3.0">
-                                            <VBox.margin>
-                                                <Insets top="2.0" />
-                                            </VBox.margin>
-                                        </Rectangle>
-                                        <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#656565" height="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="3.0">
-                                            <VBox.margin>
-                                                <Insets top="2.0" />
-                                            </VBox.margin>
-                                        </Rectangle>
-                                        <Circle fill="WHITE" radius="3.0" stroke="#656565" strokeType="OUTSIDE" strokeWidth="3.0">
-                                            <VBox.margin>
-                                                <Insets top="2.0" />
-                                            </VBox.margin>
-                                        </Circle>
-                                    </children>
-                                    <HBox.margin>
-                                        <Insets top="21.0" />
-                                    </HBox.margin>
-                                </VBox>
-                                <VBox alignment="TOP_CENTER">
-                                    <children>
-                                        <Label text="When" textFill="#828282" />
-                                        <Label fx:id="_lblFromDate" text="1/6/2018">
-                                            <font>
-                                                <Font size="14.0" />
-                                            </font>
-                                        </Label>
-                                        <Label fx:id="_lblToDate" text="2/6/2018">
-                                            <VBox.margin>
-                                                <Insets top="13.0" />
-                                            </VBox.margin>
-                                            <font>
-                                                <Font size="14.0" />
-                                            </font>
-                                        </Label>
-                                    </children>
-                                    <HBox.margin>
-                                        <Insets left="8.0" />
-                                    </HBox.margin>
-                                </VBox>
-                                <VBox alignment="TOP_CENTER">
-                                    <children>
-                                        <Circle fill="WHITE" radius="3.0" stroke="#656565" strokeType="OUTSIDE" strokeWidth="3.0" />
-                                        <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#656565" height="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="3.0">
-                                            <VBox.margin>
-                                                <Insets top="2.0" />
-                                            </VBox.margin>
-                                        </Rectangle>
-                                        <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#656565" height="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="3.0">
-                                            <VBox.margin>
-                                                <Insets top="2.0" />
-                                            </VBox.margin>
-                                        </Rectangle>
-                                        <Circle fill="WHITE" radius="3.0" stroke="#656565" strokeType="OUTSIDE" strokeWidth="3.0">
-                                            <VBox.margin>
-                                                <Insets top="2.0" />
-                                            </VBox.margin>
-                                        </Circle>
-                                    </children>
-                                    <HBox.margin>
-                                        <Insets left="24.0" top="21.0" />
-                                    </HBox.margin>
-                                </VBox>
-                                <VBox alignment="TOP_CENTER">
-                                    <children>
-                                        <Label text="How long" textFill="#828282" />
-                                        <Label fx:id="_lblFromHowLong" text="2 days">
-                                            <font>
-                                                <Font size="14.0" />
-                                            </font>
-                                        </Label>
-                                        <Label fx:id="_lblToHowLong" text="5 days">
-                                            <font>
-                                                <Font size="14.0" />
-                                            </font>
-                                            <VBox.margin>
-                                                <Insets top="13.0" />
-                                            </VBox.margin>
-                                        </Label>
-                                    </children>
-                                    <HBox.margin>
-                                        <Insets left="8.0" />
-                                    </HBox.margin>
-                                </VBox>
-                                <VBox alignment="TOP_CENTER">
-                                    <children>
-                                        <Label text="Hotel" textFill="#828282" />
-                                        <HBox alignment="CENTER">
-                                            <VBox.margin>
-                                                <Insets top="16.0" />
-                                            </VBox.margin>
-                                            <children>
-                                                <Label fx:id="_lblStar" text="5">
-                                                    <font>
-                                                        <Font size="14.0" />
-                                                    </font>
-                                                    <HBox.margin>
-                                                        <Insets top="4.0" />
-                                                    </HBox.margin>
-                                                </Label>
-                                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                                    <image>
-                                                        <Image url="@../../images/selected_star.png" />
-                                                    </image>
-                                                    <HBox.margin>
-                                                        <Insets left="4.0" />
-                                                    </HBox.margin>
-                                                </ImageView>
-                                            </children>
-                                        </HBox>
-                                    </children>
-                                    <HBox.margin>
-                                        <Insets left="32.0" />
-                                    </HBox.margin>
-                                </VBox>
-                            </children>
-                        </HBox>
-                        <Label text="Want to say more about your plan?" textFill="#828282">
-                            <VBox.margin>
-                                <Insets top="16.0" />
-                            </VBox.margin>
-                        </Label>
-                        <JFXTextArea fx:id="_lblDescription" focusColor="#ffba33" prefHeight="0.0" prefWidth="236.0" promptText="Add description" unFocusColor="#ccd0d2">
-                            <VBox.margin>
-                                <Insets left="24.0" right="24.0" top="8.0" />
-                            </VBox.margin>
-                        </JFXTextArea>
-                    </children>
-                </VBox>
-            </content>
-        </ScrollPane>
+        <AnchorPane prefHeight="350.0" prefWidth="200" AnchorPane.topAnchor="0.0"
+                    xmlns="http://javafx.com/javafx/8.0.141"
+                    xmlns:fx="http://javafx.com/fxml/1">
+            <ScrollPane hbarPolicy="NEVER" prefHeight="350.0" prefWidth="412.0"
+                        stylesheets="/style/customScrollPane.css" xmlns="http://javafx.com/javafx/8.0.141"
+                        xmlns:fx="http://javafx.com/fxml/1">
+                <content>
+                    <VBox alignment="CENTER" prefWidth="284.0">
+                        <children>
+                            <Label text="Place" textFill="#828282"/>
+                            <AnchorPane fx:id="_apPlaceImage">
+                                <children>
+                                    <Rectangle fx:id="_rectPlaceMap" arcHeight="50.0" arcWidth="50.0" fill="DODGERBLUE"
+                                               height="180.0" layoutX="8.0" layoutY="66.0" stroke="BLACK"
+                                               strokeType="INSIDE" strokeWidth="0.0"
+                                               style="-fx-effect: dropshadow(gaussian, #828282, 11, 0, 0.5, 0.5);"
+                                               width="268.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0"
+                                               AnchorPane.topAnchor="66.0"/>
+                                    <StackPane alignment="TOP_CENTER" AnchorPane.leftAnchor="8.0"
+                                               AnchorPane.rightAnchor="8.0">
+                                        <children>
+                                            <Text fx:id="_txtPlace" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0"
+                                                  text="Place">
+                                                <StackPane.margin>
+                                                    <Insets top="8.0"/>
+                                                </StackPane.margin>
+                                                <font>
+                                                    <Font name="System Bold" size="12.0"/>
+                                                </font>
+                                            </Text>
+                                            <Rectangle fx:id="_rectPlaceImage" arcHeight="50.0" arcWidth="50.0"
+                                                       fill="DODGERBLUE" height="100.0" stroke="BLACK"
+                                                       strokeType="INSIDE" strokeWidth="0.0" width="268.0"/>
+                                        </children>
+                                    </StackPane>
+                                    <Rectangle fill="WHITE" height="2.0" layoutY="81.0" stroke="BLACK"
+                                               strokeType="INSIDE" strokeWidth="0.0" width="268.0"
+                                               AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0"/>
+                                </children>
+                                <VBox.margin>
+                                    <Insets top="8.0"/>
+                                </VBox.margin>
+                            </AnchorPane>
+                            <HBox alignment="TOP_CENTER">
+                                <VBox.margin>
+                                    <Insets top="16.0"/>
+                                </VBox.margin>
+                                <children>
+                                    <VBox alignment="TOP_CENTER">
+                                        <children>
+                                            <Circle fill="WHITE" radius="3.0" stroke="#656565" strokeType="OUTSIDE"
+                                                    strokeWidth="3.0"/>
+                                            <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#656565" height="8.0"
+                                                       stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="3.0">
+                                                <VBox.margin>
+                                                    <Insets top="2.0"/>
+                                                </VBox.margin>
+                                            </Rectangle>
+                                            <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#656565" height="8.0"
+                                                       stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="3.0">
+                                                <VBox.margin>
+                                                    <Insets top="2.0"/>
+                                                </VBox.margin>
+                                            </Rectangle>
+                                            <Circle fill="WHITE" radius="3.0" stroke="#656565" strokeType="OUTSIDE"
+                                                    strokeWidth="3.0">
+                                                <VBox.margin>
+                                                    <Insets top="2.0"/>
+                                                </VBox.margin>
+                                            </Circle>
+                                        </children>
+                                        <HBox.margin>
+                                            <Insets top="21.0"/>
+                                        </HBox.margin>
+                                    </VBox>
+                                    <VBox alignment="TOP_CENTER">
+                                        <children>
+                                            <Label text="When" textFill="#828282"/>
+                                            <Label fx:id="_lblFromDate" text="1/6/2018">
+                                                <font>
+                                                    <Font size="14.0"/>
+                                                </font>
+                                            </Label>
+                                            <Label fx:id="_lblToDate" text="2/6/2018">
+                                                <VBox.margin>
+                                                    <Insets top="13.0"/>
+                                                </VBox.margin>
+                                                <font>
+                                                    <Font size="14.0"/>
+                                                </font>
+                                            </Label>
+                                        </children>
+                                        <HBox.margin>
+                                            <Insets left="8.0"/>
+                                        </HBox.margin>
+                                    </VBox>
+                                    <VBox alignment="TOP_CENTER">
+                                        <children>
+                                            <Circle fill="WHITE" radius="3.0" stroke="#656565" strokeType="OUTSIDE"
+                                                    strokeWidth="3.0"/>
+                                            <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#656565" height="8.0"
+                                                       stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="3.0">
+                                                <VBox.margin>
+                                                    <Insets top="2.0"/>
+                                                </VBox.margin>
+                                            </Rectangle>
+                                            <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#656565" height="8.0"
+                                                       stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="3.0">
+                                                <VBox.margin>
+                                                    <Insets top="2.0"/>
+                                                </VBox.margin>
+                                            </Rectangle>
+                                            <Circle fill="WHITE" radius="3.0" stroke="#656565" strokeType="OUTSIDE"
+                                                    strokeWidth="3.0">
+                                                <VBox.margin>
+                                                    <Insets top="2.0"/>
+                                                </VBox.margin>
+                                            </Circle>
+                                        </children>
+                                        <HBox.margin>
+                                            <Insets left="24.0" top="21.0"/>
+                                        </HBox.margin>
+                                    </VBox>
+                                    <VBox alignment="TOP_CENTER">
+                                        <children>
+                                            <Label text="How long" textFill="#828282"/>
+                                            <Label fx:id="_lblFromHowLong" text="2 days">
+                                                <font>
+                                                    <Font size="14.0"/>
+                                                </font>
+                                            </Label>
+                                            <Label fx:id="_lblToHowLong" text="5 days">
+                                                <font>
+                                                    <Font size="14.0"/>
+                                                </font>
+                                                <VBox.margin>
+                                                    <Insets top="13.0"/>
+                                                </VBox.margin>
+                                            </Label>
+                                        </children>
+                                        <HBox.margin>
+                                            <Insets left="8.0"/>
+                                        </HBox.margin>
+                                    </VBox>
+                                    <VBox alignment="TOP_CENTER">
+                                        <children>
+                                            <Label text="Hotel" textFill="#828282"/>
+                                            <HBox alignment="CENTER">
+                                                <VBox.margin>
+                                                    <Insets top="16.0"/>
+                                                </VBox.margin>
+                                                <children>
+                                                    <Label fx:id="_lblStar" text="5">
+                                                        <font>
+                                                            <Font size="14.0"/>
+                                                        </font>
+                                                        <HBox.margin>
+                                                            <Insets top="4.0"/>
+                                                        </HBox.margin>
+                                                    </Label>
+                                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true"
+                                                               preserveRatio="true">
+                                                        <image>
+                                                            <Image url="@../../images/selected_star.png"/>
+                                                        </image>
+                                                        <HBox.margin>
+                                                            <Insets left="4.0"/>
+                                                        </HBox.margin>
+                                                    </ImageView>
+                                                </children>
+                                            </HBox>
+                                        </children>
+                                        <HBox.margin>
+                                            <Insets left="32.0"/>
+                                        </HBox.margin>
+                                    </VBox>
+                                </children>
+                            </HBox>
+                            <Label text="Want to say more about your plan?" textFill="#828282">
+                                <VBox.margin>
+                                    <Insets top="16.0"/>
+                                </VBox.margin>
+                            </Label>
+                            <JFXTextArea fx:id="_lblDescription" focusColor="#ffba33" prefHeight="0.0" prefWidth="236.0"
+                                         promptText="Add description" unFocusColor="#ccd0d2">
+                                <VBox.margin>
+                                    <Insets left="24.0" right="24.0" top="8.0"/>
+                                </VBox.margin>
+                            </JFXTextArea>
+                        </children>
+                    </VBox>
+                </content>
+            </ScrollPane>
+        </AnchorPane>
+        <VBox alignment="CENTER">
+            <JFXButton fx:id="_btnNext" disable="true" minHeight="40.0" prefWidth="90.0"
+                       ripplerFill="#ffffff42" style="-fx-background-color: #1a535c; -fx-background-radius: 100;"
+                       text="Finish" textFill="WHITE">
+                <font>
+                    <Font size="10.0"/>
+                </font>
+                <VBox.margin>
+                    <Insets>
+                        <top>10</top>
+                    </Insets>
+                </VBox.margin>
+            </JFXButton>
+        </VBox>
     </trekkingPlanNodes>
-   <children>
-      <JFXButton fx:id="_btnNext" disable="true" mnemonicParsing="false" text="Finish" />
-   </children>
 </TrekkingPlanPane>

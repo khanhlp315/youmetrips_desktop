@@ -7,9 +7,10 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.text.Font?>
 <TrekkingPlanPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <trekkingPlanNodes>
-        <VBox alignment="CENTER" prefWidth="284.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+        <VBox alignment="TOP_CENTER" minHeight="350.0" prefWidth="284.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
             <children>
                 <Label text="How long will you stay there?" textFill="#828282" />
                 <JFXComboBox fx:id="_cbFrom" focusColor="#ffc146" prefWidth="284.0" promptText="From" unFocusColor="#ccd0d2">
@@ -30,8 +31,19 @@
                 </JFXComboBox>
             </children>
         </VBox>
+        <VBox alignment="CENTER">
+            <JFXButton fx:id="_btnNext" disable="true" onMouseClicked="#onNavigateToPreview" minHeight="40.0" prefWidth="90.0"
+                       ripplerFill="#ffffff42"  style="-fx-background-color: #1a535c; -fx-background-radius: 100;"
+                       text="Finish" textFill="WHITE">
+                <font>
+                    <Font size="10.0"/>
+                </font>
+                <VBox.margin>
+                    <Insets>
+                        <top>10</top>
+                    </Insets>
+                </VBox.margin>
+            </JFXButton>
+        </VBox>
     </trekkingPlanNodes>
-   <children>
-      <JFXButton fx:id="_btnNext" disable="true" onMouseClicked="#onNavigateToHotel" mnemonicParsing="false" text="Next" />
-   </children>
 </TrekkingPlanPane>
