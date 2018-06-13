@@ -43,6 +43,8 @@ public class TrekkingPlaceHashtagsPresenter extends PresenterBase<TrekkingPlaceH
             return;
         }
 
+        if(text.contains(" "))
+            return;
 
         getView().addHashtag(text);
         _currentHashtags.add(text);
