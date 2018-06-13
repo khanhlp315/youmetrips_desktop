@@ -4,16 +4,16 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 
 public class HomePane extends GridPane {
 
     @FXML
-    private ScrollPane _scrollPane;
+    private StackPane _contentPane;
 
     @FXML
     private HomeDrawer _drawer;
@@ -44,15 +44,15 @@ public class HomePane extends GridPane {
             throw new RuntimeException(exception);
         }
 
-        _scrollPane.setContent(child);
+        _contentPane.getChildren().add(child);
     }
 
     public Node getHomeNode() {
-        return _scrollPane.getContent();
+        return (Node) _contentPane.getChildren();
     }
 
     public void setHomeNode(Node child) {
-        _scrollPane.setContent(child);
+        _contentPane.getChildren().add(child);
     }
 
     public final EventHandler<? super MouseEvent> getOnProfileClicked() {
