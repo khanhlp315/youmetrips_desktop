@@ -14,13 +14,15 @@
     </rowConstraints>
     <children>
         <HomeDrawer fx:id="_drawer"/>
-        <AnchorPane GridPane.columnIndex="1">
+        <StackPane GridPane.columnIndex="1">
             <children>
-                <ScrollPane fx:id="_scrollPane" hbarPolicy="NEVER" style="-fx-background-color: transparent;"
-                            stylesheets="@../../style/customScrollPane.css" AnchorPane.bottomAnchor="0.0"
-                            AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        </ScrollPane>
+                <ScrollPane fx:id="_scrollPane" style="-fx-background-color: transparent;"
+                            stylesheets="@../../style/customScrollPane.css">
+                    <content>
+                        <StackPane/>
+                    </content>
+                </ScrollPane>
             </children>
-        </AnchorPane>
+        </StackPane>
     </children>
 </fx:root>

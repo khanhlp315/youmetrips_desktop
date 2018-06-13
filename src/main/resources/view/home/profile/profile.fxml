@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.phuongkhanh.youmetrips.presentation.controls.HomePane?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import de.jensd.fx.glyphs.materialicons.MaterialIconView?>
@@ -16,7 +16,7 @@
           onPlanClicked="#onPlanClicked" xmlns="http://javafx.com/javafx/8.0.121">
     <homeNode>
         <VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="_profileBox" prefWidth="412.0"
-              style="-fx-background-color: f5f7fb;" xmlns="http://javafx.com/javafx/8.0.141">
+              style="-fx-background-color: f5f7fb;" xmlns="http://javafx.com/javafx/8.0.121">
             <children>
 
                 <VBox alignment="TOP_CENTER" style="-fx-background-color: white;">
@@ -122,11 +122,11 @@
                                 </Label>
                             </children>
                         </HBox>
-                        <JFXListView fx:id="_lvPlans" prefHeight="200.0" style="-fx-background-color: white;">
+                        <ListView fx:id="_lvPlans" prefHeight="200.0" style="-fx-background-color: white;">
                             <VBox.margin>
                                 <Insets top="10.0"/>
                             </VBox.margin>
-                        </JFXListView>
+                        </ListView>
                         <AnchorPane>
                             <VBox.margin>
                                 <Insets/>
@@ -179,12 +179,12 @@
                                 </Label>
                             </children>
                         </HBox>
-                        <JFXListView fx:id="_lvFriends" orientation="HORIZONTAL" prefHeight="100.0"
-                                     style="-fx-background-color: white;">
+                        <ListView fx:id="_lvFriends" orientation="HORIZONTAL" prefHeight="100.0"
+                                  style="-fx-background-color: white;">
                             <VBox.margin>
                                 <Insets top="10.0"/>
                             </VBox.margin>
-                        </JFXListView>
+                        </ListView>
                         <AnchorPane prefHeight="1.0" prefWidth="200.0" style="-fx-background-color: #f0f0f0;">
                             <VBox.margin>
                                 <Insets top="8.0"/>
@@ -202,5 +202,7 @@
                 </VBox>
             </children>
         </VBox>
+
     </homeNode>
 </HomePane>
+
