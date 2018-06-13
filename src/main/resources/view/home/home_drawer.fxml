@@ -6,7 +6,7 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<fx:root xmlns:fx="http://javafx.com/fxml/1" fx:id="_drawer" prefHeight="490.0" prefWidth="271.0"
+<fx:root xmlns:fx="http://javafx.com/fxml/1" fx:id="_drawer" maxWidth="271.0" prefHeight="490.0" prefWidth="271.0"
          style="-fx-background-color: #002b2d;" type="com.jfoenix.controls.JFXDrawer"
          xmlns="http://javafx.com/javafx/8.0.121">
     <children>

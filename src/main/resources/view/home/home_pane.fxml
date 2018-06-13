@@ -3,8 +3,8 @@
 <?import com.phuongkhanh.youmetrips.presentation.controls.HomeDrawer?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.*?>
-<fx:root xmlns:fx="http://javafx.com/fxml/1" prefHeight="490.0" prefWidth="640.0" type="javafx.scene.layout.GridPane"
-         xmlns="http://javafx.com/javafx/8.0.121">
+<fx:root xmlns:fx="http://javafx.com/fxml/1" minHeight="490.0" minWidth="640.0" prefHeight="490.0" prefWidth="640.0"
+         type="javafx.scene.layout.GridPane" xmlns="http://javafx.com/javafx/8.0.121">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="635.0" minWidth="10.0" prefWidth="304.0"/>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="523.0" minWidth="10.0" prefWidth="411.0"/>
@@ -14,12 +14,11 @@
     </rowConstraints>
     <children>
         <HomeDrawer fx:id="_drawer"/>
-        <StackPane GridPane.columnIndex="1">
+        <StackPane alignment="TOP_CENTER" GridPane.columnIndex="1">
             <children>
-                <ScrollPane fx:id="_scrollPane" style="-fx-background-color: transparent;"
-                            stylesheets="@../../style/customScrollPane.css">
+                <ScrollPane fx:id="_scrollPane" stylesheets="@../../style/customScrollPane.css">
                     <content>
-                        <StackPane/>
+                        <StackPane alignment="TOP_CENTER"/>
                     </content>
                 </ScrollPane>
             </children>

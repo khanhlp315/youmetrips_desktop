@@ -18,7 +18,7 @@
                 <Insets left="64.0" right="64.0" top="24.0"/>
             </padding>
         </JFXTextField>
-        <ListView fx:id="_lvPlace" style="-fx-background-color: transparent;"/>
+        <ListView fx:id="_lvPlace" stylesheets="@../../style/listView.css"/>
         <AnchorPane fx:id="_apPlaceImage1">
             <children>
                 <Rectangle fx:id="_rectPlaceMap1" arcHeight="50.0" arcWidth="50.0" fill="DODGERBLUE" height="180.0"

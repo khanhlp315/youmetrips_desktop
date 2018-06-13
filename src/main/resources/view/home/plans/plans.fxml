@@ -12,6 +12,6 @@
           onEditProfileClicked="#onEditProfileClicked"
           xmlns="http://javafx.com/javafx/8.0.141">
     <homeNode>
-        <ListView fx:id="_lvPlans"/>
+        <ListView fx:id="_lvPlans" stylesheets="@../../../style/listView.css"/>
     </homeNode>
 </HomePane>

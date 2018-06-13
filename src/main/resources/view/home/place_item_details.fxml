@@ -20,7 +20,7 @@
                         <VBox>
                             <children>
                                 <ListView fx:id="_lbHashtags" orientation="HORIZONTAL"
-                                          style="-fx-background-color: transparent;"/>
+                                          stylesheets="@../../style/listView.css"/>
                                 <AnchorPane prefHeight="1.0" prefWidth="200.0" style="-fx-background-color: #f0f0f0;">
                                     <VBox.margin>
                                         <Insets top="8.0"/>
