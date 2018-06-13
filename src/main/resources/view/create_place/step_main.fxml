@@ -8,7 +8,7 @@
 <?import javafx.scene.text.*?>
 <fx:root type="javafx.scene.layout.AnchorPane" xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="412.0"
             xmlns="http://javafx.com/javafx/8.0.141">
-        <VBox fx:id="_vBox" alignment="TOP_CENTER" layoutX="156.0" minHeight="150.0" prefHeight="150.0" prefWidth="412.0" AnchorPane.leftAnchor="0.0"
+        <VBox fx:id="_vBox" alignment="TOP_CENTER" layoutX="156.0" minHeight="120.0" maxHeight="120.0" prefHeight="150.0" prefWidth="412.0" AnchorPane.leftAnchor="0.0"
               AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="8.0">
             <children>
                 <Label style="-fx-font-weight: bold;" text="Create trekking place">
@@ -104,23 +104,6 @@
                     </children>
                 </HBox>
                 <AnchorPane fx:id="_apContent"/>
-                <AnchorPane fx:id="_apNext" visible="false">
-                    <children>
-                        <JFXButton fx:id="_btnNext" prefHeight="38.0" prefWidth="190.0" ripplerFill="#ffffff42"
-                                   style="-fx-background-color: #1a535c; -fx-background-radius: 100;" text="NEXT"
-                                   textFill="WHITE" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0">
-                            <font>
-                                <Font size="10.0"/>
-                            </font>
-                            <padding>
-                                <Insets bottom="8.0" top="8.0"/>
-                            </padding>
-                        </JFXButton>
-                    </children>
-                    <VBox.margin>
-                        <Insets top="16.0"/>
-                    </VBox.margin>
-                </AnchorPane>
             </children>
         </VBox>
 </fx:root>

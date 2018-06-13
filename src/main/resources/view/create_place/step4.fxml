@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <TrekkingPlacePane step="4" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <trekkingPlaceNodes>
-        <VBox alignment="TOP_CENTER" minHeight="350" prefWidth="284.0">
+        <VBox alignment="TOP_CENTER" minHeight="410" prefWidth="284.0">
             <children>
                 <Label text="Give the place some tags" textFill="#828282"/>
                 <JFXTextField fx:id="_tfPlace" focusColor="#ffba33" labelFloat="true" prefHeight="31.0"
