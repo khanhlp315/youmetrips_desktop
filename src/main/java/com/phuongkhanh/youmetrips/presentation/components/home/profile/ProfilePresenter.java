@@ -6,7 +6,6 @@ import com.phuongkhanh.youmetrips.services.stores.AuthenticationStore;
 import com.phuongkhanh.youmetrips.services.stores.HomeStore;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
-import javafx.event.EventHandler;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -34,7 +33,7 @@ public class ProfilePresenter extends PresenterBase<ProfileScreen> {
 
         Task<Profile> task = new Task<Profile>() {
             @Override
-            protected Profile call() throws Exception {
+            protected Profile call() {
                 return _doFetchProfile();
             }
 
@@ -63,7 +62,7 @@ public class ProfilePresenter extends PresenterBase<ProfileScreen> {
 
         Task<List<Friend>> task = new Task<List<Friend>>() {
             @Override
-            protected List<Friend> call() throws Exception {
+            protected List<Friend> call() {
                 return _doFetchFriends();
             }
 
@@ -147,7 +146,7 @@ public class ProfilePresenter extends PresenterBase<ProfileScreen> {
     public void refreshUser() {
         Task<Profile> task = new Task<Profile>() {
             @Override
-            protected Profile call() throws Exception {
+            protected Profile call() {
                 return _doFetchProfile();
             }
 
@@ -169,8 +168,7 @@ public class ProfilePresenter extends PresenterBase<ProfileScreen> {
         getView().navigateToCreateTrekkingPlan();
     }
 
-    public void requestNavigateToPlaceList()
-    {
+    public void requestNavigateToPlaceList() {
         assert (getView() != null);
         getView().navigateToPlaceList();
     }
@@ -183,7 +181,7 @@ public class ProfilePresenter extends PresenterBase<ProfileScreen> {
     public void refreshFriends() {
         Task<List<Friend>> task = new Task<List<Friend>>() {
             @Override
-            protected List<Friend> call() throws Exception {
+            protected List<Friend> call() {
                 return _doFetchFriends();
             }
 

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.phuongkhanh.youmetrips.presentation.controls.LoadingPane?>
+<?import com.phuongkhanh.youmetrips.presentation.controls.LoginPane?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-
-<?import com.phuongkhanh.youmetrips.presentation.controls.LoginPane?>
-<?import com.phuongkhanh.youmetrips.presentation.controls.LoadingPane?>
+<?import javafx.scene.text.Font?>
 <LoginPane>
     <loginNodes>
 
@@ -34,7 +34,8 @@
                                             </font>
                                         </JFXButton>
 
-                                        <LoadingPane fx:id="_loadingPane" visible="false" layoutY="63.0" prefHeight="38.0" prefWidth="190.0"/>
+                                        <LoadingPane fx:id="_loadingPane" visible="false" layoutY="63.0"
+                                                     prefHeight="38.0" prefWidth="190.0"/>
 
                                     </children>
                                 </AnchorPane>
@@ -60,7 +61,8 @@
                         <AnchorPane layoutX="1.0" layoutY="13.0" prefHeight="31.0" prefWidth="209.0"
                                     style="-fx-effect: dropshadow(gaussian, #f7f1e6, 10, 0, 0, 3); -fx-background-color: white;">
                             <children>
-                                <Label onMouseClicked="#requestToNavigateBack" layoutX="14.0" layoutY="3.0" prefHeight="17.0" style="-fx-font-weight: bold;"
+                                <Label onMouseClicked="#requestToNavigateBack" layoutX="14.0" layoutY="3.0"
+                                       prefHeight="17.0" style="-fx-font-weight: bold;"
                                        text="&lt; ENTER THE CODE" textFill="#ffc146">
                                     <font>
                                         <Font size="9.0"/>

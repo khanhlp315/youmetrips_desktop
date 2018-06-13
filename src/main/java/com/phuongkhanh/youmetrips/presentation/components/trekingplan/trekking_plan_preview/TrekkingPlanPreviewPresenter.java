@@ -12,26 +12,25 @@ import javax.inject.Inject;
 public class TrekkingPlanPreviewPresenter extends PresenterBase<TrekkingPlanPreviewScreen> {
 
     private final TrekkingPlanPreviewService _service;
-    
+
     @Inject
-    public TrekkingPlanPreviewPresenter(TrekkingPlanPreviewService service)
-    {
+    public TrekkingPlanPreviewPresenter(TrekkingPlanPreviewService service) {
         _service = service;
     }
-    
+
     public void fetchLocation(int placeId) {
         HomeStore homeStore = _service.getHomeStore();
 
         PlaceDetails placeDetails = homeStore.getPlaceDetails(placeId);
 
-        if(placeDetails != null){
+        if (placeDetails != null) {
             getView().updateMapUrl(_service.getMapUrl(placeDetails.getLocation()));
             return;
         }
 
         Task<String> task = new Task<String>() {
             @Override
-            protected String call() throws Exception {
+            protected String call() {
                 return _doGetLocation(placeId);
             }
 
@@ -47,7 +46,7 @@ public class TrekkingPlanPreviewPresenter extends PresenterBase<TrekkingPlanPrev
         new Thread(task).start();
     }
 
-    private String _doGetLocation(int placeId)  {
+    private String _doGetLocation(int placeId) {
         AuthenticationStore authenticationStore = _service.getAuthenticationStore();
 
         return _service.getPlaceDetails(authenticationStore.getUserId(), placeId, authenticationStore.getJwt()).getLocation();

@@ -8,8 +8,9 @@ import com.phuongkhanh.youmetrips.services.stores.AuthenticationStore;
  */
 public interface SignUpConfirmationCodeService {
 
-    public Login sendConfirmationCode(String verifyCode, int userId, String token);
-    public void resendConfirmationCode(int userId, String token);
+    Login sendConfirmationCode(String verifyCode, int userId, String token);
 
-    public AuthenticationStore getAuthenticationStore();
+    void resendConfirmationCode(int userId, String token);
+
+    AuthenticationStore getAuthenticationStore();
 }

@@ -31,7 +31,7 @@ public class TrekkingPlanPlacePresenter extends PresenterBase<TrekkingPlanPlaceS
 
         Task<List<Place>> task = new Task<List<Place>>() {
             @Override
-            protected List<Place> call() throws Exception {
+            protected List<Place> call() {
                 return _doFetchPlaces();
             }
 
@@ -67,10 +67,8 @@ public class TrekkingPlanPlacePresenter extends PresenterBase<TrekkingPlanPlaceS
         }
         List<Place> filteredPlaces = new ArrayList<Place>();
 
-        for(Place place: _places)
-        {
-            if(place.getName().toLowerCase().trim().contains(_searchText.toLowerCase().trim()))
-            {
+        for (Place place : _places) {
+            if (place.getName().toLowerCase().trim().contains(_searchText.toLowerCase().trim())) {
                 filteredPlaces.add(place);
             }
         }
@@ -117,7 +115,7 @@ public class TrekkingPlanPlacePresenter extends PresenterBase<TrekkingPlanPlaceS
 
         Task<String> task = new Task<String>() {
             @Override
-            protected String call() throws Exception {
+            protected String call() {
                 return _doGetLocation(place.getId());
             }
 

@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface TrekkingPlanPlaceScreen extends JFXScreen {
     void showContinue();
+
     void hideContinue();
 
     void updatePlaces(List<Place> places);

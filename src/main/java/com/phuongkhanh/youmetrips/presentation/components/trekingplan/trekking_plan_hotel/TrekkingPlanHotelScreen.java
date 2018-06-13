@@ -4,5 +4,6 @@ import com.phuongkhanh.youmetrips.presentation.framework.JFXScreen;
 
 public interface TrekkingPlanHotelScreen extends JFXScreen {
     void setCanNext(boolean value);
+
     void setLoading(boolean value);
 }

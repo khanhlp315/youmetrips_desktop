@@ -6,12 +6,11 @@ import java.util.List;
 
 public class TrekkingPlaceHashtagsPresenter extends PresenterBase<TrekkingPlaceHashtagsScreen> {
 
-    public void onInputUpdated(List<String> hashtags){
-        assert(getView() != null);
-        if (_isValidInput(hashtags)){
+    public void onInputUpdated(List<String> hashtags) {
+        assert (getView() != null);
+        if (_isValidInput(hashtags)) {
             getView().showContinue();
-        }
-        else {
+        } else {
             getView().hideContinue();
         }
     }
@@ -21,13 +20,13 @@ public class TrekkingPlaceHashtagsPresenter extends PresenterBase<TrekkingPlaceH
     }
 
     public void requestAddHashtag(List<String> currentHashtags, String text) {
-        assert(getView() != null);
+        assert (getView() != null);
 
-        if(text.trim().equals("")){
+        if (text.trim().equals("")) {
             return;
         }
 
-        if(currentHashtags.contains(text)){
+        if (currentHashtags.contains(text)) {
             return;
         }
 
@@ -36,7 +35,7 @@ public class TrekkingPlaceHashtagsPresenter extends PresenterBase<TrekkingPlaceH
     }
 
     public void requestRemoveHashtag(String hashtag) {
-        assert(getView() != null);
+        assert (getView() != null);
 
         getView().removeHashtag(hashtag);
     }

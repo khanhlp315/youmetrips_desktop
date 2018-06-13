@@ -5,8 +5,7 @@ package com.phuongkhanh.youmetrips.presentation.exceptions;
  */
 public class WrongRecoveryCodeException extends PresentationException {
 
-    public WrongRecoveryCodeException()
-    {
+    public WrongRecoveryCodeException() {
         message("Wrong Recovery Code");
     }
 }

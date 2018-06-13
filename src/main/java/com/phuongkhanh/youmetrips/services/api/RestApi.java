@@ -6,7 +6,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
-import com.phuongkhanh.youmetrips.presentation.models.User;
 import com.phuongkhanh.youmetrips.services.api.exceptions.*;
 import com.phuongkhanh.youmetrips.services.api.models.*;
 import okhttp3.*;
@@ -139,8 +138,7 @@ public class RestApi {
         }
     }
 
-    private Response executePostFile(final String path, final File file, final String authorization)
-    {
+    private Response executePostFile(final String path, final File file, final String authorization) {
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("file", file.getName(), RequestBody.create(MEDIA_TYPE_IMAGE, file))
@@ -186,8 +184,7 @@ public class RestApi {
         }
     }
 
-    private int parseResponseJsonBodyAsInt(final Response response, String field )
-    {
+    private int parseResponseJsonBodyAsInt(final Response response, String field) {
         if (!APPLICATION_JSON.equals(response.header(CONTENT_TYPE))) {
             throw new UnknownApiResponseContentTypeException();
         }
@@ -201,8 +198,7 @@ public class RestApi {
         }
     }
 
-    private String parseResponseJsonBodyAsString(final Response response, String field )
-    {
+    private String parseResponseJsonBodyAsString(final Response response, String field) {
         if (!APPLICATION_JSON.equals(response.header(CONTENT_TYPE))) {
             throw new UnknownApiResponseContentTypeException();
         }
@@ -216,8 +212,7 @@ public class RestApi {
         }
     }
 
-    private <T> List<T> parseResponseJsonBodyAsList(final Response response, String field, Class<T> clazz )
-    {
+    private <T> List<T> parseResponseJsonBodyAsList(final Response response, String field, Class<T> clazz) {
         if (!APPLICATION_JSON.equals(response.header(CONTENT_TYPE))) {
             throw new UnknownApiResponseContentTypeException();
         }
@@ -227,8 +222,7 @@ public class RestApi {
             JsonObject jsonObject = requireNonNull(_gson.get().fromJson(json, JsonObject.class));
             JsonArray jsonArray = jsonObject.get(field).getAsJsonArray();
             List<T> ret = new ArrayList<>();
-            for(JsonElement element: jsonArray)
-            {
+            for (JsonElement element : jsonArray) {
                 ret.add(_gson.get().fromJson(element, clazz));
             }
             return ret;
@@ -237,8 +231,7 @@ public class RestApi {
         }
     }
 
-    private <T> List<T> parseResponseJsonBodyAsList(final Response response, Class<T> clazz )
-    {
+    private <T> List<T> parseResponseJsonBodyAsList(final Response response, Class<T> clazz) {
         if (!APPLICATION_JSON.equals(response.header(CONTENT_TYPE))) {
             throw new UnknownApiResponseContentTypeException();
         }
@@ -247,8 +240,7 @@ public class RestApi {
             String json = requireNonNull(response.body()).string();
             JsonArray jsonArray = requireNonNull(_gson.get().fromJson(json, JsonArray.class));
             List<T> ret = new ArrayList<>();
-            for(JsonElement element: jsonArray)
-            {
+            for (JsonElement element : jsonArray) {
                 ret.add(_gson.get().fromJson(element, clazz));
             }
             return ret;
@@ -266,9 +258,9 @@ public class RestApi {
     }
 
     public SignUp signUp(String emailOrPhone,
-                       String password,
-                       String firstName,
-                       String lastName) {
+                         String password,
+                         String firstName,
+                         String lastName) {
         Response response = executePost("signup", ImmutableMap.of(
                 "emailOrPhoneNumber", emailOrPhone,
                 "password", password,
@@ -359,10 +351,10 @@ public class RestApi {
      * get friends of current user
      * returns:     an array of users
      * {
-     *     "userId": 0,
-     *     "userFirstName": "string",
-     *     "userLastName": "string",
-     *     "userAvatarUrl": "string"
+     * "userId": 0,
+     * "userFirstName": "string",
+     * "userLastName": "string",
+     * "userAvatarUrl": "string"
      * }
      */
     public List<Friend> getFriends(int userId, String jwt) {
@@ -388,10 +380,10 @@ public class RestApi {
      * get friend requests of current user
      * returns:     an array of users
      * {
-     *     "userId": 0,
-     *     "userFirstName": "string",
-     *     "userLastName": "string",
-     *     "userAvatarUrl": "string"
+     * "userId": 0,
+     * "userFirstName": "string",
+     * "userLastName": "string",
+     * "userAvatarUrl": "string"
      * }
      */
     public void getAllFriendRequests(int userId, String jwt) {
@@ -406,11 +398,11 @@ public class RestApi {
 
     /**
      * post a photo
+     *
      * @param photoUrl: Url of photo
      * @param caption:  Caption for this photo
      */
-    public void addPhoto(String photoUrl, String caption, int userId, int placeId, String jwt)
-    {
+    public void addPhoto(String photoUrl, String caption, int userId, int placeId, String jwt) {
         Response response = executePost(
                 "users/" + userId + "/places/" + placeId + "/photos",
                 ImmutableMap.of(
@@ -426,14 +418,13 @@ public class RestApi {
      * get a review
      * returns:
      * {
-     *   "reviewId": 0,
-     *   "reviewRate": 0,
-     *   "reviewMessage": "string",
-     *   "reviewTime": "2018-05-28T23:09:25.112Z"
+     * "reviewId": 0,
+     * "reviewRate": 0,
+     * "reviewMessage": "string",
+     * "reviewTime": "2018-05-28T23:09:25.112Z"
      * }
      */
-    public UserReview getUserReview(int placeId, int userId, String jwt)
-    {
+    public UserReview getUserReview(int placeId, int userId, String jwt) {
         Response response = executeGet(
                 "users/" + userId + "/places/" + placeId + "/review",
                 jwt
@@ -444,14 +435,13 @@ public class RestApi {
     }
 
 
-    public int createPlace(CreatePlace place, int userId, String jwt)
-    {
+    public int createPlace(CreatePlace place, int userId, String jwt) {
         HashMap map = new HashMap<>();
-        map.put("name" , place.getName());
-        map.put("location" , place.getLocation());
-        map.put("coverImageUrl" , place.getCoverImageUrl());
-        map.put("photoUrls" , place.getPhotoUrls());
-        map.put("tags" , place.getTags());
+        map.put("name", place.getName());
+        map.put("location", place.getLocation());
+        map.put("coverImageUrl", place.getCoverImageUrl());
+        map.put("photoUrls", place.getPhotoUrls());
+        map.put("tags", place.getTags());
         Response response = executePost(
                 "users/" + userId + "/places",
                 map,
@@ -463,10 +453,10 @@ public class RestApi {
 
     /**
      * get a place
+     *
      * @param placeId
      */
-    public PlaceDetails getPlaceDetails(int placeId, int userId, String jwt)
-    {
+    public PlaceDetails getPlaceDetails(int placeId, int userId, String jwt) {
         Response response = executeGet(
                 "users/" + userId + "/places/" + placeId,
                 jwt
@@ -477,10 +467,10 @@ public class RestApi {
 
     /**
      * get all places
-     * @return      a List
+     *
+     * @return a List
      */
-    public List<Place> getAllPlaces(int userId, String jwt)
-    {
+    public List<Place> getAllPlaces(int userId, String jwt) {
         Response response = executeGet(
                 "users/" + userId + "/places/all",
                 jwt
@@ -491,11 +481,11 @@ public class RestApi {
 
     /**
      * send a comment to server
-     * @param comment           a user's comment
-     * @param trekkingPlanId    id of the plan's trek
+     *
+     * @param comment        a user's comment
+     * @param trekkingPlanId id of the plan's trek
      */
-    public void sendComment(String comment, int trekkingPlanId, int userId, String jwt)
-    {
+    public void sendComment(String comment, int trekkingPlanId, int userId, String jwt) {
         Response response = executePost(
                 "users/" + userId + "/trekkingplans/" + trekkingPlanId + "/comments",
                 ImmutableMap.of("comment", comment),
@@ -506,10 +496,10 @@ public class RestApi {
 
     /**
      * get all comments about something
-     * @param trekkingPlanId    id of the plan's trek
+     *
+     * @param trekkingPlanId id of the plan's trek
      */
-    public List<Comment> getComments(int trekkingPlanId, int userId, String jwt)
-    {
+    public List<Comment> getComments(int trekkingPlanId, int userId, String jwt) {
         Response response = executeGet(
                 "users/" + userId + "/trekkingplans/" + trekkingPlanId + "/comments",
                 jwt
@@ -521,8 +511,7 @@ public class RestApi {
     /**
      * get relevant trekking plan
      */
-    public List<RelevantPlan> getRelevantTrekkingPlans(int userId, String jwt)
-    {
+    public List<RelevantPlan> getRelevantTrekkingPlans(int userId, String jwt) {
         Response response = executeGet(
                 "users/" + userId + "/relevanttrekkingplans",
                 jwt
@@ -531,9 +520,8 @@ public class RestApi {
         return parseResponseJsonBodyAsList(response, "relevantPlans", RelevantPlan.class);
     }
 
-    public int createTrekkingPlan(CreatePlan plan, int userId, String jwt)
-    {
-        HashMap<String,String> map = new HashMap<>();
+    public int createTrekkingPlan(CreatePlan plan, int userId, String jwt) {
+        HashMap<String, String> map = new HashMap<>();
         map.put("placeId", String.valueOf(plan.getPlaceId()));
         map.put("whenToGoMin", plan.getWhenToGoMin());
         map.put("whenToGoMax", plan.getWhenToGoMax());
@@ -554,10 +542,10 @@ public class RestApi {
 
     /**
      * get user profile
+     *
      * @return a Profile class
      */
-    public Profile getProfile(int userId, String jwt)
-    {
+    public Profile getProfile(int userId, String jwt) {
         Response response = executeGet(
                 "users/" + userId + "/profile",
                 jwt
@@ -566,9 +554,8 @@ public class RestApi {
         return parseResponseJsonBody(response, Profile.class);
     }
 
-    public void updateProfile(EditedUserProfile profile, int userId, String jwt)
-    {
-        HashMap<String,String> map = new HashMap<>();
+    public void updateProfile(EditedUserProfile profile, int userId, String jwt) {
+        HashMap<String, String> map = new HashMap<>();
         map.put("firstName", profile.getFirstName());
         map.put("lastName", profile.getLastName());
         map.put("avatar", profile.getAvatar());
@@ -591,19 +578,19 @@ public class RestApi {
 
     /**
      * get user's country
+     *
      * @return a Country class
      */
-    public List<Country> getAllCountries()
-    {
+    public List<Country> getAllCountries() {
         Response response = executeGet("countries");
         validateResponse(response);
-        Type listCountryType = new TypeToken<List<Country>>(){}.getType();
+        Type listCountryType = new TypeToken<List<Country>>() {
+        }.getType();
         return parseResponseJsonBodyAsList(response, Country.class);
     }
 
-    public void updatePlan(int trekkingPlanId, CreatePlan plan, int userId, String jwt)
-    {
-        HashMap<String,String> map = new HashMap<>();
+    public void updatePlan(int trekkingPlanId, CreatePlan plan, int userId, String jwt) {
+        HashMap<String, String> map = new HashMap<>();
         map.put("placeId", String.valueOf(plan.getPlaceId()));
         map.put("whenToGoMin", plan.getWhenToGoMin());
         map.put("whenToGoMax", plan.getWhenToGoMax());
@@ -622,12 +609,12 @@ public class RestApi {
 
     /**
      * put place id
+     *
      * @param placeId       place id
      * @param name          name of place
      * @param coverImageUrl image of place
      */
-    public void updatePlace(int placeId, String name, String coverImageUrl, int userId, String jwt)
-    {
+    public void updatePlace(int placeId, String name, String coverImageUrl, int userId, String jwt) {
         Response response = executePut(
                 String.format("users/%d/places/%d", userId, placeId),
                 ImmutableMap.of(
@@ -641,10 +628,10 @@ public class RestApi {
 
     /**
      * put a like
-     * @param placeId   id of place
+     *
+     * @param placeId id of place
      */
-    public void like(int placeId, int userId, String jwt)
-    {
+    public void like(int placeId, int userId, String jwt) {
         Response response = executePut(
                 String.format("users/%d/places/%d/like", userId, placeId),
                 ImmutableMap.of(),
@@ -655,10 +642,10 @@ public class RestApi {
 
     /**
      * put a dislike
-     * @param placeId   id of place
+     *
+     * @param placeId id of place
      */
-    public void unlikePlace(int placeId, int userId, String jwt)
-    {
+    public void unlikePlace(int placeId, int userId, String jwt) {
         Response response = executePut(
                 String.format("users/%d/places/%d/dislike", userId, placeId),
                 ImmutableMap.of(),
@@ -669,12 +656,12 @@ public class RestApi {
 
     /**
      * put a review
-     * @param placeId   id of place
-     * @param rate      user's rate
-     * @param message   user's message
+     *
+     * @param placeId id of place
+     * @param rate    user's rate
+     * @param message user's message
      */
-    public void review(int placeId, int rate, String message, int userId, String jwt)
-    {
+    public void review(int placeId, int rate, String message, int userId, String jwt) {
         Response response = executePut(
                 String.format("users/%d/places/%d/review", userId, placeId),
                 ImmutableMap.of(
@@ -688,12 +675,12 @@ public class RestApi {
 
     /**
      * put photo id
-     * @param placeId   id of place
-     * @param photoId   id of photo
-     * @param caption   user's caption
+     *
+     * @param placeId id of place
+     * @param photoId id of photo
+     * @param caption user's caption
      */
-    public void addPhotoCaption(int placeId, int photoId, String caption, int userId, String jwt)
-    {
+    public void addPhotoCaption(int placeId, int photoId, String caption, int userId, String jwt) {
         Response response = executePut(
                 String.format("users/%d/places/%d/photos/%d", userId, placeId, photoId),
                 ImmutableMap.of(
@@ -706,12 +693,12 @@ public class RestApi {
 
     /**
      * put a tag
-     * @param placeId   id of place
-     * @param tag       a tag
-     * @param type      type
+     *
+     * @param placeId id of place
+     * @param tag     a tag
+     * @param type    type
      */
-    public void addTag(int placeId, String tag, String type, int userId, String jwt)
-    {
+    public void addTag(int placeId, String tag, String type, int userId, String jwt) {
         Response response = executePut(
                 String.format("users/%d/places/%d/tags", userId, placeId),
                 ImmutableMap.of(
@@ -724,11 +711,9 @@ public class RestApi {
     }
 
     /**
-     *
-     * @param fromUserId    from which user
+     * @param fromUserId from which user
      */
-    public void acceptFriendRequest(int fromUserId, int userId, String jwt)
-    {
+    public void acceptFriendRequest(int fromUserId, int userId, String jwt) {
         Response response = executePut(
                 String.format("users/%d/friendrequests/%d/accept", userId, fromUserId),
                 ImmutableMap.of(),
@@ -739,10 +724,10 @@ public class RestApi {
 
     /**
      * delete trekking plan
-     * @param trekkingPlanId    id of plan
+     *
+     * @param trekkingPlanId id of plan
      */
-    public void deleteTrekkingPlan(int trekkingPlanId, int userId, String jwt)
-    {
+    public void deleteTrekkingPlan(int trekkingPlanId, int userId, String jwt) {
         Response response = executeDelete(
                 String.format("users/%d/trekkingplans/%d", userId, trekkingPlanId),
                 jwt
@@ -752,11 +737,11 @@ public class RestApi {
 
     /**
      * delete photo
-     * @param photoId   id of photo
-     * @param placeId   id of place
+     *
+     * @param photoId id of photo
+     * @param placeId id of place
      */
-    public void deletePhoto(int photoId, int placeId, int userId, String jwt)
-    {
+    public void deletePhoto(int photoId, int placeId, int userId, String jwt) {
         Response response = executeDelete(
                 String.format("users/%d/places/%d/photos/%d", userId, placeId, photoId),
                 jwt
@@ -766,10 +751,10 @@ public class RestApi {
 
     /**
      * delete friend request
-     * @param toUserId  to which user
+     *
+     * @param toUserId to which user
      */
-    public void deleteFriendRequest(int toUserId, int userId, String jwt)
-    {
+    public void deleteFriendRequest(int toUserId, int userId, String jwt) {
         Response response = executeDelete(
                 String.format("users/%d/friendrequests/%d", userId, toUserId),
                 jwt
@@ -779,10 +764,10 @@ public class RestApi {
 
     /**
      * decline a friend request
-     * @param fromUserId    from which user
+     *
+     * @param fromUserId from which user
      */
-    public void declineFriendRequest(int fromUserId, int userId, String jwt)
-    {
+    public void declineFriendRequest(int fromUserId, int userId, String jwt) {
         Response response = executePut(
                 String.format("users/%d/friendrequests/%d/decline", userId, fromUserId),
                 ImmutableMap.of(),
@@ -791,8 +776,7 @@ public class RestApi {
         validateResponse(response);
     }
 
-    public String uploadFile(File file, int userId, String jwt)
-    {
+    public String uploadFile(File file, int userId, String jwt) {
         Response response = executePostFile(
                 String.format("users/%d/uploadfile", userId),
                 file,

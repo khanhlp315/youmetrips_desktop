@@ -6,8 +6,9 @@ import com.phuongkhanh.youmetrips.services.stores.AuthenticationStore;
  * @author by LeVoGiaKhang
  */
 public interface NewPasswordInitCodeService {
-    public String sendCodeToResetPassword(String recoveryCode, int userId);
-    public void resendCodeToResetPassword();
+    String sendCodeToResetPassword(String recoveryCode, int userId);
 
-    public AuthenticationStore getAuthenticationStore();
+    void resendCodeToResetPassword();
+
+    AuthenticationStore getAuthenticationStore();
 }

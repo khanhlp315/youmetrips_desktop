@@ -3,8 +3,6 @@ package com.phuongkhanh.youmetrips.presentation.controls;
 import com.phuongkhanh.youmetrips.services.api.models.Friend;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.concurrent.Task;
-import javafx.concurrent.WorkerStateEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ContentDisplay;
@@ -32,11 +30,11 @@ public final class FriendCell extends ListCell<Friend> {
 
     private Friend _currentItem;
 
-    public FriendCell(){
+    public FriendCell() {
         loadFXML();
     }
 
-    private void loadFXML(){
+    private void loadFXML() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource(
                 "view/home/profile/friend_item.fxml"));
         fxmlLoader.setRoot(this);
@@ -44,8 +42,7 @@ public final class FriendCell extends ListCell<Friend> {
 
         try {
             fxmlLoader.load();
-        }
-        catch (IOException exception) {
+        } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
 
@@ -55,25 +52,23 @@ public final class FriendCell extends ListCell<Friend> {
     protected void updateItem(Friend item, boolean empty) {
         super.updateItem(item, empty);
 
-        if(empty){
+        if (empty) {
             setText(null);
             setContentDisplay(ContentDisplay.TEXT_ONLY);
-        }
-        else {
-            if(_currentItem == null || !item.equals(_currentItem)){
+        } else {
+            if (_currentItem == null || !item.equals(_currentItem)) {
                 _currentItem = item;
-                Image image = new Image(item.getUserAvatarUrl() == null? getNeutralAvatar(): item.getUserAvatarUrl(), true);
+                Image image = new Image(item.getUserAvatarUrl() == null ? getNeutralAvatar() : item.getUserAvatarUrl(), true);
                 image.progressProperty().addListener(new ChangeListener<Number>() {
                     @Override
                     public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                       if(newValue.doubleValue() == 1.0){
-                           _avatarProgressIndicator.setVisible(false);
-                           _rectAvatar.setFill(new ImagePattern(image));
-                       }
-                       else {
-                           _avatarProgressIndicator.setVisible(true);
-                           _avatarProgressIndicator.setProgress(newValue.doubleValue());
-                       }
+                        if (newValue.doubleValue() == 1.0) {
+                            _avatarProgressIndicator.setVisible(false);
+                            _rectAvatar.setFill(new ImagePattern(image));
+                        } else {
+                            _avatarProgressIndicator.setVisible(true);
+                            _avatarProgressIndicator.setProgress(newValue.doubleValue());
+                        }
                     }
                 });
                 _lblName.setText(item.getUserFirstName() + " " + item.getUserLastName());

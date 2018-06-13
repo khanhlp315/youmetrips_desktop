@@ -30,7 +30,7 @@ public class TrekkingPlanPresenter extends PresenterBase<TrekkingPlanScreen> {
 
         Task<Integer> task = new Task<Integer>() {
             @Override
-            protected Integer call() throws Exception {
+            protected Integer call() {
                 return _doCreateCreatePlan(plan);
             }
 

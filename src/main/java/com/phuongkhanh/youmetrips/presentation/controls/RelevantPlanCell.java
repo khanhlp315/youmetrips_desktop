@@ -47,11 +47,11 @@ public class RelevantPlanCell extends ListCell<RelevantPlan> {
     private Circle _cirCountry;
 
 
-    public RelevantPlanCell(){
+    public RelevantPlanCell() {
         loadFXML();
     }
 
-    private void loadFXML(){
+    private void loadFXML() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource(
                 "view/home/plans/plan_item.fxml"));
         fxmlLoader.setRoot(this);
@@ -68,11 +68,10 @@ public class RelevantPlanCell extends ListCell<RelevantPlan> {
     protected void updateItem(RelevantPlan item, boolean empty) {
         super.updateItem(item, empty);
 
-        if(empty){
+        if (empty) {
             setText(null);
             setContentDisplay(ContentDisplay.TEXT_ONLY);
-        }
-        else {
+        } else {
             _lblFirstName.setText(item.getUserFirstName());
             _lblLastName.setText(item.getUserLastName());
             _lblOccupation.setText(item.getUserOccupation());
@@ -81,12 +80,11 @@ public class RelevantPlanCell extends ListCell<RelevantPlan> {
             _lblPlaceName.setText(item.getPlace().getName());
             _lblStars.setText(String.valueOf(item.getHotelLevel()));
             String fromToDate = "";
-            if(item.getWhenToGoMin().getYear() == item.getWhenToGoMax().getYear()){
+            if (item.getWhenToGoMin().getYear() == item.getWhenToGoMax().getYear()) {
                 fromToDate = item.getWhenToGoMin().getDayOfMonth() + "/" + item.getWhenToGoMin().getMonthValue() + " - " +
                         item.getWhenToGoMax().getDayOfMonth() + "/" + item.getWhenToGoMax().getMonthValue() + "/" + item.getWhenToGoMax().getYear();
-            }
-            else {
-                fromToDate = item.getWhenToGoMin().toString() +" - " + item.getWhenToGoMax().toString();
+            } else {
+                fromToDate = item.getWhenToGoMin().toString() + " - " + item.getWhenToGoMax().toString();
             }
             _lblDateRange.setText(fromToDate);
             _lblTimeRange.setText(item.getHowLongMin() + " - " + item.getHowLongMax() + " day(s)");

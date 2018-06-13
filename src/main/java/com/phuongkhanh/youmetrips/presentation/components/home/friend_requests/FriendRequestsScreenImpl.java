@@ -11,11 +11,10 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class FriendRequestsScreenImpl extends FXMLScreen
-implements FriendRequestsScreen, Initializable {
+        implements FriendRequestsScreen, Initializable {
 
     @Inject
-    public FriendRequestsScreenImpl(FriendRequestsPresenter presenter)
-    {
+    public FriendRequestsScreenImpl(FriendRequestsPresenter presenter) {
 
     }
 
@@ -45,38 +44,32 @@ implements FriendRequestsScreen, Initializable {
     }
 
     @FXML
-    public void onPlaceClicked()
-    {
+    public void onPlaceClicked() {
 
     }
 
     @FXML
-    public void onPlanClicked()
-    {
+    public void onPlanClicked() {
 
     }
 
     @FXML
-    public void onCreateTrekkingPlanClicked()
-    {
+    public void onCreateTrekkingPlanClicked() {
 
     }
 
     @FXML
-    public void onCreateTrekkingPlaceClicked()
-    {
+    public void onCreateTrekkingPlaceClicked() {
 
     }
 
     @FXML
-    public void onProfileClicked()
-    {
+    public void onProfileClicked() {
 
     }
 
     @FXML
-    public void onEditProfileClicked()
-    {
+    public void onEditProfileClicked() {
 
     }
 }

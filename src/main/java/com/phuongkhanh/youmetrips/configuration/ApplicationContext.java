@@ -60,7 +60,6 @@ import com.phuongkhanh.youmetrips.presentation.components.signup.signup.SignUpPr
 import com.phuongkhanh.youmetrips.presentation.components.signup.signup.SignUpScreen;
 import com.phuongkhanh.youmetrips.presentation.components.signup.signup.SignUpScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.signup.signup.SignUpService;
-import com.phuongkhanh.youmetrips.presentation.windows.HomeWindow;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.TrekkingPlanPresenter;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.TrekkingPlanScreen;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.TrekkingPlanScreenImpl;
@@ -98,6 +97,7 @@ import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_photos.TrekkingPlacePhotosPresenter;
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_photos.TrekkingPlacePhotosScreen;
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_photos.TrekkingPlacePhotosScreenImpl;
+import com.phuongkhanh.youmetrips.presentation.windows.HomeWindow;
 import com.phuongkhanh.youmetrips.presentation.windows.LoginWindow;
 import com.phuongkhanh.youmetrips.services.api.RestApi;
 import com.phuongkhanh.youmetrips.services.components.AuthServiceImpl;
@@ -119,13 +119,14 @@ import javax.inject.Singleton;
 
 public interface ApplicationContext {
     LoginWindow loginWindow();
+
     HomeWindow homeWindow();
 
     @Module
-    static class PresentationModule {
+    class PresentationModule {
         @Provides
-        static LoginScreen loginScreen(LoginPresenter presenter, Provider<HomeWindow> homeWindowProvider ) {
-            return new LoginScreenImpl( presenter, homeWindowProvider  );
+        static LoginScreen loginScreen(LoginPresenter presenter, Provider<HomeWindow> homeWindowProvider) {
+            return new LoginScreenImpl(presenter, homeWindowProvider);
         }
 
         @Provides
@@ -351,7 +352,7 @@ public interface ApplicationContext {
     }
 
     @Module
-    static class ServiceModule {
+    class ServiceModule {
         static RestApi _restApi = new RestApi();
         static AuthenticationStore _authenticationStore = new AuthenticationStore();
         static HomeStore _homeStore = new HomeStore();

@@ -1,14 +1,12 @@
 package com.phuongkhanh.youmetrips.presentation.components.needhelp.init_new_password;
 
 import com.jfoenix.controls.JFXPasswordField;
-import com.jfoenix.controls.JFXTextField;
 import com.phuongkhanh.youmetrips.presentation.components.login.LoginScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 
-import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -24,8 +22,7 @@ public class NewPasswordScreenImpl extends FXMLScreen implements NewPasswordScre
     @FXML
     private JFXPasswordField _txtConfirmPassword;
 
-    public NewPasswordScreenImpl(NewPasswordPresenter presenter)
-    {
+    public NewPasswordScreenImpl(NewPasswordPresenter presenter) {
         _presenter = presenter;
         _presenter.setView(this);
     }
@@ -42,18 +39,18 @@ public class NewPasswordScreenImpl extends FXMLScreen implements NewPasswordScre
 
     @Override
     public void showError(String message) {
-        Alert alert = new Alert( Alert.AlertType.WARNING );
-        alert.setTitle( "Error" );
-        alert.setContentText( message );
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Error");
+        alert.setContentText(message);
         alert.showAndWait();
 
     }
 
     @Override
     public void showSuccess(String message) {
-        Alert alert = new Alert( Alert.AlertType.INFORMATION );
-        alert.setTitle( "Success" );
-        alert.setContentText( message );
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Success");
+        alert.setContentText(message);
         alert.showAndWait();
     }
 
@@ -63,25 +60,21 @@ public class NewPasswordScreenImpl extends FXMLScreen implements NewPasswordScre
     }
 
     @FXML
-    public void next()
-    {
+    public void next() {
         _presenter.sendNewPassword(_txtNewPassword.getText(), _txtConfirmPassword.getText());
     }
 
-    public void navigateToLoginScreen()
-    {
+    public void navigateToLoginScreen() {
         navigate(LoginScreenImpl.class);
     }
 
     @FXML
-    public void requestToNavigateBack()
-    {
+    public void requestToNavigateBack() {
         _presenter.requestToNavigateBack();
     }
 
     @Override
-    public void onNavigateBack()
-    {
+    public void onNavigateBack() {
         navigateBack();
     }
 }

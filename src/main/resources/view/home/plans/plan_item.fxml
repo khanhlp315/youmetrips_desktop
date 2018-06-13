@@ -8,8 +8,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.*?>
-
-<fx:root type="javafx.scene.control.ListCell" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141">
+<fx:root xmlns:fx="http://javafx.com/fxml/1" type="javafx.scene.control.ListCell"
+         xmlns="http://javafx.com/javafx/8.0.141">
     <graphic>
         <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
                     minWidth="-Infinity" prefHeight="167.0" prefWidth="355.0" style="-fx-background-color: white;">
@@ -70,7 +70,8 @@
                         <RowConstraints maxHeight="65.0" minHeight="10.0" prefHeight="62.0" vgrow="SOMETIMES"/>
                     </rowConstraints>
                     <children>
-                        <ImageView fitHeight="120.0" fitWidth="355.0" pickOnBounds="true" GridPane.columnSpan="2147483647"
+                        <ImageView fitHeight="120.0" fitWidth="355.0" pickOnBounds="true"
+                                   GridPane.columnSpan="2147483647"
                                    GridPane.rowSpan="2147483647">
                             <image>
                                 <Image fx:id="_imageCover" url="@../../../images/login_page.png"/>
@@ -89,7 +90,8 @@
                                                 <Insets top="2.0"/>
                                             </HBox.margin>
                                         </Label>
-                                        <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true"
+                                                   preserveRatio="true">
                                             <image>
                                                 <Image url="@../../../images/white_star.png"/>
                                             </image>
@@ -132,7 +134,8 @@
                         </VBox>
                     </children>
                 </GridPane>
-                <Circle fx:id="_cirAvatar" fill="DODGERBLUE" radius="28.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0"
+                <Circle fx:id="_cirAvatar" fill="DODGERBLUE" radius="28.0" stroke="WHITE" strokeType="INSIDE"
+                        strokeWidth="2.0"
                         AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="5.0"/>
                 <Circle fx:id="_cirCountry" fill="DODGERBLUE" layoutX="66.0" layoutY="53.0" radius="13.0" stroke="WHITE"
                         strokeType="INSIDE" strokeWidth="2.0"/>

@@ -10,8 +10,7 @@ import java.io.IOException;
  */
 public class LoadingPane extends VBox {
 
-    public LoadingPane()
-    {
+    public LoadingPane() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource(
                 "custom_controls/loading_pane.fxml"));
         fxmlLoader.setRoot(this);

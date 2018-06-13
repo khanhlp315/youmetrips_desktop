@@ -6,9 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
@@ -35,7 +33,7 @@ public class PlaceCell extends ListCell<Place> {
 
     }
 
-    private void loadFXML(){
+    private void loadFXML() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource(
                 "view/home/places/place_item.fxml"));
         fxmlLoader.setRoot(this);
@@ -51,19 +49,18 @@ public class PlaceCell extends ListCell<Place> {
     @Override
     protected void updateItem(Place item, boolean empty) {
         super.updateItem(item, empty);
-        if(empty){
+        if (empty) {
             setText(null);
             setContentDisplay(ContentDisplay.TEXT_ONLY);
-        }
-        else {
-            if(_currentPlace == null || !item.equals(_currentPlace)){
+        } else {
+            if (_currentPlace == null || !item.equals(_currentPlace)) {
                 _currentPlace = item;
                 //_ivPlaceImg.setImage(null);
                 //_ivPlaceImg.setImage(new Image(imageUrl));
                 _lblPlaceName.setText(item.getName());
                 String allTags = "";
-                for(String hashtag: item.getTags()){
-                    allTags += "#" + hashtag +" ";
+                for (String hashtag : item.getTags()) {
+                    allTags += "#" + hashtag + " ";
                 }
                 _lblHashtag.setText(allTags);
                 _lblPeopleCount.setText(String.valueOf(item.getNumberOfPeopleGoing()));

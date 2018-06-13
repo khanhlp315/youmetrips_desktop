@@ -6,6 +6,8 @@ import com.phuongkhanh.youmetrips.services.stores.HomeStore;
 
 public interface PlanListService {
     Profile getUserProfile(int userId, String jwt);
+
     AuthenticationStore getAuthenticationStore();
+
     HomeStore getHomeStore();
 }

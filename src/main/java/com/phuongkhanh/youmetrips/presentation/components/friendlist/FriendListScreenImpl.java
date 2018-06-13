@@ -9,12 +9,12 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class FriendListScreenImpl extends FXMLScreen
-implements FriendListScreen, Initializable {
+        implements FriendListScreen, Initializable {
 
-    public FriendListScreenImpl(FriendListPresenter presenter)
-    {
-        
+    public FriendListScreenImpl(FriendListPresenter presenter) {
+
     }
+
     @Override
     public void updateFriends(List<Friend> friends) {
 

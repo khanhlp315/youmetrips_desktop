@@ -12,8 +12,7 @@ import java.io.IOException;
 /*
  * @author by LeVoGiaKhang
  */
-public class LoginPane extends AnchorPane
-{
+public class LoginPane extends AnchorPane {
     @FXML
     private AnchorPane _anchor;
 
@@ -31,7 +30,7 @@ public class LoginPane extends AnchorPane
 
     }
 
-    public LoginPane(Node ...loginNodes) {
+    public LoginPane(Node... loginNodes) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource(
                 "view/sign_in/login_pane.fxml"));
         fxmlLoader.setRoot(this);
@@ -46,12 +45,12 @@ public class LoginPane extends AnchorPane
         _anchor.getChildren().addAll(loginNodes);
     }
 
-    public void setLoginNodes(Node ...loginNodes){
-        _anchor.getChildren().clear();
-        _anchor.getChildren().addAll(loginNodes);
+    public ObservableList<Node> getLoginNodes() {
+        return _anchor.getChildren();
     }
 
-    public ObservableList<Node> getLoginNodes(){
-        return _anchor.getChildren();
+    public void setLoginNodes(Node... loginNodes) {
+        _anchor.getChildren().clear();
+        _anchor.getChildren().addAll(loginNodes);
     }
 }

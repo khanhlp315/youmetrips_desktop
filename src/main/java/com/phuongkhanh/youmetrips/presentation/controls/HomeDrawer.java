@@ -36,8 +36,7 @@ public class HomeDrawer extends JFXDrawer {
     @FXML
     private JFXButton _btnEditProfile;
 
-    public HomeDrawer()
-    {
+    public HomeDrawer() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource(
                 "view/home/home_drawer.fxml"));
         fxmlLoader.setRoot(this);
@@ -45,8 +44,7 @@ public class HomeDrawer extends JFXDrawer {
 
         try {
             fxmlLoader.load();
-        }
-        catch (IOException exception) {
+        } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
     }

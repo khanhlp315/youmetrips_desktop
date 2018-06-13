@@ -22,7 +22,7 @@ public class NewPasswordInitCodePresenter extends PresenterBase<NewPasswordInitC
 
         new Thread(new Task<Object>() {
             @Override
-            protected Object call() throws Exception {
+            protected Object call() {
                 doSendCode(recoveryCode);
                 return null;
             }
@@ -32,7 +32,6 @@ public class NewPasswordInitCodePresenter extends PresenterBase<NewPasswordInitC
                 onSendCodeSuccess();
                 getView().setLoading(false);
             }
-
 
 
             @Override
@@ -68,7 +67,7 @@ public class NewPasswordInitCodePresenter extends PresenterBase<NewPasswordInitC
     public void resendCode() {
         new Thread(new Task<Object>() {
             @Override
-            protected Object call() throws Exception {
+            protected Object call() {
                 doResendCode();
                 return null;
             }
@@ -78,14 +77,11 @@ public class NewPasswordInitCodePresenter extends PresenterBase<NewPasswordInitC
                 onResendCodeSuccess();
             }
 
-            ;
-
             @Override
             protected void failed() {
                 onResendCodeFailed(getException());
             }
 
-            ;
         }).start();
     }
 
@@ -102,8 +98,7 @@ public class NewPasswordInitCodePresenter extends PresenterBase<NewPasswordInitC
     }
     //endregion
 
-    public void requestToNavigateBack()
-    {
+    public void requestToNavigateBack() {
         getView().onNavigateBack();
     }
 }

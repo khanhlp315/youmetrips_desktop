@@ -2,9 +2,7 @@ package com.phuongkhanh.youmetrips.presentation.components.login;
 
 import com.phuongkhanh.youmetrips.presentation.exceptions.*;
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
-import com.phuongkhanh.youmetrips.presentation.models.User;
 import com.phuongkhanh.youmetrips.services.api.models.Login;
-import com.phuongkhanh.youmetrips.services.api.models.SignUp;
 import com.phuongkhanh.youmetrips.services.stores.AuthenticationStore;
 import javafx.concurrent.Task;
 import org.openqa.selenium.WebDriverException;
@@ -40,7 +38,7 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
         new Thread(
                 new Task<Object>() {
                     @Override
-                    protected Object call() throws Exception {
+                    protected Object call() {
                         doLogin(email, password);
                         return null;
                     }
@@ -70,7 +68,7 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
         new Thread(
                 new Task<Object>() {
                     @Override
-                    protected Object call() throws Exception {
+                    protected Object call() {
                         //doLoginWithFB(_service.getAccessToken());
                         doLoginWithFB(_service.getAccessToken());
                         return null;
@@ -134,18 +132,18 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
         getView().navigateToHome();
     }
 
-    private void setState(int state) {
-        _state = state;
-    }
-
     public int getState() {
         return _state;
+    }
+
+    private void setState(int state) {
+        _state = state;
     }
 
     public void checkForAutoLogin() {
         AuthenticationStore authenticationStore = _service.getAuthenticationStore();
         authenticationStore.load();
-        if(authenticationStore.getJwt() != null){
+        if (authenticationStore.getJwt() != null) {
             //getView().navigateToHome();
         }
     }

@@ -7,14 +7,10 @@ import com.phuongkhanh.youmetrips.presentation.components.home.places.PlaceScree
 import com.phuongkhanh.youmetrips.presentation.components.home.plans.PlanScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.plandetails.PlanDetailsScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.controls.FriendCell;
-import com.phuongkhanh.youmetrips.presentation.controls.HomePane;
-import com.phuongkhanh.youmetrips.presentation.controls.LoadingPane;
 import com.phuongkhanh.youmetrips.presentation.controls.UserPlanCell;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import com.phuongkhanh.youmetrips.services.api.models.Friend;
 import com.phuongkhanh.youmetrips.services.api.models.Profile;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -78,7 +74,7 @@ public class ProfileScreenImpl extends FXMLScreen
     public void updateProfile(Profile profile) {
         Image image = new Image(profile.getAvatar() == null ? getNeutralAvatar() : profile.getAvatar(), true);
         image.progressProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue.doubleValue() ==1.0){
+            if (newValue.doubleValue() == 1.0) {
                 _rectAvatar.setFill(new ImagePattern(image));
             }
         });

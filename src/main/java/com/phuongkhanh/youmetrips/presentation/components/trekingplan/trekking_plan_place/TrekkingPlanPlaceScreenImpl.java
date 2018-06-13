@@ -10,11 +10,10 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class TrekkingPlanPlaceScreenImpl extends FXMLScreen
-implements TrekkingPlanPlaceScreen, Initializable {
+        implements TrekkingPlanPlaceScreen, Initializable {
 
     @Inject
-    public TrekkingPlanPlaceScreenImpl(TrekkingPlanPlacePresenter presenter)
-    {
+    public TrekkingPlanPlaceScreenImpl(TrekkingPlanPlacePresenter presenter) {
 
     }
 

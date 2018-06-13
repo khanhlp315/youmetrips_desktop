@@ -3,12 +3,11 @@ package com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
 
 public class TrekkingPlanHotelPresenter extends PresenterBase<TrekkingPlanHotelScreen> {
-    void onStarsUpdated(int stars){
-        assert(getView() != null);
-        if (_isValidInput(stars)){
+    void onStarsUpdated(int stars) {
+        assert (getView() != null);
+        if (_isValidInput(stars)) {
             getView().setCanNext(true);
-        }
-        else {
+        } else {
             getView().setCanNext(false);
         }
     }

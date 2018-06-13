@@ -2,9 +2,15 @@
 
 <?import com.jfoenix.controls.JFXListView?>
 <?import com.phuongkhanh.youmetrips.presentation.controls.HomePane?>
-
-<HomePane onCreatePlaceClicked="#onCreateTrekkingPlaceClicked" onCreatePlanClicked="#onCreateTrekkingPlanClicked" onEditProfileClicked="#onEditProfileClicked" onFriendRequestClicked="#onFriendRequestClicked" onPlanClicked="#onPlanClicked" onProfileClicked="#onProfileClicked" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.layout.*?>
+<HomePane xmlns:fx="http://javafx.com/fxml/1" onCreatePlaceClicked="#onCreateTrekkingPlaceClicked"
+          onCreatePlanClicked="#onCreateTrekkingPlanClicked" onEditProfileClicked="#onEditProfileClicked"
+          onFriendRequestClicked="#onFriendRequestClicked" onPlanClicked="#onPlanClicked"
+          onProfileClicked="#onProfileClicked" xmlns="http://javafx.com/javafx/8.0.121">
     <homeNode>
-        <JFXListView fx:id="_lvPlaces" prefHeight="400.0" prefWidth="452.0" />
+        <AnchorPane>
+            <JFXListView fx:id="_lvPlaces" prefHeight="400.0" prefWidth="452.0" AnchorPane.bottomAnchor="0.0"
+                         AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+        </AnchorPane>
     </homeNode>
 </HomePane>

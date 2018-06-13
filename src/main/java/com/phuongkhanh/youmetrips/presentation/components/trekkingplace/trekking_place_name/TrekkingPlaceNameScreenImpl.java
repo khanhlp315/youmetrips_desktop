@@ -8,11 +8,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class TrekkingPlaceNameScreenImpl extends FXMLScreen
-implements TrekkingPlaceNameScreen, Initializable {
+        implements TrekkingPlaceNameScreen, Initializable {
 
     @Inject
-    public TrekkingPlaceNameScreenImpl(TrekkingPlaceNamePresenter presenter)
-    {
+    public TrekkingPlaceNameScreenImpl(TrekkingPlaceNamePresenter presenter) {
 
     }
 

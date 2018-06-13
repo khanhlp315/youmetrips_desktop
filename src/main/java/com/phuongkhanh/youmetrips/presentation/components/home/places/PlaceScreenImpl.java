@@ -12,33 +12,29 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import org.omg.CORBA.ACTIVITY_REQUIRED;
 
 import javax.inject.Inject;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 public class PlaceScreenImpl extends FXMLScreen
-implements PlaceScreen, Initializable {
+        implements PlaceScreen, Initializable {
 
+    private final PlacePresenter _presenter;
     @FXML
     private JFXListView _lvPlaces;
 
-    private final PlacePresenter _presenter;
+    @Inject
+    public PlaceScreenImpl(PlacePresenter presenter) {
+        _presenter = presenter;
+        _presenter.setView(this);
+    }
 
     @Override
     public Scene render() {
         _presenter.fetchPlaces();
         return super.render();
-    }
-
-    @Inject
-    public PlaceScreenImpl(PlacePresenter presenter)
-    {
-        _presenter = presenter;
-        _presenter.setView(this);
     }
 
     @Override
@@ -97,41 +93,36 @@ implements PlaceScreen, Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        _lvPlaces.setCellFactory(param->new PlaceCell());
+        _lvPlaces.setCellFactory(param -> new PlaceCell());
     }
+
     @FXML
-    public void onPlanClicked()
-    {
+    public void onPlanClicked() {
         _presenter.requestNavigateToPlan();
     }
 
     @FXML
-    public void onFriendRequestClicked()
-    {
+    public void onFriendRequestClicked() {
         _presenter.requestNavigateToFriendRequest();
     }
 
     @FXML
-    public void onCreateTrekkingPlanClicked()
-    {
+    public void onCreateTrekkingPlanClicked() {
 
     }
 
     @FXML
-    public void onCreateTrekkingPlaceClicked()
-    {
+    public void onCreateTrekkingPlaceClicked() {
 
     }
 
     @FXML
-    public void onProfileClicked()
-    {
+    public void onProfileClicked() {
         _presenter.requestNavigateToProfile();
     }
 
     @FXML
-    public void onEditProfileClicked()
-    {
+    public void onEditProfileClicked() {
         _presenter.requestNavigateToEditProfile();
     }
 }

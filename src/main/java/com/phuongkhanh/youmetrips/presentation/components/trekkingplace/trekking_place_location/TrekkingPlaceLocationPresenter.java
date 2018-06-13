@@ -9,17 +9,16 @@ public class TrekkingPlaceLocationPresenter extends PresenterBase<TrekkingPlaceL
     }
 
     public void requestShowMap() {
-        assert(getView() != null);
+        assert (getView() != null);
         getView().showMap();
     }
 
 
     public void onLocationUpdated(String selectedPlace) {
-        assert(getView() != null);
-        if (_isValidInput(selectedPlace)){
+        assert (getView() != null);
+        if (_isValidInput(selectedPlace)) {
             getView().showContinue();
-        }
-        else {
+        } else {
             getView().hideContinue();
         }
     }

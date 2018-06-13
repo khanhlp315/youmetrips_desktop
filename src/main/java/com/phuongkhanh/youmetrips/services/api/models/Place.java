@@ -69,7 +69,7 @@ public class Place {
 
     @Override
     public boolean equals(Object obj) {
-        if(obj instanceof Place){
+        if (obj instanceof Place) {
             Place place = (Place) obj;
             return place.id == id &&
                     place.name.equals(name) &&

@@ -15,13 +15,11 @@ public class PlaceDetails {
     private int numberOfPeopleGoing = 0;
 
 
-    public int getId()
-    {
+    public int getId() {
         return id;
     }
 
-    public void setId(int newId)
-    {
+    public void setId(int newId) {
         id = newId;
     }
 
@@ -99,7 +97,7 @@ public class PlaceDetails {
     }
 }
 
-class Tag{
+class Tag {
     private String tag;
     private int totalVote = 0;
     private int myVote = 0;
@@ -130,7 +128,7 @@ class Tag{
     }
 }
 
-class Review{
+class Review {
     private int rate = 0;
     private int reviewerId = 0;
     private String message;
@@ -196,7 +194,7 @@ class Review{
     }
 }
 
-class Like{
+class Like {
     private int likerId = 0;
     private String likerFirstName;
     private String likerLastName;

@@ -12,7 +12,6 @@ import com.phuongkhanh.youmetrips.presentation.windows.HomeWindow;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ProgressIndicator;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 

@@ -1,8 +1,8 @@
 package com.phuongkhanh.youmetrips.presentation.components.trekkingplace;
 
+import com.phuongkhanh.youmetrips.presentation.exceptions.EmptyRequiredFieldException;
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
 import com.phuongkhanh.youmetrips.services.api.exceptions.ApiException;
-import com.phuongkhanh.youmetrips.presentation.exceptions.EmptyRequiredFieldException;
 import com.phuongkhanh.youmetrips.services.api.models.CreatePlace;
 import com.phuongkhanh.youmetrips.services.stores.AuthenticationStore;
 import javafx.concurrent.Task;
@@ -15,25 +15,24 @@ import java.util.List;
 
 public class TrekkingPlacePresenter extends PresenterBase<TrekkingPlaceScreen> {
     private final TrekkingPlaceService _service;
-    
+
     @Inject
-    public TrekkingPlacePresenter(TrekkingPlaceService service)
-    {
+    public TrekkingPlacePresenter(TrekkingPlaceService service) {
         _service = service;
     }
 
     public void requestNavigateBack() {
-        assert(getView() != null);
+        assert (getView() != null);
         getView().navigateBack();
     }
 
     public void createTrekkingPlace(String placeName, String placeLocation, File coverPhoto, List<File> otherPhotos, List<String> hashtags) {
-        assert(getView() != null);
+        assert (getView() != null);
         getView().setLoading(true);
 
         Task<Integer> task = new Task<Integer>() {
             @Override
-            protected Integer call() throws Exception {
+            protected Integer call() {
                 return _doCreateTrekkingPlace(placeName, placeLocation, coverPhoto, otherPhotos, hashtags);
             }
 
@@ -50,11 +49,11 @@ public class TrekkingPlacePresenter extends PresenterBase<TrekkingPlaceScreen> {
     }
 
     private int _doCreateTrekkingPlace(String placeName, String placeLocation, File coverPhoto, List<File> otherPhotos, List<String> hashtags) {
-        if(placeName.trim().equals("") || placeLocation.trim().equals("")){
+        if (placeName.trim().equals("") || placeLocation.trim().equals("")) {
             throw new EmptyRequiredFieldException();
         }
 
-        if(coverPhoto == null){
+        if (coverPhoto == null) {
             throw new EmptyRequiredFieldException();
         }
 
@@ -66,8 +65,7 @@ public class TrekkingPlacePresenter extends PresenterBase<TrekkingPlaceScreen> {
         String coverImageUrl = _service.uploadFile(userId, jwt, coverPhoto);
         List<String> otherPhotosUrls = new ArrayList<String>();
 
-        for(File photo: otherPhotos)
-        {
+        for (File photo : otherPhotos) {
             otherPhotosUrls.add(_service.uploadFile(userId, jwt, photo));
         }
 
@@ -77,7 +75,7 @@ public class TrekkingPlacePresenter extends PresenterBase<TrekkingPlaceScreen> {
                 coverImageUrl,
                 otherPhotosUrls,
                 hashtags
-    );
+        );
 
         return _service.createPlace(userId, jwt, trekkingPlace);
     }
@@ -85,10 +83,9 @@ public class TrekkingPlacePresenter extends PresenterBase<TrekkingPlaceScreen> {
     private void _onCreateTrekkingPlaceFailed(Throwable throwable) {
         getView().setLoading(false);
 
-        if(throwable instanceof ApiException){
+        if (throwable instanceof ApiException) {
             getView().showError("Could not create trekking place", "Could not connect to server, please check your connection");
-        }
-    else{
+        } else {
             getView().showError("Could not create trekking place", throwable.getMessage());
         }
     }
