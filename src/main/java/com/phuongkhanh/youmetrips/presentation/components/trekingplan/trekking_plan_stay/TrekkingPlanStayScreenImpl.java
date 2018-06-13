@@ -64,7 +64,23 @@ public class TrekkingPlanStayScreenImpl extends FXMLScreen
 
     @FXML
     public void onNavigateToHotel() {
-        _presenter.requestToNavigateToHotel();
+        Pattern p = Pattern.compile("-?\\d+");
+
+        String from = (String) _cbFrom.getValue();
+        Matcher mFrom = null;
+        if (_cbFrom.getValue() != null) {
+            mFrom = p.matcher(from);
+            mFrom.find();
+        }
+
+        String to = ((String) _cbTo.getValue());
+        Matcher mTo = null;
+        if (_cbTo.getValue() != null) {
+            mTo = p.matcher(to);
+            mTo.find();
+        }
+
+        _presenter.requestToNavigateToHotel(Integer.valueOf(mFrom.group()), Integer.valueOf(mTo.group()));
     }
 
     @Override
@@ -104,7 +120,7 @@ public class TrekkingPlanStayScreenImpl extends FXMLScreen
 
                 String from = (String) _cbFrom.getValue();
                 Matcher mFrom = null;
-                if (_cbFrom.getId() != null) {
+                if (_cbFrom.getValue() != null) {
                     mFrom = p.matcher(from);
                     mFrom.find();
                 }

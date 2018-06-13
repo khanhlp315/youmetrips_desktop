@@ -15,7 +15,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
-<TrekkingPlanPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<TrekkingPlanPane step="1" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <trekkingPlanNodes>
         <VBox alignment="TOP_CENTER" minHeight="350.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
             <children>
@@ -46,7 +46,7 @@
             </children>
         </VBox>
         <VBox alignment="CENTER">
-            <JFXButton fx:id="_btnNext" disable="true" onMouseClicked="#onNavigateToPreview" minHeight="40.0" prefWidth="90.0"
+            <JFXButton fx:id="_btnNext" disable="true" onMouseClicked="#onNavigateToTime" minHeight="40.0" prefWidth="90.0"
                        ripplerFill="#ffffff42"  style="-fx-background-color: #1a535c; -fx-background-radius: 100;"
                        text="Finish" textFill="WHITE">
                 <font>

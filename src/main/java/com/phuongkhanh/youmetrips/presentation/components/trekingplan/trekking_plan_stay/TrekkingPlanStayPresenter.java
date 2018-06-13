@@ -38,11 +38,12 @@ public class TrekkingPlanStayPresenter extends PresenterBase<TrekkingPlanStayScr
         return true;
     }
 
-    public void requestToNavigateToHotel(){
+    public void requestToNavigateToHotel(Integer from, Integer to){
         assert (getView() != null);
         HomeStore homeStore = _service.getHomeStore();
         CreatePlan plan = homeStore.getCreatePlan();
-        homeStore.storeCreatePlan(plan);
+        plan.setHowLongMin(from);
+        plan.setHowLongMax(to);
         getView().navigateToHotel();
     }
 }

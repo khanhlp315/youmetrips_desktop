@@ -15,7 +15,7 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class TrekkingPlanTimeScreenImpl extends FXMLScreen
-implements TrekkingPlanTimeScreen, Initializable {
+        implements TrekkingPlanTimeScreen, Initializable {
     private TrekkingPlanTimePresenter _presenter;
 
     @FXML
@@ -28,8 +28,7 @@ implements TrekkingPlanTimeScreen, Initializable {
     private JFXButton _btnNext;
 
     @Inject
-    public TrekkingPlanTimeScreenImpl(TrekkingPlanTimePresenter presenter)
-    {
+    public TrekkingPlanTimeScreenImpl(TrekkingPlanTimePresenter presenter) {
         _presenter = presenter;
         _presenter.setView(this);
     }
@@ -45,9 +44,13 @@ implements TrekkingPlanTimeScreen, Initializable {
     }
 
     @FXML
-    public void onNavigateToStay()
-    {
-        _presenter.requestToNavigateToStay();
+    public void onNavigateToStay() {
+        _presenter.requestToNavigateToStay(_dpFrom.getValue().getDayOfMonth() + "/" +
+                        _dpFrom.getValue().getMonthValue() + "/" +
+                        _dpFrom.getValue().getYear(),
+                _dpTo.getValue().getDayOfMonth() + "/" +
+                        _dpTo.getValue().getMonthValue() + "/" +
+                        _dpTo.getValue().getYear());
     }
 
     @Override
@@ -60,14 +63,14 @@ implements TrekkingPlanTimeScreen, Initializable {
         _dpFrom.valueProperty().addListener(new ChangeListener<LocalDate>() {
             @Override
             public void changed(ObservableValue<? extends LocalDate> observable, LocalDate oldValue, LocalDate newValue) {
-                _presenter.onInputUpdated(_dpFrom.getValue() == null? null:_dpFrom.getValue().toString(), _dpTo.getValue() == null? null: _dpTo.getValue().toString());
+                _presenter.onInputUpdated(_dpFrom.getValue() == null ? null : _dpFrom.getValue().toString(), _dpTo.getValue() == null ? null : _dpTo.getValue().toString());
             }
         });
 
         _dpTo.valueProperty().addListener(new ChangeListener<LocalDate>() {
             @Override
             public void changed(ObservableValue<? extends LocalDate> observable, LocalDate oldValue, LocalDate newValue) {
-                _presenter.onInputUpdated(_dpFrom.getValue() == null? null:_dpFrom.getValue().toString(), _dpTo.getValue() == null? null: _dpTo.getValue().toString());
+                _presenter.onInputUpdated(_dpFrom.getValue() == null ? null : _dpFrom.getValue().toString(), _dpTo.getValue() == null ? null : _dpTo.getValue().toString());
             }
         });
     }

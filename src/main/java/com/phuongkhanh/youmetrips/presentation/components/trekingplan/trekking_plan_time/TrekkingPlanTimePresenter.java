@@ -38,12 +38,13 @@ public class TrekkingPlanTimePresenter extends PresenterBase<TrekkingPlanTimeScr
         return true;
     }
 
-    public void requestToNavigateToStay()
+    public void requestToNavigateToStay(String from, String to)
     {
         assert (getView() != null);
         HomeStore homeStore = _service.getHomeStore();
         CreatePlan plan = homeStore.getCreatePlan();
-        homeStore.storeCreatePlan(plan);
+        plan.setWhenToGoMin(from);
+        plan.setWhenToGoMax(to);
         getView().navigateToStay();
     }
 }
