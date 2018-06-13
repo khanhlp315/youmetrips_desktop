@@ -30,10 +30,15 @@ public class TrekkingPlaceNamePresenter extends PresenterBase<TrekkingPlaceNameS
 
     public void requestToNavigateToLocation(String placeName) {
         assert (getView() != null);
-        CreatePlace place = new CreatePlace();
-        place.setName(placeName);
+
         HomeStore homeStore = _service.getHomeStore();
-        homeStore.storeCreatePlace(place);
+        CreatePlace place;
+        if (homeStore.getCreatePlace() == null)
+            place = new CreatePlace();
+        else
+            place = homeStore.getCreatePlace();
+
+        place.setName(placeName);
         getView().navigateToLocation();
     }
 }
