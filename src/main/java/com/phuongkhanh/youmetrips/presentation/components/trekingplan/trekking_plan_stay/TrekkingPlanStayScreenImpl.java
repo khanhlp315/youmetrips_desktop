@@ -100,18 +100,18 @@ public class TrekkingPlanStayScreenImpl extends FXMLScreen
         _cbTo.valueProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                Pattern p = Pattern.compile("-?//d+");
+                Pattern p = Pattern.compile("-?\\d+");
 
                 String from = (String) _cbFrom.getValue();
                 Matcher mFrom = null;
-                if (from != null) {
+                if (_cbFrom.getId() != null) {
                     mFrom = p.matcher(from);
                     mFrom.find();
                 }
 
                 String to = (String) _cbTo.getValue();
                 Matcher mTo = null;
-                if (to != null) {
+                if (_cbTo.getValue() != null) {
                     mTo = p.matcher(to);
                     mTo.find();
                 }
