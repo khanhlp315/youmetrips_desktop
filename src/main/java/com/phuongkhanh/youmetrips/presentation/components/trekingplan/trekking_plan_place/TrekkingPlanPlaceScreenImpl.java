@@ -75,7 +75,7 @@ implements TrekkingPlanPlaceScreen, Initializable {
     @FXML
     public void onNavigateToTime()
     {
-        _presenter.requestNavigateToTime();
+        _presenter.requestNavigateToTime(((Place)_cbChoosePlace.getValue()).getId());
     }
     @Override
     protected String fxmlPath() {

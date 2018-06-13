@@ -68,7 +68,7 @@ public class TrekkingPlanPlacePresenter extends PresenterBase<TrekkingPlanPlaceS
         getView().navigateToCreateTrekkingPlace();
     }
 
-    public void requestNavigateToTime()
+    public void requestNavigateToTime(int id)
     {
         assert (getView() != null);
         HomeStore homeStore = _service.getHomeStore();
@@ -76,7 +76,7 @@ public class TrekkingPlanPlacePresenter extends PresenterBase<TrekkingPlanPlaceS
         if(homeStore.getCreatePlan() == null)
             plan = new CreatePlan();
         else plan = homeStore.getCreatePlan();
-        plan.setPlaceId(0);
+        plan.setPlaceId(id);
         homeStore.storeCreatePlan(plan);
         getView().navigateToTime();
     }

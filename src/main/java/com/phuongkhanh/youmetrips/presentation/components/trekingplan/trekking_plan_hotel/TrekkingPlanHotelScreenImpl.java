@@ -49,7 +49,7 @@ implements TrekkingPlanHotelScreen, Initializable {
     @FXML
     public void onNavigateToPreview()
     {
-        _presenter.requestToNavigateToPreview();
+        _presenter.requestToNavigateToPreview((int)_ratingBar.getRating());
     }
 
     @Override

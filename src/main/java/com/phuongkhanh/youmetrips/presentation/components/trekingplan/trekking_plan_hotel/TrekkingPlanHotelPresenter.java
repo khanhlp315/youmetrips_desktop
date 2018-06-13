@@ -29,12 +29,12 @@ public class TrekkingPlanHotelPresenter extends PresenterBase<TrekkingPlanHotelS
         return stars != 0;
     }
 
-    public void requestToNavigateToPreview()
+    public void requestToNavigateToPreview(int rating)
     {
         assert (getView() != null);
         HomeStore homeStore = _service.getHomeStore();
         CreatePlan plan = homeStore.getCreatePlan();
-        homeStore.storeCreatePlan(plan);
+        plan.setHotelLevel(rating);
         getView().navigateToPreview();
     }
 }

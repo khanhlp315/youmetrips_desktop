@@ -543,7 +543,7 @@ public class RestApi {
         map.put("description", plan.getDescription());
 
         Response response = executePost(
-                "users/" + userId + "trekkingplans",
+                "users/" + userId + "/trekkingplans",
                 map,
                 jwt
         );
