@@ -24,19 +24,19 @@
                         <Insets top="16.0"/>
                     </VBox.margin>
                     <children>
-                        <Label fx:id="_lblWhere" text="Where"/>
+                        <Label fx:id="_lbl1" text="Where"/>
                         <Rectangle fill="#1a535c" height="5.0" stroke="#1a535c" strokeType="INSIDE" visible="false"
                                    width="30.0"/>
-                        <Label fx:id="_lblWhen" text="When" visible="false"/>
+                        <Label fx:id="_lbl2" text="When" visible="false"/>
                         <Rectangle fill="#1a535c" height="5.0" stroke="#1a535c" strokeType="INSIDE" visible="false"
                                    width="20.0"/>
-                        <Label fx:id="_lblHowLong" text="How long" visible="false"/>
+                        <Label fx:id="_lbl3" text="How long" visible="false"/>
                         <Rectangle fill="#1a535c" height="5.0" stroke="#1a535c" strokeType="INSIDE" visible="false"
                                    width="18.0"/>
-                        <Label fx:id="_lblHotel" text="Hotel" visible="false"/>
+                        <Label fx:id="_lbl4" text="Hotel" visible="false"/>
                         <Rectangle fill="#1a535c" height="5.0" stroke="#1a535c" strokeType="INSIDE" visible="false"
                                    width="25.0"/>
-                        <Label fx:id="_lblReview" text="Review" visible="false"/>
+                        <Label fx:id="_lbl5" text="Review" visible="false"/>
                     </children>
                 </HBox>
                 <HBox alignment="CENTER">
