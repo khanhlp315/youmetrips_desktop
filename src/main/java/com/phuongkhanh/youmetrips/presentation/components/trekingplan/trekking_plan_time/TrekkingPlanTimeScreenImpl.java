@@ -60,14 +60,14 @@ implements TrekkingPlanTimeScreen, Initializable {
         _dpFrom.valueProperty().addListener(new ChangeListener<LocalDate>() {
             @Override
             public void changed(ObservableValue<? extends LocalDate> observable, LocalDate oldValue, LocalDate newValue) {
-                _presenter.onInputUpdated(_dpFrom.getValue().toString(), _dpTo.getValue().toString());
+                _presenter.onInputUpdated(_dpFrom.getValue() == null? null:_dpFrom.getValue().toString(), _dpTo.getValue() == null? null: _dpTo.getValue().toString());
             }
         });
 
         _dpTo.valueProperty().addListener(new ChangeListener<LocalDate>() {
             @Override
             public void changed(ObservableValue<? extends LocalDate> observable, LocalDate oldValue, LocalDate newValue) {
-                _presenter.onInputUpdated(_dpFrom.getValue().toString(), _dpTo.getValue().toString());
+                _presenter.onInputUpdated(_dpFrom.getValue() == null? null:_dpFrom.getValue().toString(), _dpTo.getValue() == null? null: _dpTo.getValue().toString());
             }
         });
     }
