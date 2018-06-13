@@ -6,10 +6,11 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import com.phuongkhanh.youmetrips.presentation.controls.TrekkingPlacePane?>
-<TrekkingPlacePane step="4">
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.text.Font?>
+<TrekkingPlacePane step="4" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <trekkingPlaceNodes>
-        <VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" prefWidth="284.0"
-              xmlns="http://javafx.com/javafx/8.0.141">
+        <VBox alignment="TOP_CENTER" minHeight="350" prefWidth="284.0">
             <children>
                 <Label text="Give the place some tags" textFill="#828282"/>
                 <JFXTextField fx:id="_tfPlace" focusColor="#ffba33" labelFloat="true" prefHeight="31.0"
@@ -20,6 +21,20 @@
                     </padding>
                 </JFXTextField>
             </children>
+        </VBox>
+        <VBox alignment="CENTER">
+            <JFXButton fx:id="_btnNext" disable="true" minHeight="40.0" prefWidth="90.0"
+                       ripplerFill="#ffffff42" style="-fx-background-color: #1a535c; -fx-background-radius: 100;"
+                       text="Finish" textFill="WHITE">
+                <font>
+                    <Font size="14.0"/>
+                </font>
+                <VBox.margin>
+                    <Insets>
+                        <top>10</top>
+                    </Insets>
+                </VBox.margin>
+            </JFXButton>
         </VBox>
     </trekkingPlaceNodes>
 </TrekkingPlacePane>
