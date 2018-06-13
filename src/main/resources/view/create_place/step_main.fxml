@@ -21,22 +21,22 @@
                         <Insets top="16.0"/>
                     </VBox.margin>
                     <children>
-                        <Label fx:id="_lblStep1" text="Name">
+                        <Label fx:id="_lbl1" text="Name">
                             <HBox.margin>
                                 <Insets left="84.0"/>
                             </HBox.margin>
                         </Label>
-                        <Label fx:id="_lblStep2" text="Location" visible="false">
+                        <Label fx:id="_lbl2" text="Location" visible="false">
                             <HBox.margin>
                                 <Insets left="22.0"/>
                             </HBox.margin>
                         </Label>
-                        <Label fx:id="_lblStep3" text="Photos" visible="false">
+                        <Label fx:id="_lbl3" text="Photos" visible="false">
                             <HBox.margin>
                                 <Insets left="18.0"/>
                             </HBox.margin>
                         </Label>
-                        <Label fx:id="_lblStep4" text="Hashtags" visible="false">
+                        <Label fx:id="_lbl4" text="Hashtags" visible="false">
                             <HBox.margin>
                                 <Insets left="16.0"/>
                             </HBox.margin>

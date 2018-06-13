@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<TrekkingPlacePane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<TrekkingPlacePane step="2" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <trekkingPlaceNodes>
         <VBox alignment="CENTER" prefWidth="284.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
             <children>
