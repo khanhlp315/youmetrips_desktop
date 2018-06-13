@@ -70,10 +70,6 @@ import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking
 import com.phuongkhanh.youmetrips.presentation.windows.CreatePlaceWindow;
 import com.phuongkhanh.youmetrips.presentation.windows.CreatePlanWindow;
 import com.phuongkhanh.youmetrips.presentation.windows.HomeWindow;
-import com.phuongkhanh.youmetrips.presentation.components.trekingplan.TrekkingPlanPresenter;
-import com.phuongkhanh.youmetrips.presentation.components.trekingplan.TrekkingPlanScreen;
-import com.phuongkhanh.youmetrips.presentation.components.trekingplan.TrekkingPlanScreenImpl;
-import com.phuongkhanh.youmetrips.presentation.components.trekingplan.TrekkingPlanService;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_hotel.TrekkingPlanHotelPresenter;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_hotel.TrekkingPlanHotelScreen;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_hotel.TrekkingPlanHotelScreenImpl;
@@ -285,16 +281,6 @@ public interface ApplicationContext {
         }
 
         @Provides
-        static TrekkingPlanScreen trekkingPlanScreen(TrekkingPlanPresenter presenter) {
-            return new TrekkingPlanScreenImpl(presenter);
-        }
-
-        @Provides
-        static TrekkingPlanPresenter trekkingPlanPresenter(TrekkingPlanService service) {
-            return new TrekkingPlanPresenter(service);
-        }
-
-        @Provides
         static TrekkingPlanHotelScreen trekkingPlanHotelScreen(TrekkingPlanHotelPresenter presenter) {
             return new TrekkingPlanHotelScreenImpl(presenter);
         }
@@ -495,11 +481,6 @@ public interface ApplicationContext {
 
         @Provides
         static PlanListService planListService() {
-            return new HomeServiceImpl(restApi(), authenticationStore(), homeStore());
-        }
-
-        @Provides
-        static TrekkingPlanService trekkingPlanService() {
             return new HomeServiceImpl(restApi(), authenticationStore(), homeStore());
         }
 

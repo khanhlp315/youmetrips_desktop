@@ -9,7 +9,6 @@ import com.phuongkhanh.youmetrips.presentation.components.home.plans.PlanService
 import com.phuongkhanh.youmetrips.presentation.components.home.profile.ProfileService;
 import com.phuongkhanh.youmetrips.presentation.components.plandetails.PlanDetailsService;
 import com.phuongkhanh.youmetrips.presentation.components.planlist.PlanListService;
-import com.phuongkhanh.youmetrips.presentation.components.trekingplan.TrekkingPlanService;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_hotel.TrekkingPlanHotelService;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_place.TrekkingPlanPlaceService;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_preview.TrekkingPlanPreviewService;
@@ -36,7 +35,6 @@ public class HomeServiceImpl implements
         PlanService,
         PlaceService,
         FriendRequestsService,
-        TrekkingPlanService,
         TrekkingPlaceService,
         ProfileService,
         PlanListService,
