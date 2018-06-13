@@ -36,7 +36,7 @@ implements TrekkingPlanTimeScreen, Initializable {
 
     @Override
     public void setCanNext(boolean value) {
-        _btnNext.setDisable(value);
+        _btnNext.setDisable(!value);
     }
 
     @Override

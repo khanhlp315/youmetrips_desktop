@@ -26,7 +26,7 @@ implements TrekkingPlanPreviewScreen, Initializable {
 
     @Override
     public void setLoading(boolean value) {
-        _btnNext.setDisable(value);
+        _btnNext.setDisable(!value);
     }
 
     @Override
