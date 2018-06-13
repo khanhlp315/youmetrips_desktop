@@ -169,6 +169,12 @@ public class ProfilePresenter extends PresenterBase<ProfileScreen> {
         getView().navigateToCreateTrekkingPlan();
     }
 
+    public void requestNavigateToCreateTrekkingPlace()
+    {
+        assert (getView() != null);
+        getView().navigateToCreateTrekkingPlace();
+    }
+
     public void requestNavigateToPlaceList()
     {
         assert (getView() != null);

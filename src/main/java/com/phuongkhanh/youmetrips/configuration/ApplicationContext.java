@@ -60,6 +60,15 @@ import com.phuongkhanh.youmetrips.presentation.components.signup.signup.SignUpPr
 import com.phuongkhanh.youmetrips.presentation.components.signup.signup.SignUpScreen;
 import com.phuongkhanh.youmetrips.presentation.components.signup.signup.SignUpScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.signup.signup.SignUpService;
+import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_hotel.TrekkingPlanHotelService;
+import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_stay.TrekkingPlanStayService;
+import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_time.TrekkingPlanTimeService;
+import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_hashtags.TrekkingPlaceHashtagsService;
+import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_location.TrekkingPlaceLocationService;
+import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_name.TrekkingPlaceNameService;
+import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_photos.TrekkingPlacePhotosService;
+import com.phuongkhanh.youmetrips.presentation.windows.CreatePlaceWindow;
+import com.phuongkhanh.youmetrips.presentation.windows.CreatePlanWindow;
 import com.phuongkhanh.youmetrips.presentation.windows.HomeWindow;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.TrekkingPlanPresenter;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.TrekkingPlanScreen;
@@ -120,6 +129,8 @@ import javax.inject.Singleton;
 public interface ApplicationContext {
     LoginWindow loginWindow();
     HomeWindow homeWindow();
+    CreatePlanWindow createPlanWindow();
+    CreatePlaceWindow createPlaceWindow();
 
     @Module
     static class PresentationModule {
@@ -224,8 +235,8 @@ public interface ApplicationContext {
         }
 
         @Provides
-        static PlaceScreen placeScreen(PlacePresenter presenter) {
-            return new PlaceScreenImpl(presenter);
+        static PlaceScreen placeScreen(PlacePresenter presenter, Provider<CreatePlanWindow> planWindowProvider, Provider<CreatePlaceWindow> placeWindowProvider) {
+            return new PlaceScreenImpl(presenter, planWindowProvider, placeWindowProvider);
         }
 
         @Provides
@@ -234,8 +245,8 @@ public interface ApplicationContext {
         }
 
         @Provides
-        static PlanScreen planScreen(PlanPresenter presenter) {
-            return new PlanScreenImpl(presenter);
+        static PlanScreen planScreen(PlanPresenter presenter, Provider<CreatePlanWindow> planWindowProvider, Provider<CreatePlaceWindow> placeWindowProvider) {
+            return new PlanScreenImpl(presenter, planWindowProvider, placeWindowProvider);
         }
 
         @Provides
@@ -244,8 +255,8 @@ public interface ApplicationContext {
         }
 
         @Provides
-        static ProfileScreen profileScreen(ProfilePresenter presenter) {
-            return new ProfileScreenImpl(presenter);
+        static ProfileScreen profileScreen(ProfilePresenter presenter, Provider<CreatePlanWindow> planWindowProvider, Provider<CreatePlaceWindow> placeWindowProvider) {
+            return new ProfileScreenImpl(presenter, planWindowProvider, placeWindowProvider);
         }
 
         @Provides
@@ -289,6 +300,12 @@ public interface ApplicationContext {
         }
 
         @Provides
+        static TrekkingPlanHotelPresenter trekkingPlanHotelPresenter(TrekkingPlanHotelService service)
+        {
+            return new TrekkingPlanHotelPresenter(service);
+        }
+
+        @Provides
         static TrekkingPlanPlaceScreen trekkingPlanPlaceScreen(TrekkingPlanPlacePresenter presenter) {
             return new TrekkingPlanPlaceScreenImpl(presenter);
         }
@@ -314,8 +331,20 @@ public interface ApplicationContext {
         }
 
         @Provides
+        static TrekkingPlanStayPresenter trekkingPlanStayPresenter(TrekkingPlanStayService service)
+        {
+            return new TrekkingPlanStayPresenter(service);
+        }
+
+        @Provides
         static TrekkingPlanTimeScreen trekkingPlanTimeScreen(TrekkingPlanTimePresenter presenter) {
             return new TrekkingPlanTimeScreenImpl(presenter);
+        }
+
+        @Provides
+        static TrekkingPlanTimePresenter trekkingPlanTimePresenter(TrekkingPlanTimeService service)
+        {
+            return new TrekkingPlanTimePresenter(service);
         }
 
         @Provides
@@ -334,8 +363,20 @@ public interface ApplicationContext {
         }
 
         @Provides
+        static TrekkingPlaceHashtagsPresenter trekkingPlaceHashtagsPresenter(TrekkingPlaceHashtagsService service)
+        {
+            return new TrekkingPlaceHashtagsPresenter(service);
+        }
+
+        @Provides
         static TrekkingPlaceLocationScreen trekkingPlaceLocationScreen(TrekkingPlaceLocationPresenter presenter) {
             return new TrekkingPlaceLocationScreenImpl(presenter);
+        }
+
+        @Provides
+        static TrekkingPlaceLocationPresenter trekkingPlaceLocationPresenter(TrekkingPlaceLocationService service)
+        {
+            return new TrekkingPlaceLocationPresenter(service);
         }
 
         @Provides
@@ -344,10 +385,21 @@ public interface ApplicationContext {
         }
 
         @Provides
+        static TrekkingPlaceNamePresenter trekkingPlaceNamePresenter(TrekkingPlaceNameService service)
+        {
+            return new TrekkingPlaceNamePresenter(service);
+        }
+
+        @Provides
         static TrekkingPlacePhotosScreen trekkingPlacePhotosScreen(TrekkingPlacePhotosPresenter presenter) {
             return new TrekkingPlacePhotosScreenImpl(presenter);
         }
 
+        @Provides
+        static TrekkingPlacePhotosPresenter trekkingPlacePhotosPresenter(TrekkingPlacePhotosService service)
+        {
+            return new TrekkingPlacePhotosPresenter(service);
+        }
     }
 
     @Module
@@ -463,6 +515,48 @@ public interface ApplicationContext {
 
         @Provides
         static TrekkingPlaceService trekkingPlaceService() {
+            return new HomeServiceImpl(restApi(), authenticationStore(), homeStore());
+        }
+
+        @Provides
+        static TrekkingPlaceNameService trekkingPlaceNameService()
+        {
+            return new HomeServiceImpl(restApi(), authenticationStore(), homeStore());
+        }
+
+        @Provides
+        static TrekkingPlaceLocationService trekkingPlaceLocationService()
+        {
+            return new HomeServiceImpl(restApi(), authenticationStore(), homeStore());
+        }
+
+        @Provides
+        static TrekkingPlacePhotosService trekkingPlacePhotosService()
+        {
+            return new HomeServiceImpl(restApi(), authenticationStore(), homeStore());
+        }
+
+        @Provides
+        static TrekkingPlaceHashtagsService trekkingPlaceHashtagsService()
+        {
+            return new HomeServiceImpl(restApi(), authenticationStore(), homeStore());
+        }
+
+        @Provides
+        static TrekkingPlanTimeService trekkingPlanTimeService()
+        {
+            return new HomeServiceImpl(restApi(), authenticationStore(), homeStore());
+        }
+
+        @Provides
+        static TrekkingPlanStayService trekkingPlanStayService()
+        {
+            return new HomeServiceImpl(restApi(), authenticationStore(), homeStore());
+        }
+
+        @Provides
+        static TrekkingPlanHotelService trekkingPlanHotelService()
+        {
             return new HomeServiceImpl(restApi(), authenticationStore(), homeStore());
         }
     }

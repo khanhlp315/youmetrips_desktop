@@ -2,44 +2,58 @@ package com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekkin
 
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
 
+import javax.inject.Inject;
 import java.io.File;
 
 public class TrekkingPlacePhotosPresenter extends PresenterBase<TrekkingPlacePhotosScreen> {
 
+    private final TrekkingPlacePhotosService _service;
+
+    @Inject
+    public TrekkingPlacePhotosPresenter(TrekkingPlacePhotosService service) {
+        _service = service;
+    }
+
     public void onCoverPhotoUpdated(File selectedPhoto) {
-        assert(getView() != null);
-        if (selectedPhoto == null){
+        assert (getView() != null);
+        if (selectedPhoto == null) {
             getView().hideContinue();
-        }
-        else {
+        } else {
             getView().showContinue();
         }
     }
 
     public void pickImage(File image) {
-        assert(getView() != null);
-        if(image == null){
+        assert (getView() != null);
+        if (image == null) {
             return;
         }
         getView().addImage(image);
     }
 
     public void requestRemoveImage(File image) {
-        assert(getView() != null);
+        assert (getView() != null);
         getView().removeImage(image);
     }
 
     public void pickCoverImage(File image) {
-        assert(getView() != null);
+        assert (getView() != null);
 
-        if(image == null){
+        if (image == null) {
             return;
         }
         getView().changeCoverImage(image);
     }
 
     public void requestRemoveCoverImage() {
-        assert(getView() != null);
+        assert (getView() != null);
         getView().removeCoverImage();
     }
+
+    public void requestToNavigateToHashtags() {
+        assert (getView() != null);
+
+        getView().navigateToHashTags();
+    }
 }
+

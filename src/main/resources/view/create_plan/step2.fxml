@@ -1,27 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.phuongkhanh.youmetrips.presentation.controls.TrekkingPlanPane?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
-<VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" prefWidth="284.0" xmlns="http://javafx.com/javafx/8.0.141">
-    <children>
-        <Label text="Where will you be available?" textFill="#828282"/>
-        <JFXDatePicker fx:id="_dpFrom" defaultColor="#ffc146" promptText="From">
-            <VBox.margin>
-                <Insets/>
-            </VBox.margin>
-            <padding>
-                <Insets left="64.0" right="64.0" top="24.0"/>
-            </padding>
-        </JFXDatePicker>
-        <JFXDatePicker fx:id="_dpTo" defaultColor="#ffc146" promptText="To">
-            <padding>
-                <Insets left="64.0" right="64.0" top="24.0"/>
-            </padding>
-            <VBox.margin>
-                <Insets/>
-            </VBox.margin>
-        </JFXDatePicker>
-    </children>
-</VBox>
+
+<?import com.jfoenix.controls.JFXButton?>
+<TrekkingPlanPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+    <trekkingPlanNodes>
+        <VBox alignment="CENTER" prefWidth="284.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+            <children>
+                <Label text="Where will you be available?" textFill="#828282" />
+                <JFXDatePicker fx:id="_dpFrom" defaultColor="#ffc146" promptText="From">
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                    <padding>
+                        <Insets left="64.0" right="64.0" top="24.0" />
+                    </padding>
+                </JFXDatePicker>
+                <JFXDatePicker fx:id="_dpTo" defaultColor="#ffc146" promptText="To">
+                    <padding>
+                        <Insets left="64.0" right="64.0" top="24.0" />
+                    </padding>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                </JFXDatePicker>
+            </children>
+        </VBox>
+    </trekkingPlanNodes>
+   <children>
+      <JFXButton fx:id="_btnNext" disable="true" onMouseClicked="#onNavigateToStay" mnemonicParsing="false" text="Next" />
+   </children>
+</TrekkingPlanPane>

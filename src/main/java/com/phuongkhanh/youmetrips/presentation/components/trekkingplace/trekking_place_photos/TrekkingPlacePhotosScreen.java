@@ -14,4 +14,5 @@ public interface TrekkingPlacePhotosScreen extends JFXScreen {
 
     void changeCoverImage(File image);
     void removeCoverImage();
+    void navigateToHashTags();
 }

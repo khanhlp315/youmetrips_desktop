@@ -15,9 +15,7 @@
     <graphic>
         <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="217.0" prefWidth="355.0" style="-fx-background-color: white;" >
             <children>
-                <ImageView fx:id="_ivPlaceImg" fitHeight="141.0" fitWidth="355.0" pickOnBounds="true">
-
-                </ImageView>
+                <ImageView fx:id="_ivPlaceImg" fitHeight="141.0" fitWidth="355.0" pickOnBounds="true"/>
                 <Label fx:id="_lblPlaceName" layoutX="12.0" layoutY="152.0" text="Place">
                     <font>
                         <Font name="System Bold" size="18.0" />
@@ -44,11 +42,7 @@
                     <children>
                         <JFXButton graphicTextGap="0.0" text="." textFill="TRANSPARENT">
                             <graphic>
-                                <ImageView fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../../../images/loved.png" />
-                                    </image>
-                                </ImageView>
+                                <ImageView fx:id="_ivHeartImage" fitWidth="45.0" pickOnBounds="true" preserveRatio="true"/>
                             </graphic>
                         </JFXButton>
                         <Label fx:id="_lblJob1" text="0" textFill="WHITE">

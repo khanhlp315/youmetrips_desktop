@@ -4,4 +4,5 @@ import com.phuongkhanh.youmetrips.presentation.framework.JFXScreen;
 
 public interface TrekkingPlanTimeScreen extends JFXScreen {
     void setCanNext(boolean value);
+    void navigateToStay();
 }
