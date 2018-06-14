@@ -192,5 +192,11 @@
         </JFXButton>
         <MaterialDesignIconView fill="WHITE" glyphName="HEART" layoutX="72.0" layoutY="219.0" size="25"/>
         <MaterialDesignIconView fill="WHITE" glyphName="SHARE" layoutX="221.0" layoutY="219.0" size="25"/>
+        <Label fx:id="_lblPlace" layoutX="167.0" layoutY="14.0" text="Place" textFill="WHITE"
+               AnchorPane.leftAnchor="167.0" AnchorPane.rightAnchor="166.0" AnchorPane.topAnchor="16.0">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Label>
     </children>
 </AnchorPane>
