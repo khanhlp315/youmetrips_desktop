@@ -76,14 +76,17 @@ public class TrekkingPlanPreviewPresenter extends PresenterBase<TrekkingPlanPrev
         fetchLocation(plan.getPlaceId());
     }
 
-    public void createCreatePlan() {
+    public void createCreatePlan(String description) {
         assert (getView() != null);
         getView().setLoading(true);
+
+        CreatePlan plan = _service.getHomeStore().getCreatePlan();
+        plan.setDescription(description);
 
         Task<Integer> task = new Task<Integer>() {
             @Override
             protected Integer call() throws Exception {
-                return _doCreateCreatePlan(_service.getHomeStore().getCreatePlan());
+                return _doCreateCreatePlan(plan);
             }
 
             @Override
@@ -98,12 +101,12 @@ public class TrekkingPlanPreviewPresenter extends PresenterBase<TrekkingPlanPrev
         new Thread(task).start();
     }
 
-    private int _doCreateCreatePlan(CreatePlan CreatePlan) {
+    private int _doCreateCreatePlan(CreatePlan plan) {
         AuthenticationStore authenticationStore = _service.getAuthenticationStore();
         int userId = authenticationStore.getUserId();
         String jwt = authenticationStore.getJwt();
 
-        return _service.createTrekkingPlan(userId, jwt, CreatePlan);
+        return _service.createTrekkingPlan(userId, jwt, plan);
     }
 
     private void _onCreateCreatePlanFailed(Throwable throwable) {

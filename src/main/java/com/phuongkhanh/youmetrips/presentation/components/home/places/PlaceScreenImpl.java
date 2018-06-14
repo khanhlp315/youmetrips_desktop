@@ -51,14 +51,15 @@ implements PlaceScreen, Initializable {
 
     @Override
     public void updatePlaces(List<Place> places) {
-        _lvPlaces.setItems(FXCollections.observableArrayList(places));
+        _lvPlaces.setItems(FXCollections.observableArrayList(places.stream().map(PlaceCell::new).collect(Collectors.toList())));
     }
 
     @Override
     public void navigateToCreateTrekkingPlace() {
         CreatePlaceWindow createPlaceWindow = _placeWindow.get();
         createPlaceWindow.attach(new Stage());
-        createPlaceWindow.show();
+        createPlaceWindow.showAndWait();
+        refresh();
     }
 
     @Override
@@ -110,7 +111,6 @@ implements PlaceScreen, Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        _lvPlaces.setCellFactory(param->new PlaceCell());
     }
 
     @FXML
@@ -147,5 +147,10 @@ implements PlaceScreen, Initializable {
     public void onEditProfileClicked()
     {
         _presenter.requestNavigateToEditProfile();
+    }
+
+    @FXML
+    public void refresh(){
+        _presenter.refreshPlaces();
     }
 }

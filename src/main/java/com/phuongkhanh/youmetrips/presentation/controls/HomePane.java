@@ -94,13 +94,13 @@ public class HomePane extends GridPane {
         _drawer.setOnFriendRequestClicked(value);
     }
 
-    public final EventHandler<? super MouseEvent> getOnBackClicked() {
-        return _drawer.getOnBackClicked();
+    public final EventHandler<? super MouseEvent> getOnRefreshClicked() {
+        return _drawer.getOnRefreshClicked();
     }
 
-    public final void setOnBackClicked(
+    public final void setOnRefreshClicked(
             EventHandler<? super MouseEvent> value) {
-        _drawer.setOnBackClicked(value);
+        _drawer.setOnRefreshClicked(value);
     }
 
     public final EventHandler<? super MouseEvent> getOnCreatePlaceClicked() {

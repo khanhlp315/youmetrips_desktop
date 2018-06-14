@@ -1,6 +1,7 @@
 package com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_preview;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextArea;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import com.phuongkhanh.youmetrips.services.api.models.CreatePlan;
 import javafx.beans.value.ChangeListener;
@@ -49,6 +50,9 @@ implements TrekkingPlanPreviewScreen, Initializable {
 
     @FXML
     private Label _lblStar;
+
+    @FXML
+    private JFXTextArea _lblDescription;
 
     @Inject
     public TrekkingPlanPreviewScreenImpl(TrekkingPlanPreviewPresenter presenter)
@@ -117,7 +121,7 @@ implements TrekkingPlanPreviewScreen, Initializable {
     @FXML
     public void onCreatePlan()
     {
-        _presenter.createCreatePlan();
+        _presenter.createCreatePlan(_lblDescription.getText());
     }
     @Override
     protected String fxmlPath() {

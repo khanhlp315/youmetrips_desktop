@@ -17,9 +17,9 @@
     <children>
         <AnchorPane>
             <children>
-                <JFXButton fx:id="_btnBack" layoutX="8.0" layoutY="17.0" text="." textFill="TRANSPARENT" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+                <JFXButton fx:id="_btnRefresh" layoutX="8.0" layoutY="17.0" text="." textFill="TRANSPARENT" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
                     <graphic>
-                        <MaterialDesignIconView fill="#e8e6e6" glyphName="KEYBOARD_BACKSPACE" size="24" />
+                        <MaterialDesignIconView fill="#e8e6e6" glyphName="REFRESH" size="24" />
                     </graphic>
                 </JFXButton>
                 <JFXHamburger fx:id="_hamburger" layoutX="14.0" layoutY="45.0" prefHeight="30.0" prefWidth="40.0" stylesheets="@../../style/hamburger.css" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="50.0">

@@ -50,14 +50,15 @@ implements PlanScreen, Initializable {
 
     @Override
     public void updatePlans(List<RelevantPlan> invidualPlans) {
-        _lvPlans.setItems(FXCollections.observableArrayList(invidualPlans));
+        _lvPlans.setItems(FXCollections.observableArrayList(invidualPlans.stream().map(RelevantPlanCell::new).collect(Collectors.toList())));
     }
 
     @Override
     public void navigateToCreateTrekkingPlan() {
         CreatePlanWindow createPlanWindow = _planWindow.get();
         createPlanWindow.attach(new Stage());
-        createPlanWindow.show();
+        createPlanWindow.showAndWait();
+        refresh();
     }
 
     @Override
@@ -109,7 +110,6 @@ implements PlanScreen, Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        _lvPlans.setCellFactory(param-> new RelevantPlanCell());
     }
 
     @FXML
@@ -146,5 +146,10 @@ implements PlanScreen, Initializable {
     public void onEditProfileClicked()
     {
         _presenter.requestNavigateToEditProfile();
+    }
+
+    @FXML
+    public void refresh(){
+        _presenter.refreshPlans();
     }
 }

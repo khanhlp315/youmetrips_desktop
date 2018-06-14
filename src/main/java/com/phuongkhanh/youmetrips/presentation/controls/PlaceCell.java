@@ -18,7 +18,7 @@ import java.net.URL;
 
 import static com.phuongkhanh.youmetrips.utils.CommonUtils.getNeutralAvatar;
 
-public class PlaceCell extends ListCell<Place> {
+public class PlaceCell extends AnchorPane {
 
     /***************************************************************************
      *                                                                         *
@@ -57,8 +57,34 @@ public class PlaceCell extends ListCell<Place> {
      * Constructor                                                             *
      *                                                                         *
      **************************************************************************/
-    public PlaceCell() {
+    public PlaceCell(Place item) {
         loadFXML();
+        if (_currentPlace == null || !item.equals(_currentPlace)) {
+            _currentPlace = item;
+            Image image = new Image(item.getCoverImageUrl() != null ? item.getCoverImageUrl() : getNeutralAvatar(), true);
+            image.progressProperty().addListener(new ChangeListener<Number>() {
+                @Override
+                public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                    if (newValue.doubleValue() == 1.0) {
+                        _ivPlaceImg.setImage(image);
+                        if (item.isLiked()) {
+                            Image heartImage = new Image(this.getClass().getClassLoader().getResource("images/loved.png").toString());
+                            _ivHeartImage.setImage(heartImage);
+                        } else {
+                            Image heartImage = new Image(this.getClass().getClassLoader().getResource("images/love.png").toString());
+                            _ivHeartImage.setImage(heartImage);
+                        }
+                    }
+                }
+            });
+            _lblPlaceName.setText(item.getName());
+            StringBuilder allTags = new StringBuilder();
+            for (String hashtag : item.getTags())
+                allTags.append("#").append(hashtag).append(" ");
+            _lblHashtag.setText(allTags.toString());
+            _lblPeopleCount.setText(String.valueOf(item.getNumberOfPeopleGoing()));
+            _lblJob1.setText(String.valueOf(item.getNumberOfLikes()));
+        }
     }
 
 
@@ -78,44 +104,6 @@ public class PlaceCell extends ListCell<Place> {
             fxmlLoader.load();
         } catch (IOException exception) {
             throw new RuntimeException(exception);
-        }
-    }
-
-    /** */
-    @Override
-    protected void updateItem(Place item, boolean empty) {
-        super.updateItem(item, empty);
-        if (empty) {
-            setText(null);
-            setContentDisplay(ContentDisplay.TEXT_ONLY);
-        } else {
-            if (_currentPlace == null || !item.equals(_currentPlace)) {
-                _currentPlace = item;
-                Image image = new Image(item.getCoverImageUrl() != null ? item.getCoverImageUrl() : getNeutralAvatar(), true);
-                image.progressProperty().addListener(new ChangeListener<Number>() {
-                    @Override
-                    public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                        if (newValue.doubleValue() == 1.0) {
-                            _ivPlaceImg.setImage(image);
-                            if (item.isLiked()) {
-                                Image heartImage = new Image(this.getClass().getClassLoader().getResource("images/loved.png").toString());
-                                _ivHeartImage.setImage(heartImage);
-                            } else {
-                                Image heartImage = new Image(this.getClass().getClassLoader().getResource("images/love.png").toString());
-                                _ivHeartImage.setImage(heartImage);
-                            }
-                        }
-                    }
-                });
-                _lblPlaceName.setText(item.getName());
-                StringBuilder allTags = new StringBuilder();
-                for (String hashtag : item.getTags())
-                    allTags.append("#").append(hashtag).append(" ");
-                _lblHashtag.setText(allTags.toString());
-                _lblPeopleCount.setText(String.valueOf(item.getNumberOfPeopleGoing()));
-                _lblJob1.setText(String.valueOf(item.getNumberOfLikes()));
-            }
-            setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
         }
     }
 }

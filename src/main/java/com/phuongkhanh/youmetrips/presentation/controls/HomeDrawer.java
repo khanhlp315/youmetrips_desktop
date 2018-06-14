@@ -25,7 +25,7 @@ public class HomeDrawer extends JFXDrawer {
     private JFXButton _btnFriendRequest;
 
     @FXML
-    private JFXButton _btnBack;
+    private JFXButton _btnRefresh;
 
     @FXML
     private JFXButton _btnCreatePlace;
@@ -87,13 +87,13 @@ public class HomeDrawer extends JFXDrawer {
         _btnFriendRequest.setOnMouseClicked(value);
     }
 
-    public final EventHandler<? super MouseEvent> getOnBackClicked() {
-        return _btnBack.getOnMouseClicked();
+    public final EventHandler<? super MouseEvent> getOnRefreshClicked() {
+        return _btnRefresh.getOnMouseClicked();
     }
 
-    public final void setOnBackClicked(
+    public final void setOnRefreshClicked(
             EventHandler<? super MouseEvent> value) {
-        _btnBack.setOnMouseClicked(value);
+        _btnRefresh.setOnMouseClicked(value);
     }
 
     public final EventHandler<? super MouseEvent> getOnCreatePlaceClicked() {
