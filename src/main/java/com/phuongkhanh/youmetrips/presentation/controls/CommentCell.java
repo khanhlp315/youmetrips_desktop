@@ -34,7 +34,7 @@ public class CommentCell extends AnchorPane {
 
         _txtUserFirstName.setText(comment.getUserFirstName());
         _txtUserLastName.setText(comment.getUserLastName());
-        _txtTime.setText(comment.getTime());
+        _txtTime.setText(comment.getTime().toString());
 
         Image avaImage = new Image(comment.getUserAvatarUrl() == null ||
                 (comment.getUserAvatarUrl().equals("http://docker.youthdev.net:23010/static//77-img_20180405_190732-4f4356f8-f759-4c28-8a60-e9fef2c92920.jpg")) ||

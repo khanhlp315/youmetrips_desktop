@@ -1,9 +1,11 @@
 package com.phuongkhanh.youmetrips.presentation.components.plandetails;
 
+import com.phuongkhanh.youmetrips.presentation.controls.CommentCell;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import com.phuongkhanh.youmetrips.services.api.models.Comment;
 import com.phuongkhanh.youmetrips.services.api.models.PlanDetails;
 import com.phuongkhanh.youmetrips.utils.CommonUtils;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -19,6 +21,7 @@ import javax.inject.Inject;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class PlanDetailsScreenImpl extends FXMLScreen
         implements PlanDetailsScreen, Initializable {
@@ -90,6 +93,7 @@ public class PlanDetailsScreenImpl extends FXMLScreen
     @Override
     public void updateComments(List<Comment> comments) {
         _txtNumOfComments.setText(comments.size() + "");
+        _lvComments.setItems(FXCollections.observableArrayList(comments.stream().map(CommentCell::new).collect(Collectors.toList())));
     }
 
     @Override
