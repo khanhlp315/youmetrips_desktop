@@ -16,7 +16,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 
-<ScrollPane prefHeight="2000.0" prefWidth="412.0" style="-fx-background-color: #F2F4FA"
+<ScrollPane prefHeight="600.0" prefWidth="422.0" style="-fx-background-color: #F2F4FA"
             xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <VBox alignment="CENTER">
         <HBox alignment="CENTER">
