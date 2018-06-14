@@ -2,7 +2,7 @@
 
 <?import com.jfoenix.controls.*?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import de.jensd.fx.glyphs.materialicons.MaterialIconView?>
+<?import de.jensd.fx.glyphs.materialicons.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ToggleGroup?>
@@ -19,7 +19,7 @@
                         <Rectangle fx:id="_rectAvatar" arcHeight="30.0" arcWidth="30.0" fill="DODGERBLUE" height="100.0"
                                    stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0">
                             <HBox.margin>
-                                <Insets left="24.0"/>
+                                <Insets left="8.0" top="16.0"/>
                             </HBox.margin>
                         </Rectangle>
                         <VBox>
@@ -38,7 +38,7 @@
                                         <JFXTextField fx:id="_tfLastName" focusColor="#ffba33" labelFloat="true"
                                                       promptText="Lastname" unFocusColor="#ccd0d2">
                                             <HBox.margin>
-                                                <Insets top="16.0"/>
+                                                <Insets left="16.0" top="16.0"/>
                                             </HBox.margin>
                                             <font>
                                                 <Font size="24.0"/>
@@ -52,8 +52,7 @@
                                             <children>
                                                 <FontAwesomeIconView fill="#787878" glyphName="BRIEFCASE"/>
                                                 <JFXTextField fx:id="_tfJob" focusColor="#ffba33" labelFloat="true"
-                                                              prefHeight="25.0" prefWidth="110.0" text="Job"
-                                                              unFocusColor="#ccd0d2">
+                                                              prefWidth="120.0" text="Job" unFocusColor="#ccd0d2">
                                                     <HBox.margin>
                                                         <Insets left="8.0"/>
                                                     </HBox.margin>
@@ -61,10 +60,16 @@
                                                         <Font size="13.0"/>
                                                     </font>
                                                 </JFXTextField>
-                                                <JFXComboBox fx:id="_cbNationality" focusColor="#ffba33" promptText="Nationality"
+                                                <FontAwesomeIconView fill="#787878" glyphName="HOME" size="14">
+                                                    <HBox.margin>
+                                                        <Insets left="16.0"/>
+                                                    </HBox.margin>
+                                                </FontAwesomeIconView>
+                                                <JFXComboBox fx:id="_cbNationality" focusColor="#ffba33"
+                                                             prefWidth="98.0" promptText="Nationality"
                                                              unFocusColor="#ccd0d2">
                                                     <HBox.margin>
-                                                        <Insets left="8.0"/>
+                                                        <Insets left="8.0" top="4.0"/>
                                                     </HBox.margin>
                                                 </JFXComboBox>
                                             </children>
@@ -79,15 +84,18 @@
                                 </VBox>
                             </children>
                             <padding>
-                                <Insets left="16.0"/>
+                                <Insets left="16.0" top="16.0"/>
                             </padding>
+                            <HBox.margin>
+                                <Insets/>
+                            </HBox.margin>
                         </VBox>
                     </children>
                     <VBox.margin>
                         <Insets/>
                     </VBox.margin>
                 </HBox>
-                <JFXTextArea fx:id="_taBio" focusColor="#ffba33" labelFloat="true" prefRowCount="2" promptText="Bio."
+                <JFXTextArea fx:id="_taBio" focusColor="#ffba33" labelFloat="true" prefRowCount="2" promptText="Bio"
                              unFocusColor="#ccd0d2" wrapText="true">
                     <font>
                         <Font size="13.0"/>
@@ -123,36 +131,47 @@
                         <Insets top="8.0"/>
                     </VBox.margin>
                 </Label>
-                <Label text="Gender">
-                    <font>
-                        <Font size="13.0"/>
-                    </font>
-                    <VBox.margin>
-                        <Insets top="8.0"/>
-                    </VBox.margin>
-                </Label>
-                <HBox>
+                <HBox alignment="BOTTOM_LEFT">
                     <children>
-                        <JFXRadioButton fx:id="_rbMale" text="Male" userData="MALE">
-                            <toggleGroup>
-                                <ToggleGroup fx:id="_genderToggleGroup"/>
-                            </toggleGroup>
-                        </JFXRadioButton>
-                        <JFXRadioButton fx:id="_rbFemale" text="Female" toggleGroup="$_genderToggleGroup" userData="FEMALE">
+                        <VBox>
+                            <children>
+                                <Label text="Gender">
+                                    <font>
+                                        <Font size="13.0"/>
+                                    </font>
+                                </Label>
+                                <HBox>
+                                    <children>
+                                        <JFXRadioButton fx:id="_rbMale" stylesheets="@../../style/radioButton.css"
+                                                        text="Male" userData="MALE">
+                                            <toggleGroup>
+                                                <ToggleGroup fx:id="_genderToggleGroup"/>
+                                            </toggleGroup>
+                                        </JFXRadioButton>
+                                        <JFXRadioButton fx:id="_rbFemale" stylesheets="@../../style/radioButton.css"
+                                                        text="Female" toggleGroup="$_genderToggleGroup"
+                                                        userData="FEMALE">
+                                            <HBox.margin>
+                                                <Insets left="8.0"/>
+                                            </HBox.margin>
+                                        </JFXRadioButton>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets top="8.0"/>
+                                    </VBox.margin>
+                                </HBox>
+                            </children>
+                        </VBox>
+                        <JFXDatePicker fx:id="_dpBirthday" defaultColor="#ffc146" promptText="Birthday">
                             <HBox.margin>
-                                <Insets left="8.0"/>
+                                <Insets left="32.0"/>
                             </HBox.margin>
-                        </JFXRadioButton>
+                        </JFXDatePicker>
                     </children>
                     <VBox.margin>
                         <Insets top="8.0"/>
                     </VBox.margin>
                 </HBox>
-                <JFXDatePicker fx:id="_dpBirthday" defaultColor="#ffc146" promptText="Birthday">
-                    <VBox.margin>
-                        <Insets top="24.0"/>
-                    </VBox.margin>
-                </JFXDatePicker>
             </children>
         </VBox>
         <VBox style="-fx-background-color: white;">
@@ -174,8 +193,8 @@
                 <HBox alignment="CENTER_LEFT">
                     <children>
                         <MaterialIconView fill="#787878" glyphName="CALL"/>
-                        <JFXTextField fx:id="_tfPhone" focusColor="#ffba33" labelFloat="true" prefHeight="25.0"
-                                      text="Phone" unFocusColor="#ccd0d2">
+                        <JFXTextField fx:id="_tfPhone" focusColor="#ffba33" labelFloat="true" text="Phone"
+                                      unFocusColor="#ccd0d2">
                             <HBox.margin>
                                 <Insets left="8.0"/>
                             </HBox.margin>
@@ -188,7 +207,7 @@
                                 <Insets left="16.0"/>
                             </HBox.margin>
                         </MaterialIconView>
-                        <JFXTextField fx:id="_tfEmail" focusColor="#ffba33" labelFloat="true" prefHeight="25.0"
+                        <JFXTextField fx:id="_tfEmail" focusColor="#ffba33" labelFloat="true" prefWidth="200.0"
                                       text="Email" unFocusColor="#ccd0d2">
                             <HBox.margin>
                                 <Insets left="8.0"/>
@@ -206,11 +225,11 @@
                     <children>
                         <MaterialIconView fill="#787878" glyphName="HOME">
                             <HBox.margin>
-                                <Insets left="16.0"/>
+                                <Insets/>
                             </HBox.margin>
                         </MaterialIconView>
-                        <JFXTextField  fx:id="_tfAddress" focusColor="#ffba33" labelFloat="true" prefHeight="25.0"
-                                       text="Address" unFocusColor="#ccd0d2">
+                        <JFXTextField fx:id="_tfAddress" focusColor="#ffba33" labelFloat="true" prefWidth="400.0"
+                                      text="Address" unFocusColor="#ccd0d2">
                             <HBox.margin>
                                 <Insets left="8.0"/>
                             </HBox.margin>

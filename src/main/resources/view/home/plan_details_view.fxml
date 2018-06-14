@@ -27,13 +27,13 @@
                 <Rectangle arcHeight="100.0" arcWidth="80.0" fill="WHITE" height="80.0" stroke="WHITE"
                            strokeType="INSIDE" strokeWidth="2.0" width="312.0">
                 </Rectangle>
-                <Circle fill="yellow" radius="40">
+                <Circle fx:id="_cirAva" fill="yellow" radius="40">
                     <HBox.margin>
                         <Insets left="-90"/>
                     </HBox.margin>
                 </Circle>
                 <HBox alignment="CENTER">
-                    <Text style="-fx-font-size: 20; -fx-font-weight: bold" text="Long Dang">
+                    <Text fx:id="_txtUsername" style="-fx-font-size: 20; -fx-font-weight: bold" text="Long Dang">
                         <HBox.margin>
                             <Insets left="20"/>
                         </HBox.margin>
@@ -51,8 +51,8 @@
                 <Rectangle arcHeight="20.0" arcWidth="20" fill="WHITE" height="186.0" stroke="WHITE" strokeType="INSIDE"
                            strokeWidth="2.0" width="392.0">
                 </Rectangle>
-                <ImageView fitHeight="140.0" fitWidth="372.0"/>
-                <Text style="-fx-font-weight: bold; -fx-font-size: 16;" fill="#3A5788" text="Gia Khang"/>
+                <ImageView fx:id="_ivPlaceImage" fitHeight="140.0" fitWidth="372.0"/>
+                <Text fx:id="_txtPlaceName" style="-fx-font-weight: bold; -fx-font-size: 16;" fill="#3A5788" text="Gia Khang"/>
             </StackPane>
         </VBox>
 
@@ -265,7 +265,7 @@
                 <Rectangle arcHeight="20.0" arcWidth="20" fill="WHITE" height="279.0" stroke="WHITE" strokeType="INSIDE"
                            strokeWidth="2.0" width="392.0">
                 </Rectangle>
-                <ImageView fitHeight="279.0" fitWidth="372.0"/>
+                <ImageView fx:id="_mapImage" fitHeight="279.0" fitWidth="372.0"/>
             </StackPane>
         </VBox>
 
@@ -280,7 +280,7 @@
                     <Insets left="20" bottom="5"/>
                 </VBox.margin>
                 <Text fx:id="_txtNumOfComments" text="0" style="-fx-font-size: 14; -fx-font-weight: bold"/>
-                <Text text=" comments" style="-fx-font-size: 14; -fx-font-weight: bold"/>
+                <Text text=" comment(s)" style="-fx-font-size: 14; -fx-font-weight: bold"/>
             </HBox>
             <ListView fx:id="_lvComments"/>
         </VBox>
@@ -291,7 +291,7 @@
                 <Insets top="20" />
             </VBox.margin>
 
-            <Circle fill="yellow" radius="25">
+            <Circle fx:id="_cirUserAva" fill="yellow" radius="25">
                 <HBox.margin>
                     <Insets top="5" right="18"/>
                 </HBox.margin>
@@ -300,13 +300,14 @@
                            strokeType="INSIDE" strokeWidth="2.0" width="312.0">
                 </Rectangle>
 
-                <JFXTextField minWidth="250" maxWidth="250" promptText="Hello" unFocusColor="white" focusColor="white">
+                <JFXTextField fx:id="_tfComment" minWidth="250" maxWidth="250" promptText="Hello" unFocusColor="white" focusColor="white">
                     <HBox.margin>
                         <Insets left="-300" top="20"/>
                     </HBox.margin>
                 </JFXTextField>
 
-                <JFXButton fx:id="_btnCreate" layoutX="12.0" layoutY="168.0"
+                <JFXButton layoutX="12.0" layoutY="168.0"
+                           onMouseClicked="#comment"
                            prefHeight="45.0"
                            prefWidth="45.0" text=""
                            style="-fx-background-radius: 100; -fx-border-radius: 100; -fx-background-color: #376FFF;">

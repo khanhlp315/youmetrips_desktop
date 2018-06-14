@@ -3,21 +3,18 @@ package com.phuongkhanh.youmetrips.presentation.controls;
 import com.phuongkhanh.youmetrips.services.api.models.UserTrekkingPlan;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.concurrent.Task;
-import javafx.concurrent.WorkerStateEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
 import javafx.scene.image.Image;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
 
-public class UserPlanCell extends HBox {
+public class UserPlanCell extends AnchorPane {
     @FXML
     private Rectangle _rectPlaceImage;
 
@@ -30,9 +27,10 @@ public class UserPlanCell extends HBox {
     @FXML
     private Label _lblHowLong;
 
-    public UserPlanCell(UserTrekkingPlan item)
+    public UserPlanCell(UserTrekkingPlan item, EventHandler clickEvent)
     {
         loadFXML();
+        setOnMouseClicked(clickEvent);
         Image image = new Image(item.getPlace().getCoverImageUrl(), true);
         image.progressProperty().addListener(new ChangeListener<Number>() {
             @Override
