@@ -28,6 +28,9 @@ public class CommentCell extends AnchorPane {
     @FXML
     private Text _txtTime;
 
+    @FXML
+    private Text _txtContent;
+
 
     public CommentCell(Comment comment) {
         loadFXML();
@@ -35,6 +38,7 @@ public class CommentCell extends AnchorPane {
         _txtUserFirstName.setText(comment.getUserFirstName());
         _txtUserLastName.setText(comment.getUserLastName());
         _txtTime.setText(comment.getTime());
+        _txtContent.setText(comment.getComment());
 
         Image avaImage = new Image(comment.getUserAvatarUrl() == null ||
                 (comment.getUserAvatarUrl().equals("http://docker.youthdev.net:23010/static//77-img_20180405_190732-4f4356f8-f759-4c28-8a60-e9fef2c92920.jpg")) ||

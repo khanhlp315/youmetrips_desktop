@@ -12,7 +12,8 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import org.controlsfx.control.Rating?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+<?import com.jfoenix.controls.JFXTextField?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="900" maxWidth="-Infinity" minHeight="900"
             minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.141">
     <children>
         <JFXTabPane style="-fx-background-color: white;" stylesheets="@../../../style/tabPane.css"
@@ -286,9 +287,7 @@
                                         </Label>
                                         <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1">
                                             <children>
-                                                <Rectangle fx:id="_rec5Star" arcHeight="10.0" arcWidth="10.0"
-                                                           fill="#1a535c" height="8.0" stroke="BLACK"
-                                                           strokeType="INSIDE" strokeWidth="0.0" width="200.0"/>
+
                                                 <Label fx:id="_lbl5Star" text="0k" textFill="#1b535ce4">
                                                     <HBox.margin>
                                                         <Insets left="8.0"/>
@@ -298,9 +297,7 @@
                                         </HBox>
                                         <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                             <children>
-                                                <Rectangle fx:id="_rec4Star" arcHeight="10.0" arcWidth="10.0"
-                                                           fill="#1b535ccc" height="8.0" stroke="BLACK"
-                                                           strokeType="INSIDE" strokeWidth="0.0" width="200.0"/>
+
                                                 <Label fx:id="_lbl4Star" text="0k" textFill="#1b535ce4">
                                                     <HBox.margin>
                                                         <Insets left="8.0"/>
@@ -310,9 +307,7 @@
                                         </HBox>
                                         <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                             <children>
-                                                <Rectangle fx:id="_rec3Star" arcHeight="10.0" arcWidth="10.0"
-                                                           fill="#1b535c99" height="8.0" stroke="BLACK"
-                                                           strokeType="INSIDE" strokeWidth="0.0" width="200.0"/>
+
                                                 <Label fx:id="_lbl3Star" text="0k" textFill="#1b535ce4">
                                                     <HBox.margin>
                                                         <Insets left="8.0"/>
@@ -322,9 +317,7 @@
                                         </HBox>
                                         <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                             <children>
-                                                <Rectangle fx:id="_rec2Star" arcHeight="10.0" arcWidth="10.0"
-                                                           fill="#1b535c66" height="8.0" stroke="BLACK"
-                                                           strokeType="INSIDE" strokeWidth="0.0" width="200.0"/>
+
                                                 <Label fx:id="_lbl2Star" text="0k" textFill="#1b535ce4">
                                                     <HBox.margin>
                                                         <Insets left="8.0"/>
@@ -334,9 +327,7 @@
                                         </HBox>
                                         <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                             <children>
-                                                <Rectangle fx:id="_rec1Star" arcHeight="10.0" arcWidth="10.0"
-                                                           fill="#1b535c33" height="8.0" stroke="BLACK"
-                                                           strokeType="INSIDE" strokeWidth="0.0" width="200.0"/>
+
                                                 <Label fx:id="_lbl1Star" text="0k" textFill="#1b535ce4">
                                                     <HBox.margin>
                                                         <Insets left="8.0"/>
@@ -360,9 +351,9 @@
                                                 <Insets left="16.0"/>
                                             </HBox.margin>
                                             <children>
-                                                <JFXTextArea fx:id="_taComment" focusColor="#ffba33" prefRowCount="2"
-                                                             promptText="Tell people what you think"
-                                                             unFocusColor="#ccd0d2"/>
+                                                <JFXTextField fx:id="_taComment" focusColor="#ffba33"
+                                                              promptText="Tell people what you think"
+                                                              unFocusColor="#ccd0d2"/>
                                                 <Rating fx:id="_rating" rating="0.0"
                                                         stylesheets="@../../../style/ratingBar.css">
                                                     <VBox.margin>

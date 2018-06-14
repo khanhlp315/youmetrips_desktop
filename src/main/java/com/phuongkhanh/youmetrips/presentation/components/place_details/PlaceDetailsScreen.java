@@ -23,4 +23,6 @@ public interface PlaceDetailsScreen extends JFXScreen {
     void updateUserAvatar(String avatar);
 
     void navigateToCreatePlan();
+
+    void updateReview(PlaceDetails placeDetails);
 }

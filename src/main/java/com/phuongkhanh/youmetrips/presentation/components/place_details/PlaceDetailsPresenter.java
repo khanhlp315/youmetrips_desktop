@@ -31,6 +31,7 @@ public class PlaceDetailsPresenter extends PresenterBase<PlaceDetailsScreen> {
         homeStore.addPlaceDetails(placeDetails);
         getView().updatePlaceInfo(placeDetails);
         getView().updateMapUrl(_service.getMapUrl(placeDetails.getLocation()));
+        getView().updateReview(placeDetails);
     }
 
     private void _onGetPlaceDetailsFailed(Throwable throwable) {
@@ -106,7 +107,7 @@ public class PlaceDetailsPresenter extends PresenterBase<PlaceDetailsScreen> {
     public void rate(int placeId, int rate, String message) {
         Task<Object> task = new Task<Object>() {
             @Override
-            protected PlaceDetails call() {
+            protected Object call() {
                 _doRate(placeId, rate, message);
                 return null;
             }
