@@ -5,6 +5,7 @@
 <?import de.jensd.fx.glyphs.materialicons.MaterialIconView?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.*?>
@@ -30,11 +31,14 @@
                                             <font>
                                                 <Font name="System Bold" size="24.0"/>
                                             </font>
+                                            <HBox.margin>
+                                                <Insets top="16.0"/>
+                                            </HBox.margin>
                                         </JFXTextField>
                                         <JFXTextField fx:id="_tfLastName" focusColor="#ffba33" labelFloat="true"
                                                       promptText="Lastname" unFocusColor="#ccd0d2">
                                             <HBox.margin>
-                                                <Insets left="8.0"/>
+                                                <Insets top="16.0"/>
                                             </HBox.margin>
                                             <font>
                                                 <Font size="24.0"/>
@@ -62,16 +66,12 @@
                                                         <Insets left="16.0"/>
                                                     </HBox.margin>
                                                 </FontAwesomeIconView>
-                                                <JFXTextField fx:id="_tfNationality" focusColor="#ffba33"
-                                                              labelFloat="true" prefHeight="25.0" prefWidth="90.0"
-                                                              text="Nationality" unFocusColor="#ccd0d2">
+                                                <JFXComboBox focusColor="#ffba33" promptText="Nationality"
+                                                             unFocusColor="#ccd0d2">
                                                     <HBox.margin>
                                                         <Insets left="8.0"/>
                                                     </HBox.margin>
-                                                    <font>
-                                                        <Font size="13.0"/>
-                                                    </font>
-                                                </JFXTextField>
+                                                </JFXComboBox>
                                             </children>
                                             <VBox.margin>
                                                 <Insets top="16.0"/>
@@ -138,9 +138,17 @@
                 </Label>
                 <HBox>
                     <children>
-                        <JFXRadioButton fx:id="_rbMale" text="Male"/>
-                        <JFXRadioButton fx:id="_rbFemale" text="Female"/>
-                        <JFXRadioButton fx:id="_rbOther" text="Other"/>
+
+                        <JFXRadioButton fx:id="_rbMale" text="Male">
+                            <toggleGroup>
+                                <ToggleGroup fx:id="toggleGroup"/>
+                            </toggleGroup>
+                        </JFXRadioButton>
+                        <JFXRadioButton fx:id="_rbFemale" text="Female" toggleGroup="$toggleGroup">
+                            <HBox.margin>
+                                <Insets left="8.0"/>
+                            </HBox.margin>
+                        </JFXRadioButton>
                     </children>
                     <VBox.margin>
                         <Insets top="8.0"/>
