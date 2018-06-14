@@ -5,6 +5,7 @@
 <?import de.jensd.fx.glyphs.materialicons.MaterialIconView?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.*?>
@@ -137,8 +138,13 @@
                 </Label>
                 <HBox>
                     <children>
-                        <JFXRadioButton fx:id="_rbMale" text="Male"/>
-                        <JFXRadioButton fx:id="_rbFemale" text="Female">
+
+                        <JFXRadioButton fx:id="_rbMale" text="Male">
+                            <toggleGroup>
+                                <ToggleGroup fx:id="toggleGroup"/>
+                            </toggleGroup>
+                        </JFXRadioButton>
+                        <JFXRadioButton fx:id="_rbFemale" text="Female" toggleGroup="$toggleGroup">
                             <HBox.margin>
                                 <Insets left="8.0"/>
                             </HBox.margin>
