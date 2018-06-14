@@ -280,7 +280,7 @@
                     <Insets left="20" bottom="5"/>
                 </VBox.margin>
                 <Text fx:id="_txtNumOfComments" text="0" style="-fx-font-size: 14; -fx-font-weight: bold"/>
-                <Text text=" comments" style="-fx-font-size: 14; -fx-font-weight: bold"/>
+                <Text text=" comment(s)" style="-fx-font-size: 14; -fx-font-weight: bold"/>
             </HBox>
             <ListView fx:id="_lvComments"/>
         </VBox>
