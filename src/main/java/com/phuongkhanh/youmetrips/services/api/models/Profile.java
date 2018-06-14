@@ -3,22 +3,22 @@ package com.phuongkhanh.youmetrips.services.api.models;
 import java.util.List;
 
 public class Profile {
-     private int userId;
-     private String firstName;
-     private String lastName;
-     private String avatar;
-     private String bio;
-     private String nationality;
-     private String nationalityName;
-     private String nationalityFlagUrl;
-     private String birthday;
-     private String gender;
-     private String occupation;
-     private String address;
-     private String email;
-     private String phoneNumber;
-     private String identifyingMethod;
-     private List<UserTrekkingPlan> trekkingPlanSet;
+    private int userId;
+    private String firstName;
+    private String lastName;
+    private String avatar;
+    private String bio;
+    private String nationality;
+    private String nationalityName;
+    private String nationalityFlagUrl;
+    private String birthday;
+    private String gender;
+    private String occupation;
+    private String address;
+    private String email;
+    private String phoneNumber;
+    private String identifyingMethod;
+    private List<UserTrekkingPlan> trekkingPlanSet;
 
     public int getUserId() {
         return userId;

@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.phuongkhanh.youmetrips.presentation.controls.HomeDrawer?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.*?>
-<?import com.phuongkhanh.youmetrips.presentation.controls.HomeDrawer?>
-<?import com.jfoenix.controls.JFXTextArea?>
-<fx:root xmlns:fx="http://javafx.com/fxml/1" prefHeight="490.0" prefWidth="640.0"
-         xmlns="http://javafx.com/javafx/8.0.141" type="javafx.scene.layout.GridPane">
+<fx:root xmlns:fx="http://javafx.com/fxml/1" minHeight="550.0" minWidth="720.0" prefHeight="550.0" prefWidth="720.0"
+         type="javafx.scene.layout.GridPane" xmlns="http://javafx.com/javafx/8.0.121">
+
+    <!--<GridPane minHeight="490.0" minWidth="640.0" prefHeight="550.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">-->
+
+
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="635.0" minWidth="10.0" prefWidth="304.0"/>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="523.0" minWidth="10.0" prefWidth="411.0"/>
@@ -15,7 +18,18 @@
     </rowConstraints>
     <children>
         <HomeDrawer fx:id="_drawer"/>
-        <ScrollPane fx:id="_scrollPane" hbarPolicy="NEVER" stylesheets="@../../style/customScrollPane.css" GridPane.columnIndex="1">
-        </ScrollPane>
+        <StackPane alignment="TOP_CENTER" GridPane.columnIndex="1">
+            <children>
+                <AnchorPane>
+                    <children>
+                        <ScrollPane fx:id="_scrollPane" fitToHeight="true" fitToWidth="true"
+                                    stylesheets="@../../style/customScrollPane.css" AnchorPane.bottomAnchor="0.0"
+                                    AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                    AnchorPane.topAnchor="0.0"/>
+                    </children>
+                </AnchorPane>
+            </children>
+        </StackPane>
     </children>
 </fx:root>
+        <!--</GridPane>-->

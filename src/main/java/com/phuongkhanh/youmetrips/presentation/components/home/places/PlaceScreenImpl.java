@@ -14,6 +14,7 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import org.omg.CORBA.ACTIVITY_REQUIRED;
 
@@ -28,7 +29,7 @@ public class PlaceScreenImpl extends FXMLScreen
 implements PlaceScreen, Initializable {
 
     @FXML
-    private JFXListView _lvPlaces;
+    private ListView _lvPlaces;
 
     private final PlacePresenter _presenter;
     private final Provider<CreatePlanWindow> _planWindow;

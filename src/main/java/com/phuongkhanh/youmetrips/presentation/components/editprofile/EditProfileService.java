@@ -11,7 +11,9 @@ import java.util.List;
 
 public interface EditProfileService {
     void updateUserProfile(EditedUserProfile profile, int userId, String jwt);
+
     String uploadFile(int userId, String jwt, File file);
+
     List<Country> getAllCountries();
 
     AuthenticationStore getAuthenticationStore();

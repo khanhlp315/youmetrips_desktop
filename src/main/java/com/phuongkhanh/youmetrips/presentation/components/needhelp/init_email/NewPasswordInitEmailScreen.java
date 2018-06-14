@@ -7,9 +7,14 @@ import com.phuongkhanh.youmetrips.presentation.framework.JFXScreen;
  */
 public interface NewPasswordInitEmailScreen extends JFXScreen {
     void showError(String message);
+
     void showSuccess(String message);
+
     void showLoading();
+
     void navigateToInputCode();
+
     void setLoading(Boolean isLoading);
+
     void onNavigateBack();
 }

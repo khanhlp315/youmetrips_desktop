@@ -18,24 +18,24 @@ public class FriendListPresenter extends PresenterBase<FriendListScreen> {
         _service = service;
     }
 
-    public void requestNavigateBack(){
+    public void requestNavigateBack() {
         getView().navigateBack();
     }
 
     //region fetch friends
-    public void fetchFriends(){
+    public void fetchFriends() {
         assert (getView() != null);
 
         HomeStore homeStore = _service.getHomeStore();
         List<Friend> friends = homeStore.getAllFriends();
-        if(friends != null){
+        if (friends != null) {
             getView().updateFriends(friends);
             return;
         }
 
         Task<List<Friend>> task = new Task<List<Friend>>() {
             @Override
-            protected List<Friend> call() throws Exception {
+            protected List<Friend> call() {
                 return doFetchFriends();
             }
 
@@ -52,18 +52,18 @@ public class FriendListPresenter extends PresenterBase<FriendListScreen> {
         new Thread(task).start();
     }
 
-    private List<Friend> doFetchFriends(){
+    private List<Friend> doFetchFriends() {
         AuthenticationStore authenticationStore = _service.getAuthenticationStore();
         return _service.fetchAllFriends(authenticationStore.getUserId(), authenticationStore.getJwt());
     }
 
-    private void onFetchFriendsSucceeded(List<Friend> friends){
+    private void onFetchFriendsSucceeded(List<Friend> friends) {
         HomeStore homeStore = _service.getHomeStore();
         homeStore.storeFriends(friends);
         getView().updateFriends(friends);
     }
 
-    private void onFetchFriendsFailed(Throwable ex){
+    private void onFetchFriendsFailed(Throwable ex) {
 
     }
 

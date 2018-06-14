@@ -1,13 +1,10 @@
 package com.phuongkhanh.youmetrips.presentation.components.signup.signup;
 
-import com.jfoenix.controls.JFXButton;
 import com.phuongkhanh.youmetrips.presentation.exceptions.*;
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
-import com.phuongkhanh.youmetrips.presentation.models.User;
 import com.phuongkhanh.youmetrips.services.api.models.SignUp;
 import com.phuongkhanh.youmetrips.services.stores.AuthenticationStore;
 import javafx.concurrent.Task;
-import javafx.scene.control.ProgressIndicator;
 
 import javax.inject.Inject;
 
@@ -35,7 +32,7 @@ public class SignUpPresenter extends PresenterBase<SignUpScreen> {
         new Thread(
                 new Task<Object>() {
                     @Override
-                    protected Object call() throws Exception {
+                    protected Object call() {
                         doSignUp(emailOrPhone, password, confirmPassword, firstName, lastName);
                         return null;
                     }
@@ -60,16 +57,15 @@ public class SignUpPresenter extends PresenterBase<SignUpScreen> {
         ).start();
     }
 
-    public void requestToNavigateBackLogin()
-    {
+    public void requestToNavigateBackLogin() {
         getView().onNavigateBackLogin();
     }
 
     private void doSignUp(String emailOrPhone,
-                         String password,
-                         String confirmPassword,
-                         String firstName,
-                         String lastName) {
+                          String password,
+                          String confirmPassword,
+                          String firstName,
+                          String lastName) {
         if (!validateEmail(emailOrPhone)) {
             throw new InvalidEmailException();
         }
@@ -94,43 +90,27 @@ public class SignUpPresenter extends PresenterBase<SignUpScreen> {
     }
 
     private void onSignUpFailed(final Throwable ex) {
-        if(ex instanceof InvalidEmailException)
-        {
+        if (ex instanceof InvalidEmailException) {
             getView().showError("This email is invalid");
-        }
-        else if(ex instanceof AlreadyUsedEmailOrPhoneNumberException)
-        {
+        } else if (ex instanceof AlreadyUsedEmailOrPhoneNumberException) {
             getView().showError("This email has already created");
-        }
-        else if(ex instanceof ConfirmPasswordNotMatchException)
-        {
+        } else if (ex instanceof ConfirmPasswordNotMatchException) {
             getView().showError("Confirm password is not match");
-        }
-        else if(ex instanceof EmptyFieldException)
-        {
+        } else if (ex instanceof EmptyFieldException) {
             getView().showError("Please fill in all fields");
-        }
-        else if(ex instanceof InvalidEmailOrPhoneNumberException)
-        {
+        } else if (ex instanceof InvalidEmailOrPhoneNumberException) {
             getView().showError("Email or Phone number is incorrect");
-        }
-        else if(ex instanceof InvalidPasswordException)
-        {
+        } else if (ex instanceof InvalidPasswordException) {
             getView().showError("Password must have at least 6 and at most 20 characters!");
-        }
-        else if(ex instanceof InvalidUserFirstNameException)
-        {
+        } else if (ex instanceof InvalidUserFirstNameException) {
             getView().showError("Please fill in first name");
-        }
-        else if(ex instanceof InvalidUserLastNameException)
-        {
+        } else if (ex instanceof InvalidUserLastNameException) {
             getView().showError("Please fill in last name");
         }
 
     }
 
-    private void onRunning()
-    {
+    private void onRunning() {
         getView().showLoading();
     }
 

@@ -3,10 +3,10 @@ package com.phuongkhanh.youmetrips.services.api.models;
 import java.util.List;
 
 public class RelevantPlanPlace {
-   private int id;
-   private String name;
-   private String coverImageUrl;
-   private List<String> tags;
+    private int id;
+    private String name;
+    private String coverImageUrl;
+    private List<String> tags;
 
     public int getId() {
         return id;

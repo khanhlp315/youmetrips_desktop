@@ -1,6 +1,5 @@
 package com.phuongkhanh.youmetrips.presentation.components.signup.signup;
 
-import com.phuongkhanh.youmetrips.presentation.models.User;
 import com.phuongkhanh.youmetrips.services.api.models.SignUp;
 import com.phuongkhanh.youmetrips.services.stores.AuthenticationStore;
 

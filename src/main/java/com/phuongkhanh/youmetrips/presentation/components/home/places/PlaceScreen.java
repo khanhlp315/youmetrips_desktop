@@ -7,15 +7,22 @@ import java.util.List;
 
 public interface PlaceScreen extends JFXScreen {
     void updatePlaces(List<Place> places);
+
     void navigateToCreateTrekkingPlace();
+
     void navigateToCreateTrekkingPlan();
+
     void navigateToPlan();
+
     void navigateToProfile();
+
     void navigateToEditProfile();
+
     void navigateToFriendRequest();
 
     void showError(String title, String message);
 
     void onLiked(int id);
+
     void onUnliked(int id);
 }

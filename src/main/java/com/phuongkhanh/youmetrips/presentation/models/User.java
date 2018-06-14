@@ -22,11 +22,19 @@ public class User {
         _avatar = avatar;
     }
 
-    public String getUserLastName() {return _userLastName;}
+    public String getUserLastName() {
+        return _userLastName;
+    }
 
-    public void setUserLastName(String userLastName) {_userLastName = userLastName;}
+    public void setUserLastName(String userLastName) {
+        _userLastName = userLastName;
+    }
 
-    public String getUserFirstName() {return _userFirstName;}
+    public String getUserFirstName() {
+        return _userFirstName;
+    }
 
-    public void setUserFirstName(String userFirstName) {_userFirstName = userFirstName;}
+    public void setUserFirstName(String userFirstName) {
+        _userFirstName = userFirstName;
+    }
 }

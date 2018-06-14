@@ -115,11 +115,11 @@ public class JFXWindowBase implements JFXWindow {
 
     @Override
     public void show() {
-        if ( _stage == null ) {
-            throw new RuntimeException( "Can not show, no stage attached. Stage must be attached before being able to show!" );
+        if (_stage == null) {
+            throw new RuntimeException("Can not show, no stage attached. Stage must be attached before being able to show!");
         }
-        if ( _stage.isShowing() ) {
-            throw new RuntimeException( "Window is currently showing!" );
+        if (_stage.isShowing()) {
+            throw new RuntimeException("Window is currently showing!");
         }
 
         _stage.show();
@@ -140,8 +140,8 @@ public class JFXWindowBase implements JFXWindow {
 
     @Override
     public void close() {
-        if ( _stage == null ) {
-            throw new RuntimeException( "Can not close, no stage attached. Stage must be attached before being able to close!" );
+        if (_stage == null) {
+            throw new RuntimeException("Can not close, no stage attached. Stage must be attached before being able to close!");
         }
 
         _stage.close();
@@ -149,11 +149,11 @@ public class JFXWindowBase implements JFXWindow {
 
     @Override
     public void hide() {
-        if ( _stage == null ) {
-            throw new RuntimeException( "Can not hide, no stage attached. Stage must be attached before being able to show!" );
+        if (_stage == null) {
+            throw new RuntimeException("Can not hide, no stage attached. Stage must be attached before being able to show!");
         }
-        if ( !_stage.isShowing() ) {
-            throw new RuntimeException( "Can not hide, window is not showing. Only can hide when window is showing!" );
+        if (!_stage.isShowing()) {
+            throw new RuntimeException("Can not hide, window is not showing. Only can hide when window is showing!");
         }
 
         _stage.hide();

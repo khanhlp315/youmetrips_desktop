@@ -7,8 +7,11 @@ import com.phuongkhanh.youmetrips.services.stores.HomeStore;
 
 public interface TrekkingPlanPreviewService {
     PlaceDetails getPlaceDetails(int userId, int placeId, String jwt);
+
     AuthenticationStore getAuthenticationStore();
+
     HomeStore getHomeStore();
+
     String getMapUrl(String location);
     int createTrekkingPlan(int userId, String jwt, CreatePlan trekkingPlan);
 }

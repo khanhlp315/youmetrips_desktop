@@ -14,25 +14,24 @@ public class FriendRequestsPresenter extends PresenterBase<FriendRequestsScreen>
     private final FriendRequestsService _service;
 
     @Inject
-    public FriendRequestsPresenter(FriendRequestsService service)
-    {
+    public FriendRequestsPresenter(FriendRequestsService service) {
         _service = service;
     }
 
-    public void fetchFriendRequests(){
-        assert(getView() != null);
+    public void fetchFriendRequests() {
+        assert (getView() != null);
 
         HomeStore homeStore = _service.getHomeStore();
 
         List<FriendRequest> friendRequests = homeStore.getAllFriendRequests();
-        if(friendRequests != null){
+        if (friendRequests != null) {
             getView().updateRequests(friendRequests);
             return;
         }
 
         Task<List<FriendRequest>> task = new Task<List<FriendRequest>>() {
             @Override
-            protected List<FriendRequest> call() throws Exception {
+            protected List<FriendRequest> call() {
                 return _doFetchFriendRequests();
             }
 
@@ -53,20 +52,20 @@ public class FriendRequestsPresenter extends PresenterBase<FriendRequestsScreen>
         return _service.fetchAllFriendRequests(authenticationStore.getUserId(), authenticationStore.getJwt());
     }
 
-    private void _onFetchFriendRequestsSucceeded(List<FriendRequest> requests){
+    private void _onFetchFriendRequestsSucceeded(List<FriendRequest> requests) {
         HomeStore homeStore = _service.getHomeStore();
         homeStore.storeFriendRequests(requests);
         getView().updateRequests(requests);
     }
 
-    private void _onFetchFriendRequestsFailed(Throwable throwable){
+    private void _onFetchFriendRequestsFailed(Throwable throwable) {
 
     }
 
     public void refreshRequests() {
         Task<List<FriendRequest>> task = new Task<List<FriendRequest>>() {
             @Override
-            protected List<FriendRequest> call() throws Exception {
+            protected List<FriendRequest> call() {
                 return _doFetchFriendRequests();
             }
 
@@ -83,11 +82,11 @@ public class FriendRequestsPresenter extends PresenterBase<FriendRequestsScreen>
     }
 
     public void acceptRequest(int id) {
-        assert(getView() != null);
+        assert (getView() != null);
 
         Task<Object> task = new Task<Object>() {
             @Override
-            protected Object call() throws Exception {
+            protected Object call() {
                 _doAcceptRequest(id);
                 return null;
             }
@@ -108,20 +107,20 @@ public class FriendRequestsPresenter extends PresenterBase<FriendRequestsScreen>
         _service.acceptRequest(id, authenticationStore.getUserId(), authenticationStore.getJwt());
     }
 
-    private void _onAcceptRequestSuceeded(int id){
+    private void _onAcceptRequestSuceeded(int id) {
         HomeStore homeStore = _service.getHomeStore();
         homeStore.removeRequest(id);
     }
 
-    private void _onAcceptRequestFailed(Throwable throwable){
+    private void _onAcceptRequestFailed(Throwable throwable) {
     }
 
     public void declineRequest(int id) {
-        assert(getView() != null);
+        assert (getView() != null);
 
         Task<Object> task = new Task<Object>() {
             @Override
-            protected Object call() throws Exception {
+            protected Object call() {
                 _doDeclineRequest(id);
                 return null;
             }
@@ -137,18 +136,18 @@ public class FriendRequestsPresenter extends PresenterBase<FriendRequestsScreen>
         new Thread(task).start();
     }
 
-    private void  _doDeclineRequest(int id) {
+    private void _doDeclineRequest(int id) {
         AuthenticationStore authenticationStore = _service.getAuthenticationStore();
         _service.declineRequest(id, authenticationStore.getUserId(), authenticationStore.getJwt());
     }
 
-    private void _onDeclineRequestSuceeded(int id){
+    private void _onDeclineRequestSuceeded(int id) {
         HomeStore homeStore = _service.getHomeStore();
         homeStore.removeRequest(id);
         getView().removeRequest(id);
     }
 
-    private void _onDeclineRequestFailed(Throwable throwable){
+    private void _onDeclineRequestFailed(Throwable throwable) {
 
     }
 }

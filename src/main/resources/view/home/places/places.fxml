@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXListView?>
 <?import com.phuongkhanh.youmetrips.presentation.controls.HomePane?>
 
+<?import javafx.scene.control.ListView?>
 <HomePane onRefreshClicked="#refresh" onCreatePlaceClicked="#onCreateTrekkingPlaceClicked" onCreatePlanClicked="#onCreateTrekkingPlanClicked" onEditProfileClicked="#onEditProfileClicked" onFriendRequestClicked="#onFriendRequestClicked" onPlanClicked="#onPlanClicked" onProfileClicked="#onProfileClicked" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <homeNode>
-        <JFXListView fx:id="_lvPlaces" prefHeight="400.0" prefWidth="452.0" />
+        <ListView xmlns:fx="http://javafx.com/fxml/1" fx:id="_lvPlaces" stylesheets="@../../../style/listView.css"
+                  xmlns="http://javafx.com/javafx/8.0.121"/>
     </homeNode>
 </HomePane>

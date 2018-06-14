@@ -12,6 +12,7 @@ public interface EditProfileScreen extends JFXScreen {
     void updateAvatarUrl(String url);
 
     void showNext();
+
     void hideNext();
 
     void setLoading(boolean value);

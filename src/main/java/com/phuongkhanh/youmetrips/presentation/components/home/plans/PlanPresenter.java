@@ -3,7 +3,6 @@ package com.phuongkhanh.youmetrips.presentation.components.home.plans;
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
 import com.phuongkhanh.youmetrips.services.api.models.PlanDetails;
 import com.phuongkhanh.youmetrips.services.api.models.PlanDetailsPlace;
-import com.phuongkhanh.youmetrips.services.api.models.Profile;
 import com.phuongkhanh.youmetrips.services.api.models.RelevantPlan;
 import com.phuongkhanh.youmetrips.services.stores.AuthenticationStore;
 import com.phuongkhanh.youmetrips.services.stores.HomeStore;
@@ -17,25 +16,24 @@ public class PlanPresenter extends PresenterBase<PlanScreen> {
     private final PlanService _service;
 
     @Inject
-    public PlanPresenter(PlanService service)
-    {
+    public PlanPresenter(PlanService service) {
         _service = service;
     }
 
     public void fetchPlans() {
-        assert(getView() != null);
+        assert (getView() != null);
 
         HomeStore homeStore = _service.getHomeStore();
         List<RelevantPlan> plans = homeStore.getAllRelevantPlans();
 
-        if(plans != null){
+        if (plans != null) {
             getView().updatePlans(plans);
             return;
         }
 
         Task<List<RelevantPlan>> task = new Task<List<RelevantPlan>>() {
             @Override
-            protected List<RelevantPlan>  call() throws Exception {
+            protected List<RelevantPlan> call() {
                 return _doFetchPlans();
             }
 
@@ -56,7 +54,7 @@ public class PlanPresenter extends PresenterBase<PlanScreen> {
         return _service.fetchPlans(authenticationStore.getUserId(), authenticationStore.getJwt());
     }
 
-    private void _onFetchPlansSucceeded(List<RelevantPlan> plans){
+    private void _onFetchPlansSucceeded(List<RelevantPlan> plans) {
         HomeStore homeStore = _service.getHomeStore();
         homeStore.storePlans(plans);
 
@@ -79,14 +77,14 @@ public class PlanPresenter extends PresenterBase<PlanScreen> {
                             relevantPlan.getUserFirstName(),
                             relevantPlan.getUserLastName(),
                             relevantPlan.getUserAvatarUrl(),
-                            relevantPlan.getUserOccupation() )
+                            relevantPlan.getUserOccupation())
             );
 
         }
         getView().updatePlans(plans);
     }
 
-    private void _onFetchPlansFailed(Throwable throwable){
+    private void _onFetchPlansFailed(Throwable throwable) {
     }
 
     public void requestNavigateToCreateTrekkingPlan() {
@@ -102,7 +100,7 @@ public class PlanPresenter extends PresenterBase<PlanScreen> {
     public void refreshPlans() {
         Task<List<RelevantPlan>> task = new Task<List<RelevantPlan>>() {
             @Override
-            protected List<RelevantPlan>  call() throws Exception {
+            protected List<RelevantPlan> call() {
                 return _doFetchPlans();
             }
 
@@ -125,9 +123,9 @@ public class PlanPresenter extends PresenterBase<PlanScreen> {
     public void addFriend(int userId) {
         Task<Object> task = new Task<Object>() {
             @Override
-            protected Object call() throws Exception {
-                 _doAddFriend(userId);
-                 return null;
+            protected Object call() {
+                _doAddFriend(userId);
+                return null;
             }
 
             @Override
@@ -148,35 +146,34 @@ public class PlanPresenter extends PresenterBase<PlanScreen> {
         _service.sendFriendRequest(userId, authenticationStore.getUserId(), authenticationStore.getJwt());
     }
 
-    private void _onAddFriendSucceeded(){
+    private void _onAddFriendSucceeded() {
     }
 
-    private void _onAddFriendFailed(Throwable throwable){
+    private void _onAddFriendFailed(Throwable throwable) {
     }
 
     public void requestNavigateToPlanDetails(int planId) {
-        assert(getView() != null);
+        assert (getView() != null);
         getView().navigateToPlanDetails(planId);
     }
 
     public void requestNavigateToPlace() {
-        assert(getView() != null);
+        assert (getView() != null);
         getView().navigateToPlace();
     }
 
     public void requestNavigateToProfile() {
-        assert(getView() != null);
+        assert (getView() != null);
         getView().navigateToProfile();
     }
 
     public void requestNavigateToEditProfile() {
-        assert(getView() != null);
+        assert (getView() != null);
         getView().navigateToEditProfile();
     }
 
-    public void requestNavigateToFriendRequest()
-    {
-        assert (getView()!= null);
+    public void requestNavigateToFriendRequest() {
+        assert (getView() != null);
         getView().navigateToFriendRequest();
     }
 

@@ -23,20 +23,20 @@ public class EditProfilePresenter extends PresenterBase<EditProfileScreen> {
     }
 
     //region fetch countries
-    public void fetchCountries(){
+    public void fetchCountries() {
         assert (getView() != null);
 
         HomeStore homeStore = _service.getHomeStore();
         List<Country> countries = homeStore.getAllCountries();
 
-        if(countries != null){
+        if (countries != null) {
             getView().updateCountries(countries);
             return;
         }
 
         Task<List<Country>> task = new Task<List<Country>>() {
             @Override
-            protected List<Country> call() throws Exception {
+            protected List<Country> call() {
                 return doFetchCountries();
             }
 
@@ -46,41 +46,41 @@ public class EditProfilePresenter extends PresenterBase<EditProfileScreen> {
                 onFetchCountriesFailed(getException());
             }
         };
-        task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, event ->{
+        task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, event -> {
             onFetchCountriesSucceeded(task.getValue());
         });
 
         new Thread(task).start();
     }
 
-    private List<Country> doFetchCountries(){
+    private List<Country> doFetchCountries() {
         return _service.getAllCountries();
     }
 
-    private void onFetchCountriesSucceeded(List<Country> countries){
+    private void onFetchCountriesSucceeded(List<Country> countries) {
         _service.getHomeStore().storeCountries(countries);
         getView().updateCountries(countries);
     }
 
-    private void onFetchCountriesFailed(final Throwable ex){
+    private void onFetchCountriesFailed(final Throwable ex) {
 
     }
     //endregion
 
     //region fetch profile
-    public void fetchProfile(){
+    public void fetchProfile() {
         assert (getView() != null);
 
         AuthenticationStore authenticationStore = _service.getAuthenticationStore();
         Profile profile = authenticationStore.getProfile();
-        if(profile != null){
+        if (profile != null) {
             getView().updateProfile(profile);
             return;
         }
 
         Task<Profile> task = new Task<Profile>() {
             @Override
-            protected Profile call() throws Exception {
+            protected Profile call() {
                 return doFetchProfile();
             }
 
@@ -90,36 +90,36 @@ public class EditProfilePresenter extends PresenterBase<EditProfileScreen> {
             }
         };
 
-        task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED,event->{
+        task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, event -> {
             onFetchProfileSucceeded(task.getValue());
-        } );
+        });
 
         new Thread(task).start();
     }
 
-    private Profile doFetchProfile(){
+    private Profile doFetchProfile() {
         AuthenticationStore authenticationStore = _service.getAuthenticationStore();
         return _service.getUserProfile(authenticationStore.getUserId(), authenticationStore.getJwt());
     }
 
-    private void onFetchProfileSucceeded(Profile profile){
+    private void onFetchProfileSucceeded(Profile profile) {
         AuthenticationStore authenticationStore = _service.getAuthenticationStore();
         authenticationStore.storeProfile(profile);
         getView().updateProfile(profile);
     }
 
-    private void onFetchProfileFailed(Throwable ex){
+    private void onFetchProfileFailed(Throwable ex) {
     }
 
     //endregion
 
     //region change avatar
-    public void uploadAvatar (File image){
+    public void uploadAvatar(File image) {
         assert (getView() != null);
 
         Task<String> task = new Task<String>() {
             @Override
-            protected String call() throws Exception {
+            protected String call() {
                 return doUploadAvatar(image);
             }
 
@@ -130,7 +130,7 @@ public class EditProfilePresenter extends PresenterBase<EditProfileScreen> {
             }
         };
 
-        task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, event ->{
+        task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, event -> {
             onUploadAvatarSucceeded(task.getValue());
         });
 
@@ -138,7 +138,7 @@ public class EditProfilePresenter extends PresenterBase<EditProfileScreen> {
     }
 
     private String doUploadAvatar(File image) {
-        if(image == null){
+        if (image == null) {
             //TODO: throw exception
         }
         AuthenticationStore authenticationStore = _service.getAuthenticationStore();
@@ -146,24 +146,24 @@ public class EditProfilePresenter extends PresenterBase<EditProfileScreen> {
         return _service.uploadFile(authenticationStore.getUserId(), authenticationStore.getJwt(), image);
     }
 
-    private void onUploadAvatarSucceeded(String url){
+    private void onUploadAvatarSucceeded(String url) {
         getView().updateAvatarUrl(url);
     }
 
-    private void onUploadAvatarFailed(Throwable ex){
+    private void onUploadAvatarFailed(Throwable ex) {
 
     }
     //endregion
 
     //region update profile
-    public void updateProfile (EditedUserProfile profile){
+    public void updateProfile(EditedUserProfile profile) {
         assert (getView() != null);
 
         getView().setLoading(true);
 
         Task<Object> task = new Task<Object>() {
             @Override
-            protected Object call() throws Exception {
+            protected Object call() {
                 doUpdateProfile(profile);
                 return null;
             }
@@ -183,45 +183,40 @@ public class EditProfilePresenter extends PresenterBase<EditProfileScreen> {
         new Thread(task).start();
     }
 
-    private void doUpdateProfile(EditedUserProfile profile){
+    private void doUpdateProfile(EditedUserProfile profile) {
         AuthenticationStore authenticationStore = _service.getAuthenticationStore();
         _service.updateUserProfile(profile, authenticationStore.getUserId(), authenticationStore.getJwt());
     }
 
-    private void onUpdateProfileSucceeded(){
+    private void onUpdateProfileSucceeded() {
         getView().setLoading(false);
         getView().navigateBack();
     }
 
-    private void onUpdateProfileFailed(Throwable ex){
+    private void onUpdateProfileFailed(Throwable ex) {
         getView().setLoading(false);
     }
 
     //endregion
 
-    public void onEditedProfileUpdated(EditedUserProfile profile){
-        if(isProfileValid(profile)){
+    public void onEditedProfileUpdated(EditedUserProfile profile) {
+        if (isProfileValid(profile)) {
             getView().showNext();
-        }
-        else {
+        } else {
             getView().hideNext();
         }
     }
 
-    private boolean isProfileValid(EditedUserProfile profile){
-        if(profile.getFirstName().equals("") || profile.getLastName().equals("")){
+    private boolean isProfileValid(EditedUserProfile profile) {
+        if (profile.getFirstName().equals("") || profile.getLastName().equals("")) {
             return false;
         }
 
-        if(profile.getPhoneNumber() != null && !CommonUtils.validatePhoneNumber(profile.getPhoneNumber())){
+        if (profile.getPhoneNumber() != null && !CommonUtils.validatePhoneNumber(profile.getPhoneNumber())) {
             return false;
         }
 
-        if(profile.getEmail() != null && !CommonUtils.validateEmail(profile.getEmail())){
-            return false;
-        }
-
-        return true;
+        return profile.getEmail() == null || CommonUtils.validateEmail(profile.getEmail());
 
     }
 }

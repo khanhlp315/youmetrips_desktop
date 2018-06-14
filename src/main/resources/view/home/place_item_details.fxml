@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <?import javafx.geometry.*?>
@@ -20,8 +19,8 @@
                     <content>
                         <VBox>
                             <children>
-                                <JFXListView fx:id="_lbHashtags" orientation="HORIZONTAL"
-                                             style="-fx-background-color: transparent;"/>
+                                <ListView fx:id="_lbHashtags" orientation="HORIZONTAL"
+                                          stylesheets="@../../style/listView.css"/>
                                 <AnchorPane prefHeight="1.0" prefWidth="200.0" style="-fx-background-color: #f0f0f0;">
                                     <VBox.margin>
                                         <Insets top="8.0"/>

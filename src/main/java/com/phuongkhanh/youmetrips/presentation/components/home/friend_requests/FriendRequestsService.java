@@ -10,6 +10,7 @@ public interface FriendRequestsService {
     AuthenticationStore getAuthenticationStore();
 
     void acceptRequest(int fromUserId, int userId, String jwt);
+
     void declineRequest(int fromUserId, int userId, String jwt);
 
     List<FriendRequest> fetchAllFriendRequests(int userId, String jwt);

@@ -2,12 +2,11 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import com.phuongkhanh.youmetrips.presentation.controls.LoadingPane?>
+<?import com.phuongkhanh.youmetrips.presentation.controls.LoginPane?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
-<?import com.phuongkhanh.youmetrips.presentation.controls.LoginPane?>
-<?import com.phuongkhanh.youmetrips.presentation.controls.LoadingPane?>
 <LoginPane>
     <loginNodes>
 
@@ -21,9 +20,12 @@
                             <children>
                                 <AnchorPane>
                                     <children>
-                                        <JFXTextField  fx:id="_txtNewPasswordEmail" focusColor="#ffba33" labelFloat="true" layoutY="11.0" prefHeight="31.0"
-                                                      prefWidth="190.0" promptText="Email or Phone" unFocusColor="#ccd0d2"/>
-                                        <JFXButton fx:id="_btnNextHelp" onMouseClicked="#next" layoutY="63.0" prefHeight="38.0" prefWidth="190.0" ripplerFill="#ffffff42"
+                                        <JFXTextField fx:id="_txtNewPasswordEmail" focusColor="#ffba33"
+                                                      labelFloat="true" layoutY="11.0" prefHeight="31.0"
+                                                      prefWidth="190.0" promptText="Email or Phone"
+                                                      unFocusColor="#ccd0d2"/>
+                                        <JFXButton fx:id="_btnNextHelp" onMouseClicked="#next" layoutY="63.0"
+                                                   prefHeight="38.0" prefWidth="190.0" ripplerFill="#ffffff42"
                                                    style="-fx-background-color: #1a535c; -fx-background-radius: 100;"
                                                    text="NEXT" textFill="WHITE">
                                             <font>
@@ -31,15 +33,19 @@
                                             </font>
                                         </JFXButton>
 
-                                        <LoadingPane fx:id="_loadingPane" visible="false" layoutY="63.0" prefHeight="38.0" prefWidth="190.0"/>
+                                        <LoadingPane fx:id="_loadingPane" visible="false" layoutY="63.0"
+                                                     prefHeight="38.0" prefWidth="190.0"/>
 
                                     </children>
                                 </AnchorPane>
                                 <AnchorPane visible="false">
                                     <children>
-                                        <JFXTextField focusColor="#ffba33" labelFloat="true" layoutY="11.0" prefHeight="31.0"
-                                                      prefWidth="190.0" promptText="Email or Phone" unFocusColor="#ccd0d2"/>
-                                        <JFXButton layoutY="63.0" prefHeight="38.0" prefWidth="190.0" ripplerFill="#ffffff42"
+                                        <JFXTextField focusColor="#ffba33" labelFloat="true" layoutY="11.0"
+                                                      prefHeight="31.0"
+                                                      prefWidth="190.0" promptText="Email or Phone"
+                                                      unFocusColor="#ccd0d2"/>
+                                        <JFXButton layoutY="63.0" prefHeight="38.0" prefWidth="190.0"
+                                                   ripplerFill="#ffffff42"
                                                    style="-fx-background-color: #1a535c; -fx-background-radius: 100;"
                                                    text="NEXT" textFill="WHITE">
                                             <font>

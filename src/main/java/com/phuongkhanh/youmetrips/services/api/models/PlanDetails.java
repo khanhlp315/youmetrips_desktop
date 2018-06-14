@@ -1,7 +1,5 @@
 package com.phuongkhanh.youmetrips.services.api.models;
 
-import java.util.List;
-
 public class PlanDetails {
     private int id;
     private DateTime whenToGoMin;
@@ -31,8 +29,7 @@ public class PlanDetails {
             String userFirstName,
             String userLastName,
             String userAvatarUrl,
-            String userOccupation)
-    {
+            String userOccupation) {
         this.id = id;
         this.whenToGoMin = whenToGoMin;
         this.whenToGoMax = whenToGoMax;

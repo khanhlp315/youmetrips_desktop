@@ -7,9 +7,9 @@ import com.phuongkhanh.youmetrips.services.stores.HomeStore;
 import java.util.List;
 
 public interface FriendListService {
-    public List<Friend> fetchAllFriends(int userId, String jwt);
+    List<Friend> fetchAllFriends(int userId, String jwt);
 
-    public AuthenticationStore getAuthenticationStore();
+    AuthenticationStore getAuthenticationStore();
 
-    public HomeStore getHomeStore();
+    HomeStore getHomeStore();
 }
