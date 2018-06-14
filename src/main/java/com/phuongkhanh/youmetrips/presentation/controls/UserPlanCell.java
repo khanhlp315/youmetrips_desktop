@@ -3,6 +3,7 @@ package com.phuongkhanh.youmetrips.presentation.controls;
 import com.phuongkhanh.youmetrips.services.api.models.UserTrekkingPlan;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -26,9 +27,10 @@ public class UserPlanCell extends AnchorPane {
     @FXML
     private Label _lblHowLong;
 
-    public UserPlanCell(UserTrekkingPlan item)
+    public UserPlanCell(UserTrekkingPlan item, EventHandler clickEvent)
     {
         loadFXML();
+        setOnMouseClicked(clickEvent);
         Image image = new Image(item.getPlace().getCoverImageUrl(), true);
         image.progressProperty().addListener(new ChangeListener<Number>() {
             @Override
