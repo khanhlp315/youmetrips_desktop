@@ -8,7 +8,8 @@ public interface TrekkingPlaceHashtagsScreen extends JFXScreen {
     void hideContinue();
 
     void showError(String title, String message);
-
+    void returnPlace(int placeId);
+    void setLoading(boolean value);
     void addHashtag(String text);
 
     void removeHashtag(String hashtag);

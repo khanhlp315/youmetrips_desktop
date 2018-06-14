@@ -1,6 +1,7 @@
 package com.phuongkhanh.youmetrips.presentation.framework;
 
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.util.Stack;
 
@@ -38,6 +39,7 @@ public class JFXWindowBase implements JFXWindow {
         }
 
         _stage = stage;
+        _stage.initStyle(StageStyle.UTILITY);
 
         // reset navigation and show first screen
         _currentScreen = null;

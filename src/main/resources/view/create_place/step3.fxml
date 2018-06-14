@@ -27,7 +27,7 @@
                         <Insets top="24.0" />
                     </VBox.margin>
                 </AnchorPane>
-                <JFXListView fx:id="_listView" minHeight="200" orientation="HORIZONTAL" style="-fx-background-color: trasparent;">
+                <JFXListView fx:id="_listView" minHeight="320" style="-fx-background-color: trasparent;">
                     <VBox.margin>
                         <Insets top="24.0" />
                     </VBox.margin>
@@ -35,7 +35,7 @@
             </children>
         </VBox>
         <VBox alignment="CENTER">
-            <JFXButton fx:id="_btnNext" disable="false" onMouseClicked="#onNavigateToHashtags" minHeight="40.0" prefWidth="90.0"
+            <JFXButton fx:id="_btnNext" disable="true" onMouseClicked="#onNavigateToHashtags" minHeight="40.0" prefWidth="90.0"
                        ripplerFill="#ffffff42"  style="-fx-background-color: #1a535c; -fx-background-radius: 100;"
                        text="Next" textFill="WHITE">
                 <font>

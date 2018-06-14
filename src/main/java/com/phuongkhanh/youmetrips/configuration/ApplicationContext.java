@@ -87,10 +87,6 @@ import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_p
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_time.TrekkingPlanTimePresenter;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_time.TrekkingPlanTimeScreen;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_time.TrekkingPlanTimeScreenImpl;
-import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.TrekkingPlacePresenter;
-import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.TrekkingPlaceScreen;
-import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.TrekkingPlaceScreenImpl;
-import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.TrekkingPlaceService;
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_hashtags.TrekkingPlaceHashtagsPresenter;
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_hashtags.TrekkingPlaceHashtagsScreen;
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_hashtags.TrekkingPlaceHashtagsScreenImpl;
@@ -334,16 +330,6 @@ public interface ApplicationContext {
         }
 
         @Provides
-        static TrekkingPlaceScreen trekkingPlaceScreen(TrekkingPlacePresenter presenter) {
-            return new TrekkingPlaceScreenImpl(presenter);
-        }
-
-        @Provides
-        static TrekkingPlacePresenter trekkingPlacePresenter(TrekkingPlaceService service) {
-            return new TrekkingPlacePresenter(service);
-        }
-
-        @Provides
         static TrekkingPlaceHashtagsScreen trekkingPlaceHashtagsScreen(TrekkingPlaceHashtagsPresenter presenter) {
             return new TrekkingPlaceHashtagsScreenImpl(presenter);
         }
@@ -491,11 +477,6 @@ public interface ApplicationContext {
 
         @Provides
         static TrekkingPlanPreviewService trekkingPlanPreviewService() {
-            return new HomeServiceImpl(restApi(), authenticationStore(), homeStore());
-        }
-
-        @Provides
-        static TrekkingPlaceService trekkingPlaceService() {
             return new HomeServiceImpl(restApi(), authenticationStore(), homeStore());
         }
 

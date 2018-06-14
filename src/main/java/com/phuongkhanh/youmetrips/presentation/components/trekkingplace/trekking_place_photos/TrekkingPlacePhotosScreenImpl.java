@@ -5,15 +5,22 @@ import com.jfoenix.controls.JFXListView;
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_hashtags.TrekkingPlaceHashtagsScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import javafx.collections.FXCollections;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Orientation;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
 
 import javax.inject.Inject;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +31,8 @@ public class TrekkingPlacePhotosScreenImpl extends FXMLScreen
         implements TrekkingPlacePhotosScreen, Initializable {
 
     private TrekkingPlacePhotosPresenter _presenter;
-    private List<File> _listChosenImage;
+    private List<Image> _listChosenImage;
+    private List<File> _listChosenFile;
 
     @FXML
     private JFXButton _btnNext;
@@ -36,6 +44,7 @@ public class TrekkingPlacePhotosScreenImpl extends FXMLScreen
     public TrekkingPlacePhotosScreenImpl(TrekkingPlacePhotosPresenter presenter) {
         _presenter = presenter;
         _presenter.setView(this);
+        _listView.setOrientation(Orientation.VERTICAL);
     }
 
     @Override
@@ -50,21 +59,60 @@ public class TrekkingPlacePhotosScreenImpl extends FXMLScreen
 
     @Override
     public void showError(String title, String message) {
-
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
+    @SuppressWarnings("unchecked")
     @Override
-    public void addImage(File image) {
+    public void addImage(File imageFile) {
+        Image image = null;
+        try {
+            image = new Image(new FileInputStream(imageFile));
+        } catch (IOException e) {
+            showError("This is not an image", e.getMessage());
+        }
 
-        _listChosenImage.add(image);
-        _listView.setItems(FXCollections.observableArrayList(_listChosenImage.stream().map(file -> {
-            return new AnchorPane(new ImageView(new Image(file.toURI().toString())));
-        }).collect(Collectors.toList())));
+        if (image != null) {
+            _listChosenImage.add(image);
+            _listChosenFile.add(imageFile);
+
+            if(!isListEmpty(_listChosenFile))
+                _presenter.onCoverPhotoUpdated(_listChosenFile.get(0));
+
+            _listView.setItems(FXCollections.observableArrayList(_listChosenImage.stream().map(file -> {
+                AnchorPane pane = new AnchorPane();
+                Rectangle rectangle;
+                double ratio = 1;
+                if (_listChosenImage.indexOf(file) == 0) {
+                    ratio = 1 / (file.getWidth() / (getWindow().getStage().getWidth() - 50));
+                    rectangle = new Rectangle(file.getWidth() * ratio, file.getHeight() * ratio);
+                } else {
+                    if (file.getWidth() > (getWindow().getStage().getWidth() - 50) / 3) {
+                        ratio = 1 / (file.getWidth() / ((getWindow().getStage().getWidth() - 50) / 3));
+                    }
+                    rectangle = new Rectangle(file.getWidth() * ratio, file.getHeight() * ratio);
+                }
+                rectangle.setFill(new ImagePattern(file));
+                pane.getChildren().add(rectangle);
+//                pane.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+//                    @Override
+//                    public void handle(MouseEvent event) {
+//                        System.out.println(imageFile);
+//                        _presenter.requestRemoveImage(imageFile);
+//                    }
+//                });
+                return pane;
+            }).collect(Collectors.toList())));
+        }
     }
 
+    @SuppressWarnings("unchecked")
     @Override
-    public void removeImage(File image) {
-        _listChosenImage.remove(1);
+    public void removeImage(File imageFile) {
+        _listChosenImage.remove(imageFile);
         _listView.setItems(FXCollections.observableArrayList(_listChosenImage));
     }
 
@@ -85,7 +133,13 @@ public class TrekkingPlacePhotosScreenImpl extends FXMLScreen
 
     @FXML
     public void onNavigateToHashtags() {
-        _presenter.requestToNavigateToHashtags();
+        ArrayList<File> listPhotos = new ArrayList<>();
+        if (_listChosenFile.size() > 1) {
+            for (int i = 1; i <= _listChosenFile.size() - 1; i++) {
+                listPhotos.add(_listChosenFile.get(i));
+            }
+        }
+        _presenter.requestToNavigateToHashtags(_listChosenFile.get(0), listPhotos);
     }
 
     @FXML
@@ -111,5 +165,11 @@ public class TrekkingPlacePhotosScreenImpl extends FXMLScreen
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         _listChosenImage = new ArrayList<>();
+        _listChosenFile = new ArrayList<>();
+    }
+
+    private boolean isListEmpty(List<File> listFile)
+    {
+        return listFile.size() == 0;
     }
 }
