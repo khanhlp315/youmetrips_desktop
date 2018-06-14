@@ -225,7 +225,7 @@
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                                     </rowConstraints>
                                     <children>
-                                        <Label contentDisplay="RIGHT" text="5">
+                                        <Label contentDisplay="RIGHT" text="5" textFill="#1b535ce5">
                                             <padding>
                                                 <Insets right="4.0"/>
                                             </padding>
@@ -233,10 +233,11 @@
                                                 <Font size="13.0"/>
                                             </font>
                                             <graphic>
-                                                <FontAwesomeIconView glyphName="STAR" size="13"/>
+                                                <FontAwesomeIconView fill="#1b535ce7" glyphName="STAR" size="13"/>
                                             </graphic>
                                         </Label>
-                                        <Label contentDisplay="RIGHT" text="4" GridPane.rowIndex="1">
+                                        <Label contentDisplay="RIGHT" text="4" textFill="#1b535ce5"
+                                               GridPane.rowIndex="1">
                                             <padding>
                                                 <Insets right="4.0"/>
                                             </padding>
@@ -244,10 +245,11 @@
                                                 <Font size="13.0"/>
                                             </font>
                                             <graphic>
-                                                <FontAwesomeIconView glyphName="STAR" size="13"/>
+                                                <FontAwesomeIconView fill="#1b535ce7" glyphName="STAR" size="13"/>
                                             </graphic>
                                         </Label>
-                                        <Label contentDisplay="RIGHT" text="3" GridPane.rowIndex="2">
+                                        <Label contentDisplay="RIGHT" text="3" textFill="#1b535ce5"
+                                               GridPane.rowIndex="2">
                                             <padding>
                                                 <Insets right="4.0"/>
                                             </padding>
@@ -255,10 +257,11 @@
                                                 <Font size="13.0"/>
                                             </font>
                                             <graphic>
-                                                <FontAwesomeIconView glyphName="STAR" size="13"/>
+                                                <FontAwesomeIconView fill="#1b535ce7" glyphName="STAR" size="13"/>
                                             </graphic>
                                         </Label>
-                                        <Label contentDisplay="RIGHT" text="2" GridPane.rowIndex="3">
+                                        <Label contentDisplay="RIGHT" text="2" textFill="#1b535ce5"
+                                               GridPane.rowIndex="3">
                                             <padding>
                                                 <Insets right="4.0"/>
                                             </padding>
@@ -266,10 +269,11 @@
                                                 <Font size="13.0"/>
                                             </font>
                                             <graphic>
-                                                <FontAwesomeIconView glyphName="STAR" size="13"/>
+                                                <FontAwesomeIconView fill="#1b535ce7" glyphName="STAR" size="13"/>
                                             </graphic>
                                         </Label>
-                                        <Label contentDisplay="RIGHT" text="1" GridPane.rowIndex="4">
+                                        <Label contentDisplay="RIGHT" text="1" textFill="#1b535ce5"
+                                               GridPane.rowIndex="4">
                                             <padding>
                                                 <Insets right="4.0"/>
                                             </padding>
@@ -277,7 +281,7 @@
                                                 <Font size="13.0"/>
                                             </font>
                                             <graphic>
-                                                <FontAwesomeIconView glyphName="STAR" size="13"/>
+                                                <FontAwesomeIconView fill="#1b535ce7" glyphName="STAR" size="13"/>
                                             </graphic>
                                         </Label>
                                         <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1">
@@ -285,7 +289,7 @@
                                                 <Rectangle fx:id="_rec5Star" arcHeight="10.0" arcWidth="10.0"
                                                            fill="#1a535c" height="8.0" stroke="BLACK"
                                                            strokeType="INSIDE" strokeWidth="0.0" width="200.0"/>
-                                                <Label fx:id="_lbl5Star" text="0k">
+                                                <Label fx:id="_lbl5Star" text="0k" textFill="#1b535ce4">
                                                     <HBox.margin>
                                                         <Insets left="8.0"/>
                                                     </HBox.margin>
@@ -297,7 +301,7 @@
                                                 <Rectangle fx:id="_rec4Star" arcHeight="10.0" arcWidth="10.0"
                                                            fill="#1b535ccc" height="8.0" stroke="BLACK"
                                                            strokeType="INSIDE" strokeWidth="0.0" width="200.0"/>
-                                                <Label fx:id="_lbl4Star" text="0k">
+                                                <Label fx:id="_lbl4Star" text="0k" textFill="#1b535ce4">
                                                     <HBox.margin>
                                                         <Insets left="8.0"/>
                                                     </HBox.margin>
@@ -309,7 +313,7 @@
                                                 <Rectangle fx:id="_rec3Star" arcHeight="10.0" arcWidth="10.0"
                                                            fill="#1b535c99" height="8.0" stroke="BLACK"
                                                            strokeType="INSIDE" strokeWidth="0.0" width="200.0"/>
-                                                <Label fx:id="_lbl3Star" text="0k">
+                                                <Label fx:id="_lbl3Star" text="0k" textFill="#1b535ce4">
                                                     <HBox.margin>
                                                         <Insets left="8.0"/>
                                                     </HBox.margin>
@@ -321,7 +325,7 @@
                                                 <Rectangle fx:id="_rec2Star" arcHeight="10.0" arcWidth="10.0"
                                                            fill="#1b535c66" height="8.0" stroke="BLACK"
                                                            strokeType="INSIDE" strokeWidth="0.0" width="200.0"/>
-                                                <Label fx:id="_lbl2Star" text="0k">
+                                                <Label fx:id="_lbl2Star" text="0k" textFill="#1b535ce4">
                                                     <HBox.margin>
                                                         <Insets left="8.0"/>
                                                     </HBox.margin>
@@ -333,7 +337,7 @@
                                                 <Rectangle fx:id="_rec1Star" arcHeight="10.0" arcWidth="10.0"
                                                            fill="#1b535c33" height="8.0" stroke="BLACK"
                                                            strokeType="INSIDE" strokeWidth="0.0" width="200.0"/>
-                                                <Label fx:id="_lbl1Star" text="0k">
+                                                <Label fx:id="_lbl1Star" text="0k" textFill="#1b535ce4">
                                                     <HBox.margin>
                                                         <Insets left="8.0"/>
                                                     </HBox.margin>
