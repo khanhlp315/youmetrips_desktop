@@ -8,7 +8,7 @@
 <?import com.phuongkhanh.youmetrips.presentation.controls.TrekkingPlacePane?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.text.Font?>
-<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.control.ListView?>
 <TrekkingPlacePane step="4" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <trekkingPlaceNodes>
         <VBox alignment="TOP_CENTER" minHeight="410" prefWidth="284.0">
@@ -22,11 +22,11 @@
                     </padding>
                 </JFXTextField>
 
-                <JFXListView fx:id="_lsView" />
+                <ListView fx:id="_lsView" />
             </children>
         </VBox>
         <VBox alignment="CENTER">
-            <JFXButton fx:id="_btnNext" disable="true" minHeight="40.0" prefWidth="90.0"
+            <JFXButton fx:id="_btnNext" onMouseClicked="#onFinish" disable="true" minHeight="40.0" prefWidth="90.0"
                        ripplerFill="#ffffff42" style="-fx-background-color: #1a535c; -fx-background-radius: 100;"
                        text="Finish" textFill="WHITE">
                 <font>
