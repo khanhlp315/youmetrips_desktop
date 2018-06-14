@@ -3,10 +3,10 @@
 <?import com.phuongkhanh.youmetrips.presentation.controls.HomeDrawer?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.*?>
-<fx:root xmlns:fx="http://javafx.com/fxml/1" minHeight="490.0" minWidth="640.0" prefHeight="490.0" prefWidth="640.0"
+<fx:root xmlns:fx="http://javafx.com/fxml/1" minHeight="550.0" minWidth="720.0" prefHeight="550.0" prefWidth="720.0"
          type="javafx.scene.layout.GridPane" xmlns="http://javafx.com/javafx/8.0.121">
 
-    <!--<GridPane minHeight="490.0" minWidth="640.0" prefHeight="490.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">-->
+    <!--<GridPane minHeight="490.0" minWidth="640.0" prefHeight="550.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">-->
 
 
     <columnConstraints>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" style="-fx-background-color: white;"
+            xmlns="http://javafx.com/javafx/8.0.141" fx:controller="view.profile.FriendListItem">
+    <children>
+        <HBox alignment="CENTER">
+            <children>
+                <Rectangle fx:id="_rectAvatar" arcHeight="30.0" arcWidth="30.0" fill="DODGERBLUE" height="100.0"
+                           stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0"/>
+                <VBox alignment="CENTER">
+                    <children>
+                        <HBox alignment="CENTER_LEFT">
+                            <children>
+                                <Label fx:id="_lblFirstName" text="Firstname">
+                                    <font>
+                                        <Font name="System Bold" size="12.0"/>
+                                    </font>
+                                </Label>
+                                <Label fx:id="_lblLastName" text="Lastname">
+                                    <HBox.margin>
+                                        <Insets left="4.0"/>
+                                    </HBox.margin>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                            <children>
+                                <JFXButton fx:id="_btnAccept" layoutX="109.0" layoutY="168.0" prefHeight="30.0"
+                                           prefWidth="90.0" ripplerFill="#ffffff42"
+                                           style="-fx-background-color: #1a535c; -fx-background-radius: 100;"
+                                           text="ACCEPT" textFill="WHITE">
+                                    <font>
+                                        <Font size="10.0"/>
+                                    </font>
+                                </JFXButton>
+                                <JFXButton fx:id="_btnDelete" layoutX="12.0" layoutY="168.0" prefHeight="30.0"
+                                           prefWidth="90.0" ripplerFill="#ffffff42"
+                                           style="-fx-background-radius: 100; -fx-border-radius: 100; -fx-border-color: #1a535c;"
+                                           text="DELETE" textFill="#1a535c">
+                                    <font>
+                                        <Font size="10.0"/>
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets left="8.0"/>
+                                    </HBox.margin>
+                                </JFXButton>
+                            </children>
+                            <VBox.margin>
+                                <Insets top="8.0"/>
+                            </VBox.margin>
+                        </HBox>
+                    </children>
+                    <HBox.margin>
+                        <Insets left="8.0"/>
+                    </HBox.margin>
+                </VBox>
+            </children>
+            <padding>
+                <Insets bottom="8.0" left="8.0" right="8.0" top="8.0"/>
+            </padding>
+        </HBox>
+    </children>
+</AnchorPane>

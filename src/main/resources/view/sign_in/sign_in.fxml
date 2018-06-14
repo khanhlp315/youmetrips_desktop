@@ -50,7 +50,8 @@
                                      prefWidth="90.0" visible="false"/>
 
 
-                        <JFXButton layoutX="12.0" layoutY="168.0" onMouseClicked="#navigateToSignUp" prefHeight="38.0"
+                        <JFXButton fx:id="_btnCreate" layoutX="12.0" layoutY="168.0" onMouseClicked="#navigateToSignUp"
+                                   prefHeight="38.0"
                                    prefWidth="90.0" ripplerFill="#ffffff42"
                                    style="-fx-background-radius: 100; -fx-border-radius: 100; -fx-border-color: #1a535c;"
                                    text="CREATE" textFill="#1a535c">
