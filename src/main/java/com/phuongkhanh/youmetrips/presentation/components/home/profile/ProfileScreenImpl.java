@@ -10,6 +10,7 @@ import com.phuongkhanh.youmetrips.presentation.controls.UserPlanCell;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import com.phuongkhanh.youmetrips.presentation.windows.CreatePlaceWindow;
 import com.phuongkhanh.youmetrips.presentation.windows.CreatePlanWindow;
+import com.phuongkhanh.youmetrips.presentation.windows.EditProfileWindow;
 import com.phuongkhanh.youmetrips.services.api.models.Friend;
 import com.phuongkhanh.youmetrips.services.api.models.Profile;
 import javafx.collections.FXCollections;
@@ -38,6 +39,7 @@ public class ProfileScreenImpl extends FXMLScreen
     private final ProfilePresenter _presenter;
     private final Provider<CreatePlanWindow> _planWindow;
     private final Provider<CreatePlaceWindow> _placeWindow;
+    private final Provider<EditProfileWindow> _editProfileWindow;
 
     @FXML
     private Label _lblFirstName;
@@ -71,12 +73,13 @@ public class ProfileScreenImpl extends FXMLScreen
     private Rectangle _rectAvatar;
 
     @Inject
-    public ProfileScreenImpl(final ProfilePresenter presenter, Provider<CreatePlanWindow> planWindow, Provider<CreatePlaceWindow> placeWindow) {
+    public ProfileScreenImpl(final ProfilePresenter presenter, Provider<CreatePlanWindow> planWindow, Provider<CreatePlaceWindow> placeWindow, Provider<EditProfileWindow> editProfileWindow) {
         _presenter = presenter;
         _presenter.setView(this);
 
         _planWindow = planWindow;
         _placeWindow = placeWindow;
+        _editProfileWindow = editProfileWindow;
     }
 
     @Override
@@ -125,7 +128,9 @@ public class ProfileScreenImpl extends FXMLScreen
 
     @Override
     public void navigateToEditProfile() {
-        navigate(EditProfileScreenImpl.class);
+        EditProfileWindow editProfileWindow = _editProfileWindow.get();
+        editProfileWindow.attach(new Stage());
+        editProfileWindow.show();
     }
 
     @Override
@@ -193,7 +198,7 @@ public class ProfileScreenImpl extends FXMLScreen
 
     @FXML
     public void onEditProfileClicked() {
-        // _presenter.requestNavigateToEditProfile();
+        _presenter.requestNavigateToEditProfile();
     }
 
     @FXML

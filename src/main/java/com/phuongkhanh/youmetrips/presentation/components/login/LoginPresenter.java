@@ -156,7 +156,7 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
                 public void run() {
                     Platform.runLater(()-> getView().navigateToHome());
                 }
-            }, 5000);
+            }, 2500);
             //Platform.runLater(() -> getView().navigateToHome());
 
             //getView().navigateToHome();

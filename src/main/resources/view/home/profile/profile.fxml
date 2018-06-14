@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import com.phuongkhanh.youmetrips.presentation.controls.LoadingPane?>
-<HomePane fx:id="_homePane" onRefreshClicked="#refresh" onCreatePlaceClicked="#onCreateTrekkingPlaceClicked" onCreatePlanClicked="#onCreateTrekkingPlanClicked" onEditProfileClicked="#onEditProfileClicked" onFriendRequestClicked="#onFriendRequestClicked" onPlaceClicked="#onPlaceClicked" onPlanClicked="#onPlanClicked" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<HomePane fx:id="_homePane"  onRefreshClicked="#refresh" onCreatePlaceClicked="#onCreateTrekkingPlaceClicked" onCreatePlanClicked="#onCreateTrekkingPlanClicked" onEditProfileClicked="#onEditProfileClicked" onFriendRequestClicked="#onFriendRequestClicked" onPlaceClicked="#onPlaceClicked" onPlanClicked="#onPlanClicked" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <homeNode>
         <VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="_profileBox" style="-fx-background-color: f5f7fb;"
               xmlns="http://javafx.com/javafx/8.0.121">

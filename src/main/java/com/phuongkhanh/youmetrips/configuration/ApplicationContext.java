@@ -12,10 +12,10 @@ import com.phuongkhanh.youmetrips.presentation.components.home.friend_requests.F
 import com.phuongkhanh.youmetrips.presentation.components.home.friend_requests.FriendRequestsScreen;
 import com.phuongkhanh.youmetrips.presentation.components.home.friend_requests.FriendRequestsScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.home.friend_requests.FriendRequestsService;
-import com.phuongkhanh.youmetrips.presentation.components.home.place_details.PlaceDetailsPresenter;
-import com.phuongkhanh.youmetrips.presentation.components.home.place_details.PlaceDetailsScreen;
-import com.phuongkhanh.youmetrips.presentation.components.home.place_details.PlaceDetailsScreenImpl;
-import com.phuongkhanh.youmetrips.presentation.components.home.place_details.PlaceDetailsService;
+import com.phuongkhanh.youmetrips.presentation.components.place_details.PlaceDetailsPresenter;
+import com.phuongkhanh.youmetrips.presentation.components.place_details.PlaceDetailsScreen;
+import com.phuongkhanh.youmetrips.presentation.components.place_details.PlaceDetailsScreenImpl;
+import com.phuongkhanh.youmetrips.presentation.components.place_details.PlaceDetailsService;
 import com.phuongkhanh.youmetrips.presentation.components.home.places.PlacePresenter;
 import com.phuongkhanh.youmetrips.presentation.components.home.places.PlaceScreen;
 import com.phuongkhanh.youmetrips.presentation.components.home.places.PlaceScreenImpl;
@@ -120,7 +120,7 @@ public interface ApplicationContext {
     HomeWindow homeWindow();
     CreatePlanWindow createPlanWindow();
     CreatePlaceWindow createPlaceWindow();
-    EditProfileWindow editProfileWindow();
+    PlaceDetailsWindow creatPlaceDetailsWindow();
 
     @Module
     static class PresentationModule {
@@ -205,8 +205,8 @@ public interface ApplicationContext {
         }
 
         @Provides
-        static FriendRequestsScreen friendRequestsScreen(FriendRequestsPresenter presenter, Provider<CreatePlanWindow> planWindowProvider, Provider<CreatePlaceWindow> placeWindowProvider) {
-            return new FriendRequestsScreenImpl(presenter, planWindowProvider, placeWindowProvider);
+        static FriendRequestsScreen friendRequestsScreen(FriendRequestsPresenter presenter, Provider<CreatePlanWindow> planWindow, Provider<CreatePlaceWindow> placeWindow) {
+            return new FriendRequestsScreenImpl(presenter, planWindow, placeWindow);
         }
 
         @Provides
@@ -215,8 +215,8 @@ public interface ApplicationContext {
         }
 
         @Provides
-        static PlaceDetailsScreen placeDetailsScreen(PlaceDetailsPresenter presenter) {
-            return new PlaceDetailsScreenImpl(presenter);
+        static PlaceDetailsScreen placeDetailsScreen(PlaceDetailsPresenter presenter, Provider<CreatePlanWindow> planWindowProvider) {
+            return new PlaceDetailsScreenImpl(presenter, planWindowProvider);
         }
 
         @Provides
@@ -225,8 +225,8 @@ public interface ApplicationContext {
         }
 
         @Provides
-        static PlaceScreen placeScreen(PlacePresenter presenter, Provider<CreatePlanWindow> planWindowProvider, Provider<CreatePlaceWindow> placeWindowProvider) {
-            return new PlaceScreenImpl(presenter, planWindowProvider, placeWindowProvider);
+        static PlaceScreen placeScreen(PlacePresenter presenter, Provider<CreatePlanWindow> planWindowProvider, Provider<CreatePlaceWindow> placeWindowProvider, Provider<PlaceDetailsWindow> placeDetailsWindowProvider) {
+            return new PlaceScreenImpl(presenter, planWindowProvider, placeWindowProvider, placeDetailsWindowProvider);
         }
 
         @Provides
@@ -245,8 +245,8 @@ public interface ApplicationContext {
         }
 
         @Provides
-        static ProfileScreen profileScreen(ProfilePresenter presenter, Provider<CreatePlanWindow> planWindowProvider, Provider<CreatePlaceWindow> placeWindowProvider) {
-            return new ProfileScreenImpl(presenter, planWindowProvider, placeWindowProvider);
+        static ProfileScreen profileScreen(ProfilePresenter presenter, Provider<CreatePlanWindow> planWindowProvider, Provider<CreatePlaceWindow> placeWindowProvider, Provider<EditProfileWindow> editProfileWindowProvider) {
+            return new ProfileScreenImpl(presenter, planWindowProvider, placeWindowProvider, editProfileWindowProvider);
         }
 
         @Provides

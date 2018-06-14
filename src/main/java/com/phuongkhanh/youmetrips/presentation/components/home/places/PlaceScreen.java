@@ -25,4 +25,6 @@ public interface PlaceScreen extends JFXScreen {
     void onLiked(int id);
 
     void onUnliked(int id);
+
+    void navigateToPlaceDetails();
 }
