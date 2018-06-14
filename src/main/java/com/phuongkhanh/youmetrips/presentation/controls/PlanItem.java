@@ -15,44 +15,32 @@ import static com.phuongkhanh.youmetrips.utils.CommonUtils.getNeutralFlag;
 
 public class PlanItem extends AnchorPane {
 
-    @FXML
-    private Label _lblFirstName;
-
-    @FXML
-    private Label _lblLastName;
-
-    @FXML
-    private Label _lblComments;
-
-    @FXML
-    private Label _lblStars;
-
-    @FXML
-    private Label _lblDateRange;
-
-    @FXML
-    private Label _lblTimeRange;
-
-    @FXML
-    private Label _lblOccupation;
-
-    @FXML
-    private Label _lblPlaceName;
-
-    @FXML
-    private Image _imageCover;
-
-    @FXML
-    private Circle _cirAvatar;
-
-    @FXML
-    private Circle _cirCountry;
-
-    private String _avatarUrl;
-    private String _countryFlagUrl;
-
     private static FXMLLoader fxmlLoader = new FXMLLoader(PlanItem.class.getClassLoader().getResource(
             "view/home/plans/plan_item.fxml"));
+    @FXML
+    private Label _lblFirstName;
+    @FXML
+    private Label _lblLastName;
+    @FXML
+    private Label _lblComments;
+    @FXML
+    private Label _lblStars;
+    @FXML
+    private Label _lblDateRange;
+    @FXML
+    private Label _lblTimeRange;
+    @FXML
+    private Label _lblOccupation;
+    @FXML
+    private Label _lblPlaceName;
+    @FXML
+    private Image _imageCover;
+    @FXML
+    private Circle _cirAvatar;
+    @FXML
+    private Circle _cirCountry;
+    private String _avatarUrl;
+    private String _countryFlagUrl;
 
 
     public PlanItem() {
@@ -101,28 +89,32 @@ public class PlanItem extends AnchorPane {
         _countryFlagUrl = userNationalityFlagUrl;
     }
 
-    void setUserFirstName(String value) {
-        _lblFirstName.setText(value);
-    }
-
     String getUserFirstName() {
         return _lblFirstName.getText();
     }
 
-    void setUserLastName(String value) {
-        _lblLastName.setText(value);
+    void setUserFirstName(String value) {
+        _lblFirstName.setText(value);
     }
 
     String getUserLastName() {
         return _lblLastName.getText();
     }
 
-    void setOccupation(String value) {
-        _lblOccupation.setText(value);
+    void setUserLastName(String value) {
+        _lblLastName.setText(value);
     }
 
     String getOccupation() {
         return _lblOccupation.getText();
+    }
+
+    void setOccupation(String value) {
+        _lblOccupation.setText(value);
+    }
+
+    String getUserAvatarUrl() {
+        return _avatarUrl;
     }
 
     void setUserAvatarUrl(String value) {
@@ -130,44 +122,40 @@ public class PlanItem extends AnchorPane {
         _cirAvatar.setFill(new ImagePattern(new Image(value == null ? getNeutralAvatar() : value)));
     }
 
-    String getUserAvatarUrl() {
-        return _avatarUrl;
-    }
-
     void setUserNationalityFlagUrl(String value) {
         _countryFlagUrl = value;
         _cirCountry.setFill(new ImagePattern(new Image(value == null ? getNeutralFlag() : value)));
-    }
-
-    void setPlaceName(String value) {
-        _lblPlaceName.setText(value);
     }
 
     String getPlaceName() {
         return _lblPlaceName.getText();
     }
 
-    void setHotelStars(int value) {
-        _lblStars.setText(String.valueOf(value));
+    void setPlaceName(String value) {
+        _lblPlaceName.setText(value);
     }
 
     int getHotelStars() {
         return Integer.parseInt(_lblStars.getText());
     }
 
-    void setDateRange(String value) {
-        _lblDateRange.setText(value);
+    void setHotelStars(int value) {
+        _lblStars.setText(String.valueOf(value));
     }
 
     String getDateRange() {
         return _lblDateRange.getText();
     }
 
-    void setTimeRange(String value) {
-        _lblTimeRange.setText(value);
+    void setDateRange(String value) {
+        _lblDateRange.setText(value);
     }
 
     String getTimeRange() {
         return _lblTimeRange.getText();
+    }
+
+    void setTimeRange(String value) {
+        _lblTimeRange.setText(value);
     }
 }

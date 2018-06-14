@@ -188,7 +188,7 @@ public class ProfileScreenImpl extends FXMLScreen
 
     @FXML
     public void onCreateTrekkingPlaceClicked() {
-          _presenter.requestNavigateToCreateTrekkingPlace();
+        _presenter.requestNavigateToCreateTrekkingPlace();
     }
 
     @FXML

@@ -10,5 +10,6 @@ public interface TrekkingPlaceLocationScreen extends JFXScreen {
     void showMap();
 
     void showError(String title, String message);
+
     void navigateToPhotos();
 }

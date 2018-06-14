@@ -72,8 +72,7 @@ public class TrekkingPlaceLocationScreenImpl extends FXMLScreen
     }
 
     @FXML
-    public void onNavigateToPhotos()
-    {
+    public void onNavigateToPhotos() {
         _presenter.requestToNavigateToPhotos(_tfPlace.getText());
     }
 

@@ -118,7 +118,18 @@ public class HomeServiceImpl implements
 
     @Override
     public List<FriendRequest> fetchAllFriendRequests(int userId, String jwt) {
-        return null;
+        try{
+            return _api.getAllFriendRequests(userId, jwt);
+        } catch (ApiCodedException e) {
+            switch (e.getError().getErrorCode()) {
+                case "com.youmetrips.server.core.exceptions.ExpiredJwtException":
+                    throw new ExpiredJwtException();
+                case "com.youmetrips.server.core.exceptions.InvalidJwtException":
+                    throw new InvalidJwtException();
+                default:
+                    throw e;
+            }
+        }
     }
 
     @Override

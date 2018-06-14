@@ -386,14 +386,14 @@ public class RestApi {
      * "userAvatarUrl": "string"
      * }
      */
-    public void getAllFriendRequests(int userId, String jwt) {
+    public List<FriendRequest> getAllFriendRequests(int userId, String jwt) {
         Response response = executeGet(
-                "user/" + userId + "/friendrequests",
+                "users/" + userId + "/friendrequests",
                 jwt
         );
         validateResponse(response);
 
-        return;
+        return parseResponseJsonBodyAsList(response, FriendRequest.class);
     }
 
     /**

@@ -8,7 +8,17 @@ import java.util.List;
 public interface FriendRequestsScreen extends JFXScreen {
     void updateRequests(List<FriendRequest> requests);
 
-    void removeRequest(int id);
-
     void showError(String title, String message);
+
+    void navigateToPlan();
+
+    void navigateToProfile();
+
+    void navigateToEditProfile();
+
+    void navigateToCreateTrekkingPlan();
+
+    void navigateToCreateTrekkingPlace();
+
+    void navigateToPlace();
 }
