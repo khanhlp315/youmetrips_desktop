@@ -10,9 +10,16 @@ import com.phuongkhanh.youmetrips.presentation.components.home.profile.ProfileSe
 import com.phuongkhanh.youmetrips.presentation.components.plandetails.PlanDetailsService;
 import com.phuongkhanh.youmetrips.presentation.components.planlist.PlanListService;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.TrekkingPlanService;
+import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_hotel.TrekkingPlanHotelService;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_place.TrekkingPlanPlaceService;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_preview.TrekkingPlanPreviewService;
+import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_stay.TrekkingPlanStayService;
+import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_time.TrekkingPlanTimeService;
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.TrekkingPlaceService;
+import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_hashtags.TrekkingPlaceHashtagsService;
+import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_location.TrekkingPlaceLocationService;
+import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_name.TrekkingPlaceNameService;
+import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_photos.TrekkingPlacePhotosService;
 import com.phuongkhanh.youmetrips.presentation.exceptions.ExpiredJwtException;
 import com.phuongkhanh.youmetrips.presentation.exceptions.InvalidJwtException;
 import com.phuongkhanh.youmetrips.services.api.RestApi;
@@ -31,19 +38,27 @@ public class HomeServiceImpl implements
         FriendRequestsService,
         TrekkingPlanService,
         TrekkingPlaceService,
-        TrekkingPlanPlaceService,
-        TrekkingPlanPreviewService,
         ProfileService,
         PlanListService,
         EditProfileService,
         PlaceDetailsService,
         PlanDetailsService,
-        FriendListService {
+        FriendListService,
+        TrekkingPlaceNameService,
+        TrekkingPlaceLocationService,
+        TrekkingPlacePhotosService,
+        TrekkingPlaceHashtagsService,
+        TrekkingPlanPlaceService,
+        TrekkingPlanTimeService,
+        TrekkingPlanStayService,
+        TrekkingPlanHotelService,
+        TrekkingPlanPreviewService
+{
     private final RestApi _api;
     private final HomeStore _homeStore;
     private final AuthenticationStore _authenticationStore;
 
-    public HomeServiceImpl(final RestApi api, final AuthenticationStore authenticationStore, final HomeStore homeStore) {
+    public HomeServiceImpl(final RestApi api, final AuthenticationStore authenticationStore, final  HomeStore homeStore) {
         _api = api;
         _authenticationStore = authenticationStore;
         _homeStore = homeStore;
@@ -53,13 +68,15 @@ public class HomeServiceImpl implements
     public void updateUserProfile(EditedUserProfile profile, int userId, String jwt) {
         try {
             _api.updateProfile(profile, userId, jwt);
-        } catch (ApiCodedException e) {
-            if (e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.ExpiredJwtException")) {
+        }
+        catch(ApiCodedException e){
+            if(e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.ExpiredJwtException")){
                 throw new ExpiredJwtException();
             }
-            if (e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidJwtException")) {
+            if(e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidJwtException")){
                 throw new InvalidJwtException();
-            } else {
+            }
+            else{
                 throw e;
             }
         }
@@ -69,7 +86,8 @@ public class HomeServiceImpl implements
     public List<Country> getAllCountries() {
         try {
             return _api.getAllCountries();
-        } catch (ApiCodedException e) {
+        }
+        catch(ApiCodedException e){
             throw e;
         }
     }
@@ -78,13 +96,15 @@ public class HomeServiceImpl implements
     public void acceptRequest(int fromUserId, int userId, String jwt) {
         try {
             _api.acceptFriendRequest(fromUserId, userId, jwt);
-        } catch (ApiCodedException e) {
-            if (e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.ExpiredJwtException")) {
+        }
+        catch(ApiCodedException e){
+            if(e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.ExpiredJwtException")){
                 throw new ExpiredJwtException();
             }
-            if (e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidJwtException")) {
+            if(e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidJwtException")){
                 throw new InvalidJwtException();
-            } else {
+            }
+            else{
                 throw e;
             }
         }
@@ -94,13 +114,15 @@ public class HomeServiceImpl implements
     public void declineRequest(int fromUserId, int userId, String jwt) {
         try {
             _api.declineFriendRequest(fromUserId, userId, jwt);
-        } catch (ApiCodedException e) {
-            if (e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.ExpiredJwtException")) {
+        }
+        catch(ApiCodedException e){
+            if(e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.ExpiredJwtException")){
                 throw new ExpiredJwtException();
             }
-            if (e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidJwtException")) {
+            if(e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidJwtException")){
                 throw new InvalidJwtException();
-            } else {
+            }
+            else{
                 throw e;
             }
         }
@@ -115,7 +137,8 @@ public class HomeServiceImpl implements
     public void review(int rate, String message, int userId, int placeId, String jwt) {
         try {
             _api.review(placeId, rate, message, userId, jwt);
-        } catch (ApiCodedException e) {
+        }
+        catch(ApiCodedException e){
             switch (e.getError().getErrorCode()) {
                 case "com.youmetrips.server.core.exceptions.ExpiredJwtException":
                     throw new ExpiredJwtException();
@@ -130,8 +153,9 @@ public class HomeServiceImpl implements
     @Override
     public void addTag(CreateTag tag, int userId, int placeId, String jwt) {
         try {
-            _api.addTag(placeId, tag.getTag(), tag.getType(), userId, jwt);
-        } catch (ApiCodedException e) {
+            _api.addTag(placeId, tag.getTag(), tag.getType(),  userId, jwt);
+        }
+        catch(ApiCodedException e){
             switch (e.getError().getErrorCode()) {
                 case "com.youmetrips.server.core.exceptions.ExpiredJwtException":
                     throw new ExpiredJwtException();
@@ -145,15 +169,17 @@ public class HomeServiceImpl implements
 
     @Override
     public List<Place> fetchPlaces(int userId, String jwt) {
-        try {
+        try{
             return _api.getAllPlaces(userId, jwt);
-        } catch (ApiCodedException e) {
-            if (e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.ExpiredJwtException")) {
+        }
+        catch(ApiCodedException e){
+            if(e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.ExpiredJwtException")){
                 throw new ExpiredJwtException();
             }
-            if (e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidJwtException")) {
+            if(e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidJwtException")){
                 throw new InvalidJwtException();
-            } else {
+            }
+            else{
                 throw e;
             }
         }
@@ -163,13 +189,15 @@ public class HomeServiceImpl implements
     public void like(int userId, int placeId, String jwt) {
         try {
             _api.like(placeId, userId, jwt);
-        } catch (ApiCodedException e) {
-            if (e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.ExpiredJwtException")) {
+        }
+        catch(ApiCodedException e){
+            if(e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.ExpiredJwtException")){
                 throw new ExpiredJwtException();
             }
-            if (e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidJwtException")) {
+            if(e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidJwtException")){
                 throw new InvalidJwtException();
-            } else {
+            }
+            else{
                 throw e;
             }
         }
@@ -179,13 +207,15 @@ public class HomeServiceImpl implements
     public void unlike(int userId, int placeId, String jwt) {
         try {
             _api.unlikePlace(placeId, userId, jwt);
-        } catch (ApiCodedException e) {
-            if (e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.ExpiredJwtException")) {
+        }
+        catch(ApiCodedException e){
+            if(e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.ExpiredJwtException")){
                 throw new ExpiredJwtException();
             }
-            if (e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidJwtException")) {
+            if(e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidJwtException")){
                 throw new InvalidJwtException();
-            } else {
+            }
+            else{
                 throw e;
             }
         }
@@ -193,15 +223,17 @@ public class HomeServiceImpl implements
 
     @Override
     public List<RelevantPlan> fetchPlans(int userId, String jwt) {
-        try {
+        try{
             return _api.getRelevantTrekkingPlans(userId, jwt);
-        } catch (ApiCodedException e) {
-            if (e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.ExpiredJwtException")) {
+        }
+        catch(ApiCodedException e){
+            if(e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.ExpiredJwtException")){
                 throw new ExpiredJwtException();
             }
-            if (e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidJwtException")) {
+            if(e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidJwtException")){
                 throw new InvalidJwtException();
-            } else {
+            }
+            else{
                 throw e;
             }
         }
@@ -209,15 +241,17 @@ public class HomeServiceImpl implements
 
     @Override
     public void sendFriendRequest(int toUserId, int userId, String jwt) {
-        try {
+        try{
             _api.sendFriendRequests(toUserId, userId, jwt);
-        } catch (ApiCodedException e) {
-            if (e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.ExpiredJwtException")) {
+        }
+        catch(ApiCodedException e){
+            if(e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.ExpiredJwtException")){
                 throw new ExpiredJwtException();
             }
-            if (e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidJwtException")) {
+            if(e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidJwtException")){
                 throw new InvalidJwtException();
-            } else {
+            }
+            else{
                 throw e;
             }
         }
@@ -225,15 +259,17 @@ public class HomeServiceImpl implements
 
     @Override
     public Profile getUserProfile(int userId, String jwt) {
-        try {
+        try{
             return _api.getProfile(userId, jwt);
-        } catch (ApiCodedException e) {
-            if (e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.ExpiredJwtException")) {
+        }
+        catch(ApiCodedException e){
+            if(e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.ExpiredJwtException")){
                 throw new ExpiredJwtException();
             }
-            if (e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidJwtException")) {
+            if(e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidJwtException")){
                 throw new InvalidJwtException();
-            } else {
+            }
+            else{
                 throw e;
             }
         }
@@ -241,9 +277,10 @@ public class HomeServiceImpl implements
 
     @Override
     public List<Friend> fetchAllFriends(int userId, String jwt) {
-        try {
+        try{
             return _api.getFriends(userId, jwt);
-        } catch (ApiCodedException e) {
+        }
+        catch(ApiCodedException e){
             switch (e.getError().getErrorCode()) {
                 case "com.youmetrips.server.core.exceptions.ExpiredJwtException":
                     throw new ExpiredJwtException();
@@ -259,14 +296,18 @@ public class HomeServiceImpl implements
     public int createTrekkingPlan(int userId, String jwt, CreatePlan trekkingPlan) {
         try {
             return _api.createTrekkingPlan(trekkingPlan, userId, jwt);
-        } catch (ApiCodedException e) {
-            if (e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.ExpiredJwtException")) {
+        }
+        catch(ApiCodedException e){
+            if(e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.ExpiredJwtException")){
                 throw new ExpiredJwtException();
-            } else if (e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidJwtException")) {
+            }
+            else if(e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidJwtException")){
                 throw new InvalidJwtException();
-            } else if (e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.ExistedUserTrekkingPlanToPlaceException")) {
+            }
+            else if(e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.ExistedUserTrekkingPlanToPlaceException")){
                 throw new ExistedUserTrekkingPlanToPlaceException();
-            } else {
+            }
+            else{
                 throw e;
             }
         }
@@ -276,13 +317,15 @@ public class HomeServiceImpl implements
     public int createPlace(int userId, String jwt, CreatePlace place) {
         try {
             return _api.createPlace(place, userId, jwt);
-        } catch (ApiCodedException e) {
-            if (e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.ExpiredJwtException")) {
+        }
+        catch(ApiCodedException e){
+            if(e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.ExpiredJwtException")){
                 throw new ExpiredJwtException();
             }
-            if (e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidJwtException")) {
+            if(e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidJwtException")){
                 throw new InvalidJwtException();
-            } else {
+            }
+            else{
                 throw e;
             }
         }
@@ -292,14 +335,16 @@ public class HomeServiceImpl implements
     public String uploadFile(int userId, String jwt, File file) {
         try {
             return _api.uploadFile(file, userId, jwt);
-        } catch (ApiCodedException e) {
+        }
+        catch(ApiCodedException e){
 
-            if (e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.ExpiredJwtException")) {
+            if(e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.ExpiredJwtException")){
                 throw new ExpiredJwtException();
             }
-            if (e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidJwtException")) {
+            if(e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidJwtException")){
                 throw new InvalidJwtException();
-            } else {
+            }
+            else{
                 throw e;
             }
         }
@@ -312,15 +357,17 @@ public class HomeServiceImpl implements
 
     @Override
     public PlaceDetails getPlaceDetails(int userId, int placeId, String jwt) {
-        try {
+        try{
             return _api.getPlaceDetails(placeId, userId, jwt);
-        } catch (ApiCodedException e) {
-            if (e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.ExpiredJwtException")) {
+        }
+        catch(ApiCodedException e){
+            if(e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.ExpiredJwtException")){
                 throw new ExpiredJwtException();
             }
-            if (e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidJwtException")) {
+            if(e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidJwtException")){
                 throw new InvalidJwtException();
-            } else {
+            }
+            else{
                 throw e;
             }
         }
@@ -340,7 +387,8 @@ public class HomeServiceImpl implements
     public List<Comment> fetchComments(int userId, int trekkingPlanId, String jwt) {
         try {
             return _api.getComments(trekkingPlanId, userId, jwt);
-        } catch (ApiCodedException e) {
+        }
+        catch(ApiCodedException e){
             switch (e.getError().getErrorCode()) {
                 case "com.youmetrips.server.core.exceptions.ExpiredJwtException":
                     throw new ExpiredJwtException();
@@ -356,12 +404,15 @@ public class HomeServiceImpl implements
     public void postComment(String comment, int userId, int trekkingPlanId, String jwt) {
         try {
             _api.sendComment(comment, trekkingPlanId, userId, jwt);
-        } catch (ApiCodedException e) {
-            if (e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.ExpiredJwtException")) {
+        }
+        catch(ApiCodedException e){
+            if(e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.ExpiredJwtException")){
                 throw new ExpiredJwtException();
-            } else if (e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidJwtException")) {
+            }
+            else if(e.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.InvalidJwtException")){
                 throw new InvalidJwtException();
-            } else {
+            }
+            else{
                 throw e;
             }
         }

@@ -2,9 +2,17 @@ package com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekkin
 
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
 
+import javax.inject.Inject;
 import java.io.File;
 
 public class TrekkingPlacePhotosPresenter extends PresenterBase<TrekkingPlacePhotosScreen> {
+
+    private final TrekkingPlacePhotosService _service;
+
+    @Inject
+    public TrekkingPlacePhotosPresenter(TrekkingPlacePhotosService service) {
+        _service = service;
+    }
 
     public void onCoverPhotoUpdated(File selectedPhoto) {
         assert (getView() != null);
@@ -41,4 +49,11 @@ public class TrekkingPlacePhotosPresenter extends PresenterBase<TrekkingPlacePho
         assert (getView() != null);
         getView().removeCoverImage();
     }
+
+    public void requestToNavigateToHashtags() {
+        assert (getView() != null);
+
+        getView().navigateToHashTags();
+    }
 }
+

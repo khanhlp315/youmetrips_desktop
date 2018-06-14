@@ -1,16 +1,30 @@
 package com.phuongkhanh.youmetrips.presentation.controls;
 
 import com.phuongkhanh.youmetrips.services.api.models.Place;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 
+import java.awt.*;
 import java.io.IOException;
+import java.net.URL;
+
+import static com.phuongkhanh.youmetrips.utils.CommonUtils.getNeutralAvatar;
 
 public class PlaceCell extends ListCell<Place> {
+
+    /***************************************************************************
+     *                                                                         *
+     * Binding Properties from FXML                                                             *
+     *                                                                         *
+     **************************************************************************/
     @FXML
     private ImageView _ivPlaceImg;
 
@@ -26,12 +40,33 @@ public class PlaceCell extends ListCell<Place> {
     @FXML
     private Label _lblJob1;
 
+    @FXML
+    private ImageView _ivHeartImage;
+
+
+    /***************************************************************************
+     *                                                                         *
+     * Properties                                                              *
+     *                                                                         *
+     **************************************************************************/
     private Place _currentPlace;
 
+
+    /***************************************************************************
+     *                                                                         *
+     * Constructor                                                             *
+     *                                                                         *
+     **************************************************************************/
     public PlaceCell() {
         loadFXML();
-
     }
+
+
+    /***************************************************************************
+     *                                                                         *
+     * Methods                                                                 *
+     *                                                                         *
+     **************************************************************************/
 
     private void loadFXML() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource(
@@ -46,6 +81,7 @@ public class PlaceCell extends ListCell<Place> {
         }
     }
 
+    /** */
     @Override
     protected void updateItem(Place item, boolean empty) {
         super.updateItem(item, empty);
@@ -55,18 +91,30 @@ public class PlaceCell extends ListCell<Place> {
         } else {
             if (_currentPlace == null || !item.equals(_currentPlace)) {
                 _currentPlace = item;
-                //_ivPlaceImg.setImage(null);
-                //_ivPlaceImg.setImage(new Image(imageUrl));
+                Image image = new Image(item.getCoverImageUrl() != null ? item.getCoverImageUrl() : getNeutralAvatar(), true);
+                image.progressProperty().addListener(new ChangeListener<Number>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                        if (newValue.doubleValue() == 1.0) {
+                            _ivPlaceImg.setImage(image);
+                            if (item.isLiked()) {
+                                Image heartImage = new Image(this.getClass().getClassLoader().getResource("images/loved.png").toString());
+                                _ivHeartImage.setImage(heartImage);
+                            } else {
+                                Image heartImage = new Image(this.getClass().getClassLoader().getResource("images/love.png").toString());
+                                _ivHeartImage.setImage(heartImage);
+                            }
+                        }
+                    }
+                });
                 _lblPlaceName.setText(item.getName());
-                String allTags = "";
-                for (String hashtag : item.getTags()) {
-                    allTags += "#" + hashtag + " ";
-                }
-                _lblHashtag.setText(allTags);
+                StringBuilder allTags = new StringBuilder();
+                for (String hashtag : item.getTags())
+                    allTags.append("#").append(hashtag).append(" ");
+                _lblHashtag.setText(allTags.toString());
                 _lblPeopleCount.setText(String.valueOf(item.getNumberOfPeopleGoing()));
                 _lblJob1.setText(String.valueOf(item.getNumberOfLikes()));
             }
-
             setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
         }
     }

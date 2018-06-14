@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXTextField?>
+<?import com.phuongkhanh.youmetrips.presentation.controls.TrekkingPlacePane?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
-<VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" prefWidth="284.0" xmlns="http://javafx.com/javafx/8.0.141">
-    <children>
-        <Label text="How can we call that place?" textFill="#828282"/>
-        <JFXTextField fx:id="_tfPlace" focusColor="#ffba33" labelFloat="true" prefHeight="31.0" prefWidth="190.0"
-                      promptText="A name for the place" unFocusColor="#ccd0d2">
-            <padding>
-                <Insets left="64.0" right="64.0" top="24.0"/>
-            </padding>
-        </JFXTextField>
-    </children>
-</VBox>
+
+<?import com.jfoenix.controls.JFXButton?>
+<TrekkingPlacePane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+    <trekkingPlaceNodes>
+        <VBox alignment="CENTER" prefWidth="284.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+            <children>
+                <Label text="How can we call that place?" textFill="#828282" />
+                <JFXTextField fx:id="_tfPlace" focusColor="#ffba33" labelFloat="true" prefHeight="31.0" prefWidth="190.0" promptText="A name for the place" unFocusColor="#ccd0d2">
+                    <padding>
+                        <Insets left="64.0" right="64.0" top="24.0" />
+                    </padding>
+                </JFXTextField>
+            </children>
+        </VBox>
+    </trekkingPlaceNodes>
+   <children>
+      <JFXButton fx:id="_btnNext" disable="true" onMouseClicked="#onNavigateToLocation" mnemonicParsing="false" text="Next" />
+   </children>
+</TrekkingPlacePane>

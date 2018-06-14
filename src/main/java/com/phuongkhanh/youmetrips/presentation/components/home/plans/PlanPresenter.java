@@ -91,6 +91,12 @@ public class PlanPresenter extends PresenterBase<PlanScreen> {
         getView().navigateToCreateTrekkingPlan();
     }
 
+    public void requestNavigateToCreateTrekkingPlace()
+    {
+        assert (getView() != null);
+        getView().navigateToCreateTrekkingPlace();
+    }
+
     public void refreshPlans() {
         Task<List<RelevantPlan>> task = new Task<List<RelevantPlan>>() {
             @Override
