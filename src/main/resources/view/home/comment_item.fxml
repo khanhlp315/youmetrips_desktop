@@ -35,7 +35,7 @@
 
         <HBox>
             <HBox.margin>
-                <Insets left="-270" top="5" />
+                <Insets left="-250" top="5" />
             </HBox.margin>
             <Text fx:id="_txtUserFirstName" text="PhuongKhanh" fill="#8A8A8A" style="-fx-font-weight: bold"/>
             <Text text=" " fill="#8A8A8A"/>
