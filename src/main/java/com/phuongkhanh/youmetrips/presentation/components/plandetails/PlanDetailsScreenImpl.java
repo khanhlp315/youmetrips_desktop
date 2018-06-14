@@ -13,14 +13,21 @@ import java.util.ResourceBundle;
 public class PlanDetailsScreenImpl extends FXMLScreen
         implements PlanDetailsScreen, Initializable {
 
+    PlanDetailsPresenter _presenter;
+
     @Inject
     public PlanDetailsScreenImpl(PlanDetailsPresenter presenter) {
-
+        _presenter = presenter;
+        _presenter.setView(this);
+        _presenter.fetchAvatar();
+        _presenter.fetchPlanDetails(_presenter.getPlanId());
+        _presenter.fetchComments(_presenter.getPlanId());
+        _presenter.fetchAvatar();
     }
 
     @Override
     public void updateMapUrl(String mapUrl) {
-
+        System.out.println(mapUrl);
     }
 
     @Override
@@ -45,7 +52,7 @@ public class PlanDetailsScreenImpl extends FXMLScreen
 
     @Override
     protected String fxmlPath() {
-        return null;
+        return "/view/home/plan_details_view.fxml";
     }
 
     @Override

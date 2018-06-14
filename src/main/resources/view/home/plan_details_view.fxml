@@ -278,8 +278,6 @@
                     <Insets left="20"/>
                 </VBox.margin>
                 <Text fx:id="_txtNumOfComments" text="0" style="-fx-font-size: 14;">
-                    <FontWeight >
-                    </FontWeight>
                 </Text>
                 <Text text=" comments" style="-fx-font-size: 14"/>
             </HBox>
