@@ -60,7 +60,7 @@ public class TrekkingPlacePhotosScreenImpl extends FXMLScreen
     @Override
     public void showError(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Error");
+        alert.setTitle(title);
         alert.setContentText(message);
         alert.showAndWait();
     }
