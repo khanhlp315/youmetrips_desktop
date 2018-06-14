@@ -62,16 +62,12 @@
                                                         <Insets left="16.0"/>
                                                     </HBox.margin>
                                                 </FontAwesomeIconView>
-                                                <JFXTextField fx:id="_tfNationality" focusColor="#ffba33"
-                                                              labelFloat="true" prefHeight="25.0" prefWidth="90.0"
-                                                              text="Nationality" unFocusColor="#ccd0d2">
+                                                <JFXComboBox focusColor="#ffba33" promptText="Nationality"
+                                                             unFocusColor="#ccd0d2">
                                                     <HBox.margin>
                                                         <Insets left="8.0"/>
                                                     </HBox.margin>
-                                                    <font>
-                                                        <Font size="13.0"/>
-                                                    </font>
-                                                </JFXTextField>
+                                                </JFXComboBox>
                                             </children>
                                             <VBox.margin>
                                                 <Insets top="16.0"/>
