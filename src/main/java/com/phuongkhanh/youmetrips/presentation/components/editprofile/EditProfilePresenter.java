@@ -72,11 +72,6 @@ public class EditProfilePresenter extends PresenterBase<EditProfileScreen> {
         assert (getView() != null);
 
         AuthenticationStore authenticationStore = _service.getAuthenticationStore();
-        Profile profile = authenticationStore.getProfile();
-        if (profile != null) {
-            getView().updateProfile(profile);
-            return;
-        }
 
         Task<Profile> task = new Task<Profile>() {
             @Override
