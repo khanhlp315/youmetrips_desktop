@@ -190,7 +190,7 @@ public class EditProfilePresenter extends PresenterBase<EditProfileScreen> {
 
     private void onUpdateProfileSucceeded() {
         getView().setLoading(false);
-        getView().navigateBack();
+        getView().close();
     }
 
     private void onUpdateProfileFailed(Throwable ex) {

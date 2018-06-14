@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.FontWeight?>
+
+<?import javafx.scene.control.ListView?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXBadge?>
+<?import com.jfoenix.controls.JFXTextField?>
+<ScrollPane prefHeight="2000.0" prefWidth="412.0" style="-fx-background-color: #F2F4FA"
+            xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+    <VBox alignment="CENTER">
+        <HBox alignment="CENTER">
+            <VBox.margin>
+                <Insets top="10"/>
+            </VBox.margin>
+            <StackPane alignment="CENTER_LEFT">
+                <Rectangle arcHeight="100.0" arcWidth="80.0" fill="WHITE" height="80.0" stroke="WHITE"
+                           strokeType="INSIDE" strokeWidth="2.0" width="312.0">
+                </Rectangle>
+                <Circle fill="yellow" radius="40">
+                    <HBox.margin>
+                        <Insets left="-90"/>
+                    </HBox.margin>
+                </Circle>
+                <HBox alignment="CENTER">
+                    <Text style="-fx-font-size: 20; -fx-font-weight: bold" text="Long Dang">
+                        <HBox.margin>
+                            <Insets left="20"/>
+                        </HBox.margin>
+                    </Text>
+                </HBox>
+            </StackPane>
+        </HBox>
+
+
+        <VBox alignment="CENTER">
+            <StackPane alignment="TOP_CENTER">
+                <VBox.margin>
+                    <Insets top="20" left="10"/>
+                </VBox.margin>
+                <Rectangle arcHeight="20.0" arcWidth="20" fill="WHITE" height="186.0" stroke="WHITE" strokeType="INSIDE"
+                           strokeWidth="2.0" width="392.0">
+                </Rectangle>
+                <ImageView fitHeight="140.0" fitWidth="372.0"/>
+                <Text style="-fx-font-weight: bold; -fx-font-size: 16;" fill="#3A5788" text="Gia Khang"/>
+            </StackPane>
+        </VBox>
+
+
+        <HBox alignment="TOP_CENTER">
+            <VBox.margin>
+                <Insets top="20"/>
+            </VBox.margin>
+
+            <children>
+
+                <HBox>
+                    <HBox.margin>
+                        <Insets left="10.0"/>
+                    </HBox.margin>
+                    <VBox alignment="TOP_CENTER">
+                        <HBox.margin>
+                            <Insets top="25.0"/>
+                        </HBox.margin>
+                        <children>
+                            <Circle fill="WHITE" radius="3.0" stroke="#3A5788" strokeType="OUTSIDE" strokeWidth="3.0">
+                                <VBox.margin>
+                                    <Insets left="10.0" top="4.0"/>
+                                </VBox.margin>
+                            </Circle>
+                            <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#3A5788" height="8.0" stroke="BLACK"
+                                       strokeType="INSIDE" strokeWidth="0.0" width="3.0">
+                                <VBox.margin>
+                                    <Insets left="10.0" top="1.5"/>
+                                </VBox.margin>
+                            </Rectangle>
+                            <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#3A5788" height="8.0" stroke="BLACK"
+                                       strokeType="INSIDE" strokeWidth="0.0" width="3.0">
+                                <VBox.margin>
+                                    <Insets left="10.0" top="1.5"/>
+                                </VBox.margin>
+                            </Rectangle>
+                            <Circle fill="WHITE" radius="3.0" stroke="#3A5788" strokeType="OUTSIDE" strokeWidth="3.0">
+                                <VBox.margin>
+                                    <Insets left="10.0" top="1.5"/>
+                                </VBox.margin>
+                            </Circle>
+                        </children>
+                    </VBox>
+                    <VBox alignment="TOP_CENTER">
+                        <HBox.margin>
+                            <Insets left="8.0"/>
+                        </HBox.margin>
+                        <children>
+                            <Label style="-fx-font-weight: bold" text="When" textFill="#828282">
+                                <VBox.margin>
+                                    <Insets bottom="5.0"/>
+                                </VBox.margin>
+                                <font>
+                                    <Font size="14.0"/>
+                                </font>
+                            </Label>
+                            <StackPane style="-fx-border-radius: 100">
+                                <VBox.margin>
+                                    <Insets bottom="5.0"/>
+                                </VBox.margin>
+                                <Rectangle arcHeight="10.0" arcWidth="10.0" fill="WHITE" height="28.0" stroke="WHITE"
+                                           strokeType="INSIDE" strokeWidth="2.0" width="90.0"/>
+                                <Text fx:id="_lblFromDate" fill="#3A5788" style="-fx-font-family: 'Roboto Medium'"
+                                      text="10/2018">
+                                    <font>
+                                        <Font size="17.0"/>
+                                    </font>
+                                </Text>
+                            </StackPane>
+                            <StackPane style="-fx-border-radius: 100">
+                                <Rectangle arcHeight="10.0" arcWidth="10.0" fill="WHITE" height="28.0" stroke="WHITE"
+                                           strokeType="INSIDE" strokeWidth="2.0" width="90.0"/>
+                                <Text fx:id="_lblToDate" fill="#3A5788" style="-fx-font-family: 'Roboto Medium'"
+                                      text="02/2019">
+                                    <font>
+                                        <Font size="17.0"/>
+                                    </font>
+                                </Text>
+                            </StackPane>
+                        </children>
+                    </VBox>
+                </HBox>
+
+                <HBox>
+                    <HBox.margin>
+                        <Insets left="30.0"/>
+                    </HBox.margin>
+                    <VBox alignment="TOP_CENTER">
+                        <HBox.margin>
+                            <Insets top="25.0"/>
+                        </HBox.margin>
+                        <children>
+                            <Circle fill="WHITE" radius="3.0" stroke="#3A5788" strokeType="OUTSIDE" strokeWidth="3.0">
+                                <VBox.margin>
+                                    <Insets left="10.0" top="4.0"/>
+                                </VBox.margin>
+                            </Circle>
+                            <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#3A5788" height="8.0" stroke="BLACK"
+                                       strokeType="INSIDE" strokeWidth="0.0" width="3.0">
+                                <VBox.margin>
+                                    <Insets left="10.0" top="1.5"/>
+                                </VBox.margin>
+                            </Rectangle>
+                            <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#3A5788" height="8.0" stroke="BLACK"
+                                       strokeType="INSIDE" strokeWidth="0.0" width="3.0">
+                                <VBox.margin>
+                                    <Insets left="10.0" top="1.5"/>
+                                </VBox.margin>
+                            </Rectangle>
+                            <Circle fill="WHITE" radius="3.0" stroke="#3A5788" strokeType="OUTSIDE" strokeWidth="3.0">
+                                <VBox.margin>
+                                    <Insets left="10.0" top="1.5"/>
+                                </VBox.margin>
+                            </Circle>
+                        </children>
+                    </VBox>
+                    <VBox alignment="TOP_CENTER">
+                        <children>
+                            <Label style="-fx-font-weight: bold" text="How long" textFill="#828282">
+                                <VBox.margin>
+                                    <Insets bottom="5.0"/>
+                                </VBox.margin>
+                                <font>
+                                    <Font size="14.0"/>
+                                </font>
+                            </Label>
+                            <StackPane style="-fx-border-radius: 100">
+                                <VBox.margin>
+                                    <Insets bottom="5.0"/>
+                                </VBox.margin>
+                                <Rectangle arcHeight="10.0" arcWidth="10.0" fill="WHITE" height="28.0" stroke="WHITE"
+                                           strokeType="INSIDE" strokeWidth="2.0" width="90.0"/>
+                                <Text fx:id="_lblFromHowLong" fill="#3A5788" style="-fx-font-family: 'Roboto Medium'"
+                                      text="2 days">
+                                    <font>
+                                        <Font size="17.0"/>
+                                    </font>
+                                </Text>
+                            </StackPane>
+                            <StackPane style="-fx-background-radius: 100; -fx-border-radius: 100;">
+                                <Rectangle arcHeight="10.0" arcWidth="10.0" fill="WHITE" height="28.0" stroke="WHITE"
+                                           strokeType="INSIDE" strokeWidth="2.0" width="90.0"/>
+                                <Text fx:id="_lblToHowLong" fill="#3A5788" style="-fx-font-family: 'Roboto Medium'"
+                                      text="5 days">
+                                    <font>
+                                        <Font size="17.0"/>
+                                    </font>
+                                </Text>
+                            </StackPane>
+                        </children>
+                        <HBox.margin>
+                            <Insets left="8.0"/>
+                        </HBox.margin>
+                    </VBox>
+                </HBox>
+
+                <VBox alignment="TOP_CENTER">
+                    <HBox.margin>
+                        <Insets left="50.0"/>
+                    </HBox.margin>
+                    <children>
+                        <Label style="-fx-font-weight: bold" text="Hotel" textFill="#828282">
+                            <VBox.margin>
+                                <Insets bottom="3.0"/>
+                            </VBox.margin>
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <HBox alignment="CENTER">
+                            <VBox.margin>
+                                <Insets top="5.0"/>
+                            </VBox.margin>
+                            <children>
+                                <StackPane>
+                                    <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
+                                               preserveRatio="true">
+                                        <image>
+                                            <Image url="@../../images/blue_star.png"/>
+                                        </image>
+                                        <HBox.margin>
+                                            <Insets left="4.0"/>
+                                        </HBox.margin>
+                                    </ImageView>
+                                    <Label fx:id="_lblStar" text="5" textFill="white">
+                                        <font>
+                                            <Font size="17.0"/>
+                                        </font>
+                                        <HBox.margin>
+                                            <Insets top="4.0"/>
+                                        </HBox.margin>
+                                    </Label>
+                                </StackPane>
+
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+
+            </children>
+        </HBox>
+
+
+        <VBox alignment="CENTER">
+            <StackPane alignment="TOP_CENTER">
+                <VBox.margin>
+                    <Insets top="20" left="10"/>
+                </VBox.margin>
+                <Rectangle arcHeight="20.0" arcWidth="20" fill="WHITE" height="279.0" stroke="WHITE" strokeType="INSIDE"
+                           strokeWidth="2.0" width="392.0">
+                </Rectangle>
+                <ImageView fitHeight="279.0" fitWidth="372.0"/>
+            </StackPane>
+        </VBox>
+
+
+        <VBox alignment="CENTER">
+            <VBox.margin>
+                <Insets top="20" left="10"/>
+            </VBox.margin>
+
+            <HBox>
+                <VBox.margin>
+                    <Insets left="20" bottom="5"/>
+                </VBox.margin>
+                <Text fx:id="_txtNumOfComments" text="0" style="-fx-font-size: 14; -fx-font-weight: bold"/>
+                <Text text=" comments" style="-fx-font-size: 14; -fx-font-weight: bold"/>
+            </HBox>
+            <ListView fx:id="_lvComments"/>
+        </VBox>
+
+
+        <HBox alignment="TOP_CENTER">
+            <VBox.margin>
+                <Insets top="20" />
+            </VBox.margin>
+
+            <Circle fill="yellow" radius="25">
+                <HBox.margin>
+                    <Insets top="5" right="18"/>
+                </HBox.margin>
+            </Circle>
+                <Rectangle arcHeight="100.0" arcWidth="80.0" fill="WHITE" height="60.0" stroke="WHITE"
+                           strokeType="INSIDE" strokeWidth="2.0" width="312.0">
+                </Rectangle>
+
+                <JFXTextField minWidth="250" maxWidth="250" promptText="Hello" unFocusColor="white" focusColor="white">
+                    <HBox.margin>
+                        <Insets left="-300" top="20"/>
+                    </HBox.margin>
+                </JFXTextField>
+
+                <JFXButton fx:id="_btnCreate" layoutX="12.0" layoutY="168.0"
+                           prefHeight="45.0"
+                           prefWidth="45.0" text=""
+                           style="-fx-background-radius: 100; -fx-border-radius: 100; -fx-background-color: #376FFF;">
+                    <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0">
+                            <Image url="@../../images/right-arrow.png"/>
+                        </ImageView>
+                    </graphic>
+                    <HBox.margin>
+                        <Insets top="5" right="18"/>
+                    </HBox.margin>
+                </JFXButton>
+        </HBox>
+    </VBox>
+</ScrollPane>

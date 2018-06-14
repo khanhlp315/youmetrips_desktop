@@ -11,7 +11,7 @@ public class Profile {
     private String nationality;
     private String nationalityName;
     private String nationalityFlagUrl;
-    private String birthday;
+    private DateTime birthday;
     private String gender;
     private String occupation;
     private String address;
@@ -84,11 +84,11 @@ public class Profile {
         this.nationalityFlagUrl = nationalityFlagUrl;
     }
 
-    public String getBirthday() {
+    public DateTime getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(DateTime birthday) {
         this.birthday = birthday;
     }
 

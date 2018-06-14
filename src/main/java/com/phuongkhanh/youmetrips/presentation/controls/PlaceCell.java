@@ -3,6 +3,7 @@ package com.phuongkhanh.youmetrips.presentation.controls;
 import com.phuongkhanh.youmetrips.services.api.models.Place;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ContentDisplay;
@@ -10,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -48,8 +50,9 @@ public class PlaceCell extends AnchorPane {
      * Constructor                                                             *
      *                                                                         *
      **************************************************************************/
-    public PlaceCell(Place item) {
+    public PlaceCell(Place item, EventHandler clickEvent) {
         loadFXML();
+        this.setOnMouseClicked(clickEvent);
         Image image = new Image(item.getCoverImageUrl() != null ? item.getCoverImageUrl() : getNeutralAvatar(), true);
         image.progressProperty().addListener(new ChangeListener<Number>() {
             @Override

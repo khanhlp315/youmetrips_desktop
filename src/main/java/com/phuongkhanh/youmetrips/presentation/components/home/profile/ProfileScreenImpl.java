@@ -130,7 +130,9 @@ public class ProfileScreenImpl extends FXMLScreen
     public void navigateToEditProfile() {
         EditProfileWindow editProfileWindow = _editProfileWindow.get();
         editProfileWindow.attach(new Stage());
-        editProfileWindow.show();
+        editProfileWindow.showAndWait();
+
+        _presenter.refreshUser();
     }
 
     @Override

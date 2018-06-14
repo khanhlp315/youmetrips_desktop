@@ -232,5 +232,10 @@ public class PlanDetailsPresenter extends PresenterBase<PlanDetailsScreen> {
 
     private void onFetchAvatarFailed(Throwable ex) {
     }
+
+    public int getPlanId()
+    {
+        return _service.getHomeStore().getPlanDetailsId();
+    }
     //endregion
 }
