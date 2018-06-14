@@ -1,8 +1,10 @@
 package com.phuongkhanh.youmetrips.presentation.components.editprofile;
 
+import com.jfoenix.controls.JFXTextField;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import com.phuongkhanh.youmetrips.services.api.models.Country;
 import com.phuongkhanh.youmetrips.services.api.models.Profile;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import java.net.URL;
@@ -12,13 +14,19 @@ import java.util.ResourceBundle;
 public class EditProfileScreenImpl extends FXMLScreen
         implements EditProfileScreen, Initializable {
 
-    public EditProfileScreenImpl(EditProfilePresenter presenter) {
+    EditProfilePresenter _presenter;
 
+    @FXML
+    private JFXTextField _tfFirstName;
+
+    public EditProfileScreenImpl(EditProfilePresenter presenter) {
+        _presenter = presenter;
+        _presenter.setView(this);
     }
 
     @Override
     public void updateProfile(Profile profile) {
-
+        _tfFirstName.setText(profile.getFirstName());
     }
 
     @Override
@@ -48,7 +56,7 @@ public class EditProfileScreenImpl extends FXMLScreen
 
     @Override
     protected String fxmlPath() {
-        return null;
+        return "/view/edit_profile/edit_profile.fxml";
     }
 
     @Override
