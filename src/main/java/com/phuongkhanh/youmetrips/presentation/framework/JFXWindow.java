@@ -17,6 +17,8 @@ public interface JFXWindow {
 
     void show();
 
+    void showAndWait();
+
     void close();
 
     void hide();

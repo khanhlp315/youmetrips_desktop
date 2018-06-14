@@ -58,7 +58,8 @@ implements PlaceScreen, Initializable {
     public void navigateToCreateTrekkingPlace() {
         CreatePlaceWindow createPlaceWindow = _placeWindow.get();
         createPlaceWindow.attach(new Stage());
-        createPlaceWindow.show();
+        createPlaceWindow.showAndWait();
+        refresh();
     }
 
     @Override

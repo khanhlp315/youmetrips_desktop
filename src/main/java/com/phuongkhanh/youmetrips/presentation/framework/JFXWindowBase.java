@@ -127,6 +127,18 @@ public class JFXWindowBase implements JFXWindow {
     }
 
     @Override
+    public void showAndWait() {
+        if ( _stage == null ) {
+            throw new RuntimeException( "Can not show, no stage attached. Stage must be attached before being able to show!" );
+        }
+        if ( _stage.isShowing() ) {
+            throw new RuntimeException( "Window is currently showing!" );
+        }
+
+        _stage.showAndWait();
+    }
+
+    @Override
     public void close() {
         if ( _stage == null ) {
             throw new RuntimeException( "Can not close, no stage attached. Stage must be attached before being able to close!" );

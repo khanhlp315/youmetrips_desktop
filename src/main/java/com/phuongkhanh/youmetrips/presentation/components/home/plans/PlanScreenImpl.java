@@ -57,7 +57,8 @@ implements PlanScreen, Initializable {
     public void navigateToCreateTrekkingPlan() {
         CreatePlanWindow createPlanWindow = _planWindow.get();
         createPlanWindow.attach(new Stage());
-        createPlanWindow.show();
+        createPlanWindow.showAndWait();
+        refresh();
     }
 
     @Override
