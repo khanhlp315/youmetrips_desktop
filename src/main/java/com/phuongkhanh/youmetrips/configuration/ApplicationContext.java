@@ -245,8 +245,8 @@ public interface ApplicationContext {
         }
 
         @Provides
-        static ProfileScreen profileScreen(ProfilePresenter presenter, Provider<CreatePlanWindow> planWindowProvider, Provider<CreatePlaceWindow> placeWindowProvider) {
-            return new ProfileScreenImpl(presenter, planWindowProvider, placeWindowProvider);
+        static ProfileScreen profileScreen(ProfilePresenter presenter, Provider<CreatePlanWindow> planWindowProvider, Provider<CreatePlaceWindow> placeWindowProvider, Provider<EditProfileWindow> editProfileWindowProvider) {
+            return new ProfileScreenImpl(presenter, planWindowProvider, placeWindowProvider, editProfileWindowProvider);
         }
 
         @Provides

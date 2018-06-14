@@ -1,11 +1,13 @@
 package com.phuongkhanh.youmetrips.presentation.components.editprofile;
 
+import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import com.phuongkhanh.youmetrips.services.api.models.Country;
 import com.phuongkhanh.youmetrips.services.api.models.Profile;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.shape.Rectangle;
 
 import java.net.URL;
 import java.util.List;
@@ -19,14 +21,31 @@ public class EditProfileScreenImpl extends FXMLScreen
     @FXML
     private JFXTextField _tfFirstName;
 
+    @FXML
+    private JFXTextField _tfLastName;
+
+    @FXML
+    private JFXTextField _tfJob;
+
+    @FXML
+    private JFXTextArea _taBio;
+
+    @FXML
+    private Rectangle _rectAvatar;
+
     public EditProfileScreenImpl(EditProfilePresenter presenter) {
         _presenter = presenter;
         _presenter.setView(this);
+        _presenter.fetchProfile();
+        _presenter.fetchCountries();
     }
 
     @Override
     public void updateProfile(Profile profile) {
         _tfFirstName.setText(profile.getFirstName());
+        _tfLastName.setText(profile.getLastName());
+        _tfJob.setText(profile.getOccupation());
+        _taBio.setText(profile.getBio());
     }
 
     @Override
