@@ -123,7 +123,7 @@ public class PlaceDetailsScreenImpl extends FXMLScreen
 
     @Override
     protected String fxmlPath() {
-        return "/view/home/place_item_details.fxml";
+        return "/view/home/places/place_item_details.fxml";
     }
 
     @Override
