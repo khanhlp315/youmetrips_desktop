@@ -19,7 +19,9 @@ public class HomeStore {
    private static final String CREATING_PLACE = "CREATING_PLACE";
    private static final String CREATING_PLAN = "CREATING_PLAN";
    private static final String PLACE_DETAIL_ID = "PLACE_DETAIL_ID";
-   private Store _store;
+   private static final String PLAN_DETAIL_ID = "PLAN_DETAIL_ID";
+
+    private Store _store;
 
 
     @SuppressWarnings("unchecked")
@@ -37,6 +39,7 @@ public class HomeStore {
        _store.setItem(CREATING_PLACE, new CreatePlace());
        _store.setItem(CREATING_PLAN, new CreatePlan());
        _store.setItem(PLACE_DETAIL_ID, null);
+       _store.setItem(PLAN_DETAIL_ID, null);
    }
     @SuppressWarnings("unchecked")
     public void storePlans(List<RelevantPlan> plans){
@@ -71,22 +74,43 @@ public class HomeStore {
 
     public void storePlaceDetailsId(int id) { _store.setItem(PLACE_DETAIL_ID, id);}
 
+    public void storePlanDetailsId(int planId) {
+        _store.setItem(PLAN_DETAIL_ID, planId);
+    }
+
     @SuppressWarnings("unchecked")
     public void addPlaceDetails(PlaceDetails placeDetails){
         HashMap map = (HashMap)_store.getItem(PLACE_DETAILS);
         map.replace(placeDetails.getId(), placeDetails);
+        if(map.containsKey(placeDetails.getId())){
+            map.replace(placeDetails.getId(), placeDetails);
+        }
+        else {
+            map.put(placeDetails.getId(), placeDetails);
+        }
     }
 
     @SuppressWarnings("unchecked")
     public void addPlanDetails(PlanDetails planDetails){
         HashMap map = (HashMap)_store.getItem(PLAN_DETAILS);
-        map.replace(planDetails.getId(), planDetails);
+        if(map.containsKey(planDetails.getId())){
+            map.replace(planDetails.getId(), planDetails);
+        }
+        else {
+            map.put(planDetails.getId(), planDetails);
+        }
     }
 
     @SuppressWarnings("unchecked")
     public void storeComments(List<Comment> comments, int planId){
         HashMap map = (HashMap)_store.getItem(COMMENTS);
         map.replace(planId, comments);
+        if(map.containsKey(planId)){
+            map.replace(planId, comments);
+        }
+        else {
+            map.put(planId, comments);
+        }
     }
 
     public PlaceDetails getPlaceDetails(int id){
@@ -110,6 +134,8 @@ public class HomeStore {
             return (PlanDetails) map.get(id);
         }
     }
+
+
 
     public CreatePlace getCreatePlace()
     {
@@ -136,6 +162,11 @@ public class HomeStore {
     public int getPlaceDetailsId()
     {
         return (int) _store.getItem(PLACE_DETAIL_ID);
+    }
+
+    public int getPlanDetailsId()
+    {
+        return (int) _store.getItem(PLAN_DETAIL_ID);
     }
 
     @SuppressWarnings("unchecked")

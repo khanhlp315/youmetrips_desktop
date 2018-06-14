@@ -176,4 +176,7 @@ public class PlanPresenter extends PresenterBase<PlanScreen> {
         getView().navigateToFriendRequest();
     }
 
+    public void savePlanDetailsId(int planId) {
+        _service.getHomeStore().storePlanDetailsId(planId);
+    }
 }

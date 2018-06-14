@@ -10,6 +10,7 @@ import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import com.phuongkhanh.youmetrips.presentation.windows.CreatePlaceWindow;
 import com.phuongkhanh.youmetrips.presentation.windows.CreatePlanWindow;
 import com.phuongkhanh.youmetrips.presentation.windows.EditProfileWindow;
+import com.phuongkhanh.youmetrips.presentation.windows.PlanDetailsWindow;
 import com.phuongkhanh.youmetrips.services.api.models.RelevantPlan;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -32,6 +33,7 @@ implements PlanScreen, Initializable {
     private final Provider<CreatePlanWindow> _planWindow;
     private final Provider<CreatePlaceWindow> _placeWindow;
     private final Provider<EditProfileWindow> _editProfileWindow;
+    private final Provider<PlanDetailsWindow> _planDetailsWindow;
 
     @FXML
     private ListView _lvPlans;
@@ -43,18 +45,22 @@ implements PlanScreen, Initializable {
     }
 
     @Inject
-    public PlanScreenImpl(PlanPresenter presenter, Provider<CreatePlanWindow> planWindow, Provider<CreatePlaceWindow> placeWindow, Provider<EditProfileWindow> editProfileWindow)
+    public PlanScreenImpl(PlanPresenter presenter, Provider<CreatePlanWindow> planWindow, Provider<CreatePlaceWindow> placeWindow, Provider<PlanDetailsWindow> planDetailsWindow, Provider<EditProfileWindow> editProfileWindow)
     {
         _presenter = presenter;
         _presenter.setView(this);
         _planWindow = planWindow;
         _placeWindow = placeWindow;
         _editProfileWindow = editProfileWindow;
+        _planDetailsWindow = planDetailsWindow;
     }
 
     @Override
     public void updatePlans(List<RelevantPlan> invidualPlans) {
-        _lvPlans.setItems(FXCollections.observableArrayList(invidualPlans.stream().map(RelevantPlanCell::new).collect(Collectors.toList())));
+        _lvPlans.setItems(FXCollections.observableArrayList(invidualPlans.stream().map(plan -> new RelevantPlanCell(plan, (event)->{
+            _presenter.savePlanDetailsId(plan.getPlanId());
+            _presenter.requestNavigateToPlanDetails(plan.getPlanId());
+        })).collect(Collectors.toList())));
     }
 
     @Override
@@ -77,7 +83,9 @@ implements PlanScreen, Initializable {
 
     @Override
     public void navigateToPlanDetails(int planId) {
-
+        PlanDetailsWindow planDetailsWindow = _planDetailsWindow.get();
+        planDetailsWindow.attach(new Stage());
+        planDetailsWindow.show();
     }
 
     @Override

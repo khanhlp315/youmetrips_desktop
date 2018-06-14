@@ -236,8 +236,8 @@ public interface ApplicationContext {
         }
 
         @Provides
-        static PlanScreen planScreen(PlanPresenter presenter, Provider<CreatePlanWindow> planWindowProvider, Provider<CreatePlaceWindow> placeWindowProvider, Provider<EditProfileWindow> editProfileWindow) {
-            return new PlanScreenImpl(presenter, planWindowProvider, placeWindowProvider, editProfileWindow);
+        static PlanScreen planScreen(PlanPresenter presenter, Provider<CreatePlanWindow> planWindowProvider, Provider<CreatePlaceWindow> placeWindowProvider, Provider<PlanDetailsWindow> planDetailsWindow, Provider<EditProfileWindow> editProfileWindow) {
+            return new PlanScreenImpl(presenter, planWindowProvider, placeWindowProvider, planDetailsWindow, editProfileWindow);
         }
 
         @Provides

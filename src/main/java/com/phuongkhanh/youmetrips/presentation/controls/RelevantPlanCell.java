@@ -5,6 +5,7 @@ import com.phuongkhanh.youmetrips.services.api.utils.Constants;
 import com.phuongkhanh.youmetrips.utils.CommonUtils;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ContentDisplay;
@@ -57,8 +58,9 @@ public class RelevantPlanCell extends AnchorPane {
     private ChangeListener _coverImageListener;
 
 
-    public RelevantPlanCell(RelevantPlan item){
+    public RelevantPlanCell(RelevantPlan item, EventHandler clickEvent){
         loadFXML();
+        setOnMouseClicked(clickEvent);
         _lblFirstName.setText(item.getUserFirstName());
         _lblLastName.setText(item.getUserLastName());
         _lblOccupation.setText(item.getUserOccupation());

@@ -61,15 +61,16 @@ public class PlaceScreenImpl extends FXMLScreen
     @SuppressWarnings("unchecked")
     @Override
     public void updatePlaces(List<Place> places) {
-        final List<Place> places1 = places.stream().limit(5).collect(Collectors.toList());
-        _lvPlaces.setItems(FXCollections.observableArrayList(places1.stream().map(PlaceCell::new).collect(Collectors.toList())));
-        _lvPlaces.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                _presenter.savePlaceDetailsId(places1.get(_lvPlaces.getSelectionModel().getSelectedIndex()).getId());
-                _presenter.requestNavigateToPlaceDetails();
-            }
-        });
+        places = places.stream().limit(5).collect(Collectors.toList());
+        _lvPlaces.setItems(FXCollections.observableArrayList(places.stream().map(place -> {
+            return new PlaceCell(
+                    place,
+                    event -> {
+                        _presenter.savePlaceDetailsId(place.getId());
+                        _presenter.requestNavigateToPlaceDetails();
+                    }
+            );
+        }).collect(Collectors.toList())));
     }
 
     @Override
