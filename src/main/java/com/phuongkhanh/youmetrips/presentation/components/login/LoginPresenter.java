@@ -12,6 +12,9 @@ import org.openqa.selenium.WebDriverException;
 
 import javax.inject.Inject;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import static com.phuongkhanh.youmetrips.utils.CommonUtils.validateEmail;
 import static com.phuongkhanh.youmetrips.utils.CommonUtils.validatePhoneNumber;
 
@@ -147,7 +150,14 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
         AuthenticationStore authenticationStore = _service.getAuthenticationStore();
         authenticationStore.load();
         if(authenticationStore.getJwt() != null){
-            Platform.runLater(() -> getView().navigateToHome());
+
+            new Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    Platform.runLater(()-> getView().navigateToHome());
+                }
+            }, 5000);
+            //Platform.runLater(() -> getView().navigateToHome());
 
             //getView().navigateToHome();
         }
