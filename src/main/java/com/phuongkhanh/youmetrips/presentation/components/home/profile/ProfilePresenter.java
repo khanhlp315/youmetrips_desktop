@@ -219,6 +219,7 @@ public class ProfilePresenter extends PresenterBase<ProfileScreen> {
     }
 
     public void requestNavigateToEditProfile() {
+        assert (getView() != null);
         getView().navigateToEditProfile();
     }
 

@@ -8,6 +8,7 @@ import com.phuongkhanh.youmetrips.presentation.controls.FriendRequestCell;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import com.phuongkhanh.youmetrips.presentation.windows.CreatePlaceWindow;
 import com.phuongkhanh.youmetrips.presentation.windows.CreatePlanWindow;
+import com.phuongkhanh.youmetrips.presentation.windows.EditProfileWindow;
 import com.phuongkhanh.youmetrips.services.api.models.FriendRequest;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -31,7 +32,7 @@ public class FriendRequestsScreenImpl extends FXMLScreen
     private final FriendRequestsPresenter _presenter;
     private final Provider<CreatePlanWindow> _planWindow;
     private final Provider<CreatePlaceWindow> _placeWindow;
-
+    private final Provider<EditProfileWindow> _editProfileWindow;
 
     @Override
     public Scene render() {
@@ -40,11 +41,12 @@ public class FriendRequestsScreenImpl extends FXMLScreen
     }
 
     @Inject
-    public FriendRequestsScreenImpl(FriendRequestsPresenter presenter, Provider<CreatePlanWindow> planWindow, Provider<CreatePlaceWindow> placeWindow) {
+    public FriendRequestsScreenImpl(FriendRequestsPresenter presenter, Provider<CreatePlanWindow> planWindow, Provider<CreatePlaceWindow> placeWindow, Provider<EditProfileWindow> editProfileWindow) {
         _presenter = presenter;
         _presenter.setView(this);
         _planWindow = planWindow;
         _placeWindow = placeWindow;
+        _editProfileWindow = editProfileWindow;
     }
 
     @Override
@@ -70,10 +72,6 @@ public class FriendRequestsScreenImpl extends FXMLScreen
     public void navigateToProfile() {
         navigate(ProfileScreenImpl.class);
     }
-    @Override
-    public void navigateToEditProfile() {
-        navigate(EditProfileScreenImpl.class);
-    }
 
     @Override
     public void navigateToCreateTrekkingPlan() {
@@ -92,6 +90,13 @@ public class FriendRequestsScreenImpl extends FXMLScreen
     @Override
     public void navigateToPlace() {
         navigate(PlaceScreenImpl.class);
+    }
+
+    @Override
+    public void navigateToEditProfile() {
+        EditProfileWindow editProfileWindow = _editProfileWindow.get();
+        editProfileWindow.attach(new Stage());
+        editProfileWindow.showAndWait();
     }
 
     @Override
@@ -135,7 +140,7 @@ public class FriendRequestsScreenImpl extends FXMLScreen
     }
 
     @FXML
-    public void refresh(){
+    public void refresh() {
         _presenter.refreshRequests();
     }
 }
