@@ -5,6 +5,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ContentDisplay;
@@ -30,9 +31,10 @@ public class UserPlanCell extends HBox {
     @FXML
     private Label _lblHowLong;
 
-    public UserPlanCell(UserTrekkingPlan item)
+    public UserPlanCell(UserTrekkingPlan item, EventHandler clickEvent)
     {
         loadFXML();
+        setOnMouseClicked(clickEvent);
         Image image = new Image(item.getPlace().getCoverImageUrl(), true);
         image.progressProperty().addListener(new ChangeListener<Number>() {
             @Override
