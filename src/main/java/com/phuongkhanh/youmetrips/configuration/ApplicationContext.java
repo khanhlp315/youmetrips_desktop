@@ -12,10 +12,10 @@ import com.phuongkhanh.youmetrips.presentation.components.home.friend_requests.F
 import com.phuongkhanh.youmetrips.presentation.components.home.friend_requests.FriendRequestsScreen;
 import com.phuongkhanh.youmetrips.presentation.components.home.friend_requests.FriendRequestsScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.home.friend_requests.FriendRequestsService;
-import com.phuongkhanh.youmetrips.presentation.components.home.place_details.PlaceDetailsPresenter;
-import com.phuongkhanh.youmetrips.presentation.components.home.place_details.PlaceDetailsScreen;
-import com.phuongkhanh.youmetrips.presentation.components.home.place_details.PlaceDetailsScreenImpl;
-import com.phuongkhanh.youmetrips.presentation.components.home.place_details.PlaceDetailsService;
+import com.phuongkhanh.youmetrips.presentation.components.place_details.PlaceDetailsPresenter;
+import com.phuongkhanh.youmetrips.presentation.components.place_details.PlaceDetailsScreen;
+import com.phuongkhanh.youmetrips.presentation.components.place_details.PlaceDetailsScreenImpl;
+import com.phuongkhanh.youmetrips.presentation.components.place_details.PlaceDetailsService;
 import com.phuongkhanh.youmetrips.presentation.components.home.places.PlacePresenter;
 import com.phuongkhanh.youmetrips.presentation.components.home.places.PlaceScreen;
 import com.phuongkhanh.youmetrips.presentation.components.home.places.PlaceScreenImpl;

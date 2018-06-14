@@ -1,4 +1,4 @@
-package com.phuongkhanh.youmetrips.presentation.components.home.place_details;
+package com.phuongkhanh.youmetrips.presentation.components.place_details;
 
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
 import com.phuongkhanh.youmetrips.services.api.models.CreateTag;

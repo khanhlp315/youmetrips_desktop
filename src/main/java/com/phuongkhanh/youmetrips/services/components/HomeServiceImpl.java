@@ -3,7 +3,7 @@ package com.phuongkhanh.youmetrips.services.components;
 import com.phuongkhanh.youmetrips.presentation.components.editprofile.EditProfileService;
 import com.phuongkhanh.youmetrips.presentation.components.friendlist.FriendListService;
 import com.phuongkhanh.youmetrips.presentation.components.home.friend_requests.FriendRequestsService;
-import com.phuongkhanh.youmetrips.presentation.components.home.place_details.PlaceDetailsService;
+import com.phuongkhanh.youmetrips.presentation.components.place_details.PlaceDetailsService;
 import com.phuongkhanh.youmetrips.presentation.components.home.places.PlaceService;
 import com.phuongkhanh.youmetrips.presentation.components.home.plans.PlanService;
 import com.phuongkhanh.youmetrips.presentation.components.home.profile.ProfileService;

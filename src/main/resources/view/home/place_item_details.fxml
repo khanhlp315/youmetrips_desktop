@@ -15,7 +15,7 @@
         <JFXTabPane style="-fx-background-color: white;" stylesheets="@../../style/tabPane.css"
                     AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="242.0">
             <tabs>
-                <Tab fx:id="_tabVisitors" text="Visitors">
+                <Tab fx:id="_tabVisitors" text="VISITORS">
                     <content>
                         <VBox>
                             <children>
