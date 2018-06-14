@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 
 <?import com.phuongkhanh.youmetrips.presentation.controls.LoadingPane?>
-<HomePane fx:id="_homePane" onCreatePlaceClicked="#onCreateTrekkingPlaceClicked" onCreatePlanClicked="#onCreateTrekkingPlanClicked" onEditProfileClicked="#onEditProfileClicked" onFriendRequestClicked="#onFriendRequestClicked" onPlaceClicked="#onPlaceClicked" onPlanClicked="#onPlanClicked" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<HomePane fx:id="_homePane" onRefreshClicked="#refresh" onCreatePlaceClicked="#onCreateTrekkingPlaceClicked" onCreatePlanClicked="#onCreateTrekkingPlanClicked" onEditProfileClicked="#onEditProfileClicked" onFriendRequestClicked="#onFriendRequestClicked" onPlaceClicked="#onPlaceClicked" onPlanClicked="#onPlanClicked" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <homeNode>
         <VBox fx:id="_profileBox" prefWidth="412.0" style="-fx-background-color: f5f7fb;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
             <children>
@@ -135,14 +135,6 @@
                                 <Insets top="8.0" />
                             </VBox.margin>
                         </AnchorPane>
-                        <JFXButton fx:id="_btnSeeAllPlans" text="See All Plans    &gt;" textFill="#787878">
-                            <VBox.margin>
-                                <Insets top="4.0" />
-                            </VBox.margin>
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </JFXButton>
                     </children>
                 </VBox>
                 <VBox alignment="TOP_CENTER" style="-fx-background-color: white;">
@@ -186,11 +178,6 @@
                                 <Insets top="8.0" />
                             </VBox.margin>
                         </AnchorPane>
-                        <JFXButton fx:id="_btnSeeAllFriends" text="See All Friends    &gt;" textFill="#787878">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </JFXButton>
                     </children>
                     <VBox.margin>
                         <Insets top="8.0" />

@@ -148,6 +148,7 @@ implements PlaceScreen, Initializable {
         _presenter.requestNavigateToEditProfile();
     }
 
+    @FXML
     public void refresh(){
         _presenter.refreshPlaces();
     }

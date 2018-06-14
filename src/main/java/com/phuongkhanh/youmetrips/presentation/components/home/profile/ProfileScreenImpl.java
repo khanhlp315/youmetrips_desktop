@@ -29,6 +29,7 @@ import javax.inject.Provider;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 import static com.phuongkhanh.youmetrips.utils.CommonUtils.getNeutralAvatar;
 
@@ -99,7 +100,7 @@ public class ProfileScreenImpl extends FXMLScreen
             _lblNationality.setText("Nationality not yet updated");
         }
         _lblBio.setText(profile.getBio());
-        _lvPlans.setItems(FXCollections.observableArrayList(profile.getTrekkingPlanSet()));
+        _lvPlans.setItems(FXCollections.observableArrayList(profile.getTrekkingPlanSet().stream().map(UserPlanCell::new).collect(Collectors.toList())));
     }
 
     @Override
@@ -161,7 +162,7 @@ public class ProfileScreenImpl extends FXMLScreen
     @Override
     public void updateFriends(List<Friend> friends) {
         _lblFriendCount.setText(String.valueOf(friends.size()));
-        _lvFriends.setItems(FXCollections.observableArrayList(friends));
+        _lvFriends.setItems(FXCollections.observableArrayList(friends.stream().map(FriendCell::new).collect(Collectors.toList())));
     }
 
     @FXML
@@ -206,11 +207,9 @@ public class ProfileScreenImpl extends FXMLScreen
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        _lvFriends.setCellFactory(param -> new FriendCell());
-        _lvPlans.setCellFactory(param -> new UserPlanCell());
-
     }
 
+    @FXML
     public void refresh(){
         _presenter.refreshUser();
         _presenter.refreshFriends();

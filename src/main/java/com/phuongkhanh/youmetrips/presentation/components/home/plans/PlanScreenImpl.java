@@ -147,6 +147,7 @@ implements PlanScreen, Initializable {
         _presenter.requestNavigateToEditProfile();
     }
 
+    @FXML
     public void refresh(){
         _presenter.refreshPlans();
     }
