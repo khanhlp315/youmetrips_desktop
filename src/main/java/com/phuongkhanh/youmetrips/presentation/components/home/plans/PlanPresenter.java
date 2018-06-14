@@ -91,8 +91,7 @@ public class PlanPresenter extends PresenterBase<PlanScreen> {
         getView().navigateToCreateTrekkingPlan();
     }
 
-    public void requestNavigateToCreateTrekkingPlace()
-    {
+    public void requestNavigateToCreateTrekkingPlace() {
         assert (getView() != null);
         getView().navigateToCreateTrekkingPlace();
     }
