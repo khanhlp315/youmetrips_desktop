@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import com.phuongkhanh.youmetrips.presentation.controls.HomePane?>
+<HomePane onRefreshClicked="#refresh" onCreatePlaceClicked="#onCreateTrekkingPlaceClicked" onCreatePlanClicked="#onCreateTrekkingPlanClicked" onEditProfileClicked="#onEditProfileClicked" onPlaceClicked="#onPlaceClicked" onPlanClicked="#onPlanClicked" onProfileClicked="#onProfileClicked" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+    <homeNode>
+        <ListView xmlns:fx="http://javafx.com/fxml/1" fx:id="_lvFriendRequests" stylesheets="@../../../style/listView.css"
+                  xmlns="http://javafx.com/javafx/8.0.121"/>
+    </homeNode>
+</HomePane>

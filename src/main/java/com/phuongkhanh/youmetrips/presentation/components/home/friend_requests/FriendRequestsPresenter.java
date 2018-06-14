@@ -110,6 +110,7 @@ public class FriendRequestsPresenter extends PresenterBase<FriendRequestsScreen>
     private void _onAcceptRequestSuceeded(int id) {
         HomeStore homeStore = _service.getHomeStore();
         homeStore.removeRequest(id);
+        refreshRequests();
     }
 
     private void _onAcceptRequestFailed(Throwable throwable) {
@@ -144,10 +145,42 @@ public class FriendRequestsPresenter extends PresenterBase<FriendRequestsScreen>
     private void _onDeclineRequestSuceeded(int id) {
         HomeStore homeStore = _service.getHomeStore();
         homeStore.removeRequest(id);
-        getView().removeRequest(id);
+        refreshRequests();
     }
 
     private void _onDeclineRequestFailed(Throwable throwable) {
+
+    }
+    public void requestNavigateToPlan() {
+        assert (getView() != null);
+        getView().navigateToPlan();
+    }
+
+    public void requestNavigateToProfile() {
+        assert (getView() != null);
+        getView().navigateToProfile();
+    }
+
+    public void requestNavigateToEditProfile() {
+        assert (getView() != null);
+        getView().navigateToEditProfile();
+    }
+
+    public void requestNavigateToCreateTrekkingPlan()
+    {
+        assert (getView() != null);
+        getView().navigateToCreateTrekkingPlan();
+    }
+
+    public void requestNavigateToCreateTrekkingPlace()
+    {
+        assert (getView() != null);
+        getView().navigateToCreateTrekkingPlace();
+    }
+
+    public void requestNavigateToPlace() {
+        assert (getView() != null);
+        getView().navigateToPlace();
 
     }
 }

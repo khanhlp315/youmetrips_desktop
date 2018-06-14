@@ -1,5 +1,6 @@
 package com.phuongkhanh.youmetrips.presentation.windows;
 
+import com.phuongkhanh.youmetrips.presentation.components.home.friend_requests.FriendRequestsScreen;
 import com.phuongkhanh.youmetrips.presentation.components.home.places.PlaceScreen;
 import com.phuongkhanh.youmetrips.presentation.components.home.plans.PlanScreen;
 import com.phuongkhanh.youmetrips.presentation.components.home.profile.ProfileScreen;
@@ -14,7 +15,8 @@ public class HomeWindow extends JFXWindowBase {
     public HomeWindow(
             final ProfileScreen profileScreen,
             final PlanScreen planScreen,
-            final PlaceScreen placeScreen) {
-        super(profileScreen, planScreen, placeScreen);
+            final PlaceScreen placeScreen,
+            final FriendRequestsScreen friendRequestsScreen) {
+        super(profileScreen, planScreen, placeScreen, friendRequestsScreen);
     }
 }

@@ -44,13 +44,6 @@ public class PlaceCell extends AnchorPane {
     private ImageView _ivHeartImage;
 
 
-    /***************************************************************************
-     *                                                                         *
-     * Properties                                                              *
-     *                                                                         *
-     **************************************************************************/
-    private Place _currentPlace;
-
 
     /***************************************************************************
      *                                                                         *
@@ -59,32 +52,30 @@ public class PlaceCell extends AnchorPane {
      **************************************************************************/
     public PlaceCell(Place item) {
         loadFXML();
-        if (_currentPlace == null || !item.equals(_currentPlace)) {
-            _currentPlace = item;
-            Image image = new Image(item.getCoverImageUrl() != null ? item.getCoverImageUrl() : getNeutralAvatar(), true);
-            image.progressProperty().addListener(new ChangeListener<Number>() {
-                @Override
-                public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                    if (newValue.doubleValue() == 1.0) {
-                        _ivPlaceImg.setImage(image);
-                        if (item.isLiked()) {
-                            Image heartImage = new Image(this.getClass().getClassLoader().getResource("images/loved.png").toString());
-                            _ivHeartImage.setImage(heartImage);
-                        } else {
-                            Image heartImage = new Image(this.getClass().getClassLoader().getResource("images/love.png").toString());
-                            _ivHeartImage.setImage(heartImage);
-                        }
+        Image image = new Image(item.getCoverImageUrl() != null ? item.getCoverImageUrl() : getNeutralAvatar(), true);
+        image.progressProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                if (newValue.doubleValue() == 1.0) {
+                    _ivPlaceImg.setImage(image);
+                    if (item.isLiked()) {
+                        Image heartImage = new Image(this.getClass().getClassLoader().getResource("images/loved.png").toString());
+                        _ivHeartImage.setImage(heartImage);
+                    } else {
+                        Image heartImage = new Image(this.getClass().getClassLoader().getResource("images/love.png").toString());
+                        _ivHeartImage.setImage(heartImage);
                     }
                 }
-            });
-            _lblPlaceName.setText(item.getName());
-            StringBuilder allTags = new StringBuilder();
-            for (String hashtag : item.getTags())
-                allTags.append("#").append(hashtag).append(" ");
-            _lblHashtag.setText(allTags.toString());
-            _lblPeopleCount.setText(String.valueOf(item.getNumberOfPeopleGoing()));
-            _lblJob1.setText(String.valueOf(item.getNumberOfLikes()));
-        }
+            }
+        });
+        _lblPlaceName.setText(item.getName());
+        StringBuilder allTags = new StringBuilder();
+        for (String hashtag : item.getTags())
+            allTags.append("#").append(hashtag).append(" ");
+        _lblHashtag.setText(allTags.toString());
+        _lblPeopleCount.setText(String.valueOf(item.getNumberOfPeopleGoing()));
+        _lblJob1.setText(String.valueOf(item.getNumberOfLikes()));
+
     }
 
 
