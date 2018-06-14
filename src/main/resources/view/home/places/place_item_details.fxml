@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import org.controlsfx.control.Rating?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.141">
+    <children>
+        <JFXTabPane style="-fx-background-color: white;" stylesheets="@../../../style/tabPane.css"
+                    AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="242.0">
+            <tabs>
+                <Tab fx:id="_tabVisitors" text="VISITORS">
+                    <content>
+                        <VBox prefWidth="382.0">
+                            <children>
+                                <ListView fx:id="_lbHashtags" orientation="HORIZONTAL"
+                                          stylesheets="@../../../style/listView.css"/>
+                                <AnchorPane prefHeight="1.0" prefWidth="200.0" style="-fx-background-color: #f0f0f0;">
+                                    <VBox.margin>
+                                        <Insets top="8.0"/>
+                                    </VBox.margin>
+                                </AnchorPane>
+                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                    <VBox.margin>
+                                        <Insets/>
+                                    </VBox.margin>
+                                    <children>
+                                        <VBox alignment="CENTER" prefWidth="115.0">
+                                            <children>
+                                                <Label fx:id="_lblLikeCount" alignment="CENTER" text="+1">
+                                                    <font>
+                                                        <Font name="System Bold" size="24.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label text="Likes" textFill="#1a535c">
+                                                    <font>
+                                                        <Font size="13.0"/>
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </VBox>
+                                        <AnchorPane prefHeight="1.0" prefWidth="1.0"
+                                                    style="-fx-background-color: #f0f0f0;">
+                                            <HBox.margin>
+                                                <Insets bottom="32.0" top="32.0"/>
+                                            </HBox.margin>
+                                        </AnchorPane>
+                                        <VBox alignment="CENTER" prefWidth="115.0">
+                                            <children>
+                                                <Label fx:id="_lblGoingCount" alignment="CENTER" text="+1">
+                                                    <font>
+                                                        <Font name="System Bold" size="24.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label text="Going" textFill="#1a535c">
+                                                    <font>
+                                                        <Font size="13.0"/>
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </VBox>
+                                        <AnchorPane prefHeight="1.0" prefWidth="1.0"
+                                                    style="-fx-background-color: #f0f0f0;">
+                                            <HBox.margin>
+                                                <Insets bottom="32.0" top="32.0"/>
+                                            </HBox.margin>
+                                        </AnchorPane>
+                                        <VBox alignment="CENTER" prefWidth="115.0">
+                                            <children>
+                                                <Label fx:id="_lblCheckedInCount" alignment="CENTER" text="+0">
+                                                    <font>
+                                                        <Font name="System Bold" size="24.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label text="Checked in" textFill="#1a535c">
+                                                    <font>
+                                                        <Font size="13.0"/>
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                                <AnchorPane prefHeight="1.0" prefWidth="200.0" style="-fx-background-color: #f0f0f0;"
+                                            visible="false">
+                                    <VBox.margin>
+                                        <Insets/>
+                                    </VBox.margin>
+                                </AnchorPane>
+                                <HBox prefHeight="100.0" prefWidth="200.0" visible="false">
+                                    <children>
+                                        <MaterialDesignIconView glyphName="HEART" size="25"/>
+                                        <VBox>
+                                            <children>
+                                                <TextFlow>
+                                                    <children>
+                                                        <Label text="Christina Jun, Joan Julia">
+                                                            <font>
+                                                                <Font name="System Bold" size="13.0"/>
+                                                            </font>
+                                                        </Label>
+                                                        <Label text="and 18 other friends like this.">
+                                                            <font>
+                                                                <Font size="13.0"/>
+                                                            </font>
+                                                            <padding>
+                                                                <Insets left="4.0"/>
+                                                            </padding>
+                                                        </Label>
+                                                        <Label text="See all&gt;" textFill="#1a535c">
+                                                            <font>
+                                                                <Font size="13.0"/>
+                                                            </font>
+                                                            <padding>
+                                                                <Insets left="4.0"/>
+                                                            </padding>
+                                                        </Label>
+                                                    </children>
+                                                </TextFlow>
+                                                <HBox spacing="3.0">
+                                                    <children>
+                                                        <Circle fx:id="_cirAvatar1" fill="DODGERBLUE" radius="15.0"
+                                                                stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0"/>
+                                                        <Circle fx:id="_cirAvatar11" fill="DODGERBLUE" radius="15.0"
+                                                                stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0"/>
+                                                        <Circle fx:id="_cirAvatar12" fill="DODGERBLUE" radius="15.0"
+                                                                stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0"/>
+                                                        <Circle fx:id="_cirAvatar13" fill="DODGERBLUE" radius="15.0"
+                                                                stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0"/>
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets top="4.0"/>
+                                                    </VBox.margin>
+                                                </HBox>
+                                            </children>
+                                            <HBox.margin>
+                                                <Insets left="8.0"/>
+                                            </HBox.margin>
+                                        </VBox>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets top="8.0"/>
+                                    </VBox.margin>
+                                </HBox>
+                            </children>
+                            <padding>
+                                <Insets bottom="8.0" left="8.0" right="8.0" top="8.0"/>
+                            </padding>
+                        </VBox>
+                    </content>
+                </Tab>
+                <Tab fx:id="_tabMap" text="MAP">
+                    <content>
+                        <StackPane alignment="TOP_CENTER" prefWidth="382.0">
+                            <ImageView fx:id="_imgMapView" fitHeight="242.0" fitWidth="375.0" pickOnBounds="true"
+                                       preserveRatio="true"/>
+                            <ProgressIndicator fx:id="_progressIndicator" style="-fx-progress-color: #1a535c"
+                                               visible="false"/>
+                        </StackPane>
+
+                    </content>
+                </Tab>
+                <Tab fx:id="_tabReviews" text="REVIEWS">
+                    <content>
+                        <VBox prefWidth="382.0" style="-fx-background-color: white;">
+                            <children>
+                                <TextFlow>
+                                    <children>
+                                        <Label fx:id="_lblRating" text="0.0" textFill="#1a535c">
+                                            <padding>
+                                                <Insets right="4.0"/>
+                                            </padding>
+                                            <font>
+                                                <Font name="System Bold" size="24.0"/>
+                                            </font>
+                                        </Label>
+                                        <FontAwesomeIconView fill="#1a535c" glyphName="STAR" size="24"/>
+                                        <Label text="from" textFill="#1a535c">
+                                            <padding>
+                                                <Insets left="4.0"/>
+                                            </padding>
+                                            <font>
+                                                <Font size="18.0"/>
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="_lblTotalRating" text="0" textFill="#1a535c">
+                                            <padding>
+                                                <Insets left="4.0"/>
+                                            </padding>
+                                            <font>
+                                                <Font name="System Bold" size="18.0"/>
+                                            </font>
+                                        </Label>
+                                        <Label text="ratings" textFill="#1a535c">
+                                            <padding>
+                                                <Insets left="4.0"/>
+                                            </padding>
+                                            <font>
+                                                <Font size="18.0"/>
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </TextFlow>
+                                <GridPane>
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="41.0" minWidth="-Infinity"
+                                                           prefWidth="40.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="354.0" minWidth="10.0"
+                                                           prefWidth="326.0"/>
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                    </rowConstraints>
+                                    <children>
+                                        <Label contentDisplay="RIGHT" text="5" textFill="#1b535ce5">
+                                            <padding>
+                                                <Insets right="4.0"/>
+                                            </padding>
+                                            <font>
+                                                <Font size="13.0"/>
+                                            </font>
+                                            <graphic>
+                                                <FontAwesomeIconView fill="#1b535ce7" glyphName="STAR" size="13"/>
+                                            </graphic>
+                                        </Label>
+                                        <Label contentDisplay="RIGHT" text="4" textFill="#1b535ce5"
+                                               GridPane.rowIndex="1">
+                                            <padding>
+                                                <Insets right="4.0"/>
+                                            </padding>
+                                            <font>
+                                                <Font size="13.0"/>
+                                            </font>
+                                            <graphic>
+                                                <FontAwesomeIconView fill="#1b535ce7" glyphName="STAR" size="13"/>
+                                            </graphic>
+                                        </Label>
+                                        <Label contentDisplay="RIGHT" text="3" textFill="#1b535ce5"
+                                               GridPane.rowIndex="2">
+                                            <padding>
+                                                <Insets right="4.0"/>
+                                            </padding>
+                                            <font>
+                                                <Font size="13.0"/>
+                                            </font>
+                                            <graphic>
+                                                <FontAwesomeIconView fill="#1b535ce7" glyphName="STAR" size="13"/>
+                                            </graphic>
+                                        </Label>
+                                        <Label contentDisplay="RIGHT" text="2" textFill="#1b535ce5"
+                                               GridPane.rowIndex="3">
+                                            <padding>
+                                                <Insets right="4.0"/>
+                                            </padding>
+                                            <font>
+                                                <Font size="13.0"/>
+                                            </font>
+                                            <graphic>
+                                                <FontAwesomeIconView fill="#1b535ce7" glyphName="STAR" size="13"/>
+                                            </graphic>
+                                        </Label>
+                                        <Label contentDisplay="RIGHT" text="1" textFill="#1b535ce5"
+                                               GridPane.rowIndex="4">
+                                            <padding>
+                                                <Insets right="4.0"/>
+                                            </padding>
+                                            <font>
+                                                <Font size="13.0"/>
+                                            </font>
+                                            <graphic>
+                                                <FontAwesomeIconView fill="#1b535ce7" glyphName="STAR" size="13"/>
+                                            </graphic>
+                                        </Label>
+                                        <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1">
+                                            <children>
+                                                <Rectangle fx:id="_rec5Star" arcHeight="10.0" arcWidth="10.0"
+                                                           fill="#1a535c" height="8.0" stroke="BLACK"
+                                                           strokeType="INSIDE" strokeWidth="0.0" width="200.0"/>
+                                                <Label fx:id="_lbl5Star" text="0k" textFill="#1b535ce4">
+                                                    <HBox.margin>
+                                                        <Insets left="8.0"/>
+                                                    </HBox.margin>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                            <children>
+                                                <Rectangle fx:id="_rec4Star" arcHeight="10.0" arcWidth="10.0"
+                                                           fill="#1b535ccc" height="8.0" stroke="BLACK"
+                                                           strokeType="INSIDE" strokeWidth="0.0" width="200.0"/>
+                                                <Label fx:id="_lbl4Star" text="0k" textFill="#1b535ce4">
+                                                    <HBox.margin>
+                                                        <Insets left="8.0"/>
+                                                    </HBox.margin>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                            <children>
+                                                <Rectangle fx:id="_rec3Star" arcHeight="10.0" arcWidth="10.0"
+                                                           fill="#1b535c99" height="8.0" stroke="BLACK"
+                                                           strokeType="INSIDE" strokeWidth="0.0" width="200.0"/>
+                                                <Label fx:id="_lbl3Star" text="0k" textFill="#1b535ce4">
+                                                    <HBox.margin>
+                                                        <Insets left="8.0"/>
+                                                    </HBox.margin>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                            <children>
+                                                <Rectangle fx:id="_rec2Star" arcHeight="10.0" arcWidth="10.0"
+                                                           fill="#1b535c66" height="8.0" stroke="BLACK"
+                                                           strokeType="INSIDE" strokeWidth="0.0" width="200.0"/>
+                                                <Label fx:id="_lbl2Star" text="0k" textFill="#1b535ce4">
+                                                    <HBox.margin>
+                                                        <Insets left="8.0"/>
+                                                    </HBox.margin>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                            <children>
+                                                <Rectangle fx:id="_rec1Star" arcHeight="10.0" arcWidth="10.0"
+                                                           fill="#1b535c33" height="8.0" stroke="BLACK"
+                                                           strokeType="INSIDE" strokeWidth="0.0" width="200.0"/>
+                                                <Label fx:id="_lbl1Star" text="0k" textFill="#1b535ce4">
+                                                    <HBox.margin>
+                                                        <Insets left="8.0"/>
+                                                    </HBox.margin>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </GridPane>
+                                <Separator>
+                                    <VBox.margin>
+                                        <Insets top="8.0"/>
+                                    </VBox.margin>
+                                </Separator>
+                                <HBox alignment="CENTER_LEFT">
+                                    <children>
+                                        <Circle fx:id="_cirAvatar" fill="DODGERBLUE" radius="25.0" stroke="BLACK"
+                                                strokeType="INSIDE" strokeWidth="0.0"/>
+                                        <VBox alignment="CENTER_LEFT">
+                                            <HBox.margin>
+                                                <Insets left="16.0"/>
+                                            </HBox.margin>
+                                            <children>
+                                                <JFXTextArea fx:id="_taComment" focusColor="#ffba33" prefRowCount="2"
+                                                             promptText="Tell people what you think"
+                                                             unFocusColor="#ccd0d2"/>
+                                                <Rating fx:id="_rating" rating="0.0"
+                                                        stylesheets="@../../../style/ratingBar.css">
+                                                    <VBox.margin>
+                                                        <Insets top="16.0"/>
+                                                    </VBox.margin>
+                                                </Rating>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets top="8.0"/>
+                                    </VBox.margin>
+                                </HBox>
+                                <Separator>
+                                    <VBox.margin>
+                                        <Insets top="16.0"/>
+                                    </VBox.margin>
+                                </Separator>
+                                <ListView fx:id="_lvReviewItem" stylesheets="@../../../style/listView.css">
+                                    <VBox.margin>
+                                        <Insets top="8.0"/>
+                                    </VBox.margin>
+                                </ListView>
+                            </children>
+                            <padding>
+                                <Insets bottom="8.0" left="8.0" right="8.0" top="8.0"/>
+                            </padding>
+                        </VBox>
+                    </content>
+                </Tab>
+            </tabs>
+        </JFXTabPane>
+        <ImageView fx:id="_ivPlaceImg" fitHeight="242.0" fitWidth="375.0" pickOnBounds="true" preserveRatio="true"
+                   AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+        <ProgressIndicator fx:id="_coverProgressIndicator" style="-fx-progress-color: #1a535c" visible="false"/>
+        <JFXButton fx:id="_btnLike" layoutX="39.0" layoutY="208.0" prefHeight="40.0" prefWidth="145.0"
+                   ripplerFill="#ffffff42"
+                   style="-fx-background-radius: 100; -fx-background-color: #FF4C4C; -fx-border-radius: 100; -fx-border-color: #FF4C4C;"
+                   text="Like" textFill="WHITE" AnchorPane.leftAnchor="39.0" AnchorPane.topAnchor="190.0">
+            <font>
+                <Font size="10.0"/>
+            </font>
+            <padding>
+                <Insets left="16.0"/>
+            </padding>
+        </JFXButton>
+        <JFXButton fx:id="_btnGoNow" layoutX="192.0" layoutY="208.0" onMouseClicked="#onGoNow" prefHeight="40.0"
+                   prefWidth="145.0" ripplerFill="#ffffff42"
+                   style="-fx-background-color: #ffc146; -fx-background-radius: 100;" text="Go now" textFill="WHITE"
+                   AnchorPane.leftAnchor="192.0" AnchorPane.topAnchor="190.0">
+            <font>
+                <Font size="10.0"/>
+            </font>
+            <padding>
+                <Insets left="16.0"/>
+            </padding>
+        </JFXButton>
+        <MaterialDesignIconView fill="WHITE" glyphName="HEART" layoutX="72.0" layoutY="219.0" size="25"/>
+        <MaterialDesignIconView fill="WHITE" glyphName="SHARE" layoutX="221.0" layoutY="219.0" size="25"/>
+        <Label fx:id="_lblPlace" layoutX="167.0" layoutY="14.0" text="Place" textFill="WHITE"
+               AnchorPane.leftAnchor="167.0" AnchorPane.rightAnchor="166.0" AnchorPane.topAnchor="16.0">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Label>
+    </children>
+</AnchorPane>

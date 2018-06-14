@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<HBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.141">
+    <children>
+        <VBox>
+            <children>
+                <Circle fx:id="_cirAvatar" fill="DODGERBLUE" radius="23.0" stroke="BLACK" strokeType="INSIDE"
+                        strokeWidth="0.0"/>
+                <StackPane>
+                    <children>
+                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#1a535c" height="20.0" stroke="BLACK"
+                                   strokeType="INSIDE" strokeWidth="0.0" width="46.0"/>
+                        <Label fx:id="_lblRating" contentDisplay="RIGHT" text="0" textFill="WHITE">
+                            <graphic>
+                                <FontAwesomeIconView fill="WHITE" glyphName="STAR"/>
+                            </graphic>
+                        </Label>
+                    </children>
+                    <VBox.margin>
+                        <Insets top="8.0"/>
+                    </VBox.margin>
+                </StackPane>
+            </children>
+        </VBox>
+        <StackPane prefHeight="150.0" prefWidth="200.0">
+            <HBox.margin>
+                <Insets left="8.0"/>
+            </HBox.margin>
+            <children>
+                <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#f2f4fa" height="200.0" stroke="BLACK"
+                           strokeType="INSIDE" strokeWidth="0.0" width="200.0"/>
+                <VBox>
+                    <children>
+                        <AnchorPane>
+                            <children>
+                                <HBox>
+                                    <children>
+                                        <Label fx:id="_lblFirstname" text="Label">
+                                            <font>
+                                                <Font name="System Bold" size="16.0"/>
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="_lblLastname" text="Label">
+                                            <font>
+                                                <Font size="16.0"/>
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="4.0"/>
+                                            </HBox.margin>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                                <Label fx:id="_lblTime" text="Label" textFill="#828282" AnchorPane.bottomAnchor="0.0"
+                                       AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                            </children>
+                        </AnchorPane>
+                        <Label fx:id="_lblComment" text="Label" textFill="#1c535ce6" wrapText="true">
+                            <font>
+                                <Font size="13.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets top="8.0"/>
+                            </VBox.margin>
+                        </Label>
+                    </children>
+                    <StackPane.margin>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0"/>
+                    </StackPane.margin>
+                </VBox>
+            </children>
+        </StackPane>
+    </children>
+</HBox>
