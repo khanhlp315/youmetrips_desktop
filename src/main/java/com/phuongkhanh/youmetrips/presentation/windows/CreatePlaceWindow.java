@@ -16,8 +16,7 @@ public class CreatePlaceWindow extends JFXWindowBase {
             final TrekkingPlaceLocationScreen locationScreen,
             final TrekkingPlacePhotosScreen photosScreen,
             final TrekkingPlaceHashtagsScreen hashtagsScreen
-            )
-    {
+    ) {
         super(nameScreen, locationScreen, photosScreen, hashtagsScreen);
     }
 }

@@ -9,8 +9,7 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
-public class TrekkingPlacePane extends AnchorPane
-{
+public class TrekkingPlacePane extends AnchorPane {
     @FXML
     private VBox _vBox;
 
@@ -28,7 +27,7 @@ public class TrekkingPlacePane extends AnchorPane
 
     }
 
-    public TrekkingPlacePane(Node...trekkingPlaceNodes) {
+    public TrekkingPlacePane(Node... trekkingPlaceNodes) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource(
                 "view/create_place/step_main.fxml"));
         fxmlLoader.setRoot(this);
@@ -43,12 +42,12 @@ public class TrekkingPlacePane extends AnchorPane
         _vBox.getChildren().addAll(trekkingPlaceNodes);
     }
 
-    public void setTrekkingPlaceNodes(Node ...trekkingPlaceNodes){
-        _vBox.getChildren().clear();
-        _vBox.getChildren().addAll(trekkingPlaceNodes);
+    public ObservableList<Node> getTrekkingPlaceNodes() {
+        return _vBox.getChildren();
     }
 
-    public ObservableList<Node> getTrekkingPlaceNodes(){
-        return _vBox.getChildren();
+    public void setTrekkingPlaceNodes(Node... trekkingPlaceNodes) {
+        _vBox.getChildren().clear();
+        _vBox.getChildren().addAll(trekkingPlaceNodes);
     }
 }

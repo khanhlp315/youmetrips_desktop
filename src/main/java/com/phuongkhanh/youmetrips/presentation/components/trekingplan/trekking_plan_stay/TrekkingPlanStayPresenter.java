@@ -11,34 +11,28 @@ public class TrekkingPlanStayPresenter extends PresenterBase<TrekkingPlanStayScr
     private final TrekkingPlanStayService _service;
 
     @Inject
-    public TrekkingPlanStayPresenter(TrekkingPlanStayService service)
-    {
+    public TrekkingPlanStayPresenter(TrekkingPlanStayService service) {
         _service = service;
     }
 
-    public void onInputUpdated(int from, int to){
-        assert(getView() != null);
-        if (_isValidInput(from, to)){
+    public void onInputUpdated(int from, int to) {
+        assert (getView() != null);
+        if (_isValidInput(from, to)) {
             getView().setCanNext(true);
-        }
-        else {
+        } else {
             getView().setCanNext(false);
         }
     }
 
     private boolean _isValidInput(int from, int to) {
-        if(from == 0 || to == 0){
+        if (from == 0 || to == 0) {
             return false;
         }
 
-        if(from >= to){
-            return false;
-        }
-
-        return true;
+        return from < to;
     }
 
-    public void requestToNavigateToHotel(){
+    public void requestToNavigateToHotel() {
         assert (getView() != null);
         HomeStore homeStore = _service.getHomeStore();
         CreatePlan plan = homeStore.getCreatePlan();

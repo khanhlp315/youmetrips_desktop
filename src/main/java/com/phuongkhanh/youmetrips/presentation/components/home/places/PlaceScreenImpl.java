@@ -15,24 +15,21 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.omg.CORBA.ACTIVITY_REQUIRED;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 public class PlaceScreenImpl extends FXMLScreen
-implements PlaceScreen, Initializable {
-
-    @FXML
-    private JFXListView _lvPlaces;
+        implements PlaceScreen, Initializable {
 
     private final PlacePresenter _presenter;
     private final Provider<CreatePlanWindow> _planWindow;
     private final Provider<CreatePlaceWindow> _placeWindow;
+    @FXML
+    private JFXListView _lvPlaces;
 
     @Override
     public Scene render() {
@@ -41,8 +38,7 @@ implements PlaceScreen, Initializable {
     }
 
     @Inject
-    public PlaceScreenImpl(PlacePresenter presenter, Provider<CreatePlanWindow> planWindow, Provider<CreatePlaceWindow> placeWindow)
-    {
+    public PlaceScreenImpl(PlacePresenter presenter, Provider<CreatePlanWindow> planWindow, Provider<CreatePlaceWindow> placeWindow) {
         _presenter = presenter;
         _presenter.setView(this);
         _planWindow = planWindow;
@@ -110,42 +106,36 @@ implements PlaceScreen, Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        _lvPlaces.setCellFactory(param->new PlaceCell());
+        _lvPlaces.setCellFactory(param -> new PlaceCell());
     }
 
     @FXML
-    public void onPlanClicked()
-    {
+    public void onPlanClicked() {
         _presenter.requestNavigateToPlan();
     }
 
     @FXML
-    public void onFriendRequestClicked()
-    {
+    public void onFriendRequestClicked() {
         _presenter.requestNavigateToFriendRequest();
     }
 
     @FXML
-    public void onCreateTrekkingPlanClicked()
-    {
+    public void onCreateTrekkingPlanClicked() {
         _presenter.requestNavigateToCreateTrekkingPlan();
     }
 
     @FXML
-    public void onCreateTrekkingPlaceClicked()
-    {
+    public void onCreateTrekkingPlaceClicked() {
         _presenter.requestNavigateToCreateTrekkingPlace();
     }
 
     @FXML
-    public void onProfileClicked()
-    {
+    public void onProfileClicked() {
         _presenter.requestNavigateToProfile();
     }
 
     @FXML
-    public void onEditProfileClicked()
-    {
+    public void onEditProfileClicked() {
         _presenter.requestNavigateToEditProfile();
     }
 }

@@ -21,10 +21,9 @@ import javax.inject.Provider;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 public class PlanScreenImpl extends FXMLScreen
-implements PlanScreen, Initializable {
+        implements PlanScreen, Initializable {
 
     private final PlanPresenter _presenter;
     private final Provider<CreatePlanWindow> _planWindow;
@@ -40,8 +39,7 @@ implements PlanScreen, Initializable {
     }
 
     @Inject
-    public PlanScreenImpl(PlanPresenter presenter, Provider<CreatePlanWindow> planWindow, Provider<CreatePlaceWindow> placeWindow)
-    {
+    public PlanScreenImpl(PlanPresenter presenter, Provider<CreatePlanWindow> planWindow, Provider<CreatePlaceWindow> placeWindow) {
         _presenter = presenter;
         _presenter.setView(this);
         _planWindow = planWindow;
@@ -109,42 +107,36 @@ implements PlanScreen, Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        _lvPlans.setCellFactory(param-> new RelevantPlanCell());
+        _lvPlans.setCellFactory(param -> new RelevantPlanCell());
     }
 
     @FXML
-    public void onPlaceClicked()
-    {
+    public void onPlaceClicked() {
         _presenter.requestNavigateToPlace();
     }
 
     @FXML
-    public void onFriendRequestClicked()
-    {
+    public void onFriendRequestClicked() {
         _presenter.requestNavigateToFriendRequest();
     }
 
     @FXML
-    public void onCreateTrekkingPlanClicked()
-    {
+    public void onCreateTrekkingPlanClicked() {
         _presenter.requestNavigateToCreateTrekkingPlan();
     }
 
     @FXML
-    public void onCreateTrekkingPlaceClicked()
-    {
+    public void onCreateTrekkingPlaceClicked() {
         _presenter.requestNavigateToCreateTrekkingPlace();
     }
 
     @FXML
-    public void onProfileClicked()
-    {
+    public void onProfileClicked() {
         _presenter.requestNavigateToProfile();
     }
 
     @FXML
-    public void onEditProfileClicked()
-    {
+    public void onEditProfileClicked() {
         _presenter.requestNavigateToEditProfile();
     }
 }

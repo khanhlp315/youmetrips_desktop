@@ -15,12 +15,11 @@ public class TrekkingPlanHotelPresenter extends PresenterBase<TrekkingPlanHotelS
         _service = service;
     }
 
-    void onStarsUpdated(int stars){
-        assert(getView() != null);
-        if (_isValidInput(stars)){
+    void onStarsUpdated(int stars) {
+        assert (getView() != null);
+        if (_isValidInput(stars)) {
             getView().setCanNext(true);
-        }
-        else {
+        } else {
             getView().setCanNext(false);
         }
     }
@@ -29,8 +28,7 @@ public class TrekkingPlanHotelPresenter extends PresenterBase<TrekkingPlanHotelS
         return stars != 0;
     }
 
-    public void requestToNavigateToPreview()
-    {
+    public void requestToNavigateToPreview() {
         assert (getView() != null);
         HomeStore homeStore = _service.getHomeStore();
         CreatePlan plan = homeStore.getCreatePlan();

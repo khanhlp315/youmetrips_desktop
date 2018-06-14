@@ -15,7 +15,7 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class TrekkingPlanTimeScreenImpl extends FXMLScreen
-implements TrekkingPlanTimeScreen, Initializable {
+        implements TrekkingPlanTimeScreen, Initializable {
     private TrekkingPlanTimePresenter _presenter;
 
     @FXML
@@ -28,8 +28,7 @@ implements TrekkingPlanTimeScreen, Initializable {
     private JFXButton _btnNext;
 
     @Inject
-    public TrekkingPlanTimeScreenImpl(TrekkingPlanTimePresenter presenter)
-    {
+    public TrekkingPlanTimeScreenImpl(TrekkingPlanTimePresenter presenter) {
         _presenter = presenter;
         _presenter.setView(this);
     }
@@ -45,8 +44,7 @@ implements TrekkingPlanTimeScreen, Initializable {
     }
 
     @FXML
-    public void onNavigateToStay()
-    {
+    public void onNavigateToStay() {
         _presenter.requestToNavigateToStay();
     }
 

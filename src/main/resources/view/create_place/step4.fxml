@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXTextField?>
+<?import com.phuongkhanh.youmetrips.presentation.controls.TrekkingPlacePane?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
-
-<?import com.phuongkhanh.youmetrips.presentation.controls.TrekkingPlacePane?>
 <TrekkingPlacePane>
     <trekkingPlaceNodes>
         <VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" prefWidth="284.0"

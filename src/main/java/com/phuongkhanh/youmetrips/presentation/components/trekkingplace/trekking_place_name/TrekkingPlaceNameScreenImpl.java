@@ -14,7 +14,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class TrekkingPlaceNameScreenImpl extends FXMLScreen
-implements TrekkingPlaceNameScreen, Initializable {
+        implements TrekkingPlaceNameScreen, Initializable {
 
     private TrekkingPlaceNamePresenter _presenter;
 
@@ -25,8 +25,7 @@ implements TrekkingPlaceNameScreen, Initializable {
     private JFXButton _btnNext;
 
     @Inject
-    public TrekkingPlaceNameScreenImpl(TrekkingPlaceNamePresenter presenter)
-    {
+    public TrekkingPlaceNameScreenImpl(TrekkingPlaceNamePresenter presenter) {
         _presenter = presenter;
         _presenter.setView(this);
     }
@@ -52,8 +51,7 @@ implements TrekkingPlaceNameScreen, Initializable {
     }
 
     @FXML
-    public void onNavigateToLocation()
-    {
+    public void onNavigateToLocation() {
         _presenter.requestToNavigateToLocation(_tfPlace.getText());
     }
 

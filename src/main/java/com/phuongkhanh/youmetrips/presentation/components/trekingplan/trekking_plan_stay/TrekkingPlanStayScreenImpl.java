@@ -14,7 +14,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class TrekkingPlanStayScreenImpl extends FXMLScreen
-implements TrekkingPlanStayScreen, Initializable {
+        implements TrekkingPlanStayScreen, Initializable {
 
     private TrekkingPlanStayPresenter _presenter;
 
@@ -28,8 +28,7 @@ implements TrekkingPlanStayScreen, Initializable {
     private JFXComboBox _cbTo;
 
     @Inject
-    public TrekkingPlanStayScreenImpl(TrekkingPlanStayPresenter presenter)
-    {
+    public TrekkingPlanStayScreenImpl(TrekkingPlanStayPresenter presenter) {
         _presenter = presenter;
         _presenter.setView(this);
     }
@@ -45,8 +44,7 @@ implements TrekkingPlanStayScreen, Initializable {
     }
 
     @FXML
-    public void onNavigateToHotel()
-    {
+    public void onNavigateToHotel() {
         _presenter.requestToNavigateToHotel();
     }
 
@@ -60,14 +58,14 @@ implements TrekkingPlanStayScreen, Initializable {
         _cbFrom.valueProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                _presenter.onInputUpdated(Integer.valueOf((String)_cbFrom.getValue()), Integer.valueOf((String)_cbTo.getValue()));
+                _presenter.onInputUpdated(Integer.valueOf((String) _cbFrom.getValue()), Integer.valueOf((String) _cbTo.getValue()));
             }
         });
 
         _cbTo.valueProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                _presenter.onInputUpdated(Integer.valueOf((String)_cbFrom.getValue()), Integer.valueOf((String)_cbTo.getValue()));
+                _presenter.onInputUpdated(Integer.valueOf((String) _cbFrom.getValue()), Integer.valueOf((String) _cbTo.getValue()));
             }
         });
     }

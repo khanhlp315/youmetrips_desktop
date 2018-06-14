@@ -8,5 +8,6 @@ public interface TrekkingPlaceNameScreen extends JFXScreen {
     void hideContinue();
 
     void showError(String title, String message);
+
     void navigateToLocation();
 }

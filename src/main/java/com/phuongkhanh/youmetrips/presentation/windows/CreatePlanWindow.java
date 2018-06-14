@@ -18,8 +18,7 @@ public class CreatePlanWindow extends JFXWindowBase {
             final TrekkingPlanStayScreen stayScreen,
             final TrekkingPlanHotelScreen hotelScreen,
             final TrekkingPlanPreviewScreen previewScreen
-            )
-    {
+    ) {
         super(placeScreen, timeScreen, stayScreen, hotelScreen, previewScreen);
     }
 }

@@ -10,7 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class TrekkingPlanPreviewScreenImpl extends FXMLScreen
-implements TrekkingPlanPreviewScreen, Initializable {
+        implements TrekkingPlanPreviewScreen, Initializable {
 
     private TrekkingPlanPreviewPresenter _presenter;
 
@@ -18,8 +18,7 @@ implements TrekkingPlanPreviewScreen, Initializable {
     private JFXButton _btnNext;
 
     @Inject
-    public TrekkingPlanPreviewScreenImpl(TrekkingPlanPreviewPresenter presenter)
-    {
+    public TrekkingPlanPreviewScreenImpl(TrekkingPlanPreviewPresenter presenter) {
         _presenter = presenter;
         _presenter.setView(this);
     }

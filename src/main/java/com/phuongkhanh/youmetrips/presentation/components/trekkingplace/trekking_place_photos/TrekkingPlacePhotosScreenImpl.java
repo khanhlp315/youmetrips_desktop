@@ -76,20 +76,17 @@ public class TrekkingPlacePhotosScreenImpl extends FXMLScreen
     }
 
     @FXML
-    public void onNavigateToHashtags()
-    {
+    public void onNavigateToHashtags() {
         _presenter.requestToNavigateToHashtags();
     }
 
     @FXML
-    public void onAddImage()
-    {
+    public void onAddImage() {
         //_presenter.pickImage();
     }
 
     @FXML
-    public void onRemoveImage()
-    {
+    public void onRemoveImage() {
 
     }
 

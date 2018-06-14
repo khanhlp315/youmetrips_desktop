@@ -60,16 +60,6 @@ import com.phuongkhanh.youmetrips.presentation.components.signup.signup.SignUpPr
 import com.phuongkhanh.youmetrips.presentation.components.signup.signup.SignUpScreen;
 import com.phuongkhanh.youmetrips.presentation.components.signup.signup.SignUpScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.components.signup.signup.SignUpService;
-import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_hotel.TrekkingPlanHotelService;
-import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_stay.TrekkingPlanStayService;
-import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_time.TrekkingPlanTimeService;
-import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_hashtags.TrekkingPlaceHashtagsService;
-import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_location.TrekkingPlaceLocationService;
-import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_name.TrekkingPlaceNameService;
-import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_photos.TrekkingPlacePhotosService;
-import com.phuongkhanh.youmetrips.presentation.windows.CreatePlaceWindow;
-import com.phuongkhanh.youmetrips.presentation.windows.CreatePlanWindow;
-import com.phuongkhanh.youmetrips.presentation.windows.HomeWindow;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.TrekkingPlanPresenter;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.TrekkingPlanScreen;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.TrekkingPlanScreenImpl;
@@ -77,6 +67,7 @@ import com.phuongkhanh.youmetrips.presentation.components.trekingplan.TrekkingPl
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_hotel.TrekkingPlanHotelPresenter;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_hotel.TrekkingPlanHotelScreen;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_hotel.TrekkingPlanHotelScreenImpl;
+import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_hotel.TrekkingPlanHotelService;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_place.TrekkingPlanPlacePresenter;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_place.TrekkingPlanPlaceScreen;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_place.TrekkingPlanPlaceScreenImpl;
@@ -88,9 +79,11 @@ import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_p
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_stay.TrekkingPlanStayPresenter;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_stay.TrekkingPlanStayScreen;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_stay.TrekkingPlanStayScreenImpl;
+import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_stay.TrekkingPlanStayService;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_time.TrekkingPlanTimePresenter;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_time.TrekkingPlanTimeScreen;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_time.TrekkingPlanTimeScreenImpl;
+import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_time.TrekkingPlanTimeService;
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.TrekkingPlacePresenter;
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.TrekkingPlaceScreen;
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.TrekkingPlaceScreenImpl;
@@ -98,15 +91,22 @@ import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.Trekking
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_hashtags.TrekkingPlaceHashtagsPresenter;
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_hashtags.TrekkingPlaceHashtagsScreen;
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_hashtags.TrekkingPlaceHashtagsScreenImpl;
+import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_hashtags.TrekkingPlaceHashtagsService;
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_location.TrekkingPlaceLocationPresenter;
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_location.TrekkingPlaceLocationScreen;
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_location.TrekkingPlaceLocationScreenImpl;
+import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_location.TrekkingPlaceLocationService;
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_name.TrekkingPlaceNamePresenter;
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_name.TrekkingPlaceNameScreen;
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_name.TrekkingPlaceNameScreenImpl;
+import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_name.TrekkingPlaceNameService;
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_photos.TrekkingPlacePhotosPresenter;
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_photos.TrekkingPlacePhotosScreen;
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_photos.TrekkingPlacePhotosScreenImpl;
+import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_photos.TrekkingPlacePhotosService;
+import com.phuongkhanh.youmetrips.presentation.windows.CreatePlaceWindow;
+import com.phuongkhanh.youmetrips.presentation.windows.CreatePlanWindow;
+import com.phuongkhanh.youmetrips.presentation.windows.HomeWindow;
 import com.phuongkhanh.youmetrips.presentation.windows.LoginWindow;
 import com.phuongkhanh.youmetrips.services.api.RestApi;
 import com.phuongkhanh.youmetrips.services.components.AuthServiceImpl;
@@ -129,14 +129,16 @@ import javax.inject.Singleton;
 public interface ApplicationContext {
     LoginWindow loginWindow();
     HomeWindow homeWindow();
+
     CreatePlanWindow createPlanWindow();
+
     CreatePlaceWindow createPlaceWindow();
 
     @Module
-    static class PresentationModule {
+    class PresentationModule {
         @Provides
-        static LoginScreen loginScreen(LoginPresenter presenter, Provider<HomeWindow> homeWindowProvider ) {
-            return new LoginScreenImpl( presenter, homeWindowProvider  );
+        static LoginScreen loginScreen(LoginPresenter presenter, Provider<HomeWindow> homeWindowProvider) {
+            return new LoginScreenImpl(presenter, homeWindowProvider);
         }
 
         @Provides
@@ -300,8 +302,7 @@ public interface ApplicationContext {
         }
 
         @Provides
-        static TrekkingPlanHotelPresenter trekkingPlanHotelPresenter(TrekkingPlanHotelService service)
-        {
+        static TrekkingPlanHotelPresenter trekkingPlanHotelPresenter(TrekkingPlanHotelService service) {
             return new TrekkingPlanHotelPresenter(service);
         }
 
@@ -331,8 +332,7 @@ public interface ApplicationContext {
         }
 
         @Provides
-        static TrekkingPlanStayPresenter trekkingPlanStayPresenter(TrekkingPlanStayService service)
-        {
+        static TrekkingPlanStayPresenter trekkingPlanStayPresenter(TrekkingPlanStayService service) {
             return new TrekkingPlanStayPresenter(service);
         }
 
@@ -342,8 +342,7 @@ public interface ApplicationContext {
         }
 
         @Provides
-        static TrekkingPlanTimePresenter trekkingPlanTimePresenter(TrekkingPlanTimeService service)
-        {
+        static TrekkingPlanTimePresenter trekkingPlanTimePresenter(TrekkingPlanTimeService service) {
             return new TrekkingPlanTimePresenter(service);
         }
 
@@ -363,8 +362,7 @@ public interface ApplicationContext {
         }
 
         @Provides
-        static TrekkingPlaceHashtagsPresenter trekkingPlaceHashtagsPresenter(TrekkingPlaceHashtagsService service)
-        {
+        static TrekkingPlaceHashtagsPresenter trekkingPlaceHashtagsPresenter(TrekkingPlaceHashtagsService service) {
             return new TrekkingPlaceHashtagsPresenter(service);
         }
 
@@ -374,8 +372,7 @@ public interface ApplicationContext {
         }
 
         @Provides
-        static TrekkingPlaceLocationPresenter trekkingPlaceLocationPresenter(TrekkingPlaceLocationService service)
-        {
+        static TrekkingPlaceLocationPresenter trekkingPlaceLocationPresenter(TrekkingPlaceLocationService service) {
             return new TrekkingPlaceLocationPresenter(service);
         }
 
@@ -385,8 +382,7 @@ public interface ApplicationContext {
         }
 
         @Provides
-        static TrekkingPlaceNamePresenter trekkingPlaceNamePresenter(TrekkingPlaceNameService service)
-        {
+        static TrekkingPlaceNamePresenter trekkingPlaceNamePresenter(TrekkingPlaceNameService service) {
             return new TrekkingPlaceNamePresenter(service);
         }
 
@@ -396,14 +392,13 @@ public interface ApplicationContext {
         }
 
         @Provides
-        static TrekkingPlacePhotosPresenter trekkingPlacePhotosPresenter(TrekkingPlacePhotosService service)
-        {
+        static TrekkingPlacePhotosPresenter trekkingPlacePhotosPresenter(TrekkingPlacePhotosService service) {
             return new TrekkingPlacePhotosPresenter(service);
         }
     }
 
     @Module
-    static class ServiceModule {
+    class ServiceModule {
         static RestApi _restApi = new RestApi();
         static AuthenticationStore _authenticationStore = new AuthenticationStore();
         static HomeStore _homeStore = new HomeStore();
@@ -519,44 +514,37 @@ public interface ApplicationContext {
         }
 
         @Provides
-        static TrekkingPlaceNameService trekkingPlaceNameService()
-        {
+        static TrekkingPlaceNameService trekkingPlaceNameService() {
             return new HomeServiceImpl(restApi(), authenticationStore(), homeStore());
         }
 
         @Provides
-        static TrekkingPlaceLocationService trekkingPlaceLocationService()
-        {
+        static TrekkingPlaceLocationService trekkingPlaceLocationService() {
             return new HomeServiceImpl(restApi(), authenticationStore(), homeStore());
         }
 
         @Provides
-        static TrekkingPlacePhotosService trekkingPlacePhotosService()
-        {
+        static TrekkingPlacePhotosService trekkingPlacePhotosService() {
             return new HomeServiceImpl(restApi(), authenticationStore(), homeStore());
         }
 
         @Provides
-        static TrekkingPlaceHashtagsService trekkingPlaceHashtagsService()
-        {
+        static TrekkingPlaceHashtagsService trekkingPlaceHashtagsService() {
             return new HomeServiceImpl(restApi(), authenticationStore(), homeStore());
         }
 
         @Provides
-        static TrekkingPlanTimeService trekkingPlanTimeService()
-        {
+        static TrekkingPlanTimeService trekkingPlanTimeService() {
             return new HomeServiceImpl(restApi(), authenticationStore(), homeStore());
         }
 
         @Provides
-        static TrekkingPlanStayService trekkingPlanStayService()
-        {
+        static TrekkingPlanStayService trekkingPlanStayService() {
             return new HomeServiceImpl(restApi(), authenticationStore(), homeStore());
         }
 
         @Provides
-        static TrekkingPlanHotelService trekkingPlanHotelService()
-        {
+        static TrekkingPlanHotelService trekkingPlanHotelService() {
             return new HomeServiceImpl(restApi(), authenticationStore(), homeStore());
         }
     }

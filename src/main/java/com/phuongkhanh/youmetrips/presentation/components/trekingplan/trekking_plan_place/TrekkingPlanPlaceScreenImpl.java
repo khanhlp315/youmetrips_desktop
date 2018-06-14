@@ -3,20 +3,17 @@ package com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_
 import com.jfoenix.controls.JFXButton;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_time.TrekkingPlanTimeScreenImpl;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
-import com.phuongkhanh.youmetrips.presentation.windows.CreatePlanWindow;
 import com.phuongkhanh.youmetrips.services.api.models.Place;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.stage.Stage;
 
 import javax.inject.Inject;
-import javax.inject.Provider;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class TrekkingPlanPlaceScreenImpl extends FXMLScreen
-implements TrekkingPlanPlaceScreen, Initializable {
+        implements TrekkingPlanPlaceScreen, Initializable {
 
     private TrekkingPlanPlacePresenter _presenter;
 
@@ -24,8 +21,7 @@ implements TrekkingPlanPlaceScreen, Initializable {
     private JFXButton _btnNext;
 
     @Inject
-    public TrekkingPlanPlaceScreenImpl(TrekkingPlanPlacePresenter presenter)
-    {
+    public TrekkingPlanPlaceScreenImpl(TrekkingPlanPlacePresenter presenter) {
         _presenter = presenter;
         _presenter.setView(this);
     }
@@ -61,8 +57,7 @@ implements TrekkingPlanPlaceScreen, Initializable {
     }
 
     @FXML
-    public void onNavigateToTime()
-    {
+    public void onNavigateToTime() {
         _presenter.requestNavigateToTime();
     }
     @Override

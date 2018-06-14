@@ -1,37 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.phuongkhanh.youmetrips.presentation.controls.TrekkingPlanPane?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
-
-<?import com.jfoenix.controls.JFXButton?>
-<TrekkingPlanPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<TrekkingPlanPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.121">
     <trekkingPlanNodes>
-        <VBox alignment="CENTER" prefWidth="284.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+        <VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" prefWidth="284.0"
+              xmlns="http://javafx.com/javafx/8.0.141">
             <children>
-                <Label text="How long will you stay there?" textFill="#828282" />
-                <JFXComboBox fx:id="_cbFrom" focusColor="#ffc146" prefWidth="284.0" promptText="From" unFocusColor="#ccd0d2">
+                <Label text="How long will you stay there?" textFill="#828282"/>
+                <JFXComboBox fx:id="_cbFrom" focusColor="#ffc146" prefWidth="284.0" promptText="From"
+                             unFocusColor="#ccd0d2">
                     <padding>
-                        <Insets top="24.0" />
+                        <Insets top="24.0"/>
                     </padding>
                     <VBox.margin>
-                        <Insets left="64.0" right="64.0" />
+                        <Insets left="64.0" right="64.0"/>
                     </VBox.margin>
                 </JFXComboBox>
-                <JFXComboBox fx:id="_cbTo" focusColor="#ffc146" prefWidth="284.0" promptText="To" unFocusColor="#ccd0d2">
+                <JFXComboBox fx:id="_cbTo" focusColor="#ffc146" prefWidth="284.0" promptText="To"
+                             unFocusColor="#ccd0d2">
                     <padding>
-                        <Insets top="24.0" />
+                        <Insets top="24.0"/>
                     </padding>
                     <VBox.margin>
-                        <Insets left="64.0" right="64.0" />
+                        <Insets left="64.0" right="64.0"/>
                     </VBox.margin>
                 </JFXComboBox>
             </children>
         </VBox>
     </trekkingPlanNodes>
-   <children>
-      <JFXButton fx:id="_btnNext" disable="true" onMouseClicked="#onNavigateToHotel" mnemonicParsing="false" text="Next" />
-   </children>
+    <children>
+        <JFXButton fx:id="_btnNext" disable="true" onMouseClicked="#onNavigateToHotel" mnemonicParsing="false"
+                   text="Next"/>
+    </children>
 </TrekkingPlanPane>

@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.phuongkhanh.youmetrips.presentation.controls.TrekkingPlanPane?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 <?import org.controlsfx.control.Rating?>
-
-<?import com.jfoenix.controls.JFXButton?>
-<TrekkingPlanPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<TrekkingPlanPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.121">
     <trekkingPlanNodes>
-        <VBox alignment="CENTER" prefWidth="284.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+        <VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" prefWidth="284.0"
+              xmlns="http://javafx.com/javafx/8.0.141">
             <children>
-                <Label text="What kind of hotel will you stay?" textFill="#828282" />
+                <Label text="What kind of hotel will you stay?" textFill="#828282"/>
                 <Rating fx:id="_ratingBar" rating="0.0" stylesheets="@../../style/ratingBar.css" updateOnHover="true">
                     <VBox.margin>
-                        <Insets top="24.0" />
+                        <Insets top="24.0"/>
                     </VBox.margin>
                 </Rating>
             </children>
         </VBox>
     </trekkingPlanNodes>
-   <children>
-      <JFXButton fx:id="_btnNext" disable="true" onMouseClicked="#onNavigateToPreview" mnemonicParsing="false" text="Next" />
-   </children>
+    <children>
+        <JFXButton fx:id="_btnNext" disable="true" onMouseClicked="#onNavigateToPreview" mnemonicParsing="false"
+                   text="Next"/>
+    </children>
 </TrekkingPlanPane>

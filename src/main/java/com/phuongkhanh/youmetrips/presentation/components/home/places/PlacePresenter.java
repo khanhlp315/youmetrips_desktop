@@ -80,14 +80,12 @@ public class PlacePresenter extends PresenterBase<PlaceScreen> {
     private void _onFetchPlacesFailed(Throwable throwable) {
     }
 
-    public void requestNavigateToCreateTrekkingPlan()
-    {
+    public void requestNavigateToCreateTrekkingPlan() {
         assert (getView() != null);
         getView().navigateToCreateTrekkingPlan();
     }
 
-    public void requestNavigateToCreateTrekkingPlace()
-    {
+    public void requestNavigateToCreateTrekkingPlace() {
         assert (getView() != null);
         getView().navigateToCreateTrekkingPlace();
     }

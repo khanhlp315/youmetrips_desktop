@@ -14,7 +14,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class TrekkingPlanHotelScreenImpl extends FXMLScreen
-implements TrekkingPlanHotelScreen, Initializable {
+        implements TrekkingPlanHotelScreen, Initializable {
 
     private TrekkingPlanHotelPresenter _presenter;
 
@@ -25,8 +25,7 @@ implements TrekkingPlanHotelScreen, Initializable {
     private Rating _ratingBar;
 
     @Inject
-    public TrekkingPlanHotelScreenImpl(TrekkingPlanHotelPresenter presenter)
-    {
+    public TrekkingPlanHotelScreenImpl(TrekkingPlanHotelPresenter presenter) {
         _presenter = presenter;
         _presenter.setView(this);
     }
@@ -47,8 +46,7 @@ implements TrekkingPlanHotelScreen, Initializable {
     }
 
     @FXML
-    public void onNavigateToPreview()
-    {
+    public void onNavigateToPreview() {
         _presenter.requestToNavigateToPreview();
     }
 
@@ -62,7 +60,7 @@ implements TrekkingPlanHotelScreen, Initializable {
         _ratingBar.ratingProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                _presenter.onStarsUpdated((int)_ratingBar.getRating());
+                _presenter.onStarsUpdated((int) _ratingBar.getRating());
             }
         });
     }
