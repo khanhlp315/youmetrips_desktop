@@ -215,8 +215,8 @@ public interface ApplicationContext {
         }
 
         @Provides
-        static PlaceDetailsScreen placeDetailsScreen(PlaceDetailsPresenter presenter) {
-            return new PlaceDetailsScreenImpl(presenter);
+        static PlaceDetailsScreen placeDetailsScreen(PlaceDetailsPresenter presenter, Provider<CreatePlanWindow> planWindowProvider) {
+            return new PlaceDetailsScreenImpl(presenter, planWindowProvider);
         }
 
         @Provides
