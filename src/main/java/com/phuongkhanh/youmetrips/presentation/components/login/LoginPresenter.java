@@ -6,6 +6,7 @@ import com.phuongkhanh.youmetrips.presentation.models.User;
 import com.phuongkhanh.youmetrips.services.api.models.Login;
 import com.phuongkhanh.youmetrips.services.api.models.SignUp;
 import com.phuongkhanh.youmetrips.services.stores.AuthenticationStore;
+import javafx.application.Platform;
 import javafx.concurrent.Task;
 import org.openqa.selenium.WebDriverException;
 
@@ -146,6 +147,8 @@ public class LoginPresenter extends PresenterBase<LoginScreen> {
         AuthenticationStore authenticationStore = _service.getAuthenticationStore();
         authenticationStore.load();
         if(authenticationStore.getJwt() != null){
+            Platform.runLater(() -> getView().navigateToHome());
+
             //getView().navigateToHome();
         }
     }
