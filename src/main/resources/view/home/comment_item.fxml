@@ -26,10 +26,10 @@
                 <Insets left="-100" top="5" />
             </HBox.margin>
             <Text fx:id="_txtTime" text="6" fill="#8A8A8A"/>
-            <Text disable="true" text=" " fill="#8A8A8A"/>
-            <Text disable="true" text="minutes" fill="#8A8A8A"/>
-            <Text disable="true" text=" " fill="#8A8A8A"/>
-            <Text disable="true" text="ago" fill="#8A8A8A"/>
+            <!--<Text disable="true" text=" " fill="#8A8A8A"/>-->
+            <!--<Text disable="true" text="minutes" fill="#8A8A8A"/>-->
+            <!--<Text disable="true" text=" " fill="#8A8A8A"/>-->
+            <!--<Text disable="true" text="ago" fill="#8A8A8A"/>-->
         </HBox>
 
         <HBox>
