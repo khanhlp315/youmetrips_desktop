@@ -9,6 +9,7 @@ import com.phuongkhanh.youmetrips.presentation.controls.RelevantPlanCell;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import com.phuongkhanh.youmetrips.presentation.windows.CreatePlaceWindow;
 import com.phuongkhanh.youmetrips.presentation.windows.CreatePlanWindow;
+import com.phuongkhanh.youmetrips.presentation.windows.EditProfileWindow;
 import com.phuongkhanh.youmetrips.services.api.models.RelevantPlan;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -30,6 +31,7 @@ implements PlanScreen, Initializable {
     private final PlanPresenter _presenter;
     private final Provider<CreatePlanWindow> _planWindow;
     private final Provider<CreatePlaceWindow> _placeWindow;
+    private final Provider<EditProfileWindow> _editProfileWindow;
 
     @FXML
     private ListView _lvPlans;
@@ -41,12 +43,13 @@ implements PlanScreen, Initializable {
     }
 
     @Inject
-    public PlanScreenImpl(PlanPresenter presenter, Provider<CreatePlanWindow> planWindow, Provider<CreatePlaceWindow> placeWindow)
+    public PlanScreenImpl(PlanPresenter presenter, Provider<CreatePlanWindow> planWindow, Provider<CreatePlaceWindow> placeWindow, Provider<EditProfileWindow> editProfileWindow)
     {
         _presenter = presenter;
         _presenter.setView(this);
         _planWindow = planWindow;
         _placeWindow = placeWindow;
+        _editProfileWindow = editProfileWindow;
     }
 
     @Override
@@ -84,7 +87,9 @@ implements PlanScreen, Initializable {
 
     @Override
     public void navigateToEditProfile() {
-        navigate(EditProfileScreenImpl.class);
+        EditProfileWindow editProfileWindow = _editProfileWindow.get();
+        editProfileWindow.attach(new Stage());
+        editProfileWindow.showAndWait();
     }
 
     @Override

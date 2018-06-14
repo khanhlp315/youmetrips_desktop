@@ -121,6 +121,7 @@ public interface ApplicationContext {
     CreatePlanWindow createPlanWindow();
     CreatePlaceWindow createPlaceWindow();
     PlaceDetailsWindow creatPlaceDetailsWindow();
+    EditProfileWindow editProfileWindow();
 
     @Module
     static class PresentationModule {
@@ -205,8 +206,8 @@ public interface ApplicationContext {
         }
 
         @Provides
-        static FriendRequestsScreen friendRequestsScreen(FriendRequestsPresenter presenter, Provider<CreatePlanWindow> planWindow, Provider<CreatePlaceWindow> placeWindow) {
-            return new FriendRequestsScreenImpl(presenter, planWindow, placeWindow);
+        static FriendRequestsScreen friendRequestsScreen(FriendRequestsPresenter presenter, Provider<CreatePlanWindow> planWindow, Provider<CreatePlaceWindow> placeWindow, Provider<EditProfileWindow> editProfileWindow) {
+            return new FriendRequestsScreenImpl(presenter, planWindow, placeWindow, editProfileWindow);
         }
 
         @Provides
@@ -225,8 +226,8 @@ public interface ApplicationContext {
         }
 
         @Provides
-        static PlaceScreen placeScreen(PlacePresenter presenter, Provider<CreatePlanWindow> planWindowProvider, Provider<CreatePlaceWindow> placeWindowProvider, Provider<PlaceDetailsWindow> placeDetailsWindowProvider) {
-            return new PlaceScreenImpl(presenter, planWindowProvider, placeWindowProvider, placeDetailsWindowProvider);
+        static PlaceScreen placeScreen(PlacePresenter presenter, Provider<CreatePlanWindow> planWindowProvider, Provider<CreatePlaceWindow> placeWindowProvider, Provider<PlaceDetailsWindow> placeDetailsWindowProvider, Provider<EditProfileWindow> editProfileWindow) {
+            return new PlaceScreenImpl(presenter, planWindowProvider, placeWindowProvider, placeDetailsWindowProvider, editProfileWindow);
         }
 
         @Provides
@@ -235,8 +236,8 @@ public interface ApplicationContext {
         }
 
         @Provides
-        static PlanScreen planScreen(PlanPresenter presenter, Provider<CreatePlanWindow> planWindowProvider, Provider<CreatePlaceWindow> placeWindowProvider) {
-            return new PlanScreenImpl(presenter, planWindowProvider, placeWindowProvider);
+        static PlanScreen planScreen(PlanPresenter presenter, Provider<CreatePlanWindow> planWindowProvider, Provider<CreatePlaceWindow> placeWindowProvider, Provider<EditProfileWindow> editProfileWindow) {
+            return new PlanScreenImpl(presenter, planWindowProvider, placeWindowProvider, editProfileWindow);
         }
 
         @Provides

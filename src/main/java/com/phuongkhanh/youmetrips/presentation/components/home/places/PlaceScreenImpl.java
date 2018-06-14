@@ -9,6 +9,7 @@ import com.phuongkhanh.youmetrips.presentation.controls.PlaceCell;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import com.phuongkhanh.youmetrips.presentation.windows.CreatePlaceWindow;
 import com.phuongkhanh.youmetrips.presentation.windows.CreatePlanWindow;
+import com.phuongkhanh.youmetrips.presentation.windows.EditProfileWindow;
 import com.phuongkhanh.youmetrips.presentation.windows.PlaceDetailsWindow;
 import com.phuongkhanh.youmetrips.services.api.models.Place;
 import dagger.Provides;
@@ -39,6 +40,7 @@ public class PlaceScreenImpl extends FXMLScreen
     private final Provider<CreatePlanWindow> _planWindow;
     private final Provider<CreatePlaceWindow> _placeWindow;
     private final Provider<PlaceDetailsWindow> _placeDetailsWindow;
+    private final Provider<EditProfileWindow> _editProfileWindow;
 
     @Override
     public Scene render() {
@@ -47,12 +49,13 @@ public class PlaceScreenImpl extends FXMLScreen
     }
 
     @Inject
-    public PlaceScreenImpl(PlacePresenter presenter, Provider<CreatePlanWindow> planWindow, Provider<CreatePlaceWindow> placeWindow, Provider<PlaceDetailsWindow> placeDetailsWindowProvider) {
+    public PlaceScreenImpl(PlacePresenter presenter, Provider<CreatePlanWindow> planWindow, Provider<CreatePlaceWindow> placeWindow, Provider<PlaceDetailsWindow> placeDetailsWindowProvider, Provider<EditProfileWindow> editProfileWindow) {
         _presenter = presenter;
         _presenter.setView(this);
         _planWindow = planWindow;
         _placeWindow = placeWindow;
         _placeDetailsWindow = placeDetailsWindowProvider;
+        _editProfileWindow = editProfileWindow;
     }
 
     @SuppressWarnings("unchecked")
@@ -85,6 +88,13 @@ public class PlaceScreenImpl extends FXMLScreen
     }
 
     @Override
+    public void navigateToEditProfile() {
+        EditProfileWindow editProfileWindow = _editProfileWindow.get();
+        editProfileWindow.attach(new Stage());
+        editProfileWindow.showAndWait();
+
+    }
+    @Override
     public void navigateToPlan() {
         navigate(PlanScreenImpl.class);
     }
@@ -92,11 +102,6 @@ public class PlaceScreenImpl extends FXMLScreen
     @Override
     public void navigateToProfile() {
         navigate(ProfileScreenImpl.class);
-    }
-
-    @Override
-    public void navigateToEditProfile() {
-        navigate(EditProfileScreenImpl.class);
     }
 
     @Override
