@@ -90,6 +90,11 @@ public class PlacePresenter extends PresenterBase<PlaceScreen> {
         getView().navigateToCreateTrekkingPlace();
     }
 
+    public void requestNavigateToPlaceDetails(){
+        assert (getView() != null);
+        getView().navigateToPlaceDetails();
+    }
+
     public void like(int id) {
         assert (getView() != null);
         Task<Object> task = new Task<Object>() {
@@ -180,5 +185,9 @@ public class PlacePresenter extends PresenterBase<PlaceScreen> {
     public void requestNavigateToEditProfile() {
         assert (getView() != null);
         getView().navigateToEditProfile();
+    }
+
+    public void savePlaceDetailsId(int id){
+        _service.getHomeStore().storePlaceDetailsId(id);
     }
 }
