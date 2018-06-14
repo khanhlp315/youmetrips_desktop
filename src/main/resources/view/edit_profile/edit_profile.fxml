@@ -30,11 +30,14 @@
                                             <font>
                                                 <Font name="System Bold" size="24.0"/>
                                             </font>
+                                            <HBox.margin>
+                                                <Insets top="16.0"/>
+                                            </HBox.margin>
                                         </JFXTextField>
                                         <JFXTextField fx:id="_tfLastName" focusColor="#ffba33" labelFloat="true"
                                                       promptText="Lastname" unFocusColor="#ccd0d2">
                                             <HBox.margin>
-                                                <Insets left="8.0"/>
+                                                <Insets top="16.0"/>
                                             </HBox.margin>
                                             <font>
                                                 <Font size="24.0"/>
@@ -135,8 +138,11 @@
                 <HBox>
                     <children>
                         <JFXRadioButton fx:id="_rbMale" text="Male"/>
-                        <JFXRadioButton fx:id="_rbFemale" text="Female"/>
-                        <JFXRadioButton fx:id="_rbOther" text="Other"/>
+                        <JFXRadioButton fx:id="_rbFemale" text="Female">
+                            <HBox.margin>
+                                <Insets left="8.0"/>
+                            </HBox.margin>
+                        </JFXRadioButton>
                     </children>
                     <VBox.margin>
                         <Insets top="8.0"/>
