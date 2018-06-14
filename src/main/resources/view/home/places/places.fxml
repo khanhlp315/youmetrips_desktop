@@ -2,6 +2,7 @@
 
 <?import com.phuongkhanh.youmetrips.presentation.controls.HomePane?>
 
+<?import javafx.scene.control.ListView?>
 <HomePane onRefreshClicked="#refresh" onCreatePlaceClicked="#onCreateTrekkingPlaceClicked" onCreatePlanClicked="#onCreateTrekkingPlanClicked" onEditProfileClicked="#onEditProfileClicked" onFriendRequestClicked="#onFriendRequestClicked" onPlanClicked="#onPlanClicked" onProfileClicked="#onProfileClicked" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <homeNode>
         <ListView xmlns:fx="http://javafx.com/fxml/1" fx:id="_lvPlaces" stylesheets="@../../../style/listView.css"

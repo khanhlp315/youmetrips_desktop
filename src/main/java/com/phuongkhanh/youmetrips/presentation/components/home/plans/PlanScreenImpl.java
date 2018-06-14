@@ -14,6 +14,7 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 import javax.inject.Inject;
@@ -31,7 +32,7 @@ implements PlanScreen, Initializable {
     private final Provider<CreatePlaceWindow> _placeWindow;
 
     @FXML
-    private JFXListView _lvPlans;
+    private ListView _lvPlans;
 
     @Override
     public Scene render() {

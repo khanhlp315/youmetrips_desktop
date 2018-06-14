@@ -25,7 +25,6 @@
                         <Insets left="64.0" right="64.0" top="24.0" />
                     </padding>
                 </JFXComboBox>
-                <JFXListView fx:id="_lvPlace" style="-fx-background-color: transparent;" />
                 <AnchorPane fx:id="_apPlaceImage1">
                     <children>
                         <StackPane alignment="TOP_CENTER" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0">
