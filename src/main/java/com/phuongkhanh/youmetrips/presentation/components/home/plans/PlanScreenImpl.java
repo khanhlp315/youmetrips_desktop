@@ -50,7 +50,7 @@ implements PlanScreen, Initializable {
 
     @Override
     public void updatePlans(List<RelevantPlan> invidualPlans) {
-        _lvPlans.setItems(FXCollections.observableArrayList(invidualPlans));
+        _lvPlans.setItems(FXCollections.observableArrayList(invidualPlans.stream().map(RelevantPlanCell::new).collect(Collectors.toList())));
     }
 
     @Override
@@ -109,7 +109,6 @@ implements PlanScreen, Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        _lvPlans.setCellFactory(param-> new RelevantPlanCell());
     }
 
     @FXML

@@ -51,7 +51,7 @@ implements PlaceScreen, Initializable {
 
     @Override
     public void updatePlaces(List<Place> places) {
-        _lvPlaces.setItems(FXCollections.observableArrayList(places));
+        _lvPlaces.setItems(FXCollections.observableArrayList(places.stream().map(PlaceCell::new).collect(Collectors.toList())));
     }
 
     @Override
@@ -110,7 +110,6 @@ implements PlaceScreen, Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        _lvPlaces.setCellFactory(param->new PlaceCell());
     }
 
     @FXML
