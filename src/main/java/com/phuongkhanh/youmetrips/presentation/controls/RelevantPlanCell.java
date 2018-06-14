@@ -58,7 +58,7 @@ public class RelevantPlanCell extends AnchorPane {
     private ChangeListener _coverImageListener;
 
 
-    public RelevantPlanCell(RelevantPlan item, EventHandler clickEvent){
+    public RelevantPlanCell(RelevantPlan item, EventHandler clickEvent) {
         loadFXML();
         setOnMouseClicked(clickEvent);
         _lblFirstName.setText(item.getUserFirstName());
@@ -66,18 +66,20 @@ public class RelevantPlanCell extends AnchorPane {
         _lblOccupation.setText(item.getUserOccupation());
 
 
-        Image avaImage = new Image(item.getUserAvatarUrl() != null && !item.getUserAvatarUrl().equals("http://docker.youthdev.net:23010/static//77-img_20180405_190732-4f4356f8-f759-4c28-8a60-e9fef2c92920.jpg") ? item.getUserAvatarUrl() : CommonUtils.getNeutralAvatar(), true);
-        Image flagImage = new Image(item.getUserNationalityFlagUrl() != null  ? item.getUserNationalityFlagUrl() : CommonUtils.getNeutralFlag(), true);
+        Image avaImage = new Image(item.getUserAvatarUrl() == null ||
+                (item.getUserAvatarUrl().equals("http://docker.youthdev.net:23010/static//77-img_20180405_190732-4f4356f8-f759-4c28-8a60-e9fef2c92920.jpg")) ||
+                (item.getUserAvatarUrl().equals("http://docker.youthdev.net:23010/static//81-img_20180323_203840_961-f8a0f475-94cc-4ba3-a690-76cc35823e12.jpg")) ? CommonUtils.getNeutralAvatar(): item.getUserAvatarUrl(), true);
+        Image flagImage = new Image(item.getUserNationalityFlagUrl() != null ? item.getUserNationalityFlagUrl() : CommonUtils.getNeutralFlag(), true);
         //_cirAvatar.setFill(new ImagePattern(new Image(this.getClass().getClassLoader().getResource("images/vietnam.png").toString())));
 
         System.out.println(item.getUserAvatarUrl());
-        if(item.getUserAvatarUrl() == null || item.getUserAvatarUrl().equals("null")){
+        if (item.getUserAvatarUrl() == null || item.getUserAvatarUrl().equals("null")) {
             return;
         }
         avaImage.progressProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                if(newValue.doubleValue() == 1.0) {
+                if (newValue.doubleValue() == 1.0) {
                     _cirAvatar.setFill(new ImagePattern(avaImage));
                 }
             }
@@ -85,20 +87,20 @@ public class RelevantPlanCell extends AnchorPane {
         flagImage.progressProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                if(newValue.doubleValue() == 1.0) {
+                if (newValue.doubleValue() == 1.0) {
                     _cirCountry.setFill(new ImagePattern(flagImage));
                 }
             }
         });
 
-        if(_coverImage != null){
+        if (_coverImage != null) {
             _coverImage.progressProperty().removeListener(_coverImageListener);
         }
         _coverImage = new Image(item.getPlace().getCoverImageUrl(), true);
         _coverImageListener = new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                if(newValue.doubleValue() == 1.0)
+                if (newValue.doubleValue() == 1.0)
                     _ivImageCover.setImage(_coverImage);
             }
         };
@@ -106,19 +108,18 @@ public class RelevantPlanCell extends AnchorPane {
         _lblPlaceName.setText(item.getPlace().getName());
         _lblStars.setText(String.valueOf(item.getHotelLevel()));
         String fromToDate = "";
-        if(item.getWhenToGoMin().getYear() == item.getWhenToGoMax().getYear()){
+        if (item.getWhenToGoMin().getYear() == item.getWhenToGoMax().getYear()) {
             fromToDate = item.getWhenToGoMin().getDayOfMonth() + "/" + item.getWhenToGoMin().getMonthValue() + " - " +
                     item.getWhenToGoMax().getDayOfMonth() + "/" + item.getWhenToGoMax().getMonthValue() + "/" + item.getWhenToGoMax().getYear();
-        }
-        else {
-            fromToDate = item.getWhenToGoMin().toString() +" - " + item.getWhenToGoMax().toString();
+        } else {
+            fromToDate = item.getWhenToGoMin().toString() + " - " + item.getWhenToGoMax().toString();
         }
         _lblDateRange.setText(fromToDate);
         _lblTimeRange.setText(item.getHowLongMin() + " - " + item.getHowLongMax() + " day(s)");
         _lblComments.setText(String.valueOf(item.getNumberOfComments()));
     }
 
-    private void loadFXML(){
+    private void loadFXML() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource(
                 "view/home/plans/plan_item.fxml"));
         fxmlLoader.setRoot(this);

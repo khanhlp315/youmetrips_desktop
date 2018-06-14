@@ -222,4 +222,8 @@ public class ProfilePresenter extends PresenterBase<ProfileScreen> {
         assert (getView() != null);
         getView().navigateToEditProfile();
     }
+
+    public void savePlanDetailsId(int id) {
+        _service.getHomeStore().storePlanDetailsId(id);
+    }
 }

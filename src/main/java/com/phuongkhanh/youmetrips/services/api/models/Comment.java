@@ -7,7 +7,7 @@ public class Comment {
     private String userAvatarUrl;
     private String userNationalityUrl;
     private String comment;
-    private String time;
+    private DateTime time;
 
     public int getUserId() {
         return userId;
@@ -57,11 +57,11 @@ public class Comment {
         this.comment = comment;
     }
 
-    public String getTime() {
+    public DateTime getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(DateTime time) {
         this.time = time;
     }
 }

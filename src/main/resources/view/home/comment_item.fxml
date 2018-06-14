@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+<fx:root type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx"
+         xmlns:fx="http://javafx.com/fxml"
+         prefHeight="65.0" prefWidth="412.0">
+
+    <HBox alignment="TOP_CENTER">
+        <Circle fx:id="_circleAvatar" fill="yellow" radius="25">
+            <HBox.margin>
+                <Insets top="5"
+                        left="20"
+                        right="18"/>
+            </HBox.margin>
+        </Circle>
+        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#F2F4FA" height="60.0" stroke="WHITE"
+                   strokeType="INSIDE" strokeWidth="2.0" width="312.0">
+        </Rectangle>
+        <HBox>
+            <HBox.margin>
+                <Insets left="-100" top="5" />
+            </HBox.margin>
+            <Text fx:id="_txtTime" text="6" fill="#8A8A8A"/>
+            <Text disable="true" text=" " fill="#8A8A8A"/>
+            <Text disable="true" text="minutes" fill="#8A8A8A"/>
+            <Text disable="true" text=" " fill="#8A8A8A"/>
+            <Text disable="true" text="ago" fill="#8A8A8A"/>
+        </HBox>
+
+        <HBox>
+            <HBox.margin>
+                <Insets left="-270" top="5" />
+            </HBox.margin>
+            <Text fx:id="_txtUserFirstName" text="PhuongKhanh" fill="#8A8A8A"/>
+            <Text text=" " fill="#8A8A8A"/>
+            <Text fx:id="_txtUserLastName" text="Le" fill="#8A8A8A"/>
+        </HBox>
+
+    </HBox>
+</fx:root>

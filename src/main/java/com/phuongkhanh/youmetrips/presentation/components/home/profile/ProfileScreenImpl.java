@@ -11,6 +11,7 @@ import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import com.phuongkhanh.youmetrips.presentation.windows.CreatePlaceWindow;
 import com.phuongkhanh.youmetrips.presentation.windows.CreatePlanWindow;
 import com.phuongkhanh.youmetrips.presentation.windows.EditProfileWindow;
+import com.phuongkhanh.youmetrips.presentation.windows.PlanDetailsWindow;
 import com.phuongkhanh.youmetrips.services.api.models.Friend;
 import com.phuongkhanh.youmetrips.services.api.models.Profile;
 import javafx.collections.FXCollections;
@@ -40,6 +41,7 @@ public class ProfileScreenImpl extends FXMLScreen
     private final Provider<CreatePlanWindow> _planWindow;
     private final Provider<CreatePlaceWindow> _placeWindow;
     private final Provider<EditProfileWindow> _editProfileWindow;
+    private final Provider<PlanDetailsWindow> _planDetailsWindow;
 
     @FXML
     private Label _lblFirstName;
@@ -73,13 +75,14 @@ public class ProfileScreenImpl extends FXMLScreen
     private Rectangle _rectAvatar;
 
     @Inject
-    public ProfileScreenImpl(final ProfilePresenter presenter, Provider<CreatePlanWindow> planWindow, Provider<CreatePlaceWindow> placeWindow, Provider<EditProfileWindow> editProfileWindow) {
+    public ProfileScreenImpl(final ProfilePresenter presenter, Provider<CreatePlanWindow> planWindow, Provider<CreatePlaceWindow> placeWindow, Provider<EditProfileWindow> editProfileWindow, Provider<PlanDetailsWindow> planDetailsWindow) {
         _presenter = presenter;
         _presenter.setView(this);
 
         _planWindow = planWindow;
         _placeWindow = placeWindow;
         _editProfileWindow = editProfileWindow;
+        _planDetailsWindow = planDetailsWindow;
     }
 
     @Override
@@ -103,7 +106,13 @@ public class ProfileScreenImpl extends FXMLScreen
             _lblNationality.setText("Nationality not yet updated");
         }
         _lblBio.setText(profile.getBio());
-        _lvPlans.setItems(FXCollections.observableArrayList(profile.getTrekkingPlanSet().stream().map(UserPlanCell::new).collect(Collectors.toList())));
+        _lvPlans.setItems(FXCollections.observableArrayList(profile.getTrekkingPlanSet().stream().map(plan -> new UserPlanCell(
+                plan,
+                event -> {
+                    _presenter.savePlanDetailsId(plan.getId());
+                    _presenter.requestNavigateToPlanDetails(plan.getId());
+                }
+        )).collect(Collectors.toList())));
     }
 
     @Override
@@ -152,7 +161,9 @@ public class ProfileScreenImpl extends FXMLScreen
 
     @Override
     public void navigateToPlanDetails(int planId) {
-        navigate(PlanDetailsScreenImpl.class);
+        PlanDetailsWindow planDetailsWindow = _planDetailsWindow.get();
+        planDetailsWindow.attach(new Stage());
+        planDetailsWindow.show();
     }
 
     @Override
@@ -201,11 +212,6 @@ public class ProfileScreenImpl extends FXMLScreen
     @FXML
     public void onEditProfileClicked() {
         _presenter.requestNavigateToEditProfile();
-    }
-
-    @FXML
-    public void onPlaceDetailsClicked() {
-
     }
 
     @Override
