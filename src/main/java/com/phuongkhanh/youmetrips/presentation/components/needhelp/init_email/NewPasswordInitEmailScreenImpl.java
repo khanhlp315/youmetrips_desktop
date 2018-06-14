@@ -8,7 +8,6 @@ import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
@@ -46,17 +45,17 @@ public class NewPasswordInitEmailScreenImpl extends FXMLScreen implements NewPas
 
     @Override
     public void showError(String message) {
-        Alert alert = new Alert( Alert.AlertType.WARNING );
-        alert.setTitle( "Error" );
-        alert.setContentText( message );
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Error");
+        alert.setContentText(message);
         alert.showAndWait();
     }
 
     @Override
     public void showSuccess(String message) {
-        Alert alert = new Alert( Alert.AlertType.INFORMATION );
-        alert.setTitle( "Success" );
-        alert.setContentText( message );
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Success");
+        alert.setContentText(message);
         alert.showAndWait();
     }
 
@@ -75,26 +74,22 @@ public class NewPasswordInitEmailScreenImpl extends FXMLScreen implements NewPas
 
     @Override
     public void setLoading(Boolean isLoading) {
-        if (isLoading)
-        {
+        if (isLoading) {
             _loadingPane.setVisible(true);
             _btnNextHelp.setVisible(false);
-        }
-        else {
+        } else {
             _loadingPane.setVisible(false);
             _btnNextHelp.setVisible(true);
         }
     }
 
     @FXML
-    public void requestToNavigateBack()
-    {
+    public void requestToNavigateBack() {
         _presenter.requestToNavigateBack();
     }
 
     @Override
-    public void onNavigateBack()
-    {
+    public void onNavigateBack() {
         navigateBack();
     }
 }

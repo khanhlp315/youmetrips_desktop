@@ -7,7 +7,7 @@ import com.phuongkhanh.youmetrips.services.stores.AuthenticationStore;
  * @author by LeVoGiaKhang
  */
 public interface NewPasswordService {
-    public Login resetPassword(String newPassword, int userId, String resetPasswordToken);
+    Login resetPassword(String newPassword, int userId, String resetPasswordToken);
 
-    public AuthenticationStore getAuthenticationStore();
+    AuthenticationStore getAuthenticationStore();
 }

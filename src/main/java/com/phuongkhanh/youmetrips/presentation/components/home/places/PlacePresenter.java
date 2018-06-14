@@ -14,25 +14,24 @@ public class PlacePresenter extends PresenterBase<PlaceScreen> {
     private final PlaceService _service;
 
     @Inject
-    public PlacePresenter(PlaceService service)
-    {
+    public PlacePresenter(PlaceService service) {
         _service = service;
     }
 
     public void fetchPlaces() {
-        assert(getView() != null);
+        assert (getView() != null);
 
         HomeStore homeStore = _service.getHomeStore();
 
         List<Place> places = homeStore.getAllPlaces();
-        if(places != null){
+        if (places != null) {
             getView().updatePlaces(places);
             return;
         }
 
         Task<List<Place>> task = new Task<List<Place>>() {
             @Override
-            protected List<Place> call() throws Exception {
+            protected List<Place> call() {
                 return _doFetchPlaces();
             }
 
@@ -48,10 +47,10 @@ public class PlacePresenter extends PresenterBase<PlaceScreen> {
         new Thread(task).start();
     }
 
-    public void refreshPlaces(){
+    public void refreshPlaces() {
         Task<List<Place>> task = new Task<List<Place>>() {
             @Override
-            protected List<Place> call() throws Exception {
+            protected List<Place> call() {
                 return _doFetchPlaces();
             }
 
@@ -72,13 +71,13 @@ public class PlacePresenter extends PresenterBase<PlaceScreen> {
         return _service.fetchPlaces(authenticationStore.getUserId(), authenticationStore.getJwt());
     }
 
-    private void _onFetchPlacesSucceeded(List<Place> places){
+    private void _onFetchPlacesSucceeded(List<Place> places) {
         HomeStore homeStore = _service.getHomeStore();
         homeStore.storePlaces(places);
         getView().updatePlaces(places);
     }
 
-    private void _onFetchPlacesFailed(Throwable throwable){
+    private void _onFetchPlacesFailed(Throwable throwable) {
     }
 
     public void requestNavigateToCreateTrekkingPlan()
@@ -94,10 +93,10 @@ public class PlacePresenter extends PresenterBase<PlaceScreen> {
     }
 
     public void like(int id) {
-        assert(getView() != null);
+        assert (getView() != null);
         Task<Object> task = new Task<Object>() {
             @Override
-            protected Object call() throws Exception {
+            protected Object call() {
                 _doLike(id);
                 return null;
             }
@@ -114,10 +113,10 @@ public class PlacePresenter extends PresenterBase<PlaceScreen> {
     }
 
     public void unlike(int id) {
-        assert(getView() != null);
+        assert (getView() != null);
         Task<Object> task = new Task<Object>() {
             @Override
-            protected Object call() throws Exception {
+            protected Object call() {
                 _doUnlike(id);
                 return null;
             }
@@ -133,7 +132,7 @@ public class PlacePresenter extends PresenterBase<PlaceScreen> {
         new Thread(task).start();
     }
 
-    private void _doLike(int id)  {
+    private void _doLike(int id) {
         AuthenticationStore authenticationStore = _service.getAuthenticationStore();
         int userId = authenticationStore.getUserId();
         String jwt = authenticationStore.getJwt();
@@ -165,25 +164,22 @@ public class PlacePresenter extends PresenterBase<PlaceScreen> {
 
     }
 
-    public void requestNavigateToPlan()
-    {
+    public void requestNavigateToPlan() {
         assert (getView() != null);
         getView().navigateToPlan();
     }
 
-    public void requestNavigateToProfile()
-    {
+    public void requestNavigateToProfile() {
         assert (getView() != null);
         getView().navigateToProfile();
     }
-    public void requestNavigateToFriendRequest()
-    {
+
+    public void requestNavigateToFriendRequest() {
         assert (getView() != null);
         getView().navigateToFriendRequest();
     }
 
-    public void requestNavigateToEditProfile()
-    {
+    public void requestNavigateToEditProfile() {
         assert (getView() != null);
         getView().navigateToEditProfile();
     }

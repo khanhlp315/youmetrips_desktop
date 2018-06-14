@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.*?>
+<?import com.phuongkhanh.youmetrips.presentation.controls.LoginPane?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-
-<?import com.phuongkhanh.youmetrips.presentation.controls.LoginPane?>
 <LoginPane>
     <loginNodes>
 
@@ -23,7 +22,8 @@
                                                       layoutY="11.0" prefHeight="31.0"
                                                       prefWidth="190.0" promptText="Enter the code"
                                                       unFocusColor="#ccd0d2"/>
-                                        <JFXButton fx:id="_btnNextHelpCode" onMouseClicked="#next" layoutY="63.0" prefHeight="38.0"
+                                        <JFXButton fx:id="_btnNextHelpCode" onMouseClicked="#next" layoutY="63.0"
+                                                   prefHeight="38.0"
                                                    prefWidth="190.0" ripplerFill="#ffffff42"
                                                    style="-fx-background-color: #1a535c; -fx-background-radius: 100;"
                                                    text="NEXT" textFill="WHITE">
@@ -38,7 +38,7 @@
                                         <JFXButton layoutY="63.0" prefHeight="38.0" prefWidth="190.0"
                                                    ripplerFill="#ffffff42"
                                                    style="-fx-background-color: #1a535c; -fx-background-radius: 100;"
-                                                   text="NEXT" textFill="WHITE" >
+                                                   text="NEXT" textFill="WHITE">
                                             <font>
                                                 <Font size="10.0"/>
                                             </font>
@@ -80,7 +80,8 @@
                     <children>
                         <Text fill="WHITE" layoutX="10.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0"
                               text="Still not yet?"/>
-                        <JFXButton onMouseClicked="#resendCode" layoutX="237.0" prefHeight="35.0" ripplerFill="#ffffff42" text="RESEND IT"
+                        <JFXButton onMouseClicked="#resendCode" layoutX="237.0" prefHeight="35.0"
+                                   ripplerFill="#ffffff42" text="RESEND IT"
                                    textFill="#ffc146"/>
                     </children>
                 </AnchorPane>

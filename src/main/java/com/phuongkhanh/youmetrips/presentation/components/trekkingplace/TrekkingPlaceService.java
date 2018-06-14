@@ -7,6 +7,8 @@ import java.io.File;
 
 public interface TrekkingPlaceService {
     int createPlace(int userId, String jwt, CreatePlace place);
+
     String uploadFile(int userId, String jwt, File file);
+
     AuthenticationStore getAuthenticationStore();
 }

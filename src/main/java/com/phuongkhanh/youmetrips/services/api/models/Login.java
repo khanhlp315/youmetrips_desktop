@@ -22,13 +22,19 @@ public class Login {
         this.jwt = accessToken;
     }
 
-    public String getUserLastName() {return userLastName;}
+    public String getUserLastName() {
+        return userLastName;
+    }
 
     public void setUserLastName(String userLastName) {
-        this.userLastName = userLastName;}
+        this.userLastName = userLastName;
+    }
 
-    public String getUserFirstName() {return userFirstName;}
+    public String getUserFirstName() {
+        return userFirstName;
+    }
 
     public void setUserFirstName(String userFirstName) {
-        this.userFirstName = userFirstName;}
+        this.userFirstName = userFirstName;
+    }
 }

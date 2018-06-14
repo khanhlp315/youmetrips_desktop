@@ -9,9 +9,12 @@ import java.util.List;
 
 public interface TrekkingPlanPlaceService {
     List<Place> fetchPlaces(int userId, String jwt);
+
     AuthenticationStore getAuthenticationStore();
 
     PlaceDetails getPlaceDetails(int userId, int placeId, String jwt);
+
     HomeStore getHomeStore();
+
     String getMapUrl(String location);
 }

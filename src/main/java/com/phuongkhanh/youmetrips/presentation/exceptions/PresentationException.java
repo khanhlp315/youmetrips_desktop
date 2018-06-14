@@ -6,7 +6,7 @@ package com.phuongkhanh.youmetrips.presentation.exceptions;
 public abstract class PresentationException extends RuntimeException {
     private String _message;
 
-    public PresentationException message( final String message ) {
+    public PresentationException message(final String message) {
         _message = message;
         return this;
     }

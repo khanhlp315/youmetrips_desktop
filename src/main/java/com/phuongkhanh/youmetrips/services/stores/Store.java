@@ -4,7 +4,6 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.phuongkhanh.youmetrips.services.api.utils.Constants.APP_DATA;
 import static com.phuongkhanh.youmetrips.utils.CommonUtils.getLocalFilePath;
 
 /*
@@ -20,7 +19,7 @@ public class Store {
     @SuppressWarnings("unchecked")
     public Object getItem(String key) {
         return _items.containsKey(key)
-                ?  _items.get(key).getItem()
+                ? _items.get(key).getItem()
                 : null;
     }
 
@@ -52,7 +51,7 @@ public class Store {
     @SuppressWarnings("unchecked")
     public void load(String fileName) {
         File f = new File(getLocalFilePath(fileName));
-        if(f.exists()) {
+        if (f.exists()) {
             FileInputStream fis = null;
             try {
                 fis = new FileInputStream(getLocalFilePath(fileName));

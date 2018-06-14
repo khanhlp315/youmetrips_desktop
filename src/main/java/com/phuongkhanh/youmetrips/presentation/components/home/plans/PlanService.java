@@ -12,5 +12,6 @@ public interface PlanService {
     void sendFriendRequest(int toUserId, int userId, String jwt);
 
     AuthenticationStore getAuthenticationStore();
+
     HomeStore getHomeStore();
 }

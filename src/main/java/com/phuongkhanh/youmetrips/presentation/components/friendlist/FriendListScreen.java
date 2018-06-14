@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface FriendListScreen extends JFXScreen {
     void navigateBack();
+
     void updateFriends(List<Friend> friends);
 }

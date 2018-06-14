@@ -9,7 +9,9 @@ import java.util.List;
 
 public interface ProfileService {
     Profile getUserProfile(int userId, String jwt);
+
     List<Friend> fetchAllFriends(int userId, String jwt);
+
     AuthenticationStore getAuthenticationStore();
 
     HomeStore getHomeStore();

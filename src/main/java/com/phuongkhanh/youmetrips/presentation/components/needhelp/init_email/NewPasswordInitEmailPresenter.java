@@ -11,30 +11,32 @@ import javafx.concurrent.Task;
 public class NewPasswordInitEmailPresenter extends PresenterBase<NewPasswordInitEmailScreen> {
     private NewPasswordInitEmailService _service;
 
-    public NewPasswordInitEmailPresenter(NewPasswordInitEmailService service)
-    {
+    public NewPasswordInitEmailPresenter(NewPasswordInitEmailService service) {
         _service = service;
     }
 
-    public void sendEmailToResetPassword(String email)
-    {
+    public void sendEmailToResetPassword(String email) {
 
         getView().setLoading(true);
 
         new Thread(new Task<Object>() {
             @Override
-            protected Object call() throws Exception {
+            protected Object call() {
                 doSendEmailToResetPassword(email);
                 return null;
             }
 
             @Override
-            protected void succeeded(){onSendEmailToResetPasswordSuccess();
-            getView().setLoading(false);}
+            protected void succeeded() {
+                onSendEmailToResetPasswordSuccess();
+                getView().setLoading(false);
+            }
 
             @Override
-            protected void failed(){onSendEmailToResetPasswordFailed(getException());
-                getView().setLoading(false);}
+            protected void failed() {
+                onSendEmailToResetPasswordFailed(getException());
+                getView().setLoading(false);
+            }
         }).start();
     }
 
@@ -45,25 +47,19 @@ public class NewPasswordInitEmailPresenter extends PresenterBase<NewPasswordInit
         authenticationStore.storeUserId(id);
     }
 
-    private void onSendEmailToResetPasswordSuccess()
-    {
+    private void onSendEmailToResetPasswordSuccess() {
         getView().navigateToInputCode();
     }
 
-    private void onSendEmailToResetPasswordFailed(final Throwable e)
-    {
-        if(e instanceof NotFoundUserEmailException)
-        {
+    private void onSendEmailToResetPasswordFailed(final Throwable e) {
+        if (e instanceof NotFoundUserEmailException) {
             getView().showError(e.getMessage());
-        }
-        else
-        {
+        } else {
             getView().showError(e.getMessage());
         }
     }
 
-    public void requestToNavigateBack()
-    {
+    public void requestToNavigateBack() {
         getView().onNavigateBack();
     }
 }

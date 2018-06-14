@@ -1,13 +1,12 @@
 package com.phuongkhanh.youmetrips.presentation.controls;
 
-import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.control.ScrollPane;
 
 import java.io.IOException;
 
@@ -20,8 +19,7 @@ public class HomePane extends GridPane {
     private HomeDrawer _drawer;
 
 
-    public HomePane()
-    {
+    public HomePane() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource(
                 "view/home/home_pane.fxml"));
         fxmlLoader.setRoot(this);
@@ -29,8 +27,7 @@ public class HomePane extends GridPane {
 
         try {
             fxmlLoader.load();
-        }
-        catch (IOException exception) {
+        } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
     }
@@ -50,12 +47,12 @@ public class HomePane extends GridPane {
         _scrollPane.setContent(child);
     }
 
-    public void setHomeNode(Node child){
-        _scrollPane.setContent(child);
+    public Node getHomeNode() {
+        return _scrollPane.getContent();
     }
 
-    public Node getHomeNode(){
-        return _scrollPane.getContent();
+    public void setHomeNode(Node child) {
+        _scrollPane.setContent(child);
     }
 
     public final EventHandler<? super MouseEvent> getOnProfileClicked() {

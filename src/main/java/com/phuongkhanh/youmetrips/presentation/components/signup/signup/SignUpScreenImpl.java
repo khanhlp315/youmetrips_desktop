@@ -9,9 +9,7 @@ import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ProgressIndicator;
 
-import javax.inject.Inject;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -37,8 +35,7 @@ public class SignUpScreenImpl extends FXMLScreen implements SignUpScreen, Initia
     @FXML
     private LoadingPane _loadingPane;
 
-    public SignUpScreenImpl(final SignUpPresenter presenter)
-    {
+    public SignUpScreenImpl(final SignUpPresenter presenter) {
         _presenter = presenter;
         _presenter.setView(this);
     }
@@ -46,29 +43,26 @@ public class SignUpScreenImpl extends FXMLScreen implements SignUpScreen, Initia
 
     @Override
     public void showError(String message) {
-        Alert alert = new Alert( Alert.AlertType.WARNING );
-        alert.setTitle( "Error" );
-        alert.setContentText( message );
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Error");
+        alert.setContentText(message);
         alert.showAndWait();
     }
 
     @Override
     public void showSuccess(String message) {
-        Alert alert = new Alert( Alert.AlertType.INFORMATION );
-        alert.setTitle( "Success" );
-        alert.setContentText( message );
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Success");
+        alert.setContentText(message);
         alert.showAndWait();
     }
 
     @Override
-    public void setLoading(Boolean isLoading){
-        if(isLoading)
-        {
+    public void setLoading(Boolean isLoading) {
+        if (isLoading) {
             _btnCreateAccount.setVisible(false);
             _loadingPane.setVisible(true);
-        }
-        else
-        {
+        } else {
             _btnCreateAccount.setVisible(true);
             _loadingPane.setVisible(false);
         }
@@ -91,13 +85,11 @@ public class SignUpScreenImpl extends FXMLScreen implements SignUpScreen, Initia
     }
 
     @FXML
-    public void requestToNavigateBackLogin()
-    {
+    public void requestToNavigateBackLogin() {
         _presenter.requestToNavigateBackLogin();
     }
 
-    public void onNavigateBackLogin()
-    {
+    public void onNavigateBackLogin() {
         navigateBack();
     }
 
@@ -112,8 +104,7 @@ public class SignUpScreenImpl extends FXMLScreen implements SignUpScreen, Initia
     }
 
     @Override
-    public void onNavigateToSignUpReceiveCode()
-    {
+    public void onNavigateToSignUpReceiveCode() {
         navigate(SignUpConfirmationCodeScreenImpl.class);
     }
 

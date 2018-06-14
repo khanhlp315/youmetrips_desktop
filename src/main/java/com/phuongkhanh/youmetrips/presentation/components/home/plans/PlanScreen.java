@@ -17,8 +17,12 @@ public interface PlanScreen extends JFXScreen {
     void navigateToPlanDetails(int planId);
 
     void navigateToPlace();
+
     void navigateToEditProfile();
+
     void navigateToProfile();
+
     void navigateToFriendRequest();
+
     void navigateToCreateTrekkingPlace();
 }

@@ -9,12 +9,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class PlaceDetailsScreenImpl extends FXMLScreen
-implements PlaceDetailsScreen, Initializable
-{
+        implements PlaceDetailsScreen, Initializable {
 
     @Inject
-    public PlaceDetailsScreenImpl(PlaceDetailsPresenter presenter)
-    {
+    public PlaceDetailsScreenImpl(PlaceDetailsPresenter presenter) {
 
     }
 

@@ -41,8 +41,7 @@ public class Friend {
 
     @Override
     public boolean equals(Object obj) {
-        if(obj instanceof  Friend)
-        {
+        if (obj instanceof Friend) {
             Friend friend = (Friend) obj;
             return friend.userId == userId &&
                     (friend.userAvatarUrl == null || userAvatarUrl == null || friend.userAvatarUrl.equals(userAvatarUrl)) &&

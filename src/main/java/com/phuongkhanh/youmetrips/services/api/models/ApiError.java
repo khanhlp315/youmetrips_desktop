@@ -12,7 +12,7 @@ public class ApiError {
         return _errorCode;
     }
 
-    public void setErrorCode( final String errorCode ) {
+    public void setErrorCode(final String errorCode) {
         _errorCode = errorCode;
     }
 
@@ -20,7 +20,7 @@ public class ApiError {
         return _userMessageDict;
     }
 
-    public void setUserMessageDict( final Map<String, String> userMessageDict ) {
+    public void setUserMessageDict(final Map<String, String> userMessageDict) {
         _userMessageDict = userMessageDict;
     }
 
@@ -28,7 +28,7 @@ public class ApiError {
         return _moreInformationDict;
     }
 
-    public void setMoreInformationDict( final Map<String, String> moreInformationDict ) {
+    public void setMoreInformationDict(final Map<String, String> moreInformationDict) {
         _moreInformationDict = moreInformationDict;
     }
 

@@ -18,9 +18,8 @@ public class LoginWindow extends JFXWindowBase {
                        final SignUpConfirmationCodeScreen signUpReceiveCodeScreen,
                        final NewPasswordInitEmailScreen newPasswordInitEmailScreen,
                        final NewPasswordInitCodeScreen newPasswordInitCodeScreen,
-                       final NewPasswordScreen newPasswordScreen)
-    {
-        super(  loginScreen,
+                       final NewPasswordScreen newPasswordScreen) {
+        super(loginScreen,
                 signUpScreen,
                 signUpReceiveCodeScreen,
                 newPasswordInitEmailScreen,

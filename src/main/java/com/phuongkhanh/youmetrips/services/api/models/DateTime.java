@@ -13,52 +13,52 @@ public class DateTime {
         return dayOfMonth;
     }
 
-    public int getDayOfYear() {
-        return dayOfYear;
-    }
-
-    public int getMonthValue() {
-        return monthValue;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public String getDayOfWeek() {
-        return dayOfWeek;
-    }
-
-    public String getMonth() {
-        return month;
-    }
-
     public void setDayOfMonth(int dayOfMonth) {
         this.dayOfMonth = dayOfMonth;
     }
 
-    public void setDayOfWeek(String dayOfWeek) {
-        this.dayOfWeek = dayOfWeek;
+    public int getDayOfYear() {
+        return dayOfYear;
     }
 
     public void setDayOfYear(int dayOfYear) {
         this.dayOfYear = dayOfYear;
     }
 
-    public void setLeapYaer(boolean leapYaer) {
-        this.leapYaer = leapYaer;
-    }
-
-    public void setMonth(String month) {
-        this.month = month;
+    public int getMonthValue() {
+        return monthValue;
     }
 
     public void setMonthValue(int monthValue) {
         this.monthValue = monthValue;
     }
 
+    public int getYear() {
+        return year;
+    }
+
     public void setYear(int year) {
         this.year = year;
+    }
+
+    public String getDayOfWeek() {
+        return dayOfWeek;
+    }
+
+    public void setDayOfWeek(String dayOfWeek) {
+        this.dayOfWeek = dayOfWeek;
+    }
+
+    public String getMonth() {
+        return month;
+    }
+
+    public void setMonth(String month) {
+        this.month = month;
+    }
+
+    public void setLeapYaer(boolean leapYaer) {
+        this.leapYaer = leapYaer;
     }
 
     @Override

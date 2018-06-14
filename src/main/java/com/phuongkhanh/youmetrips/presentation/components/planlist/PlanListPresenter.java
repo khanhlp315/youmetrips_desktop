@@ -19,24 +19,24 @@ public class PlanListPresenter extends PresenterBase<PlanListScreen> {
         _service = service;
     }
 
-    public void requestNavigateBack(){
+    public void requestNavigateBack() {
         getView().navigateBack();
     }
 
-    public void fetchPlans(int userId){
+    public void fetchPlans(int userId) {
         assert (getView() != null);
 
         AuthenticationStore authenticationStore = _service.getAuthenticationStore();
         Profile profile = authenticationStore.getProfile();
 
-        if(profile != null){
+        if (profile != null) {
             getView().updatePlans(profile.getTrekkingPlanSet());
             return;
         }
 
         Task<Profile> task = new Task<Profile>() {
             @Override
-            protected Profile call() throws Exception {
+            protected Profile call() {
                 return doFetchProfile();
             }
 
@@ -46,24 +46,24 @@ public class PlanListPresenter extends PresenterBase<PlanListScreen> {
             }
         };
 
-        task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, event->{
+        task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, event -> {
             onFetchUserSuceeded(task.getValue());
         });
     }
 
-    private Profile doFetchProfile(){
+    private Profile doFetchProfile() {
         AuthenticationStore authenticationStore = _service.getAuthenticationStore();
-        Profile profile = _service.getUserProfile(authenticationStore.getUserId(),authenticationStore.getJwt());
+        Profile profile = _service.getUserProfile(authenticationStore.getUserId(), authenticationStore.getJwt());
         return profile;
     }
 
-    private void onFetchUserSuceeded(Profile profile){
+    private void onFetchUserSuceeded(Profile profile) {
         AuthenticationStore authenticationStore = _service.getAuthenticationStore();
         authenticationStore.storeProfile(profile);
 
         HomeStore homeStore = _service.getHomeStore();
 
-        profile.getTrekkingPlanSet().forEach(plan->{
+        profile.getTrekkingPlanSet().forEach(plan -> {
             homeStore.addPlanDetails(
                     new PlanDetails(
                             plan.getId(),
@@ -91,11 +91,11 @@ public class PlanListPresenter extends PresenterBase<PlanListScreen> {
         });
     }
 
-    void onFetchUserFailed(Throwable ex){
+    void onFetchUserFailed(Throwable ex) {
 
     }
 
-    void requestNavigateToPlanDetails(int id){
+    void requestNavigateToPlanDetails(int id) {
         assert (getView() != null);
         getView().navigateToPlanDetails(id);
     }

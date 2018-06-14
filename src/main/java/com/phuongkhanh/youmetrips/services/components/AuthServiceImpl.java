@@ -7,10 +7,8 @@ import com.phuongkhanh.youmetrips.presentation.components.needhelp.init_new_pass
 import com.phuongkhanh.youmetrips.presentation.components.signup.confirmation_code.SignUpConfirmationCodeService;
 import com.phuongkhanh.youmetrips.presentation.components.signup.signup.SignUpService;
 import com.phuongkhanh.youmetrips.presentation.exceptions.*;
-import com.phuongkhanh.youmetrips.presentation.models.User;
 import com.phuongkhanh.youmetrips.services.api.RestApi;
-import com.phuongkhanh.youmetrips.services.api.exceptions.*;
-import com.phuongkhanh.youmetrips.services.api.models.ApiError;
+import com.phuongkhanh.youmetrips.services.api.exceptions.ApiCodedException;
 import com.phuongkhanh.youmetrips.services.api.models.Login;
 import com.phuongkhanh.youmetrips.services.api.models.SignUp;
 import com.phuongkhanh.youmetrips.services.stores.AuthenticationStore;
@@ -18,13 +16,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.events.WebDriverEventListener;
 
-import java.awt.Desktop;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.Map;
 
 public class AuthServiceImpl implements LoginService,
@@ -52,9 +44,9 @@ public class AuthServiceImpl implements LoginService,
             if (exception.getError().getErrorCode().equals("com.youmetrips.server.core.exceptions.UserNotConfirmedException")) {
                 SignUp signUp = new SignUp();
                 Map<String, Object> data = exception.getError().getData();
-                signUp.setUserId(((Double)data.get("userId")).intValue());
-                signUp.setConfirmToken((String)data.get("confirmToken"));
-                signUp.setResendConfirmationCodeToken((String)data.get("resendConfirmationCodeToken"));
+                signUp.setUserId(((Double) data.get("userId")).intValue());
+                signUp.setConfirmToken((String) data.get("confirmToken"));
+                signUp.setResendConfirmationCodeToken((String) data.get("resendConfirmationCodeToken"));
                 throw new UserNotConfirmedException(signUp);
             }
             throw exception;
@@ -189,12 +181,9 @@ public class AuthServiceImpl implements LoginService,
 
     @Override
     public void resendCodeToResetPassword() {
-        try
-        {
+        try {
             _api.resendCodeToResetPassword();
-        }
-        catch (ApiCodedException exception)
-        {
+        } catch (ApiCodedException exception) {
             throw exception;
         }
     }

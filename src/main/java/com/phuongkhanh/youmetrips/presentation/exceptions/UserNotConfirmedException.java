@@ -9,8 +9,7 @@ import com.phuongkhanh.youmetrips.services.api.models.SignUp;
 public class UserNotConfirmedException extends PresentationException {
     private SignUp _signUp;
 
-    public UserNotConfirmedException(SignUp signUp)
-    {
+    public UserNotConfirmedException(SignUp signUp) {
         _signUp = signUp;
         message("User is not confirmed");
     }

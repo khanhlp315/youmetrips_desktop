@@ -1,6 +1,5 @@
 package com.phuongkhanh.youmetrips.presentation.components.home.place_details;
 
-import com.phuongkhanh.youmetrips.presentation.framework.Presenter;
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
 import com.phuongkhanh.youmetrips.services.api.models.CreateTag;
 import com.phuongkhanh.youmetrips.services.api.models.PlaceDetails;
@@ -9,7 +8,6 @@ import com.phuongkhanh.youmetrips.services.stores.AuthenticationStore;
 import com.phuongkhanh.youmetrips.services.stores.HomeStore;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
-import org.omg.CORBA.OBJ_ADAPTER;
 
 import javax.inject.Inject;
 
@@ -61,7 +59,7 @@ public class PlaceDetailsPresenter extends PresenterBase<PlaceDetailsScreen> {
         }
         Task<PlaceDetails> task = new Task<PlaceDetails>() {
             @Override
-            protected PlaceDetails call() throws Exception {
+            protected PlaceDetails call() {
                 return _doGetPlaceDetails(placeId);
             }
 
@@ -89,7 +87,7 @@ public class PlaceDetailsPresenter extends PresenterBase<PlaceDetailsScreen> {
     public void refreshPlaceDetails(int placeId) {
         Task<PlaceDetails> task = new Task<PlaceDetails>() {
             @Override
-            protected PlaceDetails call() throws Exception {
+            protected PlaceDetails call() {
                 return _doGetPlaceDetails(placeId);
             }
 
@@ -109,7 +107,7 @@ public class PlaceDetailsPresenter extends PresenterBase<PlaceDetailsScreen> {
     public void rate(int placeId, int rate, String message) {
         Task<Object> task = new Task<Object>() {
             @Override
-            protected PlaceDetails call() throws Exception {
+            protected PlaceDetails call() {
                 _doRate(placeId, rate, message);
                 return null;
             }
@@ -144,7 +142,7 @@ public class PlaceDetailsPresenter extends PresenterBase<PlaceDetailsScreen> {
         assert (getView() != null);
         Task<Object> task = new Task<Object>() {
             @Override
-            protected PlaceDetails call() throws Exception {
+            protected PlaceDetails call() {
                 _doLike(id);
                 return null;
             }
@@ -178,7 +176,7 @@ public class PlaceDetailsPresenter extends PresenterBase<PlaceDetailsScreen> {
     public void addTag(int placeId, CreateTag tag) {
         Task<Object> task = new Task<Object>() {
             @Override
-            protected PlaceDetails call() throws Exception {
+            protected PlaceDetails call() {
                 _doAddTag(placeId, tag);
                 return null;
             }
@@ -220,7 +218,7 @@ public class PlaceDetailsPresenter extends PresenterBase<PlaceDetailsScreen> {
 
         Task<Profile> task = new Task<Profile>() {
             @Override
-            protected Profile call() throws Exception {
+            protected Profile call() {
                 return _doFetchAvatar();
             }
 

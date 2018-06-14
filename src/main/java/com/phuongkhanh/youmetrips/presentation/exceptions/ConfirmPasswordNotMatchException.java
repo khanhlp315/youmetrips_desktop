@@ -5,7 +5,7 @@ package com.phuongkhanh.youmetrips.presentation.exceptions;
  */
 public class ConfirmPasswordNotMatchException extends PresentationException {
 
-    public ConfirmPasswordNotMatchException(){
+    public ConfirmPasswordNotMatchException() {
         message("Confirm password does not match");
     }
 }

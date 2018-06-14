@@ -7,7 +7,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 
 import javax.inject.Inject;
-import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -23,25 +22,24 @@ public class SignUpConfirmationCodeScreenImpl extends FXMLScreen implements Sign
 
 
     @Inject
-    public SignUpConfirmationCodeScreenImpl(SignUpConfirmationCodePresenter presenter)
-    {
+    public SignUpConfirmationCodeScreenImpl(SignUpConfirmationCodePresenter presenter) {
         _presenter = presenter;
         _presenter.setView(this);
     }
 
     @Override
     public void showError(String message) {
-        Alert alert = new Alert( Alert.AlertType.WARNING );
-        alert.setTitle( "Error" );
-        alert.setContentText( message );
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Error");
+        alert.setContentText(message);
         alert.showAndWait();
     }
 
     @Override
     public void showSuccess(String message) {
-        Alert alert = new Alert( Alert.AlertType.INFORMATION );
-        alert.setTitle( "Success" );
-        alert.setContentText( message );
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Success");
+        alert.setContentText(message);
         alert.showAndWait();
     }
 
@@ -61,26 +59,22 @@ public class SignUpConfirmationCodeScreenImpl extends FXMLScreen implements Sign
     }
 
     @FXML
-    public void next()
-    {
+    public void next() {
         _presenter.sendConfirmationCode(_txtVerifyCode.getText());
     }
 
     @FXML
-    public void resendCode()
-    {
+    public void resendCode() {
         _presenter.resendCode();
     }
 
     @FXML
-    public void requestToNavigateBackSignUpScreen()
-    {
+    public void requestToNavigateBackSignUpScreen() {
         _presenter.requestToNavigateBackSignUpScreen();
     }
 
     @Override
-    public void onNavigateToHome()
-    {
+    public void onNavigateToHome() {
         showSuccess("This is home");
     }
 

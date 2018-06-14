@@ -8,12 +8,18 @@ import com.phuongkhanh.youmetrips.services.stores.HomeStore;
 
 public interface PlaceDetailsService {
     PlaceDetails getPlaceDetails(int userId, int placeId, String jwt);
+
     void review(int rate, String message, int userId, int placeId, String jwt);
+
     AuthenticationStore getAuthenticationStore();
+
     HomeStore getHomeStore();
+
     void like(int userId, int placeId, String jwt);
+
     String getMapUrl(String location);
 
     void addTag(CreateTag tag, int userId, int placeId, String jwt);
+
     Profile getUserProfile(int userId, String jwt);
 }

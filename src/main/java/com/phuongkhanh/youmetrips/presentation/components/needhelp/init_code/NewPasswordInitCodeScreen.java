@@ -7,9 +7,14 @@ import com.phuongkhanh.youmetrips.presentation.framework.JFXScreen;
  */
 public interface NewPasswordInitCodeScreen extends JFXScreen {
     void showError(String message);
+
     void showSuccess(String message);
+
     void showLoading();
+
     void navigateToInputNewPasswordScreen();
+
     void setLoading(Boolean isLoading);
+
     void onNavigateBack();
 }

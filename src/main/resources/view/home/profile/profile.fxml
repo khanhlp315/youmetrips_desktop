@@ -1,33 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXListView?>
 <?import com.phuongkhanh.youmetrips.presentation.controls.HomePane?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import de.jensd.fx.glyphs.materialicons.MaterialIconView?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-
 <?import com.phuongkhanh.youmetrips.presentation.controls.LoadingPane?>
 <HomePane fx:id="_homePane" onRefreshClicked="#refresh" onCreatePlaceClicked="#onCreateTrekkingPlaceClicked" onCreatePlanClicked="#onCreateTrekkingPlanClicked" onEditProfileClicked="#onEditProfileClicked" onFriendRequestClicked="#onFriendRequestClicked" onPlaceClicked="#onPlaceClicked" onPlanClicked="#onPlanClicked" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <homeNode>
-        <VBox fx:id="_profileBox" prefWidth="412.0" style="-fx-background-color: f5f7fb;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+        <VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="_profileBox" style="-fx-background-color: f5f7fb;"
+              xmlns="http://javafx.com/javafx/8.0.121">
             <children>
-
                 <VBox alignment="TOP_CENTER" style="-fx-background-color: white;">
                     <children>
                         <HBox>
                             <children>
-                                <Rectangle fx:id="_rectAvatar" arcHeight="30.0" arcWidth="30.0" fill="DODGERBLUE" height="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0">
+                                <Rectangle fx:id="_rectAvatar" arcHeight="30.0" arcWidth="30.0" fill="DODGERBLUE"
+                                           height="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0"
+                                           width="100.0">
                                     <HBox.margin>
-                                        <Insets left="32.0" />
+                                        <Insets left="32.0"/>
                                     </HBox.margin>
                                 </Rectangle>
                                 <VBox>
@@ -36,154 +33,159 @@
                                             <children>
                                                 <Label fx:id="_lblFirstName" text="Firstname">
                                                     <font>
-                                                        <Font name="System Bold" size="24.0" />
+                                                        <Font name="System Bold" size="24.0"/>
                                                     </font>
                                                 </Label>
                                                 <Label fx:id="_lblLastName" text="Lastname">
                                                     <HBox.margin>
-                                                        <Insets left="8.0" />
+                                                        <Insets left="8.0"/>
                                                     </HBox.margin>
                                                     <font>
-                                                        <Font size="24.0" />
+                                                        <Font size="24.0"/>
                                                     </font>
                                                 </Label>
                                             </children>
                                         </HBox>
-                                        <Label fx:id="_lblOccupation" graphicTextGap="6.0" text="Job" textFill="#787878">
+                                        <Label fx:id="_lblOccupation" graphicTextGap="6.0" text="Job"
+                                               textFill="#787878">
                                             <graphic>
-                                                <FontAwesomeIconView fill="#787878" glyphName="BRIEFCASE" />
+                                                <FontAwesomeIconView fill="#787878" glyphName="BRIEFCASE"/>
                                             </graphic>
                                             <VBox.margin>
-                                                <Insets top="8.0" />
+                                                <Insets top="8.0"/>
                                             </VBox.margin>
                                         </Label>
                                         <Label fx:id="_lblNationality" text="Nationality" textFill="#787878">
                                             <graphic>
-                                                <FontAwesomeIconView fill="#787878" glyphName="HOME" size="14" />
+                                                <FontAwesomeIconView fill="#787878" glyphName="HOME" size="14"/>
                                             </graphic>
                                             <VBox.margin>
-                                                <Insets top="8.0" />
+                                                <Insets top="8.0"/>
                                             </VBox.margin>
                                         </Label>
                                     </children>
                                     <padding>
-                                        <Insets left="16.0" top="6.0" />
+                                        <Insets left="16.0" top="6.0"/>
                                     </padding>
                                 </VBox>
                             </children>
                         </HBox>
                         <Label fx:id="_lblBio" text="Bio.">
                             <VBox.margin>
-                                <Insets top="16.0" />
+                                <Insets top="16.0"/>
                             </VBox.margin>
                             <font>
-                                <Font size="13.0" />
+                                <Font size="13.0"/>
                             </font>
                         </Label>
                         <JFXButton fx:id="_btnEditBio" text="Edit" textFill="#1a535c">
                             <font>
-                                <Font name="System Bold" size="12.0" />
+                                <Font name="System Bold" size="12.0"/>
                             </font>
                         </JFXButton>
                     </children>
                     <padding>
-                        <Insets bottom="8.0" top="10.0" />
+                        <Insets bottom="8.0" top="10.0"/>
                     </padding>
                 </VBox>
                 <VBox alignment="TOP_CENTER" style="-fx-background-color: white;">
                     <padding>
-                        <Insets bottom="8.0" left="8.0" right="8.0" top="10.0" />
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="10.0"/>
                     </padding>
                     <VBox.margin>
-                        <Insets top="8.0" />
+                        <Insets top="8.0"/>
                     </VBox.margin>
                     <children>
                         <HBox alignment="CENTER_LEFT">
                             <children>
                                 <StackPane>
                                     <children>
-                                        <Circle fill="#1a535c" radius="15.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                                        <Circle fill="#1a535c" radius="15.0" stroke="BLACK" strokeType="INSIDE"
+                                                strokeWidth="0.0"/>
                                         <FontAwesomeIconView fill="WHITE" glyphName="PLANE" size="18">
                                             <StackPane.margin>
-                                                <Insets top="2.0" />
+                                                <Insets top="2.0"/>
                                             </StackPane.margin>
                                         </FontAwesomeIconView>
                                     </children>
                                 </StackPane>
                                 <Label text="Your trekking plans">
                                     <HBox.margin>
-                                        <Insets left="8.0" />
+                                        <Insets left="8.0"/>
                                     </HBox.margin>
                                     <font>
-                                        <Font size="14.0" />
+                                        <Font size="14.0"/>
                                     </font>
                                 </Label>
                             </children>
                         </HBox>
-                        <JFXListView fx:id="_lvPlans" prefHeight="200.0" style="-fx-background-color: white;">
+                        <ListView fx:id="_lvPlans" maxHeight="200.0" stylesheets="@../../../style/listView.css">
                             <VBox.margin>
-                                <Insets top="10.0" />
+                                <Insets top="10.0"/>
                             </VBox.margin>
-                        </JFXListView>
+                        </ListView>
                         <AnchorPane>
                             <VBox.margin>
-                                <Insets />
+                                <Insets/>
                             </VBox.margin>
                         </AnchorPane>
                         <AnchorPane prefHeight="1.0" prefWidth="200.0" style="-fx-background-color: #f0f0f0;">
                             <VBox.margin>
-                                <Insets top="8.0" />
+                                <Insets top="8.0"/>
                             </VBox.margin>
                         </AnchorPane>
                     </children>
                 </VBox>
                 <VBox alignment="TOP_CENTER" style="-fx-background-color: white;">
                     <padding>
-                        <Insets bottom="8.0" left="8.0" right="8.0" top="10.0" />
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="10.0"/>
                     </padding>
                     <children>
                         <HBox alignment="CENTER_LEFT">
                             <children>
                                 <StackPane>
                                     <children>
-                                        <Circle fill="#ed5851" radius="15.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                                        <MaterialIconView fill="WHITE" glyphName="PEOPLE" size="18" />
+                                        <Circle fill="#ed5851" radius="15.0" stroke="BLACK" strokeType="INSIDE"
+                                                strokeWidth="0.0"/>
+                                        <MaterialIconView fill="WHITE" glyphName="PEOPLE" size="18"/>
                                     </children>
                                 </StackPane>
                                 <Label text="Your friends">
                                     <HBox.margin>
-                                        <Insets left="8.0" />
+                                        <Insets left="8.0"/>
                                     </HBox.margin>
                                     <font>
-                                        <Font size="14.0" />
+                                        <Font size="14.0"/>
                                     </font>
                                 </Label>
                                 <Label fx:id="_lblFriendCount" text="0">
                                     <HBox.margin>
-                                        <Insets left="16.0" />
+                                        <Insets left="16.0"/>
                                     </HBox.margin>
                                     <font>
-                                        <Font name="System Bold" size="14.0" />
+                                        <Font name="System Bold" size="14.0"/>
                                     </font>
                                 </Label>
                             </children>
                         </HBox>
-                        <JFXListView fx:id="_lvFriends" orientation="HORIZONTAL" prefHeight="100.0" style="-fx-background-color: white;">
+                        <ListView fx:id="_lvFriends" maxHeight="130.0" orientation="HORIZONTAL"
+                                  stylesheets="@../../../style/listView.css">
                             <VBox.margin>
-                                <Insets top="10.0" />
+                                <Insets top="10.0"/>
                             </VBox.margin>
-                        </JFXListView>
+                        </ListView>
                         <AnchorPane prefHeight="1.0" prefWidth="200.0" style="-fx-background-color: #f0f0f0;">
                             <VBox.margin>
-                                <Insets top="8.0" />
+                                <Insets top="8.0"/>
                             </VBox.margin>
                         </AnchorPane>
                     </children>
                     <VBox.margin>
-                        <Insets top="8.0" />
+                        <Insets top="8.0"/>
                     </VBox.margin>
                 </VBox>
             </children>
         </VBox>
     </homeNode>
 </HomePane>
+

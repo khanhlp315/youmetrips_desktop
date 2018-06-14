@@ -14,32 +14,31 @@ import javafx.concurrent.Task;
 public class NewPasswordPresenter extends PresenterBase<NewPasswordScreen> {
     private NewPasswordService _service;
 
-    public NewPasswordPresenter(NewPasswordService service)
-    {
+    public NewPasswordPresenter(NewPasswordService service) {
         _service = service;
     }
 
-    public void sendNewPassword(String newPassword,String confirmPassword)
-    {
+    public void sendNewPassword(String newPassword, String confirmPassword) {
         new Thread(new Task<Object>() {
             @Override
-            protected Object call() throws Exception {
+            protected Object call() {
                 doSendNewPassword(newPassword, confirmPassword);
                 return null;
             }
 
             @Override
-            protected void succeeded(){
-                onSendNewPasswordSuccess();};
+            protected void succeeded() {
+                onSendNewPasswordSuccess();
+            }
 
             @Override
-            protected void failed(){
-                onSendNewPasswordFailed(getException());};
+            protected void failed() {
+                onSendNewPasswordFailed(getException());
+            }
         }).start();
     }
 
-    private void doSendNewPassword(String newPassword, String confirmPassword)
-    {
+    private void doSendNewPassword(String newPassword, String confirmPassword) {
         if (!newPassword.equals(confirmPassword)) {
             throw new ConfirmPasswordNotMatchException();
         }
@@ -49,34 +48,24 @@ public class NewPasswordPresenter extends PresenterBase<NewPasswordScreen> {
 
     }
 
-    private void onSendNewPasswordSuccess()
-    {
+    private void onSendNewPasswordSuccess() {
         getView().showSuccess("Change password success \n Please log-in");
         getView().navigateToLoginScreen();
     }
 
-    private void onSendNewPasswordFailed(final Throwable e)
-    {
-        if (e instanceof ConfirmPasswordNotMatchException)
-        {
+    private void onSendNewPasswordFailed(final Throwable e) {
+        if (e instanceof ConfirmPasswordNotMatchException) {
             getView().showError(e.getMessage());
-        }
-        else if(e instanceof ExpiredJwtException)
-        {
+        } else if (e instanceof ExpiredJwtException) {
             getView().showError(e.getMessage());
-        }
-        else if (e instanceof InvalidPasswordException)
-        {
+        } else if (e instanceof InvalidPasswordException) {
             getView().showError(e.getMessage());
-        }
-        else
-        {
+        } else {
             getView().showError(e.getMessage());
         }
     }
 
-    public void requestToNavigateBack()
-    {
+    public void requestToNavigateBack() {
         getView().onNavigateBack();
     }
 

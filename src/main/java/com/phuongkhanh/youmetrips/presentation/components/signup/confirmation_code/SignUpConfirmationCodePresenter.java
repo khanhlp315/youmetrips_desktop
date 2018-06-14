@@ -15,22 +15,21 @@ public class SignUpConfirmationCodePresenter extends PresenterBase<SignUpConfirm
     private SignUpConfirmationCodeService _service;
 
     @Inject
-    public SignUpConfirmationCodePresenter(SignUpConfirmationCodeService service)
-    {
+    public SignUpConfirmationCodePresenter(SignUpConfirmationCodeService service) {
         _service = service;
     }
 
 
     //region SEND CONFIRMATION CODE
+
     /***************************************************************************************************
      ***************************************************************************************************
      ***************************************************************************************************/
-    public void sendConfirmationCode(String confirmationCode)
-    {
+    public void sendConfirmationCode(String confirmationCode) {
         new Thread(
                 new Task<Object>() {
                     @Override
-                    protected Object call() throws Exception {
+                    protected Object call() {
                         doSendConfirmationCode(confirmationCode);
                         return null;
                     }
@@ -48,51 +47,40 @@ public class SignUpConfirmationCodePresenter extends PresenterBase<SignUpConfirm
         ).start();
     }
 
-    private void doSendConfirmationCode(String confirmationCode)
-    {
+    private void doSendConfirmationCode(String confirmationCode) {
         AuthenticationStore authenticationStore = _service.getAuthenticationStore();
         _service.sendConfirmationCode(confirmationCode, authenticationStore.getUserId(), authenticationStore.getConfirmToken());
     }
 
-    private void onSendConfirmationCodeSuccess()
-    {
+    private void onSendConfirmationCodeSuccess() {
         //TODO: catch exceptions when send verify code success
         getView().showSuccess("send confirmation code success");
         getView().onNavigateToHome();
     }
 
-    private void onSendConfirmationCodeFailed(final Throwable e)
-    {
+    private void onSendConfirmationCodeFailed(final Throwable e) {
         //TODO: catch exceptions when send verify code failed
-        if(e instanceof InvalidJwtException)
-        {
+        if (e instanceof InvalidJwtException) {
             getView().showError(e.getMessage());
-        }
-        else if(e instanceof WrongConfirmationCodeException)
-        {
+        } else if (e instanceof WrongConfirmationCodeException) {
             getView().showError(e.getMessage());
-        }
-        else
-        {
+        } else {
             getView().showError(e.getMessage());
         }
     }
     //endregion
 
 
-
-
-
     //region RESEND
+
     /***************************************************************************************************
      ***************************************************************************************************
      ***************************************************************************************************/
-    public void resendCode()
-    {
+    public void resendCode() {
         new Thread(
                 new Task<Object>() {
                     @Override
-                    protected Object call() throws Exception {
+                    protected Object call() {
                         doResendConfirmationCode();
                         return null;
                     }
@@ -110,8 +98,7 @@ public class SignUpConfirmationCodePresenter extends PresenterBase<SignUpConfirm
         ).start();
     }
 
-    private void doResendConfirmationCode()
-    {
+    private void doResendConfirmationCode() {
         AuthenticationStore authenticationStore = _service.getAuthenticationStore();
 
         _service.resendConfirmationCode(authenticationStore.getUserId(), authenticationStore.getResendConfirmationCodeToken());
@@ -122,18 +109,15 @@ public class SignUpConfirmationCodePresenter extends PresenterBase<SignUpConfirm
     }
 
     private void onResendConfirmationCodeFailed(Throwable e) {
-        if(e instanceof InvalidJwtException)
-        {
+        if (e instanceof InvalidJwtException) {
             getView().showError(e.getMessage());
-        }
-        else
-        {
+        } else {
             getView().showError(e.getMessage());
         }
     }
     //endregion
 
-    void requestToNavigateBackSignUpScreen(){
+    void requestToNavigateBackSignUpScreen() {
         getView().onNavigateBackSignUpScreen();
-    };
+    }
 }

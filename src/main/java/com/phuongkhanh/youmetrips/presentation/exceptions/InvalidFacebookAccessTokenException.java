@@ -5,8 +5,7 @@ package com.phuongkhanh.youmetrips.presentation.exceptions;
  */
 public class InvalidFacebookAccessTokenException extends PresentationException {
 
-    public InvalidFacebookAccessTokenException()
-    {
+    public InvalidFacebookAccessTokenException() {
         message("Invalid Facebook Access Token");
     }
 }

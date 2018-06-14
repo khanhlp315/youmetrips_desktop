@@ -10,11 +10,10 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class PlanListScreenImpl extends FXMLScreen
-implements PlanListScreen, Initializable {
+        implements PlanListScreen, Initializable {
 
     @Inject
-    public PlanListScreenImpl(PlanListPresenter presenter)
-    {
+    public PlanListScreenImpl(PlanListPresenter presenter) {
 
     }
 
