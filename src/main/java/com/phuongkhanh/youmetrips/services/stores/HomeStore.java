@@ -18,6 +18,7 @@ public class HomeStore {
    private static final String COMMENTS = "COMMENTS";
    private static final String CREATING_PLACE = "CREATING_PLACE";
    private static final String CREATING_PLAN = "CREATING_PLAN";
+   private static final String PLACE_DETAIL_ID = "PLACE_DETAIL_ID";
    private Store _store;
 
 
@@ -35,6 +36,7 @@ public class HomeStore {
        _store.setItem(COMMENTS, new HashMap<Integer, List<Comment>>());
        _store.setItem(CREATING_PLACE, new CreatePlace());
        _store.setItem(CREATING_PLAN, new CreatePlan());
+       _store.setItem(PLACE_DETAIL_ID, null);
    }
     @SuppressWarnings("unchecked")
     public void storePlans(List<RelevantPlan> plans){
@@ -66,6 +68,8 @@ public class HomeStore {
     }
 
     public void storeCreatePlan(CreatePlan plan) { _store.setItem(CREATING_PLAN, plan);}
+
+    public void storePlaceDetailsId(int id) { _store.setItem(PLACE_DETAIL_ID, id);}
 
     @SuppressWarnings("unchecked")
     public void addPlaceDetails(PlaceDetails placeDetails){
@@ -127,6 +131,11 @@ public class HomeStore {
         else {
             return (List<Comment>) map.get(planId);
         }
+    }
+
+    public int getPlaceDetailsId()
+    {
+        return (int) _store.getItem(PLACE_DETAIL_ID);
     }
 
     @SuppressWarnings("unchecked")

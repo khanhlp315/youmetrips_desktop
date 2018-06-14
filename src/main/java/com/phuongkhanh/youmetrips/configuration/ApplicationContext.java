@@ -67,9 +67,7 @@ import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_location.TrekkingPlaceLocationService;
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_name.TrekkingPlaceNameService;
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_photos.TrekkingPlacePhotosService;
-import com.phuongkhanh.youmetrips.presentation.windows.CreatePlaceWindow;
-import com.phuongkhanh.youmetrips.presentation.windows.CreatePlanWindow;
-import com.phuongkhanh.youmetrips.presentation.windows.HomeWindow;
+import com.phuongkhanh.youmetrips.presentation.windows.*;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_hotel.TrekkingPlanHotelPresenter;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_hotel.TrekkingPlanHotelScreen;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_hotel.TrekkingPlanHotelScreenImpl;
@@ -99,7 +97,6 @@ import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_photos.TrekkingPlacePhotosPresenter;
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_photos.TrekkingPlacePhotosScreen;
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_photos.TrekkingPlacePhotosScreenImpl;
-import com.phuongkhanh.youmetrips.presentation.windows.LoginWindow;
 import com.phuongkhanh.youmetrips.services.api.RestApi;
 import com.phuongkhanh.youmetrips.services.components.AuthServiceImpl;
 import com.phuongkhanh.youmetrips.services.components.HomeServiceImpl;
@@ -123,6 +120,7 @@ public interface ApplicationContext {
     HomeWindow homeWindow();
     CreatePlanWindow createPlanWindow();
     CreatePlaceWindow createPlaceWindow();
+    PlaceDetailsWindow creatPlaceDetailsWindow();
 
     @Module
     static class PresentationModule {
@@ -227,8 +225,8 @@ public interface ApplicationContext {
         }
 
         @Provides
-        static PlaceScreen placeScreen(PlacePresenter presenter, Provider<CreatePlanWindow> planWindowProvider, Provider<CreatePlaceWindow> placeWindowProvider) {
-            return new PlaceScreenImpl(presenter, planWindowProvider, placeWindowProvider);
+        static PlaceScreen placeScreen(PlacePresenter presenter, Provider<CreatePlanWindow> planWindowProvider, Provider<CreatePlaceWindow> placeWindowProvider, Provider<PlaceDetailsWindow> placeDetailsWindowProvider) {
+            return new PlaceScreenImpl(presenter, planWindowProvider, placeWindowProvider, placeDetailsWindowProvider);
         }
 
         @Provides

@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.*?>
+<?import com.lynden.gmapsfx.GoogleMapView?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
             minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.141">
     <children>
@@ -73,7 +74,7 @@
                                         </AnchorPane>
                                         <VBox alignment="CENTER" prefWidth="115.0">
                                             <children>
-                                                <Label fx:id="_lblCheckedInCount" alignment="CENTER" text="+1">
+                                                <Label fx:id="_lblCheckedInCount" alignment="CENTER" text="+0">
                                                     <font>
                                                         <Font name="System Bold" size="24.0"/>
                                                     </font>
@@ -158,6 +159,10 @@
                 <Tab fx:id="_tabMap" text="MAP">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
+
+                        <VBox alignment="CENTER" minHeight="200.0" minWidth="200.0">
+                            <GoogleMapView fx:id="_ggMaps" minHeight="200.0" minWidth="200.0"/>
+                        </VBox>
                     </content>
                 </Tab>
                 <Tab fx:id="_tabReviews" text="REVIEWS">

@@ -9,7 +9,11 @@ import com.phuongkhanh.youmetrips.presentation.controls.PlaceCell;
 import com.phuongkhanh.youmetrips.presentation.framework.FXMLScreen;
 import com.phuongkhanh.youmetrips.presentation.windows.CreatePlaceWindow;
 import com.phuongkhanh.youmetrips.presentation.windows.CreatePlanWindow;
+import com.phuongkhanh.youmetrips.presentation.windows.PlaceDetailsWindow;
 import com.phuongkhanh.youmetrips.services.api.models.Place;
+import dagger.Provides;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -26,7 +30,7 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 public class PlaceScreenImpl extends FXMLScreen
-implements PlaceScreen, Initializable {
+        implements PlaceScreen, Initializable {
 
     @FXML
     private ListView _lvPlaces;
@@ -34,6 +38,7 @@ implements PlaceScreen, Initializable {
     private final PlacePresenter _presenter;
     private final Provider<CreatePlanWindow> _planWindow;
     private final Provider<CreatePlaceWindow> _placeWindow;
+    private final Provider<PlaceDetailsWindow> _placeDetailsWindow;
 
     @Override
     public Scene render() {
@@ -42,17 +47,25 @@ implements PlaceScreen, Initializable {
     }
 
     @Inject
-    public PlaceScreenImpl(PlacePresenter presenter, Provider<CreatePlanWindow> planWindow, Provider<CreatePlaceWindow> placeWindow)
-    {
+    public PlaceScreenImpl(PlacePresenter presenter, Provider<CreatePlanWindow> planWindow, Provider<CreatePlaceWindow> placeWindow, Provider<PlaceDetailsWindow> placeDetailsWindowProvider) {
         _presenter = presenter;
         _presenter.setView(this);
         _planWindow = planWindow;
         _placeWindow = placeWindow;
+        _placeDetailsWindow = placeDetailsWindowProvider;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public void updatePlaces(List<Place> places) {
         _lvPlaces.setItems(FXCollections.observableArrayList(places.stream().map(PlaceCell::new).collect(Collectors.toList())));
+        _lvPlaces.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                _presenter.savePlaceDetailsId(places.get(_lvPlaces.getSelectionModel().getSelectedIndex()).getId());
+                _presenter.requestNavigateToPlaceDetails();
+            }
+        });
     }
 
     @Override
@@ -106,6 +119,14 @@ implements PlaceScreen, Initializable {
     }
 
     @Override
+    public void navigateToPlaceDetails() {
+        PlaceDetailsWindow placeDetailsWindow = _placeDetailsWindow.get();
+        placeDetailsWindow.attach(new Stage());
+        placeDetailsWindow.show();
+
+    }
+
+    @Override
     protected String fxmlPath() {
         return "/view/home/places/places.fxml";
     }
@@ -115,43 +136,37 @@ implements PlaceScreen, Initializable {
     }
 
     @FXML
-    public void onPlanClicked()
-    {
+    public void onPlanClicked() {
         _presenter.requestNavigateToPlan();
     }
 
     @FXML
-    public void onFriendRequestClicked()
-    {
+    public void onFriendRequestClicked() {
         _presenter.requestNavigateToFriendRequest();
     }
 
     @FXML
-    public void onCreateTrekkingPlanClicked()
-    {
+    public void onCreateTrekkingPlanClicked() {
         _presenter.requestNavigateToCreateTrekkingPlan();
     }
 
     @FXML
-    public void onCreateTrekkingPlaceClicked()
-    {
+    public void onCreateTrekkingPlaceClicked() {
         _presenter.requestNavigateToCreateTrekkingPlace();
     }
 
     @FXML
-    public void onProfileClicked()
-    {
+    public void onProfileClicked() {
         _presenter.requestNavigateToProfile();
     }
 
     @FXML
-    public void onEditProfileClicked()
-    {
+    public void onEditProfileClicked() {
         _presenter.requestNavigateToEditProfile();
     }
 
     @FXML
-    public void refresh(){
+    public void refresh() {
         _presenter.refreshPlaces();
     }
 }
