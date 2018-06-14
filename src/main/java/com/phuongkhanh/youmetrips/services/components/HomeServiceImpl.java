@@ -14,7 +14,6 @@ import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_p
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_preview.TrekkingPlanPreviewService;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_stay.TrekkingPlanStayService;
 import com.phuongkhanh.youmetrips.presentation.components.trekingplan.trekking_plan_time.TrekkingPlanTimeService;
-import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.TrekkingPlaceService;
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_hashtags.TrekkingPlaceHashtagsService;
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_location.TrekkingPlaceLocationService;
 import com.phuongkhanh.youmetrips.presentation.components.trekkingplace.trekking_place_name.TrekkingPlaceNameService;
@@ -35,7 +34,6 @@ public class HomeServiceImpl implements
         PlanService,
         PlaceService,
         FriendRequestsService,
-        TrekkingPlaceService,
         ProfileService,
         PlanListService,
         EditProfileService,
