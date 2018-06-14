@@ -2,69 +2,72 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-
-<fx:root type="HBox" alignment="CENTER_LEFT" xmlns:fx="http://javafx.com/fxml/1"  xmlns="http://javafx.com/javafx/8.0.141">
+<fx:root xmlns:fx="http://javafx.com/fxml/1" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.141">
     <children>
-        <Rectangle fx:id="_rectPlaceImage" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="49.0"
+        <HBox alignment="CENTER_LEFT">
+            <children>
+                <Rectangle fx:id="_rectPlaceImage" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="49.0"
                            layoutY="10.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="93.0"
                            AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="8.0">
-            <HBox.margin>
-                <Insets/>
-            </HBox.margin>
-        </Rectangle>
-        <VBox layoutX="101.0" layoutY="8.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="101.0"
+                    <HBox.margin>
+                        <Insets/>
+                    </HBox.margin>
+                </Rectangle>
+                <VBox layoutX="101.0" layoutY="8.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="101.0"
                       AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="8.0">
-            <children>
-                <HBox>
                     <children>
-                        <Label fx:id="_lblPlaceName" text="Place">
-                            <font>
-                                <Font name="System Bold" size="16.0"/>
-                            </font>
-                        </Label>
-                    </children>
-                </HBox>
-                <AnchorPane minWidth="212.0">
-                    <VBox.margin>
-                        <Insets top="8.0"/>
-                    </VBox.margin>
-                    <children>
+                        <HBox>
+                            <children>
+                                <Label fx:id="_lblPlaceName" text="Place">
+                                    <font>
+                                        <Font name="System Bold" size="16.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <AnchorPane minWidth="212.0">
+                            <VBox.margin>
+                                <Insets top="8.0"/>
+                            </VBox.margin>
+                            <children>
                                 <Label fx:id="_lblFromToDate" text="1/6/2018 - 2/6/2018" textFill="#787878"
                                        AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <graphic>
                                         <MaterialDesignIconView fill="#787878" glyphName="CALENDAR" size="16"/>
                                     </graphic>
                                 </Label>
-                                <Label fx:id="_lblHowLong" layoutX="160.0" text="2 - 5 days" textFill="#787878"
-                                       AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                <Label fx:id="_lblHowLong" layoutX="160.0" text="21 - 51 days" textFill="#787878"
+                                       AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0"
                                        AnchorPane.topAnchor="0.0">
                                     <graphic>
                                         <MaterialDesignIconView fill="#787878" glyphName="TIMER" size="16"/>
                                     </graphic>
                                 </Label>
+                            </children>
+                        </AnchorPane>
                     </children>
-                </AnchorPane>
+                    <HBox.margin>
+                        <Insets left="16.0"/>
+                    </HBox.margin>
+                </VBox>
             </children>
-            <HBox.margin>
-                <Insets left="16.0"/>
-            </HBox.margin>
-        </VBox>
-                <JFXButton fx:id="_btnEnter" layoutX="321.0" layoutY="16.0" text="&gt;" textFill="#828282"
-                           AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="8.0">
+            <padding>
+                <Insets bottom="8.0" left="8.0" top="8.0"/>
+            </padding>
+        </HBox>
+        <JFXButton fx:id="_btnEnter" text="&gt;" textFill="#828282" AnchorPane.bottomAnchor="8.0"
+                   AnchorPane.leftAnchor="340.0" AnchorPane.topAnchor="8.0">
                     <font>
                         <Font name="System Bold" size="24.0"/>
                     </font>
-                    <padding>
-                        <Insets right="-1.0"/>
-                    </padding>
+            <padding>
+                <Insets bottom="8.0" left="8.0" right="8.0" top="8.0"/>
+            </padding>
                 </JFXButton>
     </children>
-    <padding>
-        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0"/>
-    </padding>
 </fx:root>
