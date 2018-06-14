@@ -252,4 +252,11 @@ public class PlaceDetailsPresenter extends PresenterBase<PlaceDetailsScreen> {
     {
         return _service.getHomeStore().getPlaceDetailsId();
     }
+
+    public void requestToNavigateToCreatePlan()
+    {
+        assert (getView() != null);
+
+        getView().navigateToCreatePlan();
+    }
 }

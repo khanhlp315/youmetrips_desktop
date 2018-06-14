@@ -205,8 +205,8 @@ public interface ApplicationContext {
         }
 
         @Provides
-        static FriendRequestsScreen friendRequestsScreen(FriendRequestsPresenter presenter) {
-            return new FriendRequestsScreenImpl(presenter);
+        static FriendRequestsScreen friendRequestsScreen(FriendRequestsPresenter presenter, Provider<CreatePlanWindow> planWindowProvider, Provider<CreatePlaceWindow> placeWindowProvider) {
+            return new FriendRequestsScreenImpl(presenter, planWindowProvider, placeWindowProvider);
         }
 
         @Provides
@@ -215,8 +215,8 @@ public interface ApplicationContext {
         }
 
         @Provides
-        static PlaceDetailsScreen placeDetailsScreen(PlaceDetailsPresenter presenter) {
-            return new PlaceDetailsScreenImpl(presenter);
+        static PlaceDetailsScreen placeDetailsScreen(PlaceDetailsPresenter presenter, Provider<CreatePlanWindow> planWindowProvider) {
+            return new PlaceDetailsScreenImpl(presenter, planWindowProvider);
         }
 
         @Provides

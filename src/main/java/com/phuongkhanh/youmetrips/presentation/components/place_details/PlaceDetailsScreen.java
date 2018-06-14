@@ -21,4 +21,6 @@ public interface PlaceDetailsScreen extends JFXScreen {
     void updateMapUrl(String mapUrl);
 
     void updateUserAvatar(String avatar);
+
+    void navigateToCreatePlan();
 }
