@@ -210,4 +210,9 @@ public class ProfileScreenImpl extends FXMLScreen
         _lvPlans.setCellFactory(param -> new UserPlanCell());
 
     }
+
+    public void refresh(){
+        _presenter.refreshUser();
+        _presenter.refreshFriends();
+    }
 }

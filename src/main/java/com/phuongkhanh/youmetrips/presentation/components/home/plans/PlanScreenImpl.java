@@ -147,4 +147,8 @@ implements PlanScreen, Initializable {
     {
         _presenter.requestNavigateToEditProfile();
     }
+
+    public void refresh(){
+        _presenter.refreshPlans();
+    }
 }
