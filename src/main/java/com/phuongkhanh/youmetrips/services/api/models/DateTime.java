@@ -1,5 +1,7 @@
 package com.phuongkhanh.youmetrips.services.api.models;
 
+import java.time.LocalDate;
+
 public class DateTime {
     private int year;
     private String month;

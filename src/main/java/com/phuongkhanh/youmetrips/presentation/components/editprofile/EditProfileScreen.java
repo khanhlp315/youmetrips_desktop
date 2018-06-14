@@ -20,4 +20,6 @@ public interface EditProfileScreen extends JFXScreen {
     void navigateBack();
 
     void updateCountries(List<Country> countries);
+
+    void close();
 }

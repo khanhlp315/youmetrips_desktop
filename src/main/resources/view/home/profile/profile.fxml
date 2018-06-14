@@ -78,11 +78,6 @@
                                 <Font size="13.0"/>
                             </font>
                         </Label>
-                        <JFXButton fx:id="_btnEditBio" text="Edit" textFill="#1a535c">
-                            <font>
-                                <Font name="System Bold" size="12.0"/>
-                            </font>
-                        </JFXButton>
                     </children>
                     <padding>
                         <Insets bottom="8.0" top="10.0"/>
