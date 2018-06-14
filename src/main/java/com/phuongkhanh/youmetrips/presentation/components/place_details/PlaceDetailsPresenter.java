@@ -1,4 +1,4 @@
-package com.phuongkhanh.youmetrips.presentation.components.home.place_details;
+package com.phuongkhanh.youmetrips.presentation.components.place_details;
 
 import com.phuongkhanh.youmetrips.presentation.framework.PresenterBase;
 import com.phuongkhanh.youmetrips.services.api.models.CreateTag;
@@ -70,8 +70,7 @@ public class PlaceDetailsPresenter extends PresenterBase<PlaceDetailsScreen> {
         };
 
         task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, event -> {
-            PlaceDetails result = task.getValue();
-            _onGetPlaceDetailsSucceeded(result);
+            _onGetPlaceDetailsSucceeded(task.getValue());
         });
         new Thread(task).start();
     }
@@ -247,5 +246,17 @@ public class PlaceDetailsPresenter extends PresenterBase<PlaceDetailsScreen> {
     }
 
     private void _onFetchUserFailed(Throwable throwable) {
+    }
+
+    public int getPlaceId()
+    {
+        return _service.getHomeStore().getPlaceDetailsId();
+    }
+
+    public void requestToNavigateToCreatePlan()
+    {
+        assert (getView() != null);
+
+        getView().navigateToCreatePlan();
     }
 }

@@ -217,4 +217,8 @@ public class ProfilePresenter extends PresenterBase<ProfileScreen> {
         assert (getView() != null);
         getView().navigateToPlanDetails(id);
     }
+
+    public void requestNavigateToEditProfile() {
+        getView().navigateToEditProfile();
+    }
 }

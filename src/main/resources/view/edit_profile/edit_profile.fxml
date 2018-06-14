@@ -2,10 +2,12 @@
 
 <?import com.jfoenix.controls.*?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialicons.MaterialIconView?>
 <?import javafx.geometry.*?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.*?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" alignment="TOP_CENTER" prefWidth="412.0" style="-fx-background-color: f5f7fb;"
       xmlns="http://javafx.com/javafx/8.0.141">
     <children>
@@ -51,6 +53,9 @@
                                                     <HBox.margin>
                                                         <Insets left="8.0"/>
                                                     </HBox.margin>
+                                                    <font>
+                                                        <Font size="13.0"/>
+                                                    </font>
                                                 </JFXTextField>
                                                 <FontAwesomeIconView fill="#787878" glyphName="HOME" size="14">
                                                     <HBox.margin>
@@ -63,6 +68,9 @@
                                                     <HBox.margin>
                                                         <Insets left="8.0"/>
                                                     </HBox.margin>
+                                                    <font>
+                                                        <Font size="13.0"/>
+                                                    </font>
                                                 </JFXTextField>
                                             </children>
                                             <VBox.margin>
@@ -99,6 +107,102 @@
             </padding>
             <VBox.margin>
                 <Insets/>
+            </VBox.margin>
+        </VBox>
+        <VBox style="-fx-background-color: white;">
+            <padding>
+                <Insets bottom="16.0" left="8.0" right="8.0" top="2.0"/>
+            </padding>
+            <VBox.margin>
+                <Insets top="8.0"/>
+            </VBox.margin>
+            <children>
+                <Label text="Basic Info">
+                    <font>
+                        <Font name="System Bold" size="13.0"/>
+                    </font>
+                    <graphic>
+                        <MaterialIconView glyphName="PERSON"/>
+                    </graphic>
+                    <VBox.margin>
+                        <Insets top="8.0"/>
+                    </VBox.margin>
+                </Label>
+                <Label text="Gender">
+                    <font>
+                        <Font size="13.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets top="8.0"/>
+                    </VBox.margin>
+                </Label>
+                <HBox>
+                    <children>
+                        <JFXRadioButton fx:id="_rbMale" text="Male"/>
+                        <JFXRadioButton fx:id="_rbFemale" text="Female"/>
+                        <JFXRadioButton fx:id="_rbOther" text="Other"/>
+                    </children>
+                    <VBox.margin>
+                        <Insets top="8.0"/>
+                    </VBox.margin>
+                </HBox>
+                <JFXDatePicker fx:id="_dpBirthday" defaultColor="#ffc146" promptText="Birthday">
+                    <VBox.margin>
+                        <Insets top="24.0"/>
+                    </VBox.margin>
+                </JFXDatePicker>
+            </children>
+        </VBox>
+        <VBox style="-fx-background-color: white;">
+            <padding>
+                <Insets bottom="16.0" left="8.0" right="8.0" top="2.0"/>
+            </padding>
+            <children>
+                <Label text="Contact Info">
+                    <font>
+                        <Font name="System Bold" size="13.0"/>
+                    </font>
+                    <graphic>
+                        <MaterialIconView glyphName="CONTACTS"/>
+                    </graphic>
+                    <VBox.margin>
+                        <Insets top="8.0"/>
+                    </VBox.margin>
+                </Label>
+                <HBox alignment="CENTER_LEFT">
+                    <children>
+                        <MaterialIconView fill="#787878" glyphName="CALL"/>
+                        <JFXTextField fx:id="_tfPhone" focusColor="#ffba33" labelFloat="true" prefHeight="25.0"
+                                      text="Phone" unFocusColor="#ccd0d2">
+                            <HBox.margin>
+                                <Insets left="8.0"/>
+                            </HBox.margin>
+                            <font>
+                                <Font size="13.0"/>
+                            </font>
+                        </JFXTextField>
+                        <MaterialIconView fill="#787878" glyphName="EMAIL">
+                            <HBox.margin>
+                                <Insets left="16.0"/>
+                            </HBox.margin>
+                        </MaterialIconView>
+                        <JFXTextField fx:id="_tfEmail" focusColor="#ffba33" labelFloat="true" prefHeight="25.0"
+                                      text="Email" unFocusColor="#ccd0d2">
+                            <HBox.margin>
+                                <Insets left="8.0"/>
+                            </HBox.margin>
+                            <font>
+                                <Font size="13.0"/>
+                            </font>
+                        </JFXTextField>
+                    </children>
+                    <VBox.margin>
+                        <Insets top="16.0"/>
+                    </VBox.margin>
+                </HBox>
+            </children>
+            <VBox.margin>
+                <Insets top="8.0"/>
             </VBox.margin>
         </VBox>
         <JFXButton fx:id="_btnSave" prefHeight="38.0" prefWidth="300.0" ripplerFill="#ffffff42"

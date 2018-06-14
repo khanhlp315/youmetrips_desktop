@@ -39,7 +39,7 @@ public class JFXWindowBase implements JFXWindow {
         }
 
         _stage = stage;
-        _stage.initStyle(StageStyle.UTILITY);
+        //_stage.initStyle(StageStyle.UTILITY);
 
         // reset navigation and show first screen
         _currentScreen = null;
